@@ -1,0 +1,165 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Abel', sans-serif;
+}
+
+body{
+	background: url(../img/merch_big.png) 400PX;
+  background-color: #a27cef;
+}
+
+.tm-container{
+    width: 70%;
+    margin: 0 auto;
+    align-content: center;
+    border-radius: 7px;
+}
+
+.box{
+  margin: 0 auto;
+  width: 60%;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.boxbody{
+  background: white;
+	height: 870px;
+	border-radius: 5px;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.sayHi{
+	margin: auto;
+	font-size: 40px;
+	font-weight: bold;
+	width: 100%;
+	height:20%;
+	text-align: center;
+	padding-top:50px;
+
+}
+
+.facebookDiv{
+	margin: auto;
+  width: 88%;
+}
+
+#facebookButton{
+	color: white;
+	width: 100%;
+	height: 60px;
+	margin: 10px;
+	border: 2px solid #3b5998;
+	background: url("../img/facebook.png") no-repeat 150px 13px;
+	background-color: #3b5998;
+	border-radius: 7px;
+	font-size: 24px;
+}
+
+.ID{
+	margin: auto;
+  width: 85%;
+	padding: 10px;
+}
+
+#usernameLabel{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+#username{
+  width: 100%;
+	height: 40px;
+	border: 2px solid #d3d3d3;
+	border-radius: 7px;
+	font-size: 20px;
+	padding: 10px;
+}
+
+#username:focus{
+		outline: none !important;
+    border-color:  #a27cef;
+    box-shadow: 0 0 10px #a27cef;
+		border-radius: 7px;
+}
+
+.PW{
+  margin: auto;
+  width: 85%;
+	padding: 10px;
+}
+
+#passwordLabel{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+#password{
+  width: 100%;
+	height: 40px;
+	border: 2px solid #d3d3d3;
+	border-radius: 7px;
+	font-size: 20px;
+	padding: 10px;
+}
+
+#password:focus{
+		outline: none !important;
+    border-color: #a27cef;
+    box-shadow: 0 0 10px #a27cef;
+		border-radius: 7px;
+}
+
+.DONE{
+  margin: auto;
+	margin-top:30px;
+  width: 50%;
+}
+
+#submitButton{
+	width: 100%;
+	height: 70px;
+	margin: 10px;
+	color:white;
+	background-color: #a27cef;
+	border: 2px solid #a27cef;
+	border-radius: 7px;
+	font-size: 24px;
+}
+
+.SIGNUP{
+	margin: auto;
+  width: 50%;
+}
+
+#signupButton{
+	width: 99%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 10px;
+	color:#a27cef;
+	display:block ;
+	background-color: white;
+	border: 2px solid ;
+	border-radius: 7px;
+	font-size: 24px;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.forgotPW{
+	font-size: 18px;
+	float: right;
+	padding: 15px;
+	margin-top: 80px;
+}
+.forgotPW a{
+	text-decoration: none;
+	color: 	#8b9dc3;
+}
