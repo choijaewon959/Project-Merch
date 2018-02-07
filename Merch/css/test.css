@@ -1,0 +1,16 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Abel', sans-serif;
+}
+
+body{
+  background-color: #a27cef;
+}
+
+h1{
+  font-family: 'Fredoka One', cursive;
+  font-size: 150px;
+  padding: 50px;
+  color:white;
+}

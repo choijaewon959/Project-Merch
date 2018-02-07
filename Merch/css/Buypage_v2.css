@@ -1,0 +1,154 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'helvetica';
+}
+
+body{
+	background: #f7f7f7;
+}
+
+.Logo{
+	width: 10%;
+	color: white;
+	font-size: 50px;
+	float: left;
+	clear: both;
+	margin-left: 25px;
+  margin-top: 5px;
+}
+
+#merchText{
+	font-family: 'Fredoka One', cursive;
+}
+
+.tm-nav{
+	margin-top: 5px;
+	float: right;
+	background: #a27cef;
+}
+
+.tm-nav ul li {
+	display: inline-block;
+}
+
+.tm-nav ul li a{
+	padding: 10px 20px;
+	color: white;
+	line-height: 50px;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+.tm-nav ul li a:hover{
+	color: #f7f31d;
+}
+
+
+
+.searchHeader{
+	background: #a27cef;
+}
+
+.searchHeader:after{
+	visibility: none;
+	content: " ";
+	clear: both;
+	display: block;
+}
+
+.searchBar{
+	width: 50%;
+
+}
+
+.searchBar input[type="text"]{
+	margin-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+	vertical-align: middle;
+	width:25%;
+	height: 40px;
+	text-decoration: none;
+	outline: none;
+	border-style: none;
+	background-color: white;
+	font-size: 18px;
+	vertical-align: middle;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+  float: left;
+}
+
+.searchBar input[type="text"]::placeholder{
+  color: #c4c4c4;
+}
+
+.searchButton{
+	margin-top: 10px;
+  width: 5%;
+	height: 45px;
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+	background: url(/project/img/magnifier.png) no-repeat scroll center;
+  background-color:  white;
+	border-style: none;
+  float: left;
+}
+
+.filterDiv{
+	padding: 10px;
+  font-size: 18px;
+  background-color: white;
+  text-align: center;
+  width: 98.9%;
+}
+
+.filters{
+	text-align: center;
+}
+
+.Price{
+  margin-right: 20px;
+	padding: 10px;
+  display: inline-block;
+}
+
+.Quality{
+  margin-right: 20px;
+	padding : 10px;
+  display:inline-block;
+}
+
+.Category{
+	padding:10px;
+  display: inline-block;
+}
+
+#sort{
+	background: yellow;
+	border: 3px solid yellow;
+	width: 100px;
+	height: 30px;
+}
+
+.main{
+	margin: 0 auto;
+	width: 70%;
+	height: 100%;
+	padding: 10px;
+	padding-left: 80px;
+}
+
+.contentBox{
+	display: inline-block;
+	padding: 10px;
+	background: white;
+	width: 30%;
+	margin: 10px;
+	height: 500px;
+}
+
+.contentBox footer{
+	height: 10%;
+}

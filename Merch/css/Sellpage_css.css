@@ -1,0 +1,249 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Abel', sans-serif;
+}
+
+body{
+	background: #f7f7f7;
+}
+
+.Logo{
+	width: 19%;
+	color: white;
+	font-size: 70px;
+	float: left;
+	clear: both;
+	margin-left: 25px;
+}
+
+#merchText{
+	font-family: 'Fredoka One', cursive;
+	padding-top: 15px;
+	float: right;
+}
+
+#barcodeLogo{
+	float: left;
+}
+
+.tm-nav{
+	margin-top: 10px;
+	float: right;
+	background: #a27cef;
+}
+
+.tm-nav ul li {
+	display: inline-block;
+}
+
+.tm-nav ul li a{
+	padding: 10px 20px;
+	color: white;
+	line-height: 70px;
+	font-size: 25px;
+	text-decoration: none;
+}
+
+.tm-nav ul li a:hover{
+	color: #f7f31d;
+}
+
+.tm-container{
+	width: 50%;
+	margin: 0 auto;
+
+}
+
+.tm-header:after{
+	visibility: none;
+	content: " ";
+	clear: both;
+	display: block;
+}
+
+.searchHeader{
+	padding:10px;
+	background: #a27cef;
+	height: 120px;
+}
+
+.searchHeader:after{
+	visibility: none;
+	content: " ";
+	clear: both;
+	display: block;
+}
+
+.searchBar{
+	width: 100%;
+}
+
+.searchBar input[type="text"]{
+	margin-top: 20px;
+	font-size: 24px;
+	font-weight:bold;
+	vertical-align: middle;
+	padding-bottom: 5px;
+
+	width: 90%;
+	height: 42px;
+	text-decoration: none;
+	outline: none;
+	border-style: none;
+	background-color: white;
+	font-size: 100%;
+	font-weight:bold;
+	vertical-align: middle;
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.searchButton{
+	margin-top: 20px;
+	width: 100px;
+	height: 47px;
+	float: right;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+	background: url(/project/img/magnifier.png) no-repeat scroll center;
+	border-style: none;
+	background-color: #d4d6d8;
+	width: 10%;
+
+}
+
+.filter{
+	color: white;
+	padding: 10px;
+}
+
+.price{
+	margin-left: 5px;
+	margin-right: 55px;
+}
+
+#priceText{
+	font-size:20px;
+	padding-right: 10px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    height: 6px;
+    width: 20%;
+    border-radius: 5px;
+    background: white;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+.rate{
+	margin-right: 50px;
+	padding-left: 10px;
+	font-size:20px;
+	/* just for layout . will be erased*/
+}
+
+.rate input[type="radio"]{
+	margin-right: 20px;
+	 -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+    background-color:  white;
+}
+
+input[type="radio"]:after{
+	background-color: white;
+	 border: 2px solid white;
+}
+
+#rateText{
+	padding-right: 10px;
+}
+
+.category{
+	padding-left: 10px;
+	font-size:20px;
+}
+
+.category #categorySelectBox{
+	border-style: none;
+	width: 200px;
+	font-size: 20px;
+	border-radius: 7px;
+	text-align: center;
+}
+
+.main{
+  margin-top:40px;
+  width: 100%;
+  height: 750px;
+  background: black;
+}
+
+.test{
+  height: 400px;
+  background-color: red;
+}
+
+.requested{
+  float: left;
+  background: green;
+  width: 30%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.sellerDiv{
+  float: right;
+  background: blue;
+  width: 70%;
+  height: 100%;
+}
+
+.photoUploadPanel{
+  width: 50%;
+  height: 100%;
+  float: left;
+  background: pink;
+}
+
+.mainPhoto{
+  height: 70%;
+  background: black;
+}
+
+.otherPhoto{
+  height: 25%;
+  background: white;
+}
+
+.descriptionPanel{
+  width: 50%;
+  height: 100%;
+  float: right;
+  background: green;
+}
+
+#titleOfProduct{
+  width: 99.99%;
+  height: 150px;
+}
