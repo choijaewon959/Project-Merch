@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Buy_main</title>
+	<title>Buy_main_v2</title>
 	<link rel="stylesheet" type="text/css" href="../css/Buypage_v2.css">
 	<meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
@@ -41,19 +41,24 @@
     <div class="filters tm-container">
       <div class="Price">
         Price
+				<span><img  class="down" src="../img/down.png"></span>
       </div>
 
       <div class="Quality">
         Quality
+				<span ><img  class="down" src="../img/down.png"></span>
       </div>
 
       <div class="Category">
         Category
+				<span ><img  class="down" src="../img/down.png"></span>
       </div>
-
+			<!--
 			<div class="sortButton">
 				<button id="sort">sort</button>
 			</div>
+		-->
+
     </div>
   </div><!--filterDiv-->
 
@@ -61,19 +66,160 @@
 		<div class="contentBox">
 			<img src="../img/book1.jpg" alt="book" width="100%" height="450">
 			<footer>
+				<div class="pricePanel">
+					<div id="pricetagIcon">
+						<img src="../img/pricetag.png" alt="pricetag">
+					</div>
+
+					<div id="price">
+						HKD150
+					</div>
+
+					<div id="numOfView">
+						15
+					</div>
+					<div id="eye">
+						<img src="../img/view.png" alt="eye">
+					</div>
+				</div>
 			</footer>
 		</div>
 		<div class="contentBox">
-			<img src="../img/book1.jpg" alt="book" width="100%"  height="90%">
+			<img src="../img/book1.jpg" alt="book" width="100%"  height="450">
+			<footer>
+				<div id="pricetagIcon">
+					<img src="../img/pricetag.png" alt="pricetag">
+				</div>
+
+				<div id="price">
+					HKD150
+				</div>
+
+				<div id="numOfView">
+					15
+				</div>
+				<div id="eye">
+					<img src="../img/view.png" alt="eye">
+				</div>
+
+			</footer>
 		</div>
 		<div class="contentBox">
-			<img src="../img/book2.jpg" alt="book" width="100%"  height="90%">
+			<img src="../img/book2.jpg" alt="book" width="100%"  height="450">
+			<footer>
+				<div id="pricetagIcon">
+					<img src="../img/pricetag.png" alt="pricetag">
+				</div>
+
+				<div id="price">
+					HKD150
+				</div>
+
+				<div id="numOfView">
+					15
+				</div>
+				<div id="eye">
+					<img src="../img/view.png" alt="eye">
+				</div>
+			</footer>
 		</div>
 		<div class="contentBox">
-			<img src="../img/book2.jpg" alt="book" width="100%" height="90%">
+			<img src="../img/book2.jpg" alt="book" width="100%" height="450">
+			<footer>
+				<div id="pricetagIcon">
+					<img src="../img/pricetag.png" alt="pricetag">
+				</div>
+
+				<div id="price">
+					HKD150
+				</div>
+
+				<div id="numOfView">
+					15
+				</div>
+				<div id="eye">
+					<img src="../img/view.png" alt="eye">
+				</div>
+			</footer>
 		</div>
 		<div class="contentBox">
-			sdd
+			<img src="../img/book2.jpg" alt="book" width="100%" height="450">
+			<footer>
+				<div id="pricetagIcon">
+					<img src="../img/pricetag.png" alt="pricetag">
+				</div>
+
+				<div id="price">
+					HKD150
+				</div>
+
+				<div id="numOfView">
+					15
+				</div>
+				<div id="eye">
+					<img src="../img/view.png" alt="eye">
+				</div>
+			</footer>
+		</div>
+
+		<div class="contentBox">
+			<img src="../img/book3.jpg" alt="book" width="100%" height="450">
+			<footer>
+				<div id="pricetagIcon">
+					<img src="../img/pricetag.png" alt="pricetag">
+				</div>
+
+				<div id="price">
+					HKD150
+				</div>
+
+				<div id="numOfView">
+					15
+				</div>
+				<div id="eye">
+					<img src="../img/view.png" alt="eye">
+				</div>
+			</footer>
+		</div>
+
+		<div class="contentBox">
+			<img src="../img/book3.jpg" alt="book" width="100%" height="450">
+			<footer>
+				<div id="pricetagIcon">
+					<img src="../img/pricetag.png" alt="pricetag">
+				</div>
+
+				<div id="price">
+					HKD150
+				</div>
+
+				<div id="numOfView">
+					15
+				</div>
+				<div id="eye">
+					<img src="../img/view.png" alt="eye">
+				</div>
+			</footer>
+		</div>
+
+		<div class="contentBox">
+			<img src="../img/book3.jpg" alt="book" width="100%" height="450">
+			<footer>
+				<div id="pricetagIcon">
+					<img src="../img/pricetag.png" alt="pricetag">
+				</div>
+
+				<div id="price">
+					HKD150
+				</div>
+
+				<div id="numOfView">
+					15
+				</div>
+				<div id="eye">
+					<img src="../img/view.png" alt="eye">
+				</div>
+			</footer>
 		</div>
 
 	</div>

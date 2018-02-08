@@ -5,7 +5,7 @@
 }
 
 body{
-	background: #f7f7f7;
+	background: 	#f7f7f7;
 }
 
 .Logo{
@@ -63,9 +63,11 @@ body{
 }
 
 .searchBar input[type="text"]{
+
 	margin-top: 10px;
   padding-left: 10px;
-  padding-bottom: 5px;
+  padding-top:3px;
+	padding-bottom: 2px;
 	vertical-align: middle;
 	width:25%;
 	height: 40px;
@@ -90,14 +92,16 @@ body{
 	height: 45px;
 	border-top-left-radius: 7px;
 	border-bottom-left-radius: 7px;
-	background: url(/project/img/magnifier.png) no-repeat scroll center;
+	background: url(/Merch/img/magnifier.png) no-repeat scroll center;
   background-color:  white;
 	border-style: none;
   float: left;
 }
 
 .filterDiv{
+
 	padding: 10px;
+
   font-size: 18px;
   background-color: white;
   text-align: center;
@@ -106,6 +110,7 @@ body{
 
 .filters{
 	text-align: center;
+
 }
 
 .Price{
@@ -121,34 +126,64 @@ body{
 }
 
 .Category{
+	margin-right: 20px;
 	padding:10px;
   display: inline-block;
 }
 
 #sort{
-	background: yellow;
-	border: 3px solid yellow;
-	width: 100px;
-	height: 30px;
+	background:#e854ff;
+	border: 3px solid #e854ff;
+	border-radius: 7px;
+	width: 300px;
+	height: 50px;
+	color: white;
+	font-size: 25px;
+
 }
 
 .main{
 	margin: 0 auto;
-	width: 70%;
+	width: 90%;
 	height: 100%;
 	padding: 10px;
-	padding-left: 80px;
+	padding-left:40px;
 }
 
 .contentBox{
 	display: inline-block;
-	padding: 10px;
-	background: white;
-	width: 30%;
-	margin: 10px;
-	height: 500px;
+	padding: 20px;
+	background: 	#ffffff;
+	border-radius: 5px;
+	width: 20%;
+	margin: 20px;
+	height: 480px;
 }
 
 .contentBox footer{
 	height: 10%;
+}
+
+#pricetagIcon{
+	margin:5px;
+	float: left;
+}
+
+#price{
+	color: #C2C2C2;
+	margin-top:7px;
+	font-size: 17px;
+	float: left;
+}
+
+#numOfView{
+	color: #C2C2C2;
+	margin-top:7px;
+	font-size: 17px;
+	float: right;
+}
+
+#eye{
+	margin:5px;
+	float: right;
 }
