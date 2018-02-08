@@ -55,7 +55,11 @@ if(isset($_POST['btn-signup']))
 			else
 			{
 				if($user->register($uname,$umail,$upass,$phone_num)){
+<<<<<<< HEAD
 					$user->redirect('Buypage_loggedin.php?joined');
+=======
+					$user->redirect('log_in.php?joined');
+>>>>>>> 106bf21f73ecb50ae742d502723e06ed955c163d
 				}
 			}
 		}
