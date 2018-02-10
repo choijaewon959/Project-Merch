@@ -1,3 +1,9 @@
+<?php
+require_once("class.user.php");
+$user = new USER();
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,10 +35,10 @@
 
 		<nav class="tm-nav">
 				<ul>
-					<li><a href="log_in.php">request</a></li>
-					<li><a href="log_in.php">sell</a></li>
-					<li><a href="sign_in.php">sign up</a></li>
-					<li><a href="log_in.php">log in</a></li>
+					<li><a href="log_in.php">Request</a></li>
+					<li><a href="log_in.php">Sell</a></li>
+					<li><a href="sign_in.php">Sign up</a></li>
+					<li><a href="log_in.php">Log in</a></li>
 				</ul>
 		</nav>
   </div><!--searchHeader-->

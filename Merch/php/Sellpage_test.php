@@ -1,3 +1,18 @@
+<?php
+
+	require_once("../etc/session.php");
+	require_once("class.user.php");
+	$auth_user = new USER();
+
+
+	$user_id = $_SESSION['user_session'];
+
+	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
+	$stmt->execute(array(":user_id"=>$user_id));
+
+	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +41,6 @@
 					<li><a href="log_in.php">log in</a></li>
 				</ul>
 			</nav>
-
 
 		<header>
 			<div class="tm-container">
@@ -59,28 +73,63 @@
 					<input type="radio" name="quality" value="old">
 				</span>
 
-				<span class="category">
-					<span id="categoryText">Category</span>
-					<select id="categorySelectBox">
-						<option>Book</option>
-						<option>clothe</option>
-						<option>appliance</option>
-						<option>etc</option>
-					</select>
-				</span>
+
 			</form>
-<!--
-			<form action="Sellpage.php" method="post" enctype="multipart/form-data">
-			  <select name="category">
+		<!--	<form action="Sellpage.php" method="post" enctype="multipart/form-data">
+			  <select name="quality">
+			    <option value="book" >New </option>
+			    <option value="clothe" >Used</option>
+			    <option value="appliance" >Appliance</option>
+			    <option value="etc" >Etc</option>
+			  </select>
+			</form>
+		-->
+			<form action="" method="post" enctype="multipart/form-data">
+			  <select name="category" >
+					<option value="" >  </option>
 			    <option value="book" >Book </option>
 			    <option value="clothe" >Clothe</option>
 			    <option value="appliance" >Appliance</option>
 			    <option value="etc" >Etc</option>
 			  </select>
+			<input class="button" type="submit"  value="Choose" >
 			</form>
--->
 			<?php
-			if(isset($_POST['categorySelectBox'])){
+
+
+			$editionerr = $authorerr = "";
+			$edition = $author = "";
+			if(isset($_POST['category']))
+			{
+				$category = $_POST['category'];
+				if($category == "book"){
+					echo '<form action="" method="post" enctype="multipart/form-data">';
+					echo '<p><input type="text" id="edition" name="edition"/ placeholder = "Edition"  /></br></p>';
+					echo '<p><input type="text" id="author" name="author" placeholder = "Author" </br></p>';
+					echo '<input class="button" type="submit"  value="submit" name = "btn-submit" >';
+						if(isset($_POST['btn-submit']))
+						{
+							$edition = strip_tags($_POST['edition']);
+							$author = strip_tags($_POST['author']);
+
+							if($edition=="")	{
+								$error[] = "<b><font color='red'>provide edition !</font></b>";
+							}
+							else if($author=="")	{
+								$error[] = "<b><font color='red'>provide author !";
+							}
+							else {
+									try{
+										
+									}
+									catch(PDOException $e)
+									{
+										echo $e->getMessage();
+									}
+								}
+						}
+					}
+			}
 			?>
 		</div><!--header-->
 
@@ -107,7 +156,6 @@
           <footer class="photoUploadButtonPanel">
 
           </footer>
-
         </div><!--photoUploadPanel-->
 
       <div class="descriptionPanel">
@@ -118,7 +166,6 @@
 
       </div><!--sellerDiv-->
     </div><!--main-->
-
 
 
 

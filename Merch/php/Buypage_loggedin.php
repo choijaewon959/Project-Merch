@@ -45,7 +45,7 @@
 		<nav class="tm-nav">
 				<ul>
 					<li><a href="#">request</a></li>
-					<li><a href="Sellpage.php">sell</a></li>
+					<li><a href="Sellpage_test.php">sell</a></li>
 					<li><a href="mycart.php">My Cart</a></li>
 					<li><a href="mypage.php">My page</a></li>
           <li><a href="log_out.php?logout=true">Logout</a></li>

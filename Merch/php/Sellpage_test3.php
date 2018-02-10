@@ -59,28 +59,54 @@
 					<input type="radio" name="quality" value="old">
 				</span>
 
-				<span class="category">
-					<span id="categoryText">Category</span>
-					<select id="categorySelectBox">
-						<option>Book</option>
-						<option>clothe</option>
-						<option>appliance</option>
-						<option>etc</option>
-					</select>
-				</span>
+
 			</form>
-<!--
-			<form action="Sellpage.php" method="post" enctype="multipart/form-data">
+		<!--	<form action="Sellpage.php" method="post" enctype="multipart/form-data">
+			  <select name="quality">
+			    <option value="book" >New </option>
+			    <option value="clothe" >Used</option>
+			    <option value="appliance" >Appliance</option>
+			    <option value="etc" >Etc</option>
+			  </select>
+			</form>
+		-->
+			<form action="Sellpage_test.php" method="post" enctype="multipart/form-data">
 			  <select name="category">
+					<option value="" >  </option>
 			    <option value="book" >Book </option>
 			    <option value="clothe" >Clothe</option>
 			    <option value="appliance" >Appliance</option>
 			    <option value="etc" >Etc</option>
 			  </select>
+			<input class="button" type="submit"  value="Choose" >
 			</form>
--->
 			<?php
-			if(isset($_POST['categorySelectBox'])){
+			$editionerr = $authorerr = "";
+			$edition = $author = "";
+			if(isset($_POST['category'])){
+				$category = $_POST['category'];
+				if($category == "book"){
+					echo '<form action="Sellpage_test.php" method="post" enctype="multipart/form-data">';
+					echo '<p><input type="text" id="edition" name="edition"/ placeholder = "Edition"  /></br></p>';
+					echo '<p><input type="text" id="author" name="author" placeholder = "Author" </br></p>';
+					echo '<input class="button" type="submit"  value="submit" >';
+					if(!isset($_POST['edition'])){
+							$editionerr = "Edition is required";
+						}
+					else{
+						 //  $edition = $_POST['edition'];
+					}
+
+
+				}
+				else if($category == "clothe"){
+
+				}
+				else if($category == "etc"){
+
+				}
+				echo $editionerr;
+			}
 			?>
 		</div><!--header-->
 
