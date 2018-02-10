@@ -5,13 +5,13 @@ SET time_zone = "+00:00";
 
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `user_pass` int(60) NOT NULL,
-  `email` varchar(60) NOT NULL,
-  `phone_num` varchar(20) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(11) NOT NULL,
+  `user_pass` varchar(255) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `phone_num` varchar(15) NOT NULL,
   `joindate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-   PRIMARY KEY(`id`)
+   PRIMARY KEY(`user_id`)
 ) ENGINE=MariaDB DEFAULT CHARSET=latin1;
 
 
@@ -32,13 +32,13 @@ CREATE TABLE `sell_product`
   `etc` varchar(50) NOT NULL,
   `hashtag_arr` varchar(50) NOT NULL,
   PRIMARY KEY(`product_id`),
-  FOREIGN KEY(`seller_id`) references users(`id`)
+  FOREIGN KEY(`seller_id`) references users(`user_id`)
 );
 CREATE TABLE `book`
 (
   `book_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL AUTO_INCREMENT,
-  `edition` int(11) NOT NULL,
+  `edition` int(2) NOT NULL,
   `author` varchar(50) NOT NULL,
   `subject` varchar(50) NOT NULL,
   PRIMARY KEY(`book_id`),
@@ -51,7 +51,7 @@ CREATE TABLE `clothe`
   `product_id` int(11) NOT NULL,
   `brand` varchar(50) NOT NULL,
   `size_char` varchar(1) NOT NULL,
-  `size_num` int(11) NOT NULL,
+  `size_num` int(3) NOT NULL,
   PRIMARY KEY(`clothe_id`),
   FOREIGN KEY (`product_id`) references sell_product(product_id)
 );

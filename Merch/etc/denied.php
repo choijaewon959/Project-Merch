@@ -1,11 +1,11 @@
 <?php
 session_start();
-require_once("class.user.php");
+require_once("../php/class.user.php");
 $login = new USER();
 
 if($login->is_loggedin()!="")
 {
-	$login->redirect('home.php');
+	$login->redirect('../php/Buypage_needlog.php');
 }
 
 if(isset($_POST['btn-login']))
@@ -16,7 +16,7 @@ if(isset($_POST['btn-login']))
 
 	if($login->doLogin($uname,$umail,$upass))
 	{
-		$login->redirect('home.php');
+		$login->redirect('../php/Buypage_loggedin.php');
 	}
 	else
 	{

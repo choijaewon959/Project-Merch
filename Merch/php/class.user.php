@@ -89,5 +89,13 @@ class USER
 		unset($_SESSION['user_session']);
 		return true;
 	}
+	public function addProduct()
+	{
+		$stmt = $this->$conn->prepare("INSERT into sell_product()");
+	}
 }
 ?>
+
+	<!--	$stmt = $this->conn->prepare("INSERT INTO users(user_name,email,user_pass,phone_num)
+		                                               VALUES(:uname, :umail, :upass, :phone_num)");
+-->
