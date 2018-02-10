@@ -37,6 +37,7 @@
 		</nav>
   </div><!--searchHeader-->
 
+	<!--
   <div class="filterDiv">
     <div class="filters tm-container">
       <div class="Price">
@@ -53,7 +54,6 @@
         Category
 				<span ><img  class="down" src="../img/down.png"></span>
       </div>
-			<!--
 			<div class="sortButton">
 				<button id="sort">sort</button>
 			</div>
@@ -62,7 +62,21 @@
     </div>
   </div><!--filterDiv-->
 
+	<aside class="filterDiv">
+		<div id="priceSort">
+			price
+		</div>
+
+		<div id="qualitySort">
+			quality
+		</div>
+
+		<div id="categorySort">
+			category
+		</div>
+	</aside>
 	<div class="main">
+
 		<div class="contentBox">
 			<img src="../img/book1.jpg" alt="book" width="100%" height="450">
 			<footer>

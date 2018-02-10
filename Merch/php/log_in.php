@@ -16,11 +16,8 @@ if(isset($_POST['btn-login']))
 
 	if($login->doLogin($uname,$umail,$upass))
 	{
-<<<<<<< HEAD
-		$login->redirect('home.php');
-=======
 		$login->redirect('Buypage_loggedin.php');
->>>>>>> 106bf21f73ecb50ae742d502723e06ed955c163d
+
 	}
 	else
 	{
