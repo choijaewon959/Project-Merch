@@ -15,8 +15,6 @@ CREATE TABLE `users` (
 ) ENGINE=MariaDB DEFAULT CHARSET=latin1;
 
 
-<<<<<<< HEAD
-=======
 CREATE TABLE `mycart`(
   `cart_id`int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -24,7 +22,6 @@ CREATE TABLE `mycart`(
   PRIMARY KEY (`cart_id`)
 );
 
->>>>>>> 106bf21f73ecb50ae742d502723e06ed955c163d
 CREATE TABLE `sell_product`
 (
   `product_id` int(11) NOT NULL AUTO_INCREMENT ,
@@ -39,8 +36,8 @@ CREATE TABLE `sell_product`
 );
 CREATE TABLE `book`
 (
-  `book_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL AUTO_INCREMENT,
+  `book_id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
   `edition` int(2) NOT NULL,
   `author` varchar(50) NOT NULL,
   `subject` varchar(50) NOT NULL,

@@ -3,10 +3,11 @@
 	require_once("../etc/session.php");
 	require_once("class.user.php");
 	$auth_user = new USER();
-
-
+	$price ="";
+	$category = "";
+	$editionerr = $authorerr = "";
+	$edition = $author = "";
 	$user_id = $_SESSION['user_session'];
-
 	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
 
@@ -37,30 +38,15 @@
 				<ul>
 					<li><a href="#">request</a></li>
 					<li><a href="Buypage_loggedin.php">buy</a></li>
-					<li><a href="sign_in.php">sign up</a></li>
-					<li><a href="log_in.php">log in</a></li>
+					<li><a href="mycart.php">My cart</a></li>
+					<li><a href="mypage.php">My page</a></li>
 				</ul>
 			</nav>
 
-		<header>
-			<div class="tm-container">
-				<form action="search.php" method="post">
-					<span class="searchBar">
-						<input type="text" name="hashTag" placeholder="#COMP2123 #ComputerScience #Kit #..">
-					</span>
-					<span>
-						<button class="searchButton"></button>
-					</span>
-				</form>
-			</div>
-
-		</header>
-		<div class="tm-container">
-			<form class="filter" action="filter.php" method="post">
+		</br></br></br>
 				<span class="price">
 					<span id="priceText">Price</span>
-
-					<input class="slider" type="range" min="0" max="1000" name="priceRange">
+					<input id="price" type="text" class="form-control" name="price" placeholder="price" value ="<?php if(isset($price)){$price;} ?>"/>
 				</span>
 
 				<span class="rate">
@@ -73,19 +59,9 @@
 					<input type="radio" name="quality" value="old">
 				</span>
 
-
-			</form>
-		<!--	<form action="Sellpage.php" method="post" enctype="multipart/form-data">
-			  <select name="quality">
-			    <option value="book" >New </option>
-			    <option value="clothe" >Used</option>
-			    <option value="appliance" >Appliance</option>
-			    <option value="etc" >Etc</option>
-			  </select>
-			</form>
-		-->
 			<form action="" method="post" enctype="multipart/form-data">
-			  <select name="category" >
+				Category
+				<select name="category" >
 					<option value="" >  </option>
 			    <option value="book" >Book </option>
 			    <option value="clothe" >Clothe</option>
@@ -94,33 +70,51 @@
 			  </select>
 			<input class="button" type="submit"  value="Choose" >
 			</form>
+
 			<?php
 
-
-			$editionerr = $authorerr = "";
-			$edition = $author = "";
 			if(isset($_POST['category']))
 			{
+				$category = strip_tags($_POST['category']);
+				$pricee = strip_tags($_POST['price']);
 				$category = $_POST['category'];
 				if($category == "book"){
 					echo '<form action="" method="post" enctype="multipart/form-data">';
-					echo '<p><input type="text" id="edition" name="edition"/ placeholder = "Edition"  /></br></p>';
+					echo '<p><input type="text" id="edition" name="edition"/ placeholder = "Edition"/></br></p>';
 					echo '<p><input type="text" id="author" name="author" placeholder = "Author" </br></p>';
 					echo '<input class="button" type="submit"  value="submit" name = "btn-submit" >';
 						if(isset($_POST['btn-submit']))
 						{
+							echo "plz";
 							$edition = strip_tags($_POST['edition']);
 							$author = strip_tags($_POST['author']);
-
-							if($edition=="")	{
+							if($edition==""){
 								$error[] = "<b><font color='red'>provide edition !</font></b>";
 							}
-							else if($author=="")	{
+							else if($author==""){
 								$error[] = "<b><font color='red'>provide author !";
+							}
+							else if($price==""){
+								$error[] = "<b><font color='red'>provide price !";
+							}
+							else if($category==""){
+								$error[] = "<b><font color='red'>provide category !";
 							}
 							else {
 									try{
-										
+										$stmt = $this->$conn->prepare("INSERT into sell_product(seller_id,quality,category,price)
+																							VALUES(:seller_id,:quality,:category,:price)");
+										$stmt->bindparam(":price",$price);
+										$stmt->bindparam(":seller_id",$user_id);
+										$stmt->bindparam(":quality",$quality);
+										$stmt->bindparam(":category",$category);
+										$stmt->excute();
+										$stmt = $this->$conn->prepare("INSERT into book(edtion,author)
+																							VALUES(:edition,:author)");
+										$stmt->bindparam(":edition",$edition);
+										$stmt->bindparam(":author",$author);
+										$stmt->excute();
+										return $stmt;
 									}
 									catch(PDOException $e)
 									{
@@ -129,6 +123,25 @@
 								}
 						}
 					}
+			}
+			if(isset($error))
+			{
+				foreach($error as $error)
+				{
+					 ?>
+										 <div class="alert alert-danger">
+												<i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
+										 </div>
+										 <?php
+				}
+			}
+			else if(isset($_GET['joined']))
+			{
+				 ?>
+								 <div class="alert alert-info">
+											<i class="glyphicon glyphicon-log-in"></i> &nbsp; Product Successfully registered
+								 </div>
+								 <?php
 			}
 			?>
 		</div><!--header-->
