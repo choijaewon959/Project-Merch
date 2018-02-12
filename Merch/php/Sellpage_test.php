@@ -75,15 +75,7 @@
 
 
 			</form>
-		<!--	<form action="Sellpage.php" method="post" enctype="multipart/form-data">
-			  <select name="quality">
-			    <option value="book" >New </option>
-			    <option value="clothe" >Used</option>
-			    <option value="appliance" >Appliance</option>
-			    <option value="etc" >Etc</option>
-			  </select>
-			</form>
-		-->
+
 			<form action="" method="post" enctype="multipart/form-data">
 			  <select name="category" >
 					<option value="" >  </option>
@@ -94,6 +86,8 @@
 			  </select>
 			<input class="button" type="submit"  value="Choose" >
 			</form>
+
+			<!-- quality cateory price edition author 
 			<?php
 
 
@@ -120,7 +114,7 @@
 							}
 							else {
 									try{
-										
+
 									}
 									catch(PDOException $e)
 									{
@@ -131,41 +125,6 @@
 					}
 			}
 			?>
-		</div><!--header-->
-
-    <div class="main">
-      <div class="requested">
-        <div class="test">
-          test
-        </div>
-        <div class="test">
-          test
-        </div>  <div class="test">
-            test
-          </div>
-      </div>
-      <div class="sellerDiv">
-        <div class="photoUploadPanel">
-          <div class="mainPhoto">
-
-          </div>
-
-          <div class="otherPhoto">
-          </div>
-
-          <footer class="photoUploadButtonPanel">
-
-          </footer>
-        </div><!--photoUploadPanel-->
-
-      <div class="descriptionPanel">
-          <form class="photoDescription" action="" method="post">
-            <input id="titleOfProduct" type="text" name="title" value:"title" placeholder="title">
-          </form>
-      </div><!--descriptionPanel-->
-
-      </div><!--sellerDiv-->
-    </div><!--main-->
 
 
 

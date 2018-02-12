@@ -39,8 +39,10 @@ if(isset($_POST['btn-login']))
 <div class="tm-container">
   <div class="box">
     <div class="boxbody">
-				<div class="sayHi">
-						Log In
+				<div class="Logo">
+					<div id="merchText">
+						<a href="">Merch</a>
+					</div>
 				</div>
 					<div class="facebookDiv">
 						 <button id="facebookButton">Login with Facebook</button>

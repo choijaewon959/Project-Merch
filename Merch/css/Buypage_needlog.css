@@ -18,7 +18,9 @@ body{
   margin-top: 5px;
 }
 
-#merchText{
+#merchText a{
+	text-decoration: none;
+	color: white;
 	font-family: 'Fredoka One', cursive;
 }
 
@@ -142,7 +144,8 @@ body{
 .filterDiv{
 	text-align: center;
 	vertical-align: middle;
-	color: #aaaaaa
+	padding-left: 15px;
+	color: #aaaaaa;
 }
 
 .filterDiv ul li {
@@ -151,6 +154,13 @@ body{
 	margin: 10px;
 	margin-left: 55px;
 	font-size: 20px;
+}
+
+
+.undo{
+	float: right;
+	padding-top: 20px;
+	cursor: pointer;
 }
 
 .main{
@@ -173,6 +183,7 @@ body{
 
 .imgWrap{
 	height: 450px;
+	cursor: pointer;
 }
 
 .img_description{
@@ -184,6 +195,7 @@ body{
 
 .imgWrap:hover .img_description{
 	visibility: visible;
+
 }
 
 .image:hover{

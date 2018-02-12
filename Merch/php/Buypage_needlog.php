@@ -17,7 +17,7 @@ $user = new USER();
 	<div class="searchHeader">
 		<div class="Logo">
 			<div id="merchText">
-				Merch
+				<a href="">Merch</a>
 			</div>
 		</div>
 
@@ -96,7 +96,13 @@ $user = new USER();
 					<span id="categorySort">category</span>
 					<img src="../img/down.png" alt="downarrow">
 				</li>
+
+				<div class="undo">
+					<img src="../img/undo.png" alt="undo">
+				</div>
 			</ul>
+
+
 		</div>
 	</div>
 
