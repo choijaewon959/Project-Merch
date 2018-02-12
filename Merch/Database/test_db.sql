@@ -36,8 +36,8 @@ CREATE TABLE `sell_product`
 );
 CREATE TABLE `book`
 (
-  `book_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL AUTO_INCREMENT,
+  `book_id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
   `edition` int(2) NOT NULL,
   `author` varchar(50) NOT NULL,
   `subject` varchar(50) NOT NULL,

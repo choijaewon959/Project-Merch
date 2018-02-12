@@ -1,0 +1,250 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'helvetica';
+}
+
+body{
+	background: 	#f7f7f7;
+}
+
+.Logo{
+	width: 10%;
+	color: white;
+	font-size: 50px;
+	float: left;
+	clear: both;
+	margin-left: 25px;
+  margin-top: 5px;
+}
+
+#merchText a{
+	text-decoration: none;
+	color: white;
+	font-family: 'Fredoka One', cursive;
+}
+
+.tm-nav{
+	margin-top: 5px;
+	float: right;
+	background: #a27cef;
+}
+
+.tm-nav ul li {
+	display: inline-block;
+}
+
+.tm-nav ul li a{
+	padding: 10px 20px;
+	color: white;
+	line-height: 50px;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+.tm-nav ul li a:hover{
+	color: #f7f31d;
+}
+
+.searchHeader{
+	background: #a27cef;
+}
+
+.searchHeader:after{
+	visibility: none;
+	content: " ";
+	clear: both;
+	display: block;
+}
+
+.searchBar{
+	width: 50%;
+
+}
+
+.searchBar input[type="text"]{
+	margin-top: 10px;
+  padding-left: 10px;
+  padding-top:3px;
+	padding-bottom: 2px;
+	vertical-align: middle;
+	width:25%;
+	height: 40px;
+	text-decoration: none;
+	outline: none;
+	border-style: none;
+	background-color: white;
+	font-size: 18px;
+	vertical-align: middle;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+  float: left;
+}
+
+.searchBar input[type="text"]::placeholder{
+  color: #c4c4c4;
+}
+
+.searchButton{
+	margin-top: 10px;
+  width: 5%;
+	height: 45px;
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+	background: url(/Merch/img/magnifier.png) no-repeat scroll center;
+  background-color:  white;
+	border-style: none;
+  float: left;
+}
+
+.filterAndShoppingCart{
+	background: white;
+	padding: 30px;
+}
+
+.cartDiv{
+	background-color: white;
+	font-size: 20px;
+	height: 100px;
+	padding: 40px;
+	align-content: center;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.cartDiv #dragAndDrop{
+	font-weight: bold;
+
+}
+
+.cartDiv #click{
+	font-weight: bold;
+
+}
+
+.cartDiv #textForCart1{
+	color: #aaaaaa;
+}
+
+.cartDiv #textForCart2{
+	color:#aaaaaa;
+}
+
+#shopping_bag{
+	margin: 30px;
+}
+
+.filterDiv{
+	height: 50px;
+	width: 100%;
+	background: white;
+	border-top: 3px solid #f7f7f7;
+}
+
+.filterDiv{
+	text-align: center;
+	vertical-align: middle;
+	padding-left: 15px;
+	color: #aaaaaa;
+}
+
+.filterDiv ul li {
+	padding-top: 15px;
+	display: inline-block;
+	margin: 10px;
+	margin-left: 55px;
+	font-size: 20px;
+}
+
+
+.undo{
+	float: right;
+	padding-top: 20px;
+	cursor: pointer;
+}
+
+.main{
+	margin: 0 auto;
+	width: 90%;
+	height: 100%;
+	padding: 10px;
+	padding-left:30px;
+}
+
+.contentBox{
+	display: inline-block;
+	padding: 20px;
+	background: 	#ffffff;
+	border-radius: 5px;
+	width: 20%;
+	margin: 20px;
+	height: 480px;
+}
+
+.imgWrap{
+	height: 450px;
+	cursor: pointer;
+}
+
+.img_description{
+	padding: 10px;
+	position: absolute;
+	visibility: hidden;
+	width: 17%;
+}
+
+.imgWrap:hover .img_description{
+	visibility: visible;
+
+}
+
+.image:hover{
+	opacity: 0.05;
+	filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.img_description .title{
+	font-weight: bold;
+	font-size: 25px;
+	margin-bottom: 10px;
+}
+
+.img_description .description{
+	margin-bottom: 150px;
+	color: #aaaaaa;
+}
+
+.img_description .hashtags{
+	color: #aaaaaa;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.contentBox footer{
+	height: 10%;
+}
+
+#pricetagIcon{
+	margin:5px;
+	float: left;
+}
+
+#price{
+	color: #C2C2C2;
+	margin-top:7px;
+	font-size: 17px;
+	float: left;
+}
+
+#numOfView{
+	color: #C2C2C2;
+	margin-top:7px;
+	font-size: 17px;
+	float: right;
+}
+
+#eye{
+	margin:5px;
+	float: right;
+}
