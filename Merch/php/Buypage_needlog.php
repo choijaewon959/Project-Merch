@@ -68,6 +68,39 @@ $user = new USER();
     </div>
   </div><!--filterDiv-->
 
+	<div class="filterAndShoppingCart">
+		<div class="cartDiv">
+			<div>
+				<span id="dragAndDrop">Drag & Drop</span>
+				 <span id="textForCart1">the items in the shopping bag</span>
+				 <!--
+				 <span id="click">Click </span>
+				 <span id="textForCart2">the bag to see the interested items</span>
+			 -->
+			</div>
+
+			<img id="shopping_bag" src="../img/shopping-bag.png" alt="shopping bag">
+
+		</div>
+		<div class="filterDiv">
+			<ul>
+				<li>
+					<span id="priceSort">price</span>
+					<img src="../img/down.png" alt="downarrow">
+				</li>
+				<li>
+					<span id="qualitySort">quality</span>
+					<img src="../img/down.png" alt="downarrow">
+				</li>
+				<li>
+					<span id="categorySort">category</span>
+					<img src="../img/down.png" alt="downarrow">
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!--
 	<aside class="filterDiv">
 		<div id="priceSort">
 			price
@@ -80,11 +113,24 @@ $user = new USER();
 		<div id="categorySort">
 			category
 		</div>
+
+		<button id="sortKey">
+			sort
+		</button>
+
 	</aside>
+-->
 	<div class="main">
 
 		<div class="contentBox">
-			<img src="../img/book1.jpg" alt="book" width="100%" height="450">
+			<div class="imgWrap">
+				<div class="img_description">
+					<div class="title"> Pearson Edition Cognitive Psychology  </div>
+					<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+					<div class="hashtags"> #COMP2123 #Kit #C++ #Linux #happy #dotdttttttttttt</div>
+				</div>
+				<img class="image" src="../img/book1.jpg" alt="book" width="100%" height="450">
+			</div>
 			<footer>
 				<div class="pricePanel">
 					<div id="pricetagIcon">
@@ -105,7 +151,14 @@ $user = new USER();
 			</footer>
 		</div>
 		<div class="contentBox">
-			<img src="../img/book1.jpg" alt="book" width="100%"  height="450">
+			<div class="imgWrap">
+				<div class="img_description">
+					<div class="title"> Pearson Edition Cognitive Psychology  </div>
+					<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+					<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
+				</div>
+				<img class="image" src="../img/book1.jpg" alt="book" width="100%" height="450">
+			</div>
 			<footer>
 				<div id="pricetagIcon">
 					<img src="../img/pricetag.png" alt="pricetag">
@@ -125,7 +178,14 @@ $user = new USER();
 			</footer>
 		</div>
 		<div class="contentBox">
-			<img src="../img/book2.jpg" alt="book" width="100%"  height="450">
+			<div class="imgWrap">
+				<div class="img_description">
+					<div class="title"> Pearson Edition Cognitive Psychology  </div>
+					<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+					<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
+				</div>
+				<img class="image" src="../img/book3.jpg" alt="book" width="100%" height="450">
+			</div>
 			<footer>
 				<div id="pricetagIcon">
 					<img src="../img/pricetag.png" alt="pricetag">
@@ -144,8 +204,14 @@ $user = new USER();
 			</footer>
 		</div>
 		<div class="contentBox">
-			<img src="../img/book2.jpg" alt="book" width="100%" height="450">
-			<footer>
+			<div class="imgWrap">
+				<div class="img_description">
+					<div class="title"> Pearson Edition Cognitive Psychology  </div>
+					<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+					<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
+				</div>
+				<img class="image" src="../img/book2.jpg" alt="book" width="100%" height="450">
+			</div>			<footer>
 				<div id="pricetagIcon">
 					<img src="../img/pricetag.png" alt="pricetag">
 				</div>
@@ -163,47 +229,14 @@ $user = new USER();
 			</footer>
 		</div>
 		<div class="contentBox">
-			<img src="../img/book2.jpg" alt="book" width="100%" height="450">
-			<footer>
-				<div id="pricetagIcon">
-					<img src="../img/pricetag.png" alt="pricetag">
+			<div class="imgWrap">
+				<div class="img_description">
+					<div class="title"> Pearson Edition Cognitive Psychology  </div>
+					<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+					<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
 				</div>
-
-				<div id="price">
-					HKD150
-				</div>
-
-				<div id="numOfView">
-					15
-				</div>
-				<div id="eye">
-					<img src="../img/view.png" alt="eye">
-				</div>
-			</footer>
-		</div>
-
-		<div class="contentBox">
-			<img src="../img/book3.jpg" alt="book" width="100%" height="450">
-			<footer>
-				<div id="pricetagIcon">
-					<img src="../img/pricetag.png" alt="pricetag">
-				</div>
-
-				<div id="price">
-					HKD150
-				</div>
-
-				<div id="numOfView">
-					15
-				</div>
-				<div id="eye">
-					<img src="../img/view.png" alt="eye">
-				</div>
-			</footer>
-		</div>
-
-		<div class="contentBox">
-			<img src="../img/book3.jpg" alt="book" width="100%" height="450">
+				<img class="image" src="../img/book2.jpg" alt="book" width="100%" height="450">
+			</div>
 			<footer>
 				<div id="pricetagIcon">
 					<img src="../img/pricetag.png" alt="pricetag">
@@ -223,8 +256,66 @@ $user = new USER();
 		</div>
 
 		<div class="contentBox">
-			<img src="../img/book3.jpg" alt="book" width="100%" height="450">
-			<footer>
+			<div class="imgWrap">
+				<div class="img_description">
+					<div class="title"> Pearson Edition Cognitive Psychology  </div>
+					<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+					<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
+				</div>
+				<img class="image" src="../img/book1.jpg" alt="book" width="100%" height="450">
+			</div>			<footer>
+				<div id="pricetagIcon">
+					<img src="../img/pricetag.png" alt="pricetag">
+				</div>
+
+				<div id="price">
+					HKD150
+				</div>
+
+				<div id="numOfView">
+					15
+				</div>
+				<div id="eye">
+					<img src="../img/view.png" alt="eye">
+				</div>
+			</footer>
+		</div>
+
+		<div class="contentBox">
+			<div class="imgWrap">
+				<div class="img_description">
+					<div class="title"> Pearson Edition Cognitive Psychology  </div>
+					<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+					<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
+				</div>
+				<img class="image" src="../img/book2.jpg" alt="book" width="100%" height="450">
+			</div>			<footer>
+				<div id="pricetagIcon">
+					<img src="../img/pricetag.png" alt="pricetag">
+				</div>
+
+				<div id="price">
+					HKD150
+				</div>
+
+				<div id="numOfView">
+					15
+				</div>
+				<div id="eye">
+					<img src="../img/view.png" alt="eye">
+				</div>
+			</footer>
+		</div>
+
+		<div class="contentBox">
+			<div class="imgWrap">
+				<div class="img_description">
+					<div class="title"> Pearson Edition Cognitive Psychology  </div>
+					<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+					<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
+				</div>
+				<img class="image" src="../img/book3.jpg" alt="book" width="100%" height="450">
+			</div>			<footer>
 				<div id="pricetagIcon">
 					<img src="../img/pricetag.png" alt="pricetag">
 				</div>

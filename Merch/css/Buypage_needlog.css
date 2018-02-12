@@ -44,8 +44,6 @@ body{
 	color: #f7f31d;
 }
 
-
-
 .searchHeader{
 	background: #a27cef;
 }
@@ -63,7 +61,6 @@ body{
 }
 
 .searchBar input[type="text"]{
-
 	margin-top: 10px;
   padding-left: 10px;
   padding-top:3px;
@@ -98,74 +95,70 @@ body{
   float: left;
 }
 
-.filterDiv{
-	float: left;
-	background-color: red;
-	margin-top: 20%;
-	height: 250px;
-	width: 100px;
+.filterAndShoppingCart{
+	background: white;
+	padding: 30px;
 }
 
-#priceSort{
-	border: 2px solid blue;
-	color: white;
-	height: 33%;
-}
-
-#qualitySort{
-	border: 2px solid blue;
-	color: white;
-	height: 33%;
-}
-
-#categorySort{
-	border: 2px solid blue;
-	color: white;
-	height: 33%;
-}
-
-/*
-.filters{
+.cartDiv{
+	background-color: white;
+	font-size: 20px;
+	height: 100px;
+	padding: 40px;
+	align-content: center;
 	text-align: center;
+	vertical-align: middle;
+}
+
+.cartDiv #dragAndDrop{
+	font-weight: bold;
 
 }
 
-.Price{
-  margin-right: 20px;
-	padding: 10px;
-  display: inline-block;
+.cartDiv #click{
+	font-weight: bold;
+
 }
 
-.Quality{
-  margin-right: 20px;
-	padding : 10px;
-  display:inline-block;
+.cartDiv #textForCart1{
+	color: #aaaaaa;
 }
 
-.Category{
-	margin-right: 20px;
-	padding:10px;
-  display: inline-block;
+.cartDiv #textForCart2{
+	color:#aaaaaa;
 }
 
-#sort{
-	background:#e854ff;
-	border: 3px solid #e854ff;
-	border-radius: 7px;
-	width: 300px;
+#shopping_bag{
+	margin: 30px;
+}
+
+.filterDiv{
 	height: 50px;
-	color: white;
-	font-size: 25px;
-
+	width: 100%;
+	background: white;
+	border-top: 3px solid #f7f7f7;
 }
-*/
+
+.filterDiv{
+	text-align: center;
+	vertical-align: middle;
+	color: #aaaaaa
+}
+
+.filterDiv ul li {
+	padding-top: 15px;
+	display: inline-block;
+	margin: 10px;
+	margin-left: 55px;
+	font-size: 20px;
+}
 
 .main{
 	margin: 0 auto;
 	width: 90%;
 	height: 100%;
 	padding: 10px;
-	padding-left:40px;
+	padding-left:30px;
 }
 
 .contentBox{
@@ -176,6 +169,44 @@ body{
 	width: 20%;
 	margin: 20px;
 	height: 480px;
+}
+
+.imgWrap{
+	height: 450px;
+}
+
+.img_description{
+	padding: 10px;
+	position: absolute;
+	visibility: hidden;
+	width: 17%;
+}
+
+.imgWrap:hover .img_description{
+	visibility: visible;
+}
+
+.image:hover{
+	opacity: 0.05;
+	filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.img_description .title{
+	font-weight: bold;
+	font-size: 25px;
+	margin-bottom: 10px;
+}
+
+.img_description .description{
+	margin-bottom: 150px;
+	color: #aaaaaa;
+}
+
+.img_description .hashtags{
+	color: #aaaaaa;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .contentBox footer{
