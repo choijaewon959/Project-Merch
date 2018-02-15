@@ -1,28 +1,27 @@
 <?php
-session_start();
-require_once("../php/class.user.php");
-$login = new USER();
-
-if($login->is_loggedin()!="")
-{
-	$login->redirect('../php/Buypage_needlog.php');
-}
-
-if(isset($_POST['btn-login']))
-{
-	$uname = strip_tags($_POST['txt_uname_email']);
-	$umail = strip_tags($_POST['txt_uname_email']);
-	$upass = strip_tags($_POST['txt_password']);
-
-	if($login->doLogin($uname,$umail,$upass))
+	session_start();
+	require_once("../php/class.user.php");
+	$login = new USER();
+	if($login->is_loggedin()!="")
 	{
-		$login->redirect('../php/Buypage_loggedin.php');
+		$login->redirect('Buypage_loggedin.php');
 	}
-	else
+
+	if(isset($_POST['btn-login']))
 	{
-		$error = "Wrong Details !";
+		$uname = strip_tags($_POST['txt_uname_email']);
+		$umail = strip_tags($_POST['txt_uname_email']);
+		$upass = strip_tags($_POST['txt_password']);
+
+		if($login->doLogin($uname,$umail,$upass))
+		{
+			$login->redirect('Buypage_loggedin.php');
+		}
+		else
+		{
+			$error = "Wrong Details !";
+		}
 	}
-}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -39,10 +38,10 @@ if(isset($_POST['btn-login']))
 
 								<h1><font color='red'>Access Denied !</font></h1>
 
-               <p><b>Sorry! You can't access this page.</b></p>
+               <p><b>Sorry! You need to log in.</b></p>
 
 
-								<p><a href="index.php" ><button class="button" >SIGN IN</button</a>
+								<p><a href="../php/log_in.php" ><button class="button" >SIGN IN</button</a>
 </p>
         </div>
 

@@ -7,12 +7,12 @@
 	$category = "";
 	$editionerr = $authorerr = "";
 	$edition = $author = "";
+
 	$user_id = $_SESSION['user_session'];
 	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
 
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,22 +24,31 @@
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 </head>
 <body>
-  <div class="searchHeader">
+	<div class="searchHeader">
 		<div class="Logo">
 			<div id="merchText">
-				Merch
-			</div>
-
-			<div id="barcodeLogo">
-				<img src="../img/barcode.png" alt="barcode">
+				<a href="Buypage_loggedin.php">Merch</a>
 			</div>
 		</div>
-			<nav class="tm-nav">
+
+		<div class="tm-container">
+			<form action="search.php" method="post">
+        <span>
+					<button class="searchButton"></button>
+				</span>
+				<span class="searchBar">
+					<input id="searchbar" type="text" name="hashTag" placeholder="#COMP2123 #ComputerScience #Kit #..">
+				</span>
+			</form>
+		</div>
+
+
+		<nav class="tm-nav">
 				<ul>
-					<li><a href="#">request</a></li>
-					<li><a href="Buypage_loggedin.php">buy</a></li>
-					<li><a href="mycart.php">My cart</a></li>
-					<li><a href="mypage.php">My page</a></li>
+					<li><a href="log_in.php">Request</a></li>
+					<li><a href="log_in.php">Sell</a></li>
+					<li><a href="sign_in.php">Sign up</a></li>
+					<li><a href="log_in.php">Log in</a></li>
 				</ul>
 			</nav>
 
@@ -48,9 +57,24 @@
 					<span id="priceText">Price</span>
 					<input id="price" type="text" class="form-control" name="price" placeholder="price" value ="<?php if(isset($error)){$price;} ?>"/>
 				</span>
+		</nav>
+  </div><!--searchHeader-->
+  </div>
+  </div><!--filterDiv-->
+	<div class="input-container">
+		<div class="title">
+			<input type="text" id="titleTextBox" placeholder="title">
+		</div>
 
-				<span class="rate">
-					<span id="rateText">Quality:</span>
+		<div class="description">
+			<textarea id="textareaTextBox" placeholder="description"></textarea>
+		</div>
+		<div class="price">
+			<input id="priceTextBox" type="text" class="form-control" name="price" placeholder="price(HKD)" value ="<?php if(isset($price)){$price;} ?>"/>
+		</div>
+		<div class="quality">
+				<span id="rateText">Quality:</span>
+				<span id="radios">
 					<label for="new">new</label>
 					<input type="radio" name="quality" value="new">
 					<label for="used">used</label>
@@ -58,21 +82,21 @@
 					<label for="used">old</label>
 					<input type="radio" name="quality" value="old">
 				</span>
+		</div>
 
-			<form action="" method="post" enctype="multipart/form-data">
-				Category
-				<select name="category" >
-					<option value="" >  </option>
-			    <option value="book" >Book </option>
-			    <option value="clothe" >Clothe</option>
-			    <option value="appliance" >Appliance</option>
-			    <option value="etc" >Etc</option>
-			  </select>
-			<input class="button" type="submit"  value="Choose" >
-			</form>
-
-			<?php
-
+				<form action="" method="post" enctype="multipart/form-data">
+						Category
+						<select name="category" >
+							<option value="" >  </option>
+					    <option value="book" >Book </option>
+					    <option value="clothe" >Clothe</option>
+					    <option value="appliance" >Appliance</option>
+					    <option value="etc" >Etc</option>
+					  </select>
+					<input class="button" type="submit"  value="Choose" >
+				</form>
+	</div><!-- input container -->
+		<?php
 			if(isset($_POST['category']))
 			{
 				try
@@ -85,12 +109,14 @@
 					if( $e->getline()==80){echo "Enter Category";}
 					else if($e -> getline() ==81){echo "Enter Price";}
 				}
-				if($category == "book"){ ?>
-					 <form action="" method="post" enctype="multipart/form-data">';
-					 <p><input type="text" id="edition" name="edition"/ placeholder = "Edition"/></br></p>;
-					 <p><input type="text" id="author" name="author" placeholder = "Author" </br></p>;
-				 	 <input class="button" type="submit"  value="submit" name = "btn-submit" >;
-				<?php
+				$category = strip_tags($_POST['category']);
+				$price = strip_tags($_POST['price']);
+				$category = $_POST['category'];
+				if($category == "book"){
+					echo '<form action="" method="post" enctype="multipart/form-data">';
+					echo '<p><input type="text" id="edition" name="edition"/ placeholder = "Edition"/></br></p>';
+					echo '<p><input type="text" id="author" name="author" placeholder = "Author" </br></p>';
+					echo '<input class="button" type="submit"  value="submit" name = "btn-submit" >';
 						if(isset($_POST['btn-submit']))
 						{
 							echo "plz";
@@ -131,7 +157,6 @@
 								}
 						}
 					}
-			}
 			if(isset($error))
 			{
 				foreach($error as $error)
@@ -152,44 +177,6 @@
 								 <?php
 			}
 			?>
-		</div><!--header-->
-
-    <div class="main">
-      <div class="requested">
-        <div class="test">
-          test
-        </div>
-        <div class="test">
-          test
-        </div>  <div class="test">
-            test
-          </div>
-      </div>
-      <div class="sellerDiv">
-        <div class="photoUploadPanel">
-          <div class="mainPhoto">
-
-          </div>
-
-          <div class="otherPhoto">
-          </div>
-
-          <footer class="photoUploadButtonPanel">
-
-          </footer>
-        </div><!--photoUploadPanel-->
-
-      <div class="descriptionPanel">
-          <form class="photoDescription" action="" method="post">
-            <input id="titleOfProduct" type="text" name="title" value:"title" placeholder="title">
-          </form>
-      </div><!--descriptionPanel-->
-
-      </div><!--sellerDiv-->
-    </div><!--main-->
-
-
-
-	</div>
+		}
 </body>
 </html>

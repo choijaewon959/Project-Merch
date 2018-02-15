@@ -1,13 +1,7 @@
-<?php
-require_once("class.user.php");
-$user = new USER();
-
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Buy_main_v2</title>
+	<title>Buypage_needlog</title>
 	<link rel="stylesheet" type="text/css" href="../css/Buypage_needlog.css">
 	<meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
@@ -17,7 +11,7 @@ $user = new USER();
 	<div class="searchHeader">
 		<div class="Logo">
 			<div id="merchText">
-				Merch
+				<a href="">Merch</a>
 			</div>
 		</div>
 
@@ -43,30 +37,6 @@ $user = new USER();
 		</nav>
   </div><!--searchHeader-->
 
-	<!--
-  <div class="filterDiv">
-    <div class="filters tm-container">
-      <div class="Price">
-        Price
-				<span><img  class="down" src="../img/down.png"></span>
-      </div>
-
-      <div class="Quality">
-        Quality
-				<span ><img  class="down" src="../img/down.png"></span>
-      </div>
-
-      <div class="Category">
-        Category
-				<span ><img  class="down" src="../img/down.png"></span>
-      </div>
-			<div class="sortButton">
-				<button id="sort">sort</button>
-			</div>
-		-->
-
-    </div>
-  </div><!--filterDiv-->
 
 	<div class="filterAndShoppingCart">
 		<div class="cartDiv">
@@ -96,7 +66,13 @@ $user = new USER();
 					<span id="categorySort">category</span>
 					<img src="../img/down.png" alt="downarrow">
 				</li>
+
+				<div class="undo">
+					<img src="../img/undo.png" alt="undo">
+				</div>
 			</ul>
+
+
 		</div>
 	</div>
 

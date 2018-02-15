@@ -1,34 +1,31 @@
 *{
 	margin: 0;
 	padding: 0;
-	font-family: 'Abel', sans-serif;
+	font-family: 'helvetica';
 }
 
 body{
-	background: #f7f7f7;
+	background: 	white;
 }
 
 .Logo{
-	width: 19%;
+	width: 10%;
 	color: white;
-	font-size: 70px;
+	font-size: 50px;
 	float: left;
 	clear: both;
 	margin-left: 25px;
+  margin-top: 5px;
 }
 
-#merchText{
+#merchText a{
+	text-decoration: none;
+	color: white;
 	font-family: 'Fredoka One', cursive;
-	padding-top: 15px;
-	float: right;
-}
-
-#barcodeLogo{
-	float: left;
 }
 
 .tm-nav{
-	margin-top: 10px;
+	margin-top: 5px;
 	float: right;
 	background: #a27cef;
 }
@@ -40,8 +37,8 @@ body{
 .tm-nav ul li a{
 	padding: 10px 20px;
 	color: white;
-	line-height: 70px;
-	font-size: 25px;
+	line-height: 50px;
+	font-size: 20px;
 	text-decoration: none;
 }
 
@@ -49,23 +46,8 @@ body{
 	color: #f7f31d;
 }
 
-.tm-container{
-	width: 50%;
-	margin: 0 auto;
-
-}
-
-.tm-header:after{
-	visibility: none;
-	content: " ";
-	clear: both;
-	display: block;
-}
-
 .searchHeader{
-	padding:10px;
 	background: #a27cef;
-	height: 120px;
 }
 
 .searchHeader:after{
@@ -76,174 +58,116 @@ body{
 }
 
 .searchBar{
-	width: 100%;
+	width: 50%;
+
 }
 
 .searchBar input[type="text"]{
-	margin-top: 20px;
-	font-size: 24px;
-	font-weight:bold;
+	margin-top: 10px;
+  padding-left: 10px;
+  padding-top:3px;
+	padding-bottom: 2px;
 	vertical-align: middle;
-	padding-bottom: 5px;
-
-	width: 90%;
-	height: 42px;
+	width:25%;
+	height: 40px;
 	text-decoration: none;
 	outline: none;
 	border-style: none;
 	background-color: white;
-	font-size: 100%;
-	font-weight:bold;
+	font-size: 18px;
 	vertical-align: middle;
-	border-top-left-radius: 7px;
-	border-bottom-left-radius: 7px;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+  float: left;
+}
+
+.searchBar input[type="text"]::placeholder{
+  color: #c4c4c4;
 }
 
 .searchButton{
-	margin-top: 20px;
-	width: 100px;
-	height: 47px;
-	float: right;
-	border-top-right-radius: 7px;
-	border-bottom-right-radius: 7px;
-	background: url(/project/img/magnifier.png) no-repeat scroll center;
+	margin-top: 10px;
+  width: 5%;
+	height: 45px;
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+	background: url(/Merch/img/magnifier.png) no-repeat scroll center;
+  background-color:  white;
 	border-style: none;
-	background-color: #d4d6d8;
-	width: 10%;
-
+  float: left;
 }
 
-.filter{
-	color: white;
-	padding: 10px;
+.input-container{
+	margin: 0 auto;
+	padding: 20px;
+	width: 40%;
+}
+
+.title{
+	margin-bottom: 10px;
+	background: white;
+}
+
+.title #titleTextBox{
+	align-content: center;
+	height: 30px;
+	width: 100%;
+	font-size:100%;
+	outline:none;
+	border:none;
+	border-bottom: 1px solid #aaaaaa;
+}
+
+.description{
+	margin-bottom:10px;
+	background: white;
+}
+
+#textareaTextBox{
+	resize: none;
+	height: 300px;
+	width: 100%;
+	font-size:100%;
+	outline:none;
+	border:none;
+	border-bottom: 1px solid #aaaaaa;
 }
 
 .price{
-	margin-left: 5px;
-	margin-right: 55px;
+	margin-bottom: 10px;
+	background: white;
 }
 
-#priceText{
-	font-size:20px;
-	padding-right: 10px;
+.price #priceTextBox{
+	align-content: center;
+	height: 30px;
+	width: 100%;
+	font-size:100%;
+	outline:none;
+	border: none;
+	border-bottom: 1px solid #aaaaaa;
 }
 
-.slider {
-    -webkit-appearance: none;
-    height: 6px;
-    width: 20%;
-    border-radius: 5px;
-    background: white;
-    outline: none;
+.quality{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	background: white;
+	color: #aaaaaa;
+	border-bottom: 1px solid #aaaaaa;
 }
 
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: white;
-    cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: white;
-    cursor: pointer;
-}
-
-.rate{
-	margin-right: 50px;
-	padding-left: 10px;
-	font-size:20px;
-	/* just for layout . will be erased*/
-}
-
-.rate input[type="radio"]{
-	margin-right: 20px;
-	 -ms-transform: scale(1.5); /* IE 9 */
-    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
-    transform: scale(1.5);
-    background-color:  white;
-}
-
-input[type="radio"]:after{
-	background-color: white;
-	 border: 2px solid white;
+.quality:after{
+	visibility: none;
+	content: " ";
+	clear: both;
+	display: block;
 }
 
 #rateText{
-	padding-right: 10px;
+	float: left;
 }
 
-.category{
-	padding-left: 10px;
-	font-size:20px;
-}
-
-.category #categorySelectBox{
-	border-style: none;
-	width: 200px;
-	font-size: 20px;
-	border-radius: 7px;
-	text-align: center;
-}
-
-.main{
-  margin-top:40px;
-  width: 100%;
-  height: 750px;
-  background: black;
-}
-
-.test{
-  height: 400px;
-  background-color: red;
-}
-
-.requested{
-  float: left;
-  background: green;
-  width: 30%;
-  height: 100%;
-  overflow-y: scroll;
-}
-
-.sellerDiv{
-  float: right;
-  background: blue;
-  width: 70%;
-  height: 100%;
-}
-
-.photoUploadPanel{
-  width: 50%;
-  height: 100%;
-  float: left;
-  background: pink;
-}
-
-.mainPhoto{
-  height: 70%;
-  background: black;
-}
-
-.otherPhoto{
-  height: 25%;
-  background: white;
-}
-
-.descriptionPanel{
-  width: 50%;
-  height: 100%;
-  float: right;
-  background: green;
-}
-
-#titleOfProduct{
-  width: 99.99%;
-  height: 150px;
+#radios{
+	float: right;
 }

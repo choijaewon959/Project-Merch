@@ -3,11 +3,6 @@ session_start();
 require_once("class.user.php");
 $login = new USER();
 
-if($login->is_loggedin()!="")
-{
-	$login->redirect('/Project/php/Buypage_loggedin.php');
-}
-
 if(isset($_POST['btn-login']))
 {
 	$uname = strip_tags($_POST['txt_uname_email']);
@@ -17,7 +12,6 @@ if(isset($_POST['btn-login']))
 	if($login->doLogin($uname,$umail,$upass))
 	{
 		$login->redirect('Buypage_loggedin.php');
-
 	}
 	else
 	{
@@ -39,8 +33,10 @@ if(isset($_POST['btn-login']))
 <div class="tm-container">
   <div class="box">
     <div class="boxbody">
-				<div class="sayHi">
-						Log In
+				<div class="Logo">
+					<div id="merchText">
+						<a href="">Merch</a>
+					</div>
 				</div>
 					<div class="facebookDiv">
 						 <button id="facebookButton">Login with Facebook</button>
@@ -50,7 +46,7 @@ if(isset($_POST['btn-login']))
 	      			if(isset($error))
 	      			{
 	      				      ?>
-	                         <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?> !
+	                         <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
 	                      <?php
 	      			}
 	      		    ?>

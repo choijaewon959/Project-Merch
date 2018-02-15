@@ -1,14 +1,8 @@
-
-
 <?php
 session_start();
 require_once('class.user.php');
 $user = new USER();
 
-if($user->is_loggedin()!="")
-{
-	$user->redirect('Buypage_loggedin.php');
-}
 
 if(isset($_POST['btn-signup']))
 {
