@@ -46,7 +46,7 @@
 		</br></br></br>
 				<span class="price">
 					<span id="priceText">Price</span>
-					<input id="price" type="text" class="form-control" name="price" placeholder="price" value ="<?php if(isset($price)){$price;} ?>"/>
+					<input id="price" type="text" class="form-control" name="price" placeholder="price" value ="<?php if(isset($error)){$price;} ?>"/>
 				</span>
 
 				<span class="rate">
@@ -75,14 +75,22 @@
 
 			if(isset($_POST['category']))
 			{
-				$category = strip_tags($_POST['category']);
-				$pricee = strip_tags($_POST['price']);
-				$category = $_POST['category'];
-				if($category == "book"){
-					echo '<form action="" method="post" enctype="multipart/form-data">';
-					echo '<p><input type="text" id="edition" name="edition"/ placeholder = "Edition"/></br></p>';
-					echo '<p><input type="text" id="author" name="author" placeholder = "Author" </br></p>';
-					echo '<input class="button" type="submit"  value="submit" name = "btn-submit" >';
+				try
+				{
+					$category = strip_tags($_POST['category']);
+					$price = strip_tags($_POST['price']);
+				}
+				catch (PDOException $e)
+				{
+					if( $e->getline()==80){echo "Enter Category";}
+					else if($e -> getline() ==81){echo "Enter Price";}
+				}
+				if($category == "book"){ ?>
+					 <form action="" method="post" enctype="multipart/form-data">';
+					 <p><input type="text" id="edition" name="edition"/ placeholder = "Edition"/></br></p>;
+					 <p><input type="text" id="author" name="author" placeholder = "Author" </br></p>;
+				 	 <input class="button" type="submit"  value="submit" name = "btn-submit" >;
+				<?php
 						if(isset($_POST['btn-submit']))
 						{
 							echo "plz";
