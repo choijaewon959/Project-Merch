@@ -45,8 +45,9 @@
 		<nav class="tm-nav">
 				<ul>
 					<li><a href="log_in.php">Request</a></li>
-					<li><a href="log_in.php">Sell</a></li>
+					<li><a href="Sellpage_test.php">Sell</a></li>
 					<li><a href="">My Shopping Bag</a></li>
+					<li><a href="Buypage_needlog.php">Log out</a><li>
 				</ul>
 		</nav>
   </div><!--searchHeader-->
