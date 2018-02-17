@@ -41,7 +41,7 @@
                <p><b>Sorry! You need to log in.</b></p>
 
 
-								<p><a href="../php/log_in.php" ><button class="button" >SIGN IN</button</a>
+								<p><a href="../php/log_in.php" ><button class="button" >Login</button</a>
 </p>
         </div>
 
