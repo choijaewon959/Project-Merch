@@ -7,6 +7,9 @@
 	$stmt->execute(array(":user_id"=>$user_id));
 	$active_detail=$stmt->fetch(PDO::FETCH_ASSOC);
 
+	$_SESSION['product_title'] = $_SESSION['product_category'] = $_SESSION['product_price'] = $_SESSION['product_quality'] = $_SESSION['product_description'] = NULL;
+	$_SESSION['book_edition'] = $_SESSION['book_author'] =$_SESSION['book_subject'] = NULL;
+	$_SESSION['clothe_brand'] =  $_SESSION['clothe_size_num'] = $_SESSION['clothe_size_char'] = NULL;
 	if(isset($_POST['btn-submit']))
 	{
 		try
