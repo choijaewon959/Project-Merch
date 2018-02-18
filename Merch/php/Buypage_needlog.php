@@ -1,9 +1,3 @@
-<?php
-require_once("class.user.php");
-$user = new USER();
-
-
-?>
 <!DOCTYPE html>
 <html>
 <head>

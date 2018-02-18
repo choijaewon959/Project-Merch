@@ -1,7 +1,5 @@
 <?php
-
 require_once('../Database/dbconfig.php');
-
 class USER
 {
 
@@ -52,20 +50,14 @@ class USER
 		try
 		{
 
-			$stmt = $this->conn->prepare("SELECT user_id, user_name, user_email, user_pass FROM users WHERE user_name=:uname OR user_email=:umail ");
-
-			$stmt = $this->conn->prepare("SELECT user_name, user_name, email, user_pass FROM users WHERE user_name=:uname OR email=:umail ");
+			$stmt = $this->conn->prepare("SELECT user_id, user_name, email, user_pass FROM users WHERE user_name=:uname OR email=:umail ");
 			$stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			if($stmt->rowCount() == 1)
 			{
 				if(password_verify($upass, $userRow['user_pass']))
 				{
-
 					$_SESSION['user_session'] = $userRow['user_id'];
-
-					$_SESSION['user_session'] = $userRow['user_name'];
-
 					return true;
 				}
 				else
@@ -91,6 +83,7 @@ class USER
 	public function redirect($url)
 	{
 		header("Location: $url");
+		exit();
 	}
 
 	public function doLogout()

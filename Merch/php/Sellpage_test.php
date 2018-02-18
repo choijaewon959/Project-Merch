@@ -7,13 +7,12 @@
 	$category = "";
 	$editionerr = $authorerr = "";
 	$edition = $author = "";
-/*
+
 	$user_id = $_SESSION['user_session'];
 	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
 
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,10 +48,16 @@
 					<li><a href="log_in.php">Request</a></li>
 					<li><a href="log_in.php">Sell</a></li>
 				</ul>
+			</nav>
+
+		</br></br></br>
+				<span class="price">
+					<span id="priceText">Price</span>
+					<input id="price" type="text" class="form-control" name="price" placeholder="price" value ="<?php if(isset($error)){$price;} ?>"/>
+				</span>
 		</nav>
   </div><!--searchHeader-->
-
-    </div>
+  </div>
   </div><!--filterDiv-->
 	<div class="input-container">
 		<div class="photoSection">
@@ -88,9 +93,6 @@
 				</span>
 		</div>
 
-
-
-
 				<form action="" method="post" enctype="multipart/form-data">
 						Category
 						<select name="category" >
@@ -102,12 +104,20 @@
 					  </select>
 					<input class="button" type="submit"  value="Choose" >
 				</form>
-	</div>
-
-			<?php
-
+	</div><!-- input container -->
+		<?php
 			if(isset($_POST['category']))
 			{
+				try
+				{
+					$category = strip_tags($_POST['category']);
+					$price = strip_tags($_POST['price']);
+				}
+				catch (PDOException $e)
+				{
+					if( $e->getline()==80){echo "Enter Category";}
+					else if($e -> getline() ==81){echo "Enter Price";}
+				}
 				$category = strip_tags($_POST['category']);
 				$price = strip_tags($_POST['price']);
 				$category = $_POST['category'];
@@ -156,7 +166,6 @@
 								}
 						}
 					}
-			}
 			if(isset($error))
 			{
 				foreach($error as $error)
@@ -176,10 +185,8 @@
 								 </div>
 								 <?php
 			}
-			?>
+		}
+		?>
 
-
-
-	</div>
 </body>
 </html>
