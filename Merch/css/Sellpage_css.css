@@ -103,6 +103,34 @@ body{
 	width: 40%;
 }
 
+.photoSection{
+	height: 400px;
+	background: blue;
+}
+
+.photoSection .mainPhotoPanel{
+	width: 50%;
+	height: 100%;
+	float: right;
+	background :red;
+}
+
+.mainPhotoPanel input[type="file"]{
+	 border: 1px solid #ccc;
+	 display: inline-block;
+	 padding: 6px 12px;
+	 cursor: pointer;
+	 color: transparent;
+
+}
+
+.photoSection .subPhotoPanel{
+	width: 50%;
+	height: 100%;
+	float: left;
+	background: green;
+}
+
 .title{
 	margin-bottom: 10px;
 	background: white;

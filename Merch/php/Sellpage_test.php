@@ -48,8 +48,6 @@
 				<ul>
 					<li><a href="log_in.php">Request</a></li>
 					<li><a href="log_in.php">Sell</a></li>
-					<li><a href="sign_in.php">Sign up</a></li>
-					<li><a href="log_in.php">Log in</a></li>
 				</ul>
 		</nav>
   </div><!--searchHeader-->
@@ -57,6 +55,17 @@
     </div>
   </div><!--filterDiv-->
 	<div class="input-container">
+		<div class="photoSection">
+			<div class="mainPhotoPanel">
+				<input type="file" title="">
+				<label for="file">Choose a file </label>
+			</div >
+
+			<div class="subPhotoPanel">
+				dfd
+			</div>
+		</div><!--photoSection-->
+
 		<div class="title">
 			<input type="text" id="titleTextBox" placeholder="title">
 		</div>
