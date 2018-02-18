@@ -85,12 +85,11 @@ body{
 	border-radius: 7px;
 	font-size: 20px;
 	padding: 10px;
+		background: white;
 }
 
 #username:focus{
 		outline: none !important;
-    border-color:  #a27cef;
-    box-shadow: 0 0 10px #a27cef;
 		border-radius: 7px;
 }
 
@@ -113,12 +112,11 @@ body{
 	border-radius: 7px;
 	font-size: 20px;
 	padding: 10px;
+	background: white;
 }
 
 #password:focus{
 		outline: none !important;
-    border-color: #a27cef;
-    box-shadow: 0 0 10px #a27cef;
 		border-radius: 7px;
 }
 
@@ -137,6 +135,7 @@ body{
 	border: 2px solid white;
 	border-radius: 7px;
 	font-size: 24px;
+	cursor: pointer;
 }
 
 .SIGNUP{

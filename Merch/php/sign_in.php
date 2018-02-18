@@ -76,10 +76,11 @@ if(isset($_POST['btn-signup']))
   <div class="tm-container">
     <div class="box">
       <div class="boxbody">
-  				<div class="sayHi">
-  						HOLA!</br>
-              Make New Account!
-  				</div>
+					<div class="Logo">
+						<div id="merchText">
+							<a href="">Merch</a>
+						</div>
+					</div>
   				<div class="facebookDiv">
   						<button id="facebookButton">Login with Facebook</button>
   				</div>
@@ -106,17 +107,33 @@ if(isset($_POST['btn-signup']))
 			}
 			?>
       <div class="Username_panel">
-        <input id="username" type="text" class="form-control" name="txt_uname" placeholder="username" value="<?php if(isset($error)){echo $uname;}?>" />
-      </div>
+				<label id="usernameLabel">
+						Username
+				<label>
+        <input id="username" type="text" class="form-control" name="txt_uname" placeholder="Username" value="<?php if(isset($error)){echo $uname;}?>" />
+      </div><!--username panel-->
+
       <div class="Email_panel">
+				<label id="emailLabel">
+						E-mail
+				<label>
         <input id="email" type="text" class="form-control" name="txt_umail" placeholder="e-mail" value="<?php if(isset($error)){echo $umail;}?>" />
-      </div>
+      </div><!--email panel-->
+
       <div class="PW_panel">
+				<label id="passwordLabel">
+						Password
+				<label>
         <input id="password" type="password" class="form-control" name="txt_upass" placeholder="password"/>
-      </div>
+      </div><!--password panel-->
+
       <div class="PhoneNumber_panel">
+				<label id="phonenumberLabel">
+						Phone number
+				<label>
         <input id="phonenumber" type="text" class="form-control" name="txt_phone_num" placeholder="phone number" value="<?php if(isset($error)){echo $uname;}?>" />
       </div>
+
       <div class="SignUp_panel">
         <input id="signup" value="Create Account" type="submit" class="button" name="btn-signup">
       </div>

@@ -1,4 +1,5 @@
 
+/*
 window.onscroll = function(){sticky()};
 
 var sticked = document.getElementById("stickedToTop");
@@ -12,3 +13,4 @@ function sticky(){
     sticked.classList.remove("position");
   }
 }
+*/

@@ -8,6 +8,19 @@ body{
 	background: 	#f7f7f7;
 }
 
+#stickedToTop{
+		position: fixed;
+		top:0;
+		width: 100%;
+		z-index: 100000;
+}
+
+#stickedToTop:after{
+	visibility: none;
+	content: " ";
+	clear: both;
+	display: block;
+}
 .Logo{
 	width: 10%;
 	color: white;
@@ -28,11 +41,13 @@ body{
 	margin-top: 5px;
 	float: right;
 	background: #a27cef;
+	margin-right: 7px;
 }
 
 .tm-nav ul li {
 	display: inline-block;
 }
+
 
 .tm-nav ul li a{
 	padding: 10px 20px;
@@ -43,7 +58,9 @@ body{
 }
 
 .tm-nav ul li a:hover{
-	color: #f7f31d;
+	background: white;
+	border-radius: 3px;
+	color: #a27cef;
 }
 
 .searchHeader{
@@ -169,6 +186,7 @@ body{
 	height: 100%;
 	padding: 10px;
 	padding-left:30px;
+		margin-top: 400px;
 }
 
 .contentBox{

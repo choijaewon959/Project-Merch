@@ -28,6 +28,7 @@ body{
 	position: fixed;
 	top:0;
 	width: 100%;
+	z-index: 100000;
 
 }
 
@@ -43,6 +44,7 @@ body{
 	margin-top: 5px;
 	float: right;
 	background: #a27cef;
+	margin-right: 7px;
 }
 
 .tm-nav ul li {
@@ -58,7 +60,9 @@ body{
 }
 
 .tm-nav ul li a:hover{
-	color: #f7f31d;
+	background: white;
+	border-radius: 3px;
+	color: #a27cef;
 }
 
 .searchHeader{
@@ -164,11 +168,19 @@ body{
 }
 
 .filterDiv ul li {
-	padding-top: 15px;
+	padding: 15px;
 	display: inline-block;
 	margin: 10px;
 	margin-left: 55px;
 	font-size: 20px;
+
+}
+
+.filterDiv ul li:hover {
+	border-radius: 9px;
+	background: #ff68a2;
+	color: white;
+	cursor: pointer;
 }
 
 
@@ -184,6 +196,7 @@ body{
 	height: 100%;
 	padding: 10px;
 	padding-left:30px;
+	margin-top: 400px;
 }
 
 .contentBox{
@@ -210,7 +223,6 @@ body{
 
 .imgWrap:hover .img_description{
 	visibility: visible;
-
 }
 
 .image:hover{

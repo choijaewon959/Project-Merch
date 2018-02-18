@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="../js/Buypage_needlog.js"></script>
 </head>
 <body>
-	<div id="stickedToTop"> <!--for javascript-->
+	<div id="stickedToTop">
 		<div class="searchHeader">
 				<div class="Logo">
 					<div id="merchText">
