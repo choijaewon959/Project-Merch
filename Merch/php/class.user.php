@@ -94,7 +94,7 @@ class USER
 	}
 	public function addProduct()
 	{
-		$stmt = $this->$conn->prepare("INSERT into sell_product()");
+		$stmt = $this->$conn->prepare("INSERT into sell_product");
 	}
 }
 ?>

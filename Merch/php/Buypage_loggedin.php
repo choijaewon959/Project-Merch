@@ -6,6 +6,7 @@
 	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
 	$active_detail = $stmt->fetch(PDO::FETCH_ASSOC);
+	print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@
 					<li><a href="log_in.php">Request</a></li>
 					<li><a href="Sellpage_test.php">Sell</a></li>
 					<li><a href="">My Shopping Bag</a></li>
-					<li><a href="log_out.php?logout= true">Log out</a><li>
+					<li><a href="log_out.php?logout=true">Log out</a><li>
 				</ul>
 		</nav>
   </div><!--searchHeader-->
