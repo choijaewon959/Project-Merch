@@ -24,6 +24,21 @@ body{
 	font-family: 'Fredoka One', cursive;
 }
 
+#stickedToTop{
+	position: fixed;
+	top:0;
+	width: 100%;
+
+}
+
+
+#stickedToTop:after{
+	visibility: none;
+	content: " ";
+	clear: both;
+	display: block;
+}
+
 .tm-nav{
 	margin-top: 5px;
 	float: right;

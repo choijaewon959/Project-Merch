@@ -6,96 +6,78 @@
 	<meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+	<script type="text/javascript" src="../js/Buypage_needlog.js"></script>
 </head>
 <body>
-	<div class="searchHeader">
-		<div class="Logo">
-			<div id="merchText">
-				<a href="">Merch</a>
-			</div>
-		</div>
-
-		<div class="tm-container">
-			<form action="search.php" method="post">
-        <span>
-					<button class="searchButton"></button>
-				</span>
-				<span class="searchBar">
-					<input id="searchbar" type="text" name="hashTag" placeholder="#COMP2123 #ComputerScience #Kit #..">
-				</span>
-			</form>
-		</div>
-
-
-		<nav class="tm-nav">
-				<ul>
-					<li><a href="log_in.php">Request</a></li>
-					<li><a href="log_in.php">Sell</a></li>
-					<li><a href="sign_in.php">Sign up</a></li>
-					<li><a href="log_in.php">Log in</a></li>
-				</ul>
-		</nav>
-  </div><!--searchHeader-->
-
-
-	<div class="filterAndShoppingCart">
-		<div class="cartDiv">
-			<div>
-				<span id="dragAndDrop">Drag & Drop</span>
-				 <span id="textForCart1">the items in the shopping bag</span>
-				 <!--
-				 <span id="click">Click </span>
-				 <span id="textForCart2">the bag to see the interested items</span>
-			 -->
-			</div>
-
-			<img id="shopping_bag" src="../img/shopping-bag.png" alt="shopping bag">
-
-		</div>
-		<div class="filterDiv">
-			<ul>
-				<li>
-					<span id="priceSort">price</span>
-					<img src="../img/down.png" alt="downarrow">
-				</li>
-				<li>
-					<span id="qualitySort">quality</span>
-					<img src="../img/down.png" alt="downarrow">
-				</li>
-				<li>
-					<span id="categorySort">category</span>
-					<img src="../img/down.png" alt="downarrow">
-				</li>
-
-				<div class="undo">
-					<img src="../img/undo.png" alt="undo">
+	<div id="stickedToTop"> <!--for javascript-->
+		<div class="searchHeader">
+				<div class="Logo">
+					<div id="merchText">
+						<a href="">Merch</a>
+					</div>
 				</div>
-			</ul>
 
 
-		</div>
-	</div>
+				<div class="tm-container">
+					<form action="search.php" method="post">
+		        <span>
+							<button class="searchButton"></button>
+						</span>
+						<span class="searchBar">
+							<input id="searchbar" type="text" name="hashTag" placeholder="#COMP2123 #ComputerScience #Kit #..">
+						</span>
+					</form>
+				</div>
 
-	<!--
-	<aside class="filterDiv">
-		<div id="priceSort">
-			price
-		</div>
 
-		<div id="qualitySort">
-			quality
-		</div>
+				<nav class="tm-nav">
+						<ul>
+							<li><a href="log_in.php">Request</a></li>
+							<li><a href="log_in.php">Sell</a></li>
+							<li><a href="sign_in.php">Sign up</a></li>
+							<li><a href="log_in.php">Log in</a></li>
+						</ul>
+				</nav>
+		  </div><!--searchHeader-->
 
-		<div id="categorySort">
-			category
-		</div>
 
-		<button id="sortKey">
-			sort
-		</button>
+			<div class="filterAndShoppingCart">
+				<div class="cartDiv">
+					<div>
+						<span id="dragAndDrop">Drag & Drop</span>
+						 <span id="textForCart1">the items in the shopping bag</span>
 
-	</aside>
--->
+					</div>
+
+					<img id="shopping_bag" src="../img/shopping-bag.png" alt="shopping bag">
+
+				</div>
+				<div class="filterDiv">
+					<ul>
+						<li>
+							<span id="priceSort">price</span>
+							<img src="../img/down.png" alt="downarrow">
+						</li>
+						<li>
+							<span id="qualitySort">quality</span>
+							<img src="../img/down.png" alt="downarrow">
+						</li>
+						<li>
+							<span id="categorySort">category</span>
+							<img src="../img/down.png" alt="downarrow">
+						</li>
+
+						<div class="undo">
+							<img src="../img/undo.png" alt="undo">
+						</div>
+					</ul>
+
+
+				</div>
+			</div>
+		</div><!--stickedToTop-->
+
+
 	<div class="main">
 
 		<div class="contentBox">

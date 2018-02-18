@@ -50,11 +50,7 @@
 				</ul>
 			</nav>
 
-		</br></br></br>
-				<span class="price">
-					<span id="priceText">Price</span>
-					<input id="price" type="text" class="form-control" name="price" placeholder="price" value ="<?php if(isset($error)){$price;} ?>"/>
-				</span>
+
 		</nav>
   </div><!--searchHeader-->
   </div>
