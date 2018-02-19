@@ -8,19 +8,6 @@ body{
 	background: 	#f7f7f7;
 }
 
-#stickedToTop{
-		position: fixed;
-		top:0;
-		width: 100%;
-		z-index: 100000;
-}
-
-#stickedToTop:after{
-	visibility: none;
-	content: " ";
-	clear: both;
-	display: block;
-}
 .Logo{
 	width: 10%;
 	color: white;
@@ -37,6 +24,22 @@ body{
 	font-family: 'Fredoka One', cursive;
 }
 
+#stickedToTop{
+	position: fixed;
+	top:0;
+	width: 100%;
+	z-index: 100000;
+
+}
+
+
+#stickedToTop:after{
+	visibility: none;
+	content: " ";
+	clear: both;
+	display: block;
+}
+
 .tm-nav{
 	margin-top: 5px;
 	float: right;
@@ -47,7 +50,6 @@ body{
 .tm-nav ul li {
 	display: inline-block;
 }
-
 
 .tm-nav ul li a{
 	padding: 10px 20px;
@@ -116,13 +118,13 @@ body{
 
 .filterAndShoppingCart{
 	background: white;
-	padding: 30px;
+	padding: 20px;
 }
 
 .cartDiv{
 	background-color: white;
 	font-size: 20px;
-	height: 100px;
+	height: 80px;
 	padding: 40px;
 	align-content: center;
 	text-align: center;
@@ -148,7 +150,7 @@ body{
 }
 
 #shopping_bag{
-	margin: 30px;
+	margin: 20px;
 }
 
 .filterDiv{
@@ -166,11 +168,19 @@ body{
 }
 
 .filterDiv ul li {
-	padding-top: 15px;
+	padding: 15px;
 	display: inline-block;
 	margin: 10px;
 	margin-left: 55px;
 	font-size: 20px;
+
+}
+
+.filterDiv ul li:hover {
+	border-radius: 9px;
+	background: #ff68a2;
+	color: white;
+	cursor: pointer;
 }
 
 
@@ -186,7 +196,7 @@ body{
 	height: 100%;
 	padding: 10px;
 	padding-left:30px;
-		margin-top: 400px;
+	margin-top: 320px;
 }
 
 .contentBox{
@@ -213,7 +223,6 @@ body{
 
 .imgWrap:hover .img_description{
 	visibility: visible;
-
 }
 
 .image:hover{

@@ -28,6 +28,7 @@ body{
 	margin-top: 5px;
 	float: right;
 	background: #a27cef;
+	margin-right: 7px;
 }
 
 .tm-nav ul li {
@@ -43,7 +44,9 @@ body{
 }
 
 .tm-nav ul li a:hover{
-	color: #f7f31d;
+	background: white;
+	border-radius: 3px;
+	color: #a27cef;
 }
 
 .searchHeader{
@@ -100,20 +103,21 @@ body{
 .input-container{
 	margin: 0 auto;
 	padding: 20px;
-	width: 40%;
+	width: 60%;
 }
 
-.photoSection{
-	height: 400px;
-	background: blue;
+.upload-Panel{
+	float: left;
+	width: 70%;
 }
 
-.photoSection .mainPhotoPanel{
-	width: 50%;
-	height: 100%;
-	float: right;
-	background :red;
+.tips-panel{
+		float: right;
+		background: green;
+		width: 25%;
+		border: 1px solid green;
 }
+
 
 .mainPhotoPanel input[type="file"]{
 	 border: 1px solid #ccc;
@@ -124,41 +128,48 @@ body{
 
 }
 
-.photoSection .subPhotoPanel{
-	width: 50%;
-	height: 100%;
-	float: left;
-	background: green;
-}
 
 .title{
 	margin-bottom: 10px;
 	background: white;
 }
 
+.title #titleLabel{
+	font-size: 30px;
+	font-weight: bold;
+}
+
 .title #titleTextBox{
 	align-content: center;
-	height: 30px;
-	width: 100%;
-	font-size:100%;
+	height: 40px;
+	width: 40%;
+	padding: 5px;
+	font-size:20px;;
 	outline:none;
 	border:none;
-	border-bottom: 1px solid #aaaaaa;
+	border: 3px solid #f7f7f7;
+	border-radius: 7px;
 }
+
 
 .description{
 	margin-bottom:10px;
 	background: white;
 }
 
-#textareaTextBox{
+.description #descriptionLabel{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.description #textareaTextBox{
 	resize: none;
-	height: 300px;
+	height: 100px;
 	width: 100%;
-	font-size:100%;
+	font-size:20px;
 	outline:none;
 	border:none;
-	border-bottom: 1px solid #aaaaaa;
+	border: 3px solid  #f7f7f7;
 }
 
 .price{
@@ -166,8 +177,13 @@ body{
 	background: white;
 }
 
+.price #priceLabel{
+	font-size: 30px;
+	font-weight: bold;
+}
+
 .price #priceTextBox{
-	align-content: center;
+
 	height: 30px;
 	width: 100%;
 	font-size:100%;
@@ -177,25 +193,23 @@ body{
 }
 
 .quality{
-	padding-top: 10px;
-	padding-bottom: 5px;
 	margin-bottom: 10px;
 	background: white;
-	color: #aaaaaa;
-	border-bottom: 1px solid #aaaaaa;
 }
 
-.quality:after{
-	visibility: none;
-	content: " ";
-	clear: both;
-	display: block;
+.quality #qualityLabel{
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 30px;
 }
 
-#rateText{
-	float: left;
+.category{
+	margin-bottom: 10px;
+	background: white;
 }
 
-#radios{
-	float: right;
+.category #categoryLabel{
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 30px;
 }

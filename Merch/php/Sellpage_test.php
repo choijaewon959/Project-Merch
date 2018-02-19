@@ -87,51 +87,67 @@
 					<li><a href="">Request</a></li>
 					<li><a href="Buypage_loggedin.php">Buy</a></li>
 					<li><a href="mypage.php">My page</a></li>
-					<li><a href="log_in.php">My cart</a></li>
+					<li><a href="log_in.php">My Shopping Bag</a></li>
 				</ul>
 			</nav>
 
 		</nav>
   </div><!--searchHeader-->
+
 	<div class="input-container">
-		<form action="Sellpage_test.php" method="post" enctype="multipart/form-data">
+		<div class="upload-Panel">
+			<form action="Sellpage_test.php" method="post" enctype="multipart/form-data">
 
-				<div class="title">
-					<input type="text" id="titleTextBox" name= "product_title" placeholder="title" value =<?php if(isset($_SESSION['product_title'])){echo $_SESSION['product_title'];} ?> >
-				</div>
+					<div class="title">
+						<label id="titleLabel">Title</label></br>
+						<input type="text" id="titleTextBox" name= "product_title" value =<?php if(isset($_SESSION['product_title'])){echo $_SESSION['product_title'];} ?> >
+					</div>
 
-				<div class="description">
-					<input id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){echo $_SESSION['product_description'];} ?> ></input>
-				</div>
+					<div class="description">
+						<label id="descriptionLabel">Description</label></br>
+						<textarea id="textareaTextBox" name="product_description" value =<?php if(isset($_SESSION['product_description'])){echo $_SESSION['product_description'];} ?> ></textarea>
+					</div>
 
-				<div class="price">
-					<input id="priceTextBox" type="text" class="form-control" name="product_price" placeholder="price(HKD)" value =<?php if(isset($_SESSION['product_price'])){echo $_SESSION['product_price'];} ?>>
-				</div>
+					<div class="price">
+						<label id="priceLabel">Price</label></br>
+						<input id="priceTextBox" type="text" class="form-control" name="product_price" placeholder="price(HKD)" value =<?php if(isset($_SESSION['product_price'])){echo $_SESSION['product_price'];} ?>>
+					</div>
 
-				<div class="quality">
-						<span id="rateText">Quality:</span>
-						<span id="radios">
-<?php					for ($x = 0; $x < sizeof($quality); $x++) {										?>
-								<label ="new"> <?php echo $quality[$x] ;?> </label>
-								<input type="radio" name="product_quality" value = <?php echo $x; ?> <?php if((int)$_SESSION['product_quality'] == $x){ echo 'checked';}?>>
-<?php 					}
-																												 	?>
-						</span>
-				</div>
-				<div class = "category">
-					<span id="rateText">Category:</span>
-						<select name="product_category">
-<?php					for ($y = 0; $y < sizeof($category) ; $y++)
- 							{?>
-										<option value=<?php echo $y; ?>
-										 																	<?php if((int)$_SESSION['product_category'] == $y){ echo "selected";} ?> > <?php echo $category[$y]; ?>  </option>
-<?php					}																																						 	?>
-				  	</select>
-					<input class="button" type="submit" name= "btn-submit"  value="Choose" >
-					<input class="button" type="submit" name= "btn-clear"  value="Clear Detail" >
-				</div>
-		</form>
+					<div class="quality">
+							<label id="qualityLabel">Quality</label>
+							<div id="radios">
+	<?php					for ($x = 0; $x < sizeof($quality); $x++) {										?>
+									<label ="new"> <?php echo $quality[$x] ;?> </label>
+									<input type="radio" name="product_quality" value = <?php echo $x; ?> <?php if((int)$_SESSION['product_quality'] == $x){ echo 'checked';}?>>
+	<?php 					}
+																													 	?>
+							</div>
+					</div>
+
+					<div class = "category">
+							<label id="categoryLabel">Category</label></br>
+							<select name="product_category">
+	<?php					for ($y = 0; $y < sizeof($category) ; $y++)
+	 							{?>
+											<option value=<?php echo $y; ?>
+											 																	<?php if((int)$_SESSION['product_category'] == $y){ echo "selected";} ?> > <?php echo $category[$y]; ?>  </option>
+	<?php					}																																						 	?>
+					  	</select>
+						<input class="button" type="submit" name= "btn-submit"  value="Choose" >
+						<input class="button" type="submit" name= "btn-clear"  value="Clear Detail" >
+					</div>
+			</form>
+		</div><!--uploadpanel-->
+
+		<div class="tips-panel">
+			tips
+		</div>
+
+
+
 	</div><!-- input container -->
+
+
 <?php
 		if((int)$_SESSION['product_category'] == 1) // book
 		{ ?>

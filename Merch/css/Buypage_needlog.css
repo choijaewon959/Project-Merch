@@ -118,13 +118,13 @@ body{
 
 .filterAndShoppingCart{
 	background: white;
-	padding: 30px;
+	padding: 20px;
 }
 
 .cartDiv{
 	background-color: white;
 	font-size: 20px;
-	height: 100px;
+	height: 80px;
 	padding: 40px;
 	align-content: center;
 	text-align: center;
@@ -150,7 +150,7 @@ body{
 }
 
 #shopping_bag{
-	margin: 30px;
+	margin: 20px;
 }
 
 .filterDiv{
@@ -196,7 +196,7 @@ body{
 	height: 100%;
 	padding: 10px;
 	padding-left:30px;
-	margin-top: 400px;
+	margin-top: 320px;
 }
 
 .contentBox{
