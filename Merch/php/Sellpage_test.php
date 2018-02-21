@@ -7,13 +7,18 @@
 	$stmt->execute(array(":user_id"=>$user_id));
 	$active_detail=$stmt->fetch(PDO::FETCH_ASSOC);
 
-	$_SESSION['product_title'] = $_SESSION['product_category'] = $_SESSION['product_price'] = $_SESSION['product_quality'] = $_SESSION['product_description'] = NULL;
+	$_SESSION['sellpage_error'] = NULL;
 	$_SESSION['book_edition'] = $_SESSION['book_author'] =$_SESSION['book_subject'] = NULL;
 	$_SESSION['clothe_brand'] =  $_SESSION['clothe_size_num'] = $_SESSION['clothe_size_char'] = NULL;
+	$_SESSION['appliance_brand'] = NULL;
+
+//______________________________________________________________________________________
+
 	if(isset($_POST['btn-submit']))
 	{
 		try
 		{
+			$_SESSION['product_title'] = $_SESSION['product_category'] = $_SESSION['product_price'] = $_SESSION['product_quality'] = $_SESSION['product_description'] = NULL;
 			$_SESSION['product_title'] = strip_tags($_POST['product_title']);
 			$_SESSION['product_category'] = strip_tags($_POST['product_category']);
 			$_SESSION['product_price'] = strip_tags($_POST['product_price']);
@@ -22,13 +27,16 @@
 		}
 		catch (PDOException $e)
 		{
-
+			$_SESSION['sellpage_error'] = $e;
+			print_r($e);
 		}
 	}
+//______________________________________________________________________________________
 	if(isset($_POST['btn-clear']))
 	{
 		$_SESSION['product_title']= $_SESSION['product_category'] = $_SESSION['product_price'] =  $_SESSION['product_quality'] = $_SESSION['product_description'] = "";
 	}
+//______________________________________________________________________________________
 	if(isset($_POST['btn_book_submit']))
 	{
 		try{
@@ -36,17 +44,41 @@
 			$_SESSION['book_author'] = strip_tags($_POST['book_author']);
 			$_SESSION['book_subject'] = strip_tags($_POST['book_subject']);
 		}
-		catch(PDOException $e){}
+		catch(PDOException $e){
+				$_SESSION['sellpage_error'] = $e;
+				print_r($e);
+		}
 	}
-	if(isset($_POST['btn_clothe_submit']))
+//______________________________________________________________________________________
+
+	else if(isset($_POST['btn_clothe_submit']))
 	{
 		try{
 				$_SESSION['clothe_brand'] = strip_tags($_POST['clothe_brand']);
 				$_SESSION['clothe_size_num'] = strip_tags($_POST['clothe_size_num']);
 				$_SESSION['clothe_size_char'] = strip_tags($_POST['clothe_size_char']);
 				}
-		catch(PDOException $e	){}
+		catch(PDOException $e	){
+			$_SESSION['sellpage_error'] = $e;
+			print_r($e);
+		}
 	}
+//______________________________________________________________________________________
+
+	else if(isset($_POST['btn_appliance_submit']))
+	{
+		try{
+				$_SESSION['appliance_brand'] = strip_tags($_POST['appliance_brand']);
+				}
+		catch(PDOException $e	){
+			$_SESSION['sellpage_error'] = $e;
+			print_r($e);
+		}
+	}
+	//______________________________________________________________________________________
+
+
+
 	$quality  = array("new","used","old");
 	$category = array(" ","Book","clothe","appliance","etc");
 	$size_char_array = array("XS","S","M","L","XL","XXL");
@@ -137,6 +169,7 @@
 				</div>
 		</form>
 	</div><!-- input container -->
+<!--______________________________________________________________________________________-->
 <?php
 		if((int)$_SESSION['product_category'] == 1) // book
 		{ ?>
@@ -153,30 +186,32 @@
 				 <input class="button" type="submit" name= "btn_book_submit"  value="Book Submit" >
 				 </form>
 <?php		}
-		else if((int)$_SESSION['product_category'] == 2)  //clothe
-		{
-		?>
+//______________________________________________________________________________________
+		else if((int)$_SESSION['product_category'] == 2){?>  //clothe
 		<form action="Sellpage_test.php" method="post" enctype="multipart/form-data">
-		 	<div class="brand">
-			 		<input id="textareaTextBox" name="clothe_brand" placeholder="brand" value =<?php if(isset($_SESSION['product_description'])){echo $_SESSION['product_description'];} ?> ></input>
+		 	<div class="clothe_brand">
+			 		<input id="textareaTextBox" name="clothe_brand" placeholder="brand" value =<?php if(isset($_SESSION['clothe_brand'])){echo $_SESSION['clothe_brand'];} ?> ></input>
 		 	</div>
 		 	<div class="size_char">
 			 	Size in Char </br>
-<?php 		for($z =0 ; $z<sizeof($size_char_array); $z ++)
-					{ 																																	?>
+<?php 		for($z =0 ; $z<sizeof($size_char_array); $z ++){ 																																	?>
 							<label ="new"> <?php echo $size_char_array[$z] ;?> </label>
-							<input type="radio" name="clothe_size_char" value = <?php echo $z; ?> <?php if((int)$_SESSION['clothe_size_char'] == $z && isset($_SESSION['clothe_size_char'])){ echo 'checked';}?>>
+							<input type="radio" name="clothe_size_char" value = <?php echo $z; ?> <?php if((int)$_SESSION['clothe_size_char'] == $z && isset($_SESSION['clothee_size_char'])){ echo 'checked';}?>>
 <?php			}																																		?>
 		 </div>
 		 <div class="size_num">
-			 <input id="textareaTextBox" name="clothe_size_num" placeholder="clothe number size" value =<?php if(isset($_SESSION['product_description'])){echo $_SESSION['product_description'];} ?> ></input>
+			 <input id="textareaTextBox" name="clothe_size_num" placeholder="clothe number size" value =<?php if(isset($_SESSION['clothe_size_num'])){echo $_SESSION['clothe_size_num'];} ?> ></input>
 		 </div>
 		 <input class="button" type="submit" name= "btn_clothe_submit"  value="Clothe Submit" >
 		 </form>
 <?php}
-		else if((int)$_SESSION['product_category'] == 3) //appliance
-		{ ?>
-
+//______________________________________________________________________________________
+		else if((int)$_SESSION['product_category'] == 3){ ?> //appliance
+			<form action="Sellpage_test.php" method="post" enctype="multipart/form-data">
+				<div class="appliace_brand">
+						<input id="textareaTextBox" name="appliance_brand" placeholder="appliance brand" value =<?php if(isset($_SESSION['appliance_brand'])){echo $_SESSION['appliance_brands'];} ?> ></input>
+				</div>
+				<input class="button" type="submit" name= "btn_appliance_submit"  value="appliance Submit" >
 <?php		}  ?>
 
 </body>
