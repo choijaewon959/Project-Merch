@@ -49,7 +49,6 @@ class USER
 	{
 		try
 		{
-
 			$stmt = $this->conn->prepare("SELECT user_id, user_name, email, user_pass FROM users WHERE user_name=:uname OR email=:umail ");
 			$stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -92,10 +91,52 @@ class USER
 		unset($_SESSION['user_session']);
 		return true;
 	}
-	public function addProduct()
+	public function addProduct($user,$title,$category,$price,$quality,$description)
 	{
-		$stmt = $this->$conn->prepare("INSERT into sell_product");
+		echo "user ==\n";
+		echo $user ;
+		$stmt = $this->conn->prepare("INSERT into sell_product(seller_id,title,quality,category,price,description)
+																	VALUES(:seller_id,:title,:quality,:category,:price,:description)");
+
+		$stmt->bindparam(":seller_id",$user);
+		$stmt->bindparam(":title",$title);
+		$stmt->bindparam(":quality",$quality);
+		$stmt->bindparam(":category",$category);
+		$stmt->bindparam(":description",$description);
+		$stmt->bindparam(":price",$price);
+		$stmt->execute();
+
+		$stmt = $this->conn->prepare("SELECT product_id FROM sell_product WHERE seller_id =:seller_id AND description = :description ");
+		$stmt->execute(array(':seller_id'=>$user, ':description'=>$description));
+		$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+		if(isset($_SESSION['product_id'])){
+			unset($_SESSION['product_id']);}
+		$_SESSION['product_id'] = $userRow['product_id'];
+		return $stmt;
 	}
+	public function addAppliance(){}
+	public function addBook($edition,$subject,$author,$product_id)
+	{
+		try{
+			$stmt = $this->conn->prepare("INSERT into book(edition,subject,author,product_id)
+																		VALUES(:edition,:subject,:author,:product_id)");
+			$edition = (int)$edition;
+			$product_id =(int)$product_id;
+			$stmt->bindparam(":edition", $edition);
+			$stmt->bindparam(":subject", $subject);
+			$stmt->bindparam(":author", $author);
+			$stmt->bindparam(":product_id", $product_id);
+			$stmt->execute();
+			return $stmt;
+		}
+		catch(PDOException $e)
+		{
+			print_r($e);
+		}
+	}
+	public function addClothe(){}
+	public function addHashtag(){}
+
 }
 ?>
 
