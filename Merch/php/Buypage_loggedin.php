@@ -6,7 +6,7 @@
 	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
 	$active_detail = $stmt->fetch(PDO::FETCH_ASSOC);
-	print_r($_SESSION);
+	//print_r($_SESSION);
 	$_SESSION['product_title'] = $_SESSION['product_category'] = $_SESSION['product_price'] = $_SESSION['product_quality'] = $_SESSION['product_description'] = NULL;
 
 ?>

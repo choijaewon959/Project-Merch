@@ -104,7 +104,7 @@
 	$category = array(" ","Book","clothe","appliance","etc");
 	$size_char_array = array("XS","S","M","L","XL","XXL");
 
-	print_r($_SESSION);
+	//print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -114,6 +114,9 @@
 	<meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/Sellpage.js"></script>
+
 </head>
 <body>
 	<div class="searchHeader">
@@ -140,27 +143,44 @@
 					<li><a href="">Request</a></li>
 					<li><a href="Buypage_loggedin.php">Buy</a></li>
 					<li><a href="mypage.php">My page</a></li>
-					<li><a href="log_in.php">My cart</a></li>
+					<li><a href="log_in.php">My shopping bag</a></li>
 				</ul>
 			</nav>
 
-		</br></br></br>
-				<span class="price">
-					<span id="priceText">Price</span>
-					<input id="price" type="text" class="form-control" name="search_price" placeholder="price"/>
-				</span>
-		</nav>
+
   </div><!--searchHeader-->
 	<div class="input-container">
 		<form action="Sellpage_test_180218.php" method="post" enctype="multipart/form-data">
-
+			<div class="upload-Panel">
 				<div class="title">
 					<input type="text" id="titleTextBox" name= "product_title" placeholder="title" value =<?php if(isset($_SESSION['product_title'])){echo $_SESSION['product_title'];} ?> >
 				</div>
 
 				<div class="description">
-					<input id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></input>
+					<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
 				</div>
+				<!--tester divs-->
+				<div class="description">
+					<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
+				</div>	<div class="description">
+						<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
+					</div>	<div class="description">
+							<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
+						</div>	<div class="description">
+								<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
+							</div>	<div class="description">
+									<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
+								</div>	<div class="description">
+										<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
+									</div>	<div class="description">
+											<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
+										</div>	<div class="description">
+												<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
+											</div>	<div class="description">
+													<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
+												</div>
+
+												<!--testerdivs-->
 
 				<div class="price">
 					<input id="priceTextBox" type="text" class="form-control" name="product_price" placeholder="price(HKD)" value =<?php if(isset($_SESSION['product_price'])){print_r($_SESSION['product_price']);} ?>>
@@ -189,6 +209,50 @@
 					<input class="button" type="submit" name= "btn_clear"  value="Clear Detail" >
 				</div>
 		</form>
+	</div><!--upload panel-->
+	<div id="tips-panel">
+		<header id="titleForTips">
+			Tips for selling your items
+		</header>
+		<section id="contentForTips">
+			<ul>
+				<li>
+					Upload Photo</br>
+					<span id="detail">
+						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+					</span>
+
+				</li>
+				<!--photo description-->
+
+				<li>
+					Add title and description</br>
+					<span id="detail">
+						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+					</span>
+				</li>
+				<!--title and description-->
+
+				<li>
+					Set price and quality of items</br>
+					<span id="detail">
+						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+					</span>
+				</li>
+				<!--price and quality-->
+
+				<li>
+					Hashtags</br>
+					<span id="detail">
+						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+					</span>
+				</li>
+				<!--hashtags-->
+
+			</ul>
+		</section>
+	</div>
+
 	</div><!-- input container -->
 <!--_Book__________________________________________________________________________________-->
 <?php

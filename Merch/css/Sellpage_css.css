@@ -103,19 +103,55 @@ body{
 .input-container{
 	margin: 0 auto;
 	padding: 20px;
-	width: 60%;
+	width: 65%;
 }
 
 .upload-Panel{
 	float: left;
-	width: 70%;
+	width: 65%;
 }
 
-.tips-panel{
+#tips-panel{
 		float: right;
-		background: green;
-		width: 25%;
-		border: 1px solid green;
+		background: white;
+		width: 30%;
+		height: 700px;
+		border: 1px solid #e6e4e4;
+		border-radius: 7px;
+}
+
+#tips-panel #titleForTips{
+	margin: 0 auto;
+	margin: 10px;
+	padding: 10px;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+}
+
+#tips-panel #contentForTips{
+
+	padding-left: 50px;
+	padding-right: 50px;
+	height: 75%;
+
+}
+
+#tips-panel #contentForTips ul{
+	list-style-image: url('../img/check.png');
+}
+
+#tips-panel #contentForTips ul li{
+	vertical-align: center;
+	font-size:17px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#tips-panel #contentForTips ul li #detail{
+	font-size:15px;
+	font-weight: normal;
+	color:#afafaf;
 }
 
 
@@ -130,7 +166,7 @@ body{
 
 .title{
 	margin-bottom: 10px;
-	border-bottom: 1px solid #d9d7d7;
+	border-bottom: 1px solid #e6e4e4;
 }
 
 .title #titleLabel{
@@ -147,7 +183,7 @@ body{
 	font-size:20px;;
 	outline:none;
 	border:none;
-	border: 1px solid #d9d7d7;
+	border: 1px solid #e6e4e4;
 	border-radius: 7px;
 	margin-top: 20px;
 	margin-bottom:  20px;
@@ -156,7 +192,7 @@ body{
 
 .description{
 	margin-bottom: 10px;
-	border-bottom: 1px solid #d9d7d7;
+	border-bottom: 1px solid #e6e4e4;
 }
 
 .description #descriptionLabel{
@@ -172,7 +208,7 @@ body{
 	font-size:20px;
 	outline:none;
 	border:none;
-	border: 1px solid  #d9d7d7;
+	border: 1px solid  #e6e4e4;
 	border-radius: 7px;
 	margin-bottom: 20px;
 	margin-top: 20px;
@@ -181,7 +217,7 @@ body{
 
 .price{
 	margin-bottom: 10px;
-	border-bottom: 1px solid #d9d7d7;
+	border-bottom: 1px solid #e6e4e4;
 }
 
 .price #priceLabel{
@@ -196,7 +232,7 @@ body{
 	font-size:100%;
 	outline:none;
 	border: none;
-	border: 1px solid  #d9d7d7;
+	border: 1px solid  #e6e4e4;
 	margin-bottom: 20px;
 	margin-top: 20px;
 	border-radius: 7px;
@@ -205,7 +241,7 @@ body{
 
 .quality{
 	margin-bottom: 10px;
-	border-bottom: 1px solid #d9d7d7;
+	border-bottom: 1px solid #e6e4e4;
 
 }
 
