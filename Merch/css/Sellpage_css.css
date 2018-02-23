@@ -128,38 +128,41 @@ body{
 
 }
 
-
 .title{
 	margin-bottom: 10px;
-	background: white;
+	border-bottom: 1px solid #d9d7d7;
 }
 
 .title #titleLabel{
 	font-size: 30px;
 	font-weight: bold;
+	color:#403f3f;
 }
 
 .title #titleTextBox{
 	align-content: center;
 	height: 40px;
-	width: 40%;
+	width: 70%;
 	padding: 5px;
 	font-size:20px;;
 	outline:none;
 	border:none;
-	border: 3px solid #f7f7f7;
+	border: 1px solid #d9d7d7;
 	border-radius: 7px;
+	margin-top: 20px;
+	margin-bottom:  20px;
 }
 
 
 .description{
-	margin-bottom:10px;
-	background: white;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #d9d7d7;
 }
 
 .description #descriptionLabel{
 	font-size: 30px;
 	font-weight: bold;
+	color:#403f3f;
 }
 
 .description #textareaTextBox{
@@ -169,47 +172,65 @@ body{
 	font-size:20px;
 	outline:none;
 	border:none;
-	border: 3px solid  #f7f7f7;
+	border: 1px solid  #d9d7d7;
+	border-radius: 7px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding: 5px;
 }
 
 .price{
 	margin-bottom: 10px;
-	background: white;
+	border-bottom: 1px solid #d9d7d7;
 }
 
 .price #priceLabel{
 	font-size: 30px;
 	font-weight: bold;
+	color:#403f3f;
 }
 
 .price #priceTextBox{
-
 	height: 30px;
-	width: 100%;
+	width: 40%;
 	font-size:100%;
 	outline:none;
 	border: none;
-	border-bottom: 1px solid #aaaaaa;
+	border: 1px solid  #d9d7d7;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	border-radius: 7px;
+	padding:5px;
 }
 
 .quality{
 	margin-bottom: 10px;
-	background: white;
+	border-bottom: 1px solid #d9d7d7;
+
 }
 
 .quality #qualityLabel{
 	font-size: 30px;
 	font-weight: bold;
 	margin-bottom: 30px;
+	color:#403f3f;
+}
+
+.quality #radios{
+
+	margin-bottom: 20px;
+	margin-top: 20px;
+
 }
 
 .category{
 	margin-bottom: 10px;
-	background: white;
+
 }
 
 .category #categoryLabel{
 	font-size: 30px;
 	font-weight: bold;
 	margin-bottom: 30px;
+	color:#403f3f;
 }

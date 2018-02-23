@@ -110,7 +110,7 @@
 
 					<div class="price">
 						<label id="priceLabel">Price</label></br>
-						<input id="priceTextBox" type="text" class="form-control" name="product_price" placeholder="price(HKD)" value =<?php if(isset($_SESSION['product_price'])){echo $_SESSION['product_price'];} ?>>
+						<input id="priceTextBox" type="text" class="form-control" name="product_price"  value =<?php if(isset($_SESSION['product_price'])){echo $_SESSION['product_price'];} ?>>
 					</div>
 
 					<div class="quality">
