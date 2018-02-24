@@ -19,6 +19,8 @@
 	<meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/Buypage_loggedin.js"></script>
 </head>
 <body>
 	<div id="stickedToTop">
@@ -43,7 +45,7 @@
 
 			<nav class="tm-nav">
 					<ul>
-						<li><a href="log_in.php">Request</a></li>
+						<li><button onclick="document.getElementById('requestModal').style.display='block'">Request</button></li>
 						<li><a href="Sellpage.php">Sell</a></li>
 						<li><a href="">My Shopping Bag</a></li>
 						<li><a href="log_out.php?logout=true">Log out</a><li>
@@ -65,52 +67,53 @@
 
 				<img id="shopping_bag" src="../img/shopping-bag.png" alt="shopping bag">
 
-			</div>
+			</div><!--cartDiv-->
+
 			<div class="filterDiv">
 				<ul>
 					<li>
-						<span id="priceSort">price</span>
-						<img src="../img/down.png" alt="downarrow">
+						<div class="btn">
+							<span id="priceSort">price</span>
+							<img src="../img/down.png" alt="downarrow">
+						</div>
+						<div class="sortDropDown">
+						</div>
 					</li>
 					<li>
-						<span id="qualitySort">quality</span>
-						<img src="../img/down.png" alt="downarrow">
+						<div class="btn">
+							<span id="qualitySort">quality</span>
+							<img src="../img/down.png" alt="downarrow">
+						</div>
+						<div class="sortDropDown">
+						</div>
 					</li>
 					<li>
-						<span id="categorySort">category</span>
-						<img src="../img/down.png" alt="downarrow">
+						<div class="btn">				
+							<span id="categorySort">category</span>
+							<img src="../img/down.png" alt="downarrow">
+						</div>
+
+						<div class="sortDropDown">
+						</div>
 					</li>
 
 					<div class="undo">
 						<img src="../img/undo.png" alt="undo">
 					</div>
 				</ul>
+			</div><!--fileterDiv-->
 
-
-			</div>
-		</div>
+		</div><!--filter and Shopping Cart-->
 	</div>
 
-	<!--
-	<aside class="filterDiv">
-		<div id="priceSort">
-			price
+	<div id="requestModal">
+		<div id="requestContentDiv">
+			request
+			<button type="button" onclick="document.getElementById('requestModal').style.display='none'">Close</button>
 		</div>
 
-		<div id="qualitySort">
-			quality
-		</div>
+	</div><!--requestModal-->
 
-		<div id="categorySort">
-			category
-		</div>
-
-		<button id="sortKey">
-			sort
-		</button>
-
-	</aside>
--->
 	<div class="main">
 
 		<div class="contentBox">

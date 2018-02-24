@@ -140,7 +140,7 @@
 
 		<nav class="tm-nav">
 				<ul>
-					<li><a href="">Request</a></li>
+					<li><button onclick="document.getElementById('requestModal').style.display='block'">Request</button></li>
 					<li><a href="Buypage_loggedin.php">Buy</a></li>
 					<li><a href="mypage.php">My page</a></li>
 					<li><a href="log_in.php">My shopping bag</a></li>
@@ -149,17 +149,35 @@
 
 
   </div><!--searchHeader-->
+
+	<div id="requestModal">
+		<div id="requestContentDiv">
+			request
+			<button type="button" onclick="document.getElementById('requestModal').style.display='none'">Close</button>
+		</div>
+	</div><!--requestModal-->
+
+	<div id="showRequestedButton">
+			click
+	</div>
+
+	<div id="showRequested">
+
+	</div>
+
 	<div class="input-container">
 		<form action="Sellpage_test_180218.php" method="post" enctype="multipart/form-data">
 			<div class="upload-Panel">
 				<div class="title">
-					<input type="text" id="titleTextBox" name= "product_title" placeholder="title" value =<?php if(isset($_SESSION['product_title'])){echo $_SESSION['product_title'];} ?> >
+					<label id="titleLabel">Title</label></br>
+					<input type="text" id="titleTextBox" name= "product_title" value =<?php if(isset($_SESSION['product_title'])){echo $_SESSION['product_title'];} ?> >
 				</div>
 
 				<div class="description">
-					<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
+					<label id="descriptionLabel">Description</label></br>
+					<textarea id="textareaTextBox" name="product_description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
 				</div>
-				<!--tester divs-->
+				<!--tester divs
 				<div class="description">
 					<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
 				</div>	<div class="description">
@@ -180,21 +198,22 @@
 													<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
 												</div>
 
-												<!--testerdivs-->
+												-->
 
 				<div class="price">
+					<label id="priceLabel">Price</label></br>
 					<input id="priceTextBox" type="text" class="form-control" name="product_price" placeholder="price(HKD)" value =<?php if(isset($_SESSION['product_price'])){print_r($_SESSION['product_price']);} ?>>
 				</div>
 
 				<div class="quality">
-						<span id="rateText">Quality:</span>
-						<span id="radios">
+						<label id="qualityLabel">Quality:</label></br>
+						<div id="radios">
 <?php					for ($x = 0; $x < sizeof($quality); $x++) {										?>
 								<label ="new"> <?php echo $quality[$x] ;?> </label>
 								<input type="radio" name="product_quality" value = <?php echo $x; ?> <?php if((int)$_SESSION['product_quality'] == $x){ echo 'checked';}?>>
 <?php 					}
 																												 	?>
-						</span>
+						</div>
 				</div>
 				<div class = "category">
 					<span id="rateText">Category:</span>

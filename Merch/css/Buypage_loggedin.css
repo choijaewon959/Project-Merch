@@ -28,7 +28,7 @@ body{
 	position: fixed;
 	top:0;
 	width: 100%;
-	z-index: 100000;
+	z-index: 1;
 
 }
 
@@ -63,6 +63,25 @@ body{
 	background: white;
 	border-radius: 3px;
 	color: #a27cef;
+}
+
+.tm-nav ul li button{
+	padding-left: 10px;
+	padding-right: 10px;
+	background: #a27cef;
+	border:none;
+	outline:none;
+	color: white;
+	line-height: 40px;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+.tm-nav ul li button:hover{
+	background: white;
+	border-radius: 3px;
+	color: #a27cef;
+	cursor: pointer;
 }
 
 .searchHeader{
@@ -190,6 +209,28 @@ body{
 	cursor: pointer;
 }
 
+#requestModal{
+    display: none; /* Hidden by default */
+		position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+#requestContentDiv{
+    background-color: #fefefe;
+		border-radius: 15px;
+    margin: 0px auto;
+    width: 60%;
+		height: 400px;
+}
+
 .main{
 	margin: 0 auto;
 	width: 90%;
@@ -227,7 +268,6 @@ body{
 
 .image:hover{
 	opacity: 0.05;
-	filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
 .img_description .title{
