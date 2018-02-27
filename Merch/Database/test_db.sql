@@ -28,7 +28,7 @@ CREATE TABLE `sell_product`
   `seller_id` int(11) NOT NULL ,
   `title` varchar(20) NOT NULL,
   `quality` int(11) NOT NULL,
-  `category` int(11) NOT NULL,
+  `category` varchar(11) NOT NULL,
   `price` int(11) NOT NULL,
   `description` varchar(50) NOT NULL,
   `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -52,8 +52,7 @@ CREATE TABLE `clothe`
 (
   `clothe_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
-  `brand` varchar(50) NOT NULL,
-  `size_char` varchar(1) NOT NULL,
+  `size_char` varchar(3) NOT NULL,
   `size_num` int(3) NOT NULL,
   `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 

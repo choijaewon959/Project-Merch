@@ -91,41 +91,52 @@ class USER
 		unset($_SESSION['user_session']);
 		return true;
 	}
-	public function addProduct($user,$title,$category,$price,$quality,$description)
+	public function addProduct()
 	{
-		echo "user ==\n";
-		echo $user ;
+
 		$stmt = $this->conn->prepare("INSERT into sell_product(seller_id,title,quality,category,price,description)
 																	VALUES(:seller_id,:title,:quality,:category,:price,:description)");
+		if($_SESSION['product_category'] == 1){$_SESSION['product_category'] = "book";}
+		else if($_SESSION['product_category'] == 2){$_SESSION['product_category'] = "clothe";}
+		else if($_SESSION['product_category'] == 3){$_SESSION['product_category'] = "appliance";}
+		else if($_SESSION['product_category'] == 4){$_SESSION['product_category'] = "etc";}
 
-		$stmt->bindparam(":seller_id",$user);
-		$stmt->bindparam(":title",$title);
-		$stmt->bindparam(":quality",$quality);
-		$stmt->bindparam(":category",$category);
-		$stmt->bindparam(":description",$description);
-		$stmt->bindparam(":price",$price);
+		$stmt->bindparam(":seller_id",$_SESSION['user_session']);
+		$stmt->bindparam(":title",$_SESSION['product_title']);
+		$stmt->bindparam(":quality",$_SESSION['product_quality']);
+		$stmt->bindparam(":category",$_SESSION['product_category']);
+		$stmt->bindparam(":description",$_SESSION['product_description']);
+		$stmt->bindparam(":price",$_SESSION['product_price']);
 		$stmt->execute();
 
 		$stmt = $this->conn->prepare("SELECT product_id FROM sell_product WHERE seller_id =:seller_id AND description = :description ");
-		$stmt->execute(array(':seller_id'=>$user, ':description'=>$description));
+		$stmt->execute(array(':seller_id'=>$_SESSION['user_session'], ':description'=>$_SESSION['product_description']));
 		$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 		if(isset($_SESSION['product_id'])){
 			unset($_SESSION['product_id']);}
 		$_SESSION['product_id'] = $userRow['product_id'];
 		return $stmt;
 	}
-	public function addAppliance(){}
-	public function addBook($edition,$subject,$author,$product_id)
+	public function addAppliance()
+	{
+		$stmt = $this->conn->prepare("INSERT into appliance(brand,product_id)
+																	VALUES(:brand,:product_id)");
+
+		$stmt->bindparam(":product_id", $_SESSION['product_id']);
+		$stmt->bindparam(":brand", $_SESSION['appliance_brand']);
+		$stmt->execute();
+		return $stmt;
+
+	}
+	public function addBook()
 	{
 		try{
 			$stmt = $this->conn->prepare("INSERT into book(edition,subject,author,product_id)
 																		VALUES(:edition,:subject,:author,:product_id)");
-			$edition = (int)$edition;
-			$product_id =(int)$product_id;
-			$stmt->bindparam(":edition", $edition);
-			$stmt->bindparam(":subject", $subject);
-			$stmt->bindparam(":author", $author);
-			$stmt->bindparam(":product_id", $product_id);
+			$stmt->bindparam(":edition", $_SESSION['book_edition']);
+			$stmt->bindparam(":subject", $_SESSION['book_subject']);
+			$stmt->bindparam(":author", $_SESSION['book_author']);
+			$stmt->bindparam(":product_id", $_SESSION['product_id']);
 			$stmt->execute();
 			return $stmt;
 		}
@@ -134,7 +145,27 @@ class USER
 			print_r($e);
 		}
 	}
-	public function addClothe(){}
+	public function addClothe()
+	{
+		$clothe_char ;
+		$stmt = $this->conn->prepare("INSERT into clothe(size_char,size_num,product_id)
+																	VALUES(:size_char,:size_num,:product_id)");
+		if($_SESSION['clothe_size_char'] == 0){$clothe_char = "XS";}
+		else if($_SESSION['clothe_size_char'] == 1){$clothe_char = "S";}
+		else if($_SESSION['clothe_size_char'] == 2){$clothe_char = "M";}
+		else if($_SESSION['clothe_size_char'] == 3){$clothe_char = "L";}
+		else if($_SESSION['clothe_size_char'] == 4){$clothe_char = "XL";}
+		else if($_SESSION['clothe_size_char'] == 5){$clothe_char = "XXL";}
+
+		$stmt->bindparam(":size_char", $clothe_char);
+		$stmt->bindparam(":size_num", $_SESSION['clothe_size_num']);
+		$stmt->bindparam(":product_id", $_SESSION['product_id']);
+
+		$stmt->execute();
+		return $stmt;
+
+
+	}
 	public function addHashtag(){}
 
 }

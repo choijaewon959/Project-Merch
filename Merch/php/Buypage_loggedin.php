@@ -7,7 +7,6 @@
 	$stmt->execute(array(":user_id"=>$user_id));
 	$active_detail = $stmt->fetch(PDO::FETCH_ASSOC);
 	//print_r($_SESSION);
-	$_SESSION['product_title'] = $_SESSION['product_category'] = $_SESSION['product_price'] = $_SESSION['product_quality'] = $_SESSION['product_description'] = NULL;
 
 ?>
 
@@ -88,7 +87,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="btn">				
+						<div class="btn">
 							<span id="categorySort">category</span>
 							<img src="../img/down.png" alt="downarrow">
 						</div>
