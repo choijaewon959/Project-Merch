@@ -11,11 +11,12 @@
 	$category = array(" ","Book","clothe","appliance","etc");
 	$size_char_array = array("XS","S","M","L","XL","XXL");
 	print_r($_SESSION);
-
+	$hash_arr = array();
 
 	if(!isset($_SESSION['product_category']))
 	{
 		$_SESSION['product_category'] = $_SESSION['product_title'] = $_SESSION['product_price'] = $_SESSION['product_quality'] = $_SESSION['product_description'] = $_SESSION['product_hashtag'] = "";
+		unset($_SESSION['product_id']);
 	}
 	$_SESSION['sellpage_error'] =NULL;
 //______________________________________________________________________________________
@@ -30,6 +31,7 @@
 			$_SESSION['product_quality'] = strip_tags($_POST['product_quality']);
 			$_SESSION['product_description'] = strip_tags($_REQUEST['product_description']);
 			$_SESSION['product_hashtag'] = strip_tags($_REQUEST['product_hashtag']);
+
 //Declare Session Variables
 			$_SESSION['book_edition'] = $_SESSION['book_author'] =$_SESSION['book_subject'] = NULL;
 			$_SESSION['clothe_brand'] =  $_SESSION['clothe_size_num'] = $_SESSION['clothe_size_char'] = NULL;
@@ -49,14 +51,13 @@
 	if(isset($_POST['btn_book_submit']))
 	{
 		try{
-
-
 			$_SESSION['book_edition'] = strip_tags($_POST['book_edition']);
 			$_SESSION['book_author'] = strip_tags($_POST['book_author']);
 			$_SESSION['book_subject'] = strip_tags($_POST['book_subject']);
+			$hash_arr = $auth_user->convert_hashtag();
 			$auth_user->addProduct();
 			$auth_user->addBook();
-			$auth_user->addHashtag();
+			$auth_user->addHashtag($hash_arr);
 
 		}
 		catch(PDOException $e){
@@ -74,7 +75,7 @@
 
 				$auth_user->addProduct();
 				$auth_user->addClothe();
-				$auth_user->addHashtag();
+				$auth_user->addHashtag($hash_arr);
 
 				}
 		catch(PDOException $e	){
@@ -90,7 +91,7 @@
 
 				$auth_user->addProduct();
 				$auth_user->addAppliance();
-				$auth_user->addHashtag();
+				$auth_user->addHashtag($hash_arr);
 
 				}
 		catch(PDOException $e	){
@@ -99,62 +100,72 @@
 		}
 	}
 //Below is file i/o________________________________________________________________________________
-	$uploadOk = 0;
-	if(isset($_POST["image_submit"])&& $_FILES["product_image"]["error"] == 0) {
-			$file_dir = "uploads/";
-			$image_file = $file_dir . basename($_FILES["product_image"]["name"]);
-			$uploadOk = 1;
-			$imageFileType = strtolower(pathinfo($image_file,PATHINFO_EXTENSION));
-			$allowed = array("image/jpg" => "jpg", "image/jpeg" => "jpeg", "image/gif" => "gif", "image/png" => "png");
+	$_SESSION['uploaded'] = 0;
+	if(isset($_POST["image_submit"])) {
+		for($a = 0; $a < sizeof($_FILES["product_image"]["name"]); $a ++)
+		{
+			if($_FILES["product_image"]["error"][$a] == 0)
+			{
+					$file_dir = "uploads/";
+					$image_file = $file_dir . basename($_FILES["product_image"]["name"][$a]);
+					$imageFileType = strtolower(pathinfo($image_file,PATHINFO_EXTENSION));
+					$allowed = array("image/jpg" => "jpg", "image/jpeg" => "jpeg", "image/gif" => "gif", "image/png" => "png");
+					$product__id = $_SESSION['product_id'];
+					$product__id = $product__id +1;
+					$image_type = $_FILES["product_image"]["type"][$a];
+					// image name is set as seller_id + product id + photo sequence number
+					$image_name = (string)$_SESSION['user_session']."_".(string)$product__id."_".(string)$a.'.'.$allowed[$image_type];
+					$name_tmp = (string)$_SESSION['user_session']."_".(string)$product__id."_".(string)$a;
+					$image_size = $_FILES["product_image"]["size"][$a];
+				  $check = getimagesize($_FILES["product_image"]["tmp_name"][$a]);
 
-			$image_name = $_FILES["product_image"]["name"];
-			$image_type = $_FILES["product_image"]["type"];
-			$image_size = $_FILES["product_image"]["size"];
-			echo "EEEEEEEEEEEEEEEEEEE";
-			echo "a\n";
-			echo $image_name;
-			echo "b\n";
-			echo $image_type;
-			echo "c\n";
-			echo $image_size;
+			    if($check !== false) {
+			        echo "File is an image - " . $check["mime"] . ".";
+							unset($_SESSION['uploaded']);
+			        $_SESSION['uploaded'] = 1;
+			    } else {
+			        echo "File is not an image.";
+							unset($_SESSION['uploaded']);
+			        $_SESSION['uploaded'] = 0;
+			    }
 
-		  $check = getimagesize($_FILES["product_image"]["tmp_name"]);
-			echo "fuckkkkk";
-			print_r($check);
-			print_r($image_file);
-			print_r($_FILES["product_image"]);
-	    if($check !== false) {
-	        echo "File is an image - " . $check["mime"] . ".";
-	        $uploadOk = 1;
-	    } else {
-	        echo "File is not an image.";
-	        $uploadOk = 0;
-	    }
-
-	if (file_exists($image_file)) {
-	    echo "Sorry, file already exists.";
-	    $uploadOk = 0;
+			if (file_exists($image_file)) {
+			    echo "Sorry, file already exists.";
+					unset($_SESSION['uploaded']);
+					$_SESSION['uploaded'] = 0;
+			}
+			if ($image_size > 500000) {
+			    echo "Sorry, your file is too large.";
+					unset($_SESSION['uploaded']);
+					$_SESSION['uploaded'] = 0;
+			}
+		  if(!array_key_exists($image_type, $allowed))
+			{
+					echo "Error: Please select a valid file format.";
+			}
+			foreach($allowed as $b => $c)
+			{
+				$dir = "..\\Database\\image\\".$name_tmp.'.'.$c;
+				echo $dir;
+				if(file_exists($dir))
+				{
+					unlink($dir);
+				}
+			}
+			// Check if $_SESSION['uploaded'] is set to 0 by an error
+			if ($_SESSION['uploaded'] == 0) {
+			    echo "Sorry, your file was not uploaded.";
+			// if everything is ok, try to upload file
+			} else {
+			    if (move_uploaded_file($_FILES["product_image"]["tmp_name"][$a], "C:\\xampp\\htdocs\\Merch\\Database\\image\\".$image_name)) {
+			        echo "The file ". basename( $_FILES["product_image"]["name"][$a]). " has been uploaded.";
+			    } else {
+			        echo "Sorry, there was an error uploading your file.";
+			    }
+				}
+		}
 	}
-	if ($_FILES["product_image"]["size"] > 500000) {
-	    echo "Sorry, your file is too large.";
-	    $uploadOk = 0;
-	}
-  if(!array_key_exists($image_type, $allowed))
-	{
-			echo "Error: Please select a valid file format.";
-	}
-	// Check if $uploadOk is set to 0 by an error
-	if ($uploadOk == 0) {
-	    echo "Sorry, your file was not uploaded.";
-	// if everything is ok, try to upload file
-	} else {
-	    if (move_uploaded_file($_FILES["product_image"]["tmp_name"], "C:\\xampp\\htdocs\\Merch\\Database\\image\\".$image_name)) {
-	        echo "The file ". basename( $_FILES["product_image"]["name"]). " has been uploaded.";
-	    } else {
-	        echo "Sorry, there was an error uploading your file.";
-	    }
-	}
-	}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -225,9 +236,7 @@
 
 				<div class="description">
 					<label id="descriptionLabel">Description</label></br>
-					<textarea id="textareaTextBox" name="product_description" placeholder="Add Description to your product! ">
-<?php if(isset($_SESSION['product_description'])){echo $_SESSION['product_description'];} ?>
-					</textarea>
+					<textarea id="textareaTextBox" name="product_description" placeholder="Add Description to your product! "><?php if(isset($_SESSION['product_description'])){echo $_SESSION['product_description'];} ?></textarea>
 				</div>
 				<!--tester divs
 				<div class="description">
@@ -279,9 +288,7 @@
 			<!--Receive hashtags -->
 			<div class="hashtag">
 				<label id="hashtagLabel">Hashtag</label></br>
-				<textarea id="textareaTextBox" name="product_hashtag" placeholder="Add Hashtags to your product!">
-<?php if(isset($_SESSION['product_hashtag'])){echo $_SESSION['product_hashtag'];} ?>
-				</textarea>
+				<textarea id="textareaTextBox" name="product_hashtag" placeholder="Add Hashtags to your product!"><?php if(isset($_SESSION['product_hashtag'])){echo $_SESSION['product_hashtag'];} ?></textarea>
 			</div>
 					<input class="button" type="submit" name= "btn_product_submit"  value="Choose" action ="sellpage.php" >
 					<input class="button" type="submit" name= "btn_clear"  value="Clear Detail" action ="sellpage.php" >
@@ -291,7 +298,7 @@
 <!--Upload Image file -->
 		<form action="sellpage.php" method="post" enctype="multipart/form-data">
     Select image to upload:
-    <input type="file" name="product_image" id="product_image">
+    <input type="file" name="product_image[]" id="product_image" multiple= "multiple">
     <input type="submit" value="Upload" name="image_submit">
 </form>
 	</div><!--upload panel-->

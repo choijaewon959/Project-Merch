@@ -93,28 +93,30 @@ class USER
 	}
 	public function addProduct()
 	{
-
+		$p_category = "";
 		$stmt = $this->conn->prepare("INSERT into sell_product(seller_id,title,quality,category,price,description)
 																	VALUES(:seller_id,:title,:quality,:category,:price,:description)");
-		if($_SESSION['product_category'] == 1){$_SESSION['product_category'] = "book";}
-		else if($_SESSION['product_category'] == 2){$_SESSION['product_category'] = "clothe";}
-		else if($_SESSION['product_category'] == 3){$_SESSION['product_category'] = "appliance";}
-		else if($_SESSION['product_category'] == 4){$_SESSION['product_category'] = "etc";}
+		if($_SESSION['product_category'] == 1){$p_category = "book";}
+		else if($_SESSION['product_category'] == 2){$p_category = "clothe";}
+		else if($_SESSION['product_category'] == 3){$p_category = "appliance";}
+		else if($_SESSION['product_category'] == 4){$p_category = "etc";}
 
 		$stmt->bindparam(":seller_id",$_SESSION['user_session']);
 		$stmt->bindparam(":title",$_SESSION['product_title']);
 		$stmt->bindparam(":quality",$_SESSION['product_quality']);
-		$stmt->bindparam(":category",$_SESSION['product_category']);
+		$stmt->bindparam(":category",$p_category);
 		$stmt->bindparam(":description",$_SESSION['product_description']);
 		$stmt->bindparam(":price",$_SESSION['product_price']);
 		$stmt->execute();
 
-		$stmt = $this->conn->prepare("SELECT product_id FROM sell_product WHERE seller_id =:seller_id AND description = :description ");
-		$stmt->execute(array(':seller_id'=>$_SESSION['user_session'], ':description'=>$_SESSION['product_description']));
-		$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-		if(isset($_SESSION['product_id'])){
-			unset($_SESSION['product_id']);}
-		$_SESSION['product_id'] = $userRow['product_id'];
+		$stmt = $this->conn->prepare("SELECT product_id FROM sell_product WHERE seller_id =:seller_id");
+		$stmt->execute(array(':seller_id'=>$_SESSION['user_session']));
+		$userRow=$stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		if(isset($_SESSION['product_id']))
+		{unset($_SESSION['product_id']);}
+		$_SESSION['product_id'] ="";
+		$_SESSION['product_id'] = (string)$userRow[sizeof($userRow)-1]['product_id'];
 		return $stmt;
 	}
 	public function addAppliance()
@@ -166,7 +168,27 @@ class USER
 
 
 	}
-	public function addHashtag(){}
+	public function convert_hashtag()
+	{
+		$hash_arr = array();
+		$tmp_hash = $_SESSION['product_hashtag'];
+		$hash_arr = explode("#",$tmp_hash);
+		unset($hash_arr[0]);
+		return $hash_arr;
+	}
+	public function addHashtag($hash_arr)
+	{
+		$stmt = "";
+		for($a = 1; $a< sizeof($hash_arr)+1; $a ++)
+		{
+			$stmt = $this->conn->prepare("INSERT into hashtag(hashtag,product_id)
+																		VALUES(:hashtag,:product_id)");
+			$stmt->bindparam(":hashtag", $hash_arr[$a]);
+			$stmt->bindparam(":product_id", $_SESSION['product_id']);
+			$stmt->execute();
+		}
+		return $stmt;
+	}
 
 }
 ?>
