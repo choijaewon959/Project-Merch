@@ -10,7 +10,7 @@
 	$quality  = array("new","used","old");
 	$category = array(" ","Book","clothe","appliance","etc");
 	$size_char_array = array("XS","S","M","L","XL","XXL");
-	print_r($_SESSION);
+	//print_r($_SESSION);
 	$hash_arr = array();
 
 	if(!isset($_SESSION['product_category']))
@@ -62,7 +62,7 @@
 		}
 		catch(PDOException $e){
 				$_SESSION['sellpage_error'] = $e;
-				print_r($e);
+				//print_r($e);
 		}
 	}
 
@@ -80,7 +80,7 @@
 				}
 		catch(PDOException $e	){
 			$_SESSION['sellpage_error'] = $e;
-			print_r($e);
+			//print_r($e);
 		}
 	}
 
@@ -96,7 +96,7 @@
 				}
 		catch(PDOException $e	){
 			$_SESSION['sellpage_error'] = $e;
-			print_r($e);
+			//print_r($e);
 		}
 	}
 //Below is file i/o________________________________________________________________________________
@@ -218,48 +218,63 @@
 		</div>
 	</div><!--requestModal-->
 
-	<div id="showRequestedButton">
-			click
+	<button onclick="openNav()">click</button>
+	<div class="requestedPanel" id="requested">
+			<!-- Button to close the overlay navigation -->
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+	  <!-- Overlay content -->
+	  <div class="overlay-content">
+	    fuckyou
+	  </div>
 	</div>
 
-	<div id="showRequested">
-
-	</div>
 
 	<div class="input-container">
 		<form action="Sellpage.php" method="post" enctype="multipart/form-data">
 			<div class="upload-Panel">
+				<h1 id="heading">
+					<label id="detailLabel">Details</label></br>
+					<p id="contentForDetail">
+						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</h1>
+				<div class = "category">
+						<label id="categoryLabel">Category</label></br>
+						<select id="categorySelectBar" name="product_category">
+<?php					for ($y = 0; $y < sizeof($category) ; $y++)
+ 							{?>
+										<option value=<?php echo $y; ?>
+										 																	<?php if((int)$_SESSION['product_category'] == $y){ echo "selected";} ?> > <?php echo $category[$y]; ?>  </option>
+<?php					}																																						 	?>
+				  	</select>
+						<input class="button" type="submit" name= "btn_product_submit"  value="Choose" action ="sellpage.php" >
+				</div>
 				<div class="title">
 					<label id="titleLabel">Title</label></br>
 					<input type="text" id="titleTextBox" name= "product_title" value =<?php if(isset($_SESSION['product_title'])){echo $_SESSION['product_title'];} ?> >
 				</div>
 
+
+				<div class="photo">
+					<label id="photoLabel">Photo</label></br>
+					<p id="recommend">Recommended - photograph always gives a much better response<p></br>
+
+					<label for="product_image" class="custom-file-upload">
+						Add a photo
+					</label>
+					<form id="photoUploadPanel" action="sellpage.php" method="post" enctype="multipart/form-data">
+						<input type="file" name="product_image[]" id="product_image" multiple= "multiple">
+						<!--<input type="submit" value="Upload" name="image_submit">-->
+					</form>
+					<p id="addupto">You can add up to 3 images</p>
+				</div>
+
+
 				<div class="description">
 					<label id="descriptionLabel">Description</label></br>
 					<textarea id="textareaTextBox" name="product_description" placeholder="Add Description to your product! "><?php if(isset($_SESSION['product_description'])){echo $_SESSION['product_description'];} ?></textarea>
 				</div>
-				<!--tester divs
-				<div class="description">
-					<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
-				</div>	<div class="description">
-						<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
-					</div>	<div class="description">
-							<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
-						</div>	<div class="description">
-								<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
-							</div>	<div class="description">
-									<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
-								</div>	<div class="description">
-										<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
-									</div>	<div class="description">
-											<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
-										</div>	<div class="description">
-												<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
-											</div>	<div class="description">
-													<textarea id="textareaTextBox" name="product_description" placeholder="description" value =<?php if(isset($_SESSION['product_description'])){print_r($_SESSION['product_description']);} ?> ></textarea>
-												</div>
-
-												-->
 
 				<div class="price">
 					<label id="priceLabel">Price</label></br>
@@ -267,40 +282,29 @@
 				</div>
 
 				<div class="quality">
-						<label id="qualityLabel">Quality:</label></br>
+						<label id="qualityLabel">Quality</label></br>
 						<div id="radios">
 <?php					for ($x = 0; $x < sizeof($quality); $x++) {										?>
 								<label ="new"> <?php echo $quality[$x] ;?> </label>
 								<input type="radio" name="product_quality" value = <?php echo $x; ?> <?php if((int)$_SESSION['product_quality'] == $x){ echo 'checked';}?>>
+  						  <span class="checkmark"></span>
 <?php 					}
 																												 	?>
 						</div>
 				</div>
-				<div class = "category">
-					<span id="rateText">Category:</span>
-						<select name="product_category">
-<?php					for ($y = 0; $y < sizeof($category) ; $y++)
- 							{?>
-										<option value=<?php echo $y; ?>
-										 																	<?php if((int)$_SESSION['product_category'] == $y){ echo "selected";} ?> > <?php echo $category[$y]; ?>  </option>
-<?php					}																																						 	?>
-				  	</select>
+
 			<!--Receive hashtags -->
 			<div class="hashtag">
 				<label id="hashtagLabel">Hashtag</label></br>
-				<textarea id="textareaTextBox" name="product_hashtag" placeholder="Add Hashtags to your product!"><?php if(isset($_SESSION['product_hashtag'])){echo $_SESSION['product_hashtag'];} ?></textarea>
+				<textarea id="hashtagTextArea" name="product_hashtag" placeholder="Add Hashtags to your product!"><?php if(isset($_SESSION['product_hashtag'])){echo $_SESSION['product_hashtag'];} ?></textarea>
 			</div>
-					<input class="button" type="submit" name= "btn_product_submit"  value="Choose" action ="sellpage.php" >
-					<input class="button" type="submit" name= "btn_clear"  value="Clear Detail" action ="sellpage.php" >
-				</div>
+
+				<input class="button" type="submit" name= "btn_clear"  value="Clear Detail" action ="sellpage.php" >
+
 			</br>
 		</form>
 <!--Upload Image file -->
-		<form action="sellpage.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="product_image[]" id="product_image" multiple= "multiple">
-    <input type="submit" value="Upload" name="image_submit">
-</form>
+
 	</div><!--upload panel-->
 	<div id="tips-panel">
 		<header id="titleForTips">

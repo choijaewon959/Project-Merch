@@ -90,7 +90,7 @@ body{
   padding-top:3px;
 	padding-bottom: 2px;
 	vertical-align: middle;
-	width:25%;
+	width:20%;
 	height: 40px;
 	text-decoration: none;
 	outline: none;
@@ -100,7 +100,13 @@ body{
 	vertical-align: middle;
 	border-top-right-radius: 7px;
 	border-bottom-right-radius: 7px;
+	-webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
   float: left;
+}
+
+.searchBar input[type="text"]:focus{
+	width: 55%;
 }
 
 .searchBar input[type="text"]::placeholder{
@@ -177,7 +183,6 @@ body{
 }
 
 #tips-panel #contentForTips{
-
 	padding-left: 50px;
 	padding-right: 50px;
 	height: 75%;
@@ -201,17 +206,65 @@ body{
 	color:#afafaf;
 }
 
+.requestedPanel{
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
 
-.mainPhotoPanel input[type="file"]{
-	 border: 1px solid #ccc;
-	 display: inline-block;
-	 padding: 6px 12px;
-	 cursor: pointer;
-	 color: transparent;
+.requestedPanel .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+#detailLabel{
+	font-size: 50px;
+	font-weight: bold;
+	color:#403f3f;
+}
+
+#contentForDetail{
+	font-size: 18px;
+  color:#afafaf;
+	margin-top:10px;
+}
+
+.category{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #e6e4e4;
+}
+
+.category #categoryLabel{
+	font-size: 30px;
+	font-weight: bold;
+	color:#403f3f;
+}
+
+.category #categorySelectBar{
+	margin-bottom: 20px;
+	margin-top: 20px;
 
 }
 
+.select-selected {
+  background-color: DodgerBlue;
+}
+
 .title{
+	padding-top: 20px;
+	padding-bottom: 20px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #e6e4e4;
 }
@@ -236,8 +289,75 @@ body{
 	margin-bottom:  20px;
 }
 
+.title #titleTextBox:focus{
+	align-content: center;
+	height: 40px;
+	width: 70%;
+	padding: 5px;
+	font-size:20px;;
+	outline:none;
+	border:none;
+	border: 1px solid #a27cef;
+	box-shadow: 5px 5px #a27cef;
+	border-radius: 7px;
+	margin-top: 20px;
+	margin-bottom:  20px;
+}
+
+.photo{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #e6e4e4;
+}
+
+.photo #photoLabel{
+	font-size: 30px;
+	font-weight: bold;
+	color:#403f3f;
+}
+
+#recommend{
+	font-size: 18px;
+  color:#afafaf;
+	margin-top:10px;
+}
+
+#addupto{
+	color:#afafaf;
+	margin-top:10px;
+	margin-bottom: 10px;
+}
+
+.photo input[type="file"] {
+    display:none;
+}
+
+.custom-file-upload {
+		border: 1px solid  #a27cef;
+		border-radius: 7px;
+    display: inline-block;
+		padding: 15px 15px;
+		font-weight: bold;
+		color: #a27cef;
+    cursor: pointer;
+}
+
+.custom-file-upload:hover{
+	border: 1px solid  white;
+	border-radius: 7px;
+	background: #a27cef;
+	display: inline-block;
+	padding: 15px 15px;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+
 
 .description{
+	padding-top: 20px;
+	padding-bottom: 20px; ;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #e6e4e4;
 }
@@ -253,8 +373,6 @@ body{
 	height: 300px;
 	width: 95%;
 	font-size:20px;
-	outline:none;
-	border:none;
 	border: 1px solid  #e6e4e4;
 	border-radius: 7px;
 	margin-bottom: 20px;
@@ -262,7 +380,24 @@ body{
 	padding: 5px;
 }
 
+.description #textareaTextBox:focus{
+	resize: none;
+	height: 300px;
+	width: 95%;
+	font-size:20px;
+	border-radius: 7px;
+	outline:none;
+	border:none;
+	border: 1px solid #a27cef;
+	box-shadow: 5px 5px #a27cef;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding: 5px;
+}
+
 .price{
+	padding-top: 20px;
+	padding-bottom: 20px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #e6e4e4;
 }
@@ -286,7 +421,23 @@ body{
 	padding:5px;
 }
 
+.price #priceTextBox:focus{
+	height: 30px;
+	width: 40%;
+	font-size:100%;
+	outline:none;
+	border: none;
+	border: 1px solid #a27cef;
+	box-shadow: 5px 5px #a27cef;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	border-radius: 7px;
+	padding:5px;
+}
+
 .quality{
+	padding-top: 20px;
+	padding-bottom: 20px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #e6e4e4;
 
@@ -300,20 +451,47 @@ body{
 }
 
 .quality #radios{
-
 	margin-bottom: 20px;
 	margin-top: 20px;
-
 }
 
-.category{
-	margin-bottom: 10px;
 
+
+.hashtag{
+	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
-.category #categoryLabel{
+.hashtag #hashtagLabel{
 	font-size: 30px;
 	font-weight: bold;
-	margin-bottom: 30px;
 	color:#403f3f;
+}
+
+.hashtag #hashtagTextArea{
+	resize: none;
+	height: 100px;
+	width: 95%;
+	font-size:20px;
+	border: 1px solid  #e6e4e4;
+	border-radius: 7px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding: 5px;
+}
+
+.hashtag #hashtagTextArea:focus{
+	resize: none;
+	height: 100px;
+	width: 95%;
+	font-size:20px;
+	border: 1px solid  #e6e4e4;
+	outline:none;
+	border: none;
+	border: 1px solid #a27cef;
+	box-shadow: 5px 5px #a27cef;
+	border-radius: 7px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding: 5px;
 }
