@@ -218,7 +218,6 @@
 		</div>
 	</div><!--requestModal-->
 
-	<button onclick="openNav()">click</button>
 	<div class="requestedPanel" id="requested">
 			<!-- Button to close the overlay navigation -->
 	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -231,14 +230,57 @@
 
 
 	<div class="input-container">
+		<div class="detailPanel">
+			<h1 id="detailLabel">Details<h1></br>
+			<p id="contentForDetail">@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<button id="showRequested" onclick="openNav()">See what's requested</button>
+		</div>
+
+		<div id="tips-panel">
+			<header id="titleForTips">
+				Tips for selling your items
+			</header>
+			<section id="contentForTips">
+				<ul>
+					<li>
+						Upload Photo</br>
+						<span id="detail">
+							@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+						</span>
+
+					</li>
+					<!--photo description-->
+
+					<li>
+						Add title and description</br>
+						<span id="detail">
+							@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+						</span>
+					</li>
+					<!--title and description-->
+
+					<li>
+						Set price and quality of items</br>
+						<span id="detail">
+							@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+						</span>
+					</li>
+					<!--price and quality-->
+
+					<li>
+						Hashtags</br>
+						<span id="detail">
+							@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+						</span>
+					</li>
+					<!--hashtags-->
+
+				</ul>
+			</section>
+		</div>
+
 		<form action="Sellpage.php" method="post" enctype="multipart/form-data">
 			<div class="upload-Panel">
-				<h1 id="heading">
-					<label id="detailLabel">Details</label></br>
-					<p id="contentForDetail">
-						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-				</h1>
 				<div class = "category">
 						<label id="categoryLabel">Category</label></br>
 						<select id="categorySelectBar" name="product_category">
@@ -306,48 +348,7 @@
 <!--Upload Image file -->
 
 	</div><!--upload panel-->
-	<div id="tips-panel">
-		<header id="titleForTips">
-			Tips for selling your items
-		</header>
-		<section id="contentForTips">
-			<ul>
-				<li>
-					Upload Photo</br>
-					<span id="detail">
-						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-					</span>
 
-				</li>
-				<!--photo description-->
-
-				<li>
-					Add title and description</br>
-					<span id="detail">
-						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-					</span>
-				</li>
-				<!--title and description-->
-
-				<li>
-					Set price and quality of items</br>
-					<span id="detail">
-						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-					</span>
-				</li>
-				<!--price and quality-->
-
-				<li>
-					Hashtags</br>
-					<span id="detail">
-						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-					</span>
-				</li>
-				<!--hashtags-->
-
-			</ul>
-		</section>
-	</div>
 
 	</div><!-- input container -->
 
