@@ -1,0 +1,242 @@
+[33mcommit 82c0504f015a6cfae1abb4b8c58cd0bfa5c74b62[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31mJaychoi/master[m[33m)[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Tue Mar 13 21:56:39 2018 +0800
+
+    I dont feel like studying but I do not waste my time, pretending I prefer coding to studying, modified a bit of a sellpage design
+
+[33mcommit 54e1a7f9c0ddaa231b6f36f4e0a123d158220451[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Sat Mar 3 02:59:25 2018 +0800
+
+    buypage css debugged
+
+[33mcommit 41dce639e83e59df8e37d1321591c2b1c3a27449[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Sat Mar 3 02:47:47 2018 +0800
+
+    sellpage js added(show requested panel),Buypage search webkit added, sellpage outline developoed
+
+[33mcommit ba518c1058788f45fc7eacb6bf93661d8c2406ec[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Thu Mar 1 23:03:18 2018 +0800
+
+    Product Image file I/O complete
+
+[33mcommit 98b3614760a19fab9b687f76e0a0890c50083cfe[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Tue Feb 27 20:24:16 2018 +0800
+
+    File Upload part Completo
+
+[33mcommit e91c55a9e14646b2829161e83647d9e49fe1820b[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Sat Feb 24 23:21:00 2018 +0800
+
+    removed unnecessary files
+
+[33mcommit 630106d4b40589ceb08f4cd6a2c85a499f12705e[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Sat Feb 24 17:49:56 2018 +0800
+
+    requested popup added in sell and buy page
+
+[33mcommit bca62559f237886839c9c1d4cb71fc5ee1cc6060[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Fri Feb 23 20:22:30 2018 +0800
+
+    sellpage design modified(jquery embedded, tips panel added)
+
+[33mcommit 967e7ba6175b8a9f11fb067ab4cfdd46f9cd2362[m
+Merge: 97f2303 5d725bb
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Fri Feb 23 18:00:47 2018 +0800
+
+    Useless sell pages deleted
+
+[33mcommit 97f230379fcf01b77ad92919e7a52bf686406874[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Fri Feb 23 17:44:37 2018 +0800
+
+    sellpage modified
+
+[33mcommit 5d725bbe29294efb596fce69190f5e53dab2e115[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Wed Feb 21 13:59:41 2018 +0800
+
+    Product Upload Finished(Book only)
+
+[33mcommit e0d6f76230c20cbac1641ade51b4f3c79d591bd4[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Mon Feb 19 18:30:52 2018 +0800
+
+    sellpage restarted, buypage header height modified
+
+[33mcommit 3c8f6545d8635991703c8552b680770cd49e71fc[m
+Merge: dc17eb4 ae429d1
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Mon Feb 19 00:11:09 2018 +0800
+
+    buy page button hovering effect, header fixed, sign up page updated
+
+[33mcommit dc17eb4fa66563e5194ab224d5431e66169597ea[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Sun Feb 18 21:53:08 2018 +0800
+
+    javascript embedded but not working
+
+[33mcommit ae429d1c0cadde5f6aaff5a308294533a741c049[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Sun Feb 18 21:06:28 2018 +0800
+
+    Sellpage Progress
+
+[33mcommit 4d2184e4a9150ecd2fcf2fb60831728068214f91[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Sun Feb 18 21:00:06 2018 +0800
+
+    Sellpage Progress
+
+[33mcommit 335fb8df0c59535e8a61298b71a05e5554b9dc20[m
+Merge: 78fe2bd 06f3a91
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Sun Feb 18 20:30:42 2018 +0800
+
+    Merge remote-tracking branch 'Chanrepo/master'
+
+[33mcommit 78fe2bd6734ccf66fae77d04645197612044a122[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Sun Feb 18 20:30:26 2018 +0800
+
+    sellpage updated
+
+[33mcommit 06f3a91d8acb0d6706322efa9ab9dc22165b4913[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Sat Feb 17 18:20:52 2018 +0800
+
+    Log_in Bug Fixed
+
+[33mcommit 959b0ccd6a6d211df273eef1cadc9f30a4641f0b[m
+Merge: 173baa3 dd3630f
+Author: ch.park <psbhchan@gmail.com>
+Date:   Thu Feb 15 17:35:04 2018 +0800
+
+    Debugging Login
+
+[33mcommit 173baa3b6c45b6affd0946d3cdc1d2b680fffd53[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Thu Feb 15 14:31:43 2018 +0800
+
+    Sell page changed
+
+[33mcommit dd3630fe5e639b557d6fefa3f590ebbe48f5068d[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Thu Feb 15 14:26:24 2018 +0800
+
+    log out button added
+
+[33mcommit 92533937190a74dfb5d7a3ccba9e78ae45c39b8d[m
+Merge: b17e55c 025865f
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Mon Feb 12 22:56:27 2018 +0800
+
+    buypage_needlog/loggedin modified, sellpage started
+
+[33mcommit b17e55ceabc3fd9103ce991130e897f37def6f70[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Mon Feb 12 21:14:39 2018 +0800
+
+    test
+
+[33mcommit 025865f89da9f2b2b2bb6d88b5a14e1608fbaf21[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Mon Feb 12 21:10:52 2018 +0800
+
+    Welcome to Sellpage Jay
+
+[33mcommit 1175bee2069fc154e87b377efd633c0841b5d9aa[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Mon Feb 12 19:45:24 2018 +0800
+
+    Buy Page updated
+
+[33mcommit 64aa4b458c8a5802366f293dbb6dd06a631e5483[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Sat Feb 10 20:43:59 2018 +0800
+
+    BuyPage_v2 deleted
+
+[33mcommit d6ccf76d8bb783fb8214b61527bb813bf85e721c[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Sat Feb 10 20:04:23 2018 +0800
+
+    just for test
+
+[33mcommit e4d56904eb3bbb20cd5e9fb8f4530132cbff03bc[m
+Merge: 8c69640 c64c008
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Sat Feb 10 19:37:39 2018 +0800
+
+    t status
+    Merge branch 'master' of https://github.com/sbhchan2/Merch
+
+[33mcommit c64c008afe5608673e70e43a01c25d777d3e9282[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Sat Feb 10 19:33:42 2018 +0800
+
+    Sellpage first commit
+
+[33mcommit 8c69640082c0bf3ee463b8ae8c0c742c1adae88d[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Thu Feb 8 23:24:22 2018 +0800
+
+    buypage2 modified
+
+[33mcommit 1cd4f55b8c0914f262d2272e9391ab928da26e80[m
+Merge: 5a9b63f 106bf21
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Thu Feb 8 23:23:57 2018 +0800
+
+    buypage2 modified
+
+[33mcommit 106bf21f73ecb50ae742d502723e06ed955c163d[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Wed Feb 7 20:00:38 2018 +0800
+
+    Merge with Jay's modification
+
+[33mcommit e720f8fffd1796307cea12bb3aa96c651543bc1a[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Wed Feb 7 19:56:35 2018 +0800
+
+    Merged with Jay's modification
+
+[33mcommit 2ff51a8b39928a9d12db9bac279f5a1b1f5bd6ba[m
+Author: ch.park <psbhchan@gmail.com>
+Date:   Tue Feb 6 18:12:20 2018 +0800
+
+    first commit
+
+[33mcommit 5a9b63f4644eec7d3cb7a33ebb252c07753f7f8d[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Tue Feb 6 13:48:33 2018 +0800
+
+    file renamed
+
+[33mcommit 94a79987af4c673f5cfb76aaa533c354519c6e1c[m
+Merge: db06557 c6b857c
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Tue Feb 6 13:40:55 2018 +0800
+
+    Merge branch 'master' of https://github.com/choijaewon959/Project-Merch
+
+[33mcommit db06557fbd414a14a676211a0a17f97f20fda6a8[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Tue Feb 6 13:37:40 2018 +0800
+
+     Initial commit
+
+[33mcommit c6b857cc754926604bedc097dcf538de87aafa1d[m
+Author: choijaewon959 <choijaewon959@gmail.com>
+Date:   Tue Feb 6 12:20:56 2018 +0800
+
+    Initial commit

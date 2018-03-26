@@ -32,16 +32,10 @@
 			$_SESSION['product_description'] = strip_tags($_REQUEST['product_description']);
 			$_SESSION['product_hashtag'] = strip_tags($_REQUEST['product_hashtag']);
 
-/*
-	Declare Session Variables
+//Declare Session Variables
 			$_SESSION['book_edition'] = $_SESSION['book_author'] =$_SESSION['book_subject'] = NULL;
 			$_SESSION['clothe_brand'] =  $_SESSION['clothe_size_num'] = $_SESSION['clothe_size_char'] = NULL;
 			$_SESSION['appliance_brand'] =NULL;
-*/
-		$auth_user->addProduct();
-		$hash_arr = $auth_user->convert_hashtag();
-		$auth_user->addHashtag($hash_arr);
-
 		}
 		catch (PDOException $e)
 		{
@@ -53,15 +47,17 @@
 	{
 		$_SESSION['product_title']= $_SESSION['product_category'] = $_SESSION['product_price'] =  $_SESSION['product_quality'] = $_SESSION['product_description'] = "";
 	}
-/*
-	Submit button for book, clothe appliance
+
 	if(isset($_POST['btn_book_submit']))
 	{
 		try{
 			$_SESSION['book_edition'] = strip_tags($_POST['book_edition']);
 			$_SESSION['book_author'] = strip_tags($_POST['book_author']);
 			$_SESSION['book_subject'] = strip_tags($_POST['book_subject']);
+			$hash_arr = $auth_user->convert_hashtag();
+			$auth_user->addProduct();
 			$auth_user->addBook();
+			$auth_user->addHashtag($hash_arr);
 
 		}
 		catch(PDOException $e){
@@ -79,6 +75,7 @@
 
 				$auth_user->addProduct();
 				$auth_user->addClothe();
+				$auth_user->addHashtag($hash_arr);
 
 				}
 		catch(PDOException $e	){
@@ -94,6 +91,7 @@
 
 				$auth_user->addProduct();
 				$auth_user->addAppliance();
+				$auth_user->addHashtag($hash_arr);
 
 				}
 		catch(PDOException $e	){
@@ -101,10 +99,8 @@
 			//print_r($e);
 		}
 	}
-*/
 //Below is file i/o________________________________________________________________________________
 	$_SESSION['uploaded'] = 0;
-	if(isset($_POST["image_submit"])) {
 		for($a = 0; $a < sizeof($_FILES["product_image"]["name"]); $a ++)
 		{
 			if($_FILES["product_image"]["error"][$a] == 0)
@@ -221,6 +217,7 @@
 		</div>
 	</div><!--requestModal-->
 
+	<button onclick="openNav()">click</button>
 	<div class="requestedPanel" id="requested">
 			<!-- Button to close the overlay navigation -->
 	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -233,67 +230,30 @@
 
 
 	<div class="input-container">
-		<div class="detailPanel">
-			<h1 id="detailLabel">Details<h1></br>
-			<p id="contentForDetail">@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<button id="showRequested" onclick="openNav()">See what's requested</button>
-		</div>
-
-		<div id="tips-panel">
-			<header id="titleForTips">
-				Tips for selling your items
-			</header>
-			<section id="contentForTips">
-				<ul>
-					<li>
-						Upload Photo</br>
-						<span id="detail">
-							@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-						</span>
-
-					</li>
-					<!--photo description-->
-
-					<li>
-						Add title and description</br>
-						<span id="detail">
-							@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-						</span>
-					</li>
-					<!--title and description-->
-
-					<li>
-						Set price and quality of items</br>
-						<span id="detail">
-							@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-						</span>
-					</li>
-					<!--price and quality-->
-
-					<li>
-						Hashtags</br>
-						<span id="detail">
-							@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-						</span>
-					</li>
-					<!--hashtags-->
-
-				</ul>
-			</section>
-		</div>
-
 		<form action="Sellpage.php" method="post" enctype="multipart/form-data">
 			<div class="upload-Panel">
+				<h1 id="heading">
+					<label id="detailLabel">Details</label></br>
+					<p id="contentForDetail">
+						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</h1>
 				<div class = "category">
 						<label id="categoryLabel">Category</label></br>
 						<select id="categorySelectBar" name="product_category">
+<?php					for ($y = 0; $y < sizeof($category) ; $y++)
+ 							{?>
+										<option value=<?php echo $y; ?>
+										 																	<?php if((int)$_SESSION['product_category'] == $y){ echo "selected";} ?> > <?php echo $category[$y]; ?>  </option>
+<?php					}																																						 	?>
+				  	</select>
+						<input class="button" type="submit" name= "btn_product_submit"  value="Choose" action ="sellpage.php" >
+				</div>
+				<div class="title">
+					<label id="titleLabel">Title</label></br>
+					<input type="text" id="titleTextBox" name= "product_title" value =<?php if(isset($_SESSION['product_title'])){echo $_SESSION['product_title'];} ?> >
+				</div>
 
-										<option value = 1 selected >   </option>
-										<option value = 2 selected > Clothe  </option>
-										<option value = 3 selected > Appliance  </option>
-										<option value = 4 selected > Etc  </option>
-							</select>
-			</div>
 
 				<div class="photo">
 					<label id="photoLabel">Photo</label></br>
@@ -345,11 +305,52 @@
 <!--Upload Image file -->
 
 	</div><!--upload panel-->
+	<div id="tips-panel">
+		<header id="titleForTips">
+			Tips for selling your items
+		</header>
+		<section id="contentForTips">
+			<ul>
+				<li>
+					Upload Photo</br>
+					<span id="detail">
+						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+					</span>
 
+				</li>
+				<!--photo description-->
+
+				<li>
+					Add title and description</br>
+					<span id="detail">
+						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+					</span>
+				</li>
+				<!--title and description-->
+
+				<li>
+					Set price and quality of items</br>
+					<span id="detail">
+						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+					</span>
+				</li>
+				<!--price and quality-->
+
+				<li>
+					Hashtags</br>
+					<span id="detail">
+						@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+					</span>
+				</li>
+				<!--hashtags-->
+
+			</ul>
+		</section>
+	</div>
 
 	</div><!-- input container -->
 
-<!--_Book, Appliance, Clothe button pop-up__________________________________________________________________________________
+<!--_Book__________________________________________________________________________________-->
 <?php
 		if($_SESSION['product_category'] == "1")
 		{
@@ -367,6 +368,7 @@
 				 <input class="button" type="submit" name= "btn_book_submit"  value="Book Submit" >
 				 </form>
 <?php	}
+//_clothe_________________________________________________________________________________
 		else if($_SESSION['product_category'] == "2")
 		{
 
@@ -386,6 +388,7 @@
 			 <input class="button" type="submit" name= "btn_clothe_submit"  value="Clothe Submit" >
 			 </form>
 <?php }
+//_appliance_______________________________________________________________________________
 		else if($_SESSION['product_category'] == "3")
 		{
 			?>
@@ -397,8 +400,6 @@
 			</form>
 <?php	}
 ?>
-
-Pop-up comment end-->
 
 
 </body>
