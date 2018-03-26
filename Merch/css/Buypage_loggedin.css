@@ -2,10 +2,11 @@
 	margin: 0;
 	padding: 0;
 	font-family: 'helvetica';
+
 }
 
 body{
-	background: 	#f7f7f7;
+	background: #f5f5f5;
 }
 
 .Logo{
@@ -20,7 +21,7 @@ body{
 
 #merchText a{
 	text-decoration: none;
-	color: white;
+	color: #a27cef;
 	font-family: 'Fredoka One', cursive;
 }
 
@@ -29,7 +30,6 @@ body{
 	top:0;
 	width: 100%;
 	z-index: 1;
-
 }
 
 
@@ -43,7 +43,6 @@ body{
 .tm-nav{
 	margin-top: 5px;
 	float: right;
-	background: #a27cef;
 	margin-right: 7px;
 }
 
@@ -53,7 +52,7 @@ body{
 
 .tm-nav ul li a{
 	padding: 10px 20px;
-	color: white;
+	color:#c4c4c4;
 	line-height: 50px;
 	font-size: 20px;
 	text-decoration: none;
@@ -68,13 +67,13 @@ body{
 .tm-nav ul li button{
 	padding-left: 10px;
 	padding-right: 10px;
-	background: #a27cef;
 	border:none;
 	outline:none;
-	color: white;
+	color:#c4c4c4;
 	line-height: 40px;
 	font-size: 20px;
 	text-decoration: none;
+	background: white;
 }
 
 .tm-nav ul li button:hover{
@@ -85,7 +84,7 @@ body{
 }
 
 .searchHeader{
-	background: #a27cef;
+	background: white;
 }
 
 .searchHeader:after{
@@ -110,8 +109,9 @@ body{
 	height: 40px;
 	text-decoration: none;
 	outline: none;
-	border-style: none;
-	background-color: white;
+	border: none;
+	border-left: none;
+	background-color: #fff;
 	font-size: 18px;
 	vertical-align: middle;
 	border-top-right-radius: 7px;
@@ -123,6 +123,7 @@ body{
 
 .searchBar input[type="text"]:focus{
 	width: 55%;
+
 }
 
 .searchBar input[type="text"]::placeholder{
@@ -136,21 +137,24 @@ body{
 	border-top-left-radius: 7px;
 	border-bottom-left-radius: 7px;
 	background: url(/Merch/img/magnifier.png) no-repeat scroll center;
-  background-color:  white;
-	border-style: none;
+  background-color:  #fff;
+	border:none;
+	border-right: 1px solid #d6d6d6;
   float: left;
+	cursor: pointer;
 }
 
 .filterAndShoppingCart{
 	background: white;
-	padding: 20px;
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
 }
 
 .cartDiv{
 	background-color: white;
 	font-size: 20px;
-	height: 80px;
-	padding: 40px;
+	padding: 20px;
+	height: 90px;
 	align-content: center;
 	text-align: center;
 	vertical-align: middle;
@@ -175,44 +179,42 @@ body{
 }
 
 #shopping_bag{
-	margin: 20px;
 }
 
 .filterDiv{
-	height: 50px;
-	width: 100%;
-	background: white;
-	border-top: 3px solid #f7f7f7;
-}
-
-.filterDiv{
-	text-align: center;
-	vertical-align: middle;
+	width: 13%;
+	float: left;
 	padding-left: 15px;
 	color: #aaaaaa;
+	margin-top:230px;
+	position: fixed;
+
 }
 
 .filterDiv ul li {
-	padding: 15px;
-	display: inline-block;
-	margin: 10px;
-	margin-left: 55px;
+	padding: 20px;
+	list-style-type: none;
 	font-size: 20px;
-
+	cursor: pointer;
 }
 
 .filterDiv ul li:hover {
-	border-radius: 9px;
-	background: #ff68a2;
-	color: white;
-	cursor: pointer;
+	background:#e8e8e8;
 }
 
+.btn img{
+	float: left;
+	margin-right: 20px;
+}
 
-.undo{
-	float: right;
-	padding-top: 20px;
-	cursor: pointer;
+#undoIcon{
+	padding-bottom: 10px;
+}
+
+.line{
+		border-top: solid 1px #d6d6d6;
+		margin-top:5px;
+		margin-bottom: 5px;
 }
 
 #requestModal{
@@ -238,22 +240,41 @@ body{
 }
 
 .main{
-	margin: 0 auto;
-	width: 90%;
+	float: right;
+	width:85%;
 	height: 100%;
-	padding: 10px;
-	padding-left:30px;
-	margin-top: 320px;
+	margin-top:210px;
+	padding-left: 200px;
+}
+
+.main:after{
+	visibility: none;
+	content: " ";
+	clear: both;
+	display: block;
 }
 
 .contentBox{
 	display: inline-block;
 	padding: 20px;
 	background: 	#ffffff;
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
 	border-radius: 5px;
-	width: 20%;
+	width: 26%;
 	margin: 20px;
-	height: 480px;
+	height: 550px;
+}
+
+.headerInBox{
+	height: 50px;
+}
+
+.title{
+	color: rgba(0,0,0,0.87);
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 10px;
 }
 
 .imgWrap{
@@ -274,15 +295,11 @@ body{
 
 .image:hover{
 	opacity: 0.05;
-	-webkit-transition: opacity 0.25s ease-in-out;
-  transition: opacity 0.25s ease-in-out;
+	-webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
-.img_description .title{
-	font-weight: bold;
-	font-size: 25px;
-	margin-bottom: 10px;
-}
+
 
 .img_description .description{
 	margin-bottom: 150px;
@@ -298,24 +315,27 @@ body{
 
 .contentBox footer{
 	height: 10%;
+	padding-top: 20px;
 }
 
 #pricetagIcon{
 	margin:5px;
-	float: left;
+	float: right;
 }
 
 #price{
-	color: #C2C2C2;
+	color:  #aaa;
 	margin-top:7px;
-	font-size: 17px;
-	float: left;
+	margin-right: 7px;
+	font-size: 15px;
+	float: right;
+
 }
 
 #numOfView{
-	color: #C2C2C2;
+	color:  #aaa;
 	margin-top:7px;
-	font-size: 17px;
+	font-size: 15px;
 	float: right;
 }
 

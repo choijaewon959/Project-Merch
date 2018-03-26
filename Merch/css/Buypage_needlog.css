@@ -2,10 +2,11 @@
 	margin: 0;
 	padding: 0;
 	font-family: 'helvetica';
+
 }
 
 body{
-	background: 	#f7f7f7;
+	background: #f5f5f5;
 }
 
 .Logo{
@@ -144,6 +145,8 @@ body{
 .filterAndShoppingCart{
 	background: white;
 	padding: 20px;
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
 }
 
 .cartDiv{
@@ -250,6 +253,8 @@ body{
 	display: inline-block;
 	padding: 20px;
 	background: 	#ffffff;
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
 	border-radius: 5px;
 	width: 20%;
 	margin: 20px;
@@ -274,8 +279,8 @@ body{
 
 .image:hover{
 	opacity: 0.05;
-	-webkit-transition: opacity 0.25s ease-in-out;
-  transition: opacity 0.25s ease-in-out;
+	-webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .img_description .title{
@@ -306,16 +311,18 @@ body{
 }
 
 #price{
-	color: #C2C2C2;
+	color:  #aaa;
 	margin-top:7px;
-	font-size: 17px;
+	font-size: 15px;
+
 	float: left;
 }
 
 #numOfView{
-	color: #C2C2C2;
+	color:  #aaa;
 	margin-top:7px;
-	font-size: 17px;
+	font-size: 15px;
+
 	float: right;
 }
 
