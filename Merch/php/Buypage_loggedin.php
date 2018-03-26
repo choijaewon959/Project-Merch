@@ -69,7 +69,7 @@
 			</div><!--cartDiv-->
 
 		</div><!--filter and Shopping Cart-->
-	</div>
+	</div><!--stickedToTop-->
 
 	<div id="requestModal">
 		<div id="requestContentDiv">
@@ -121,7 +121,8 @@
 	<div class="main">
 		<div class="contentBox">
 			<div class="headerInBox">
-				<div class="title"> Pearson Edition Cognitive Psychology  </div>
+				<div class="title"> Pearson Edition Cognitive Psychology</div>
+				<div class="updatedDate">06 May</div>
 			</div>
 
 			<div class="imgWrap">
@@ -153,6 +154,7 @@
 		<div class="contentBox">
 			<div class="headerInBox">
 				<div class="title"> Pearson Edition Cognitive Psychology  </div>
+				<div class="updatedDate">03 April</div>
 			</div>
 
 			<div class="imgWrap">
@@ -188,6 +190,7 @@
 		<div class="contentBox">
 			<div class="headerInBox">
 				<div class="title"> Science of deadlift  </div>
+				<div class="updatedDate">03 April</div>
 			</div>
 
 			<div class="imgWrap">
@@ -220,6 +223,7 @@
 		<div class="contentBox">
 			<div class="headerInBox">
 				<div class="title"> Killing a mocking bird </div>
+				<div class="updatedDate">03 April</div>
 			</div>
 
 			<div class="imgWrap">
@@ -252,6 +256,7 @@
 		<div class="contentBox">
 			<div class="headerInBox">
 				<div class="title"> Pearson Edition Cognitive Psychology  </div>
+				<div class="updatedDate">03 April</div>
 			</div>
 			<div class="imgWrap">
 				<div class="img_description">
@@ -284,6 +289,7 @@
 		<div class="contentBox">
 			<div class="headerInBox">
 				<div class="title"> Pearson Edition Cognitive Psychology  </div>
+				<div class="updatedDate">25 August</div>
 			</div>
 			<div class="imgWrap">
 				<div class="img_description">
@@ -316,6 +322,7 @@
 		<div class="contentBox">
 			<div class="headerInBox">
 				<div class="title"> Introduction to COMP2123   </div>
+				<div class="updatedDate">03 April</div>
 			</div>
 			<div class="imgWrap">
 				<div class="img_description">
@@ -348,6 +355,7 @@
 		<div class="contentBox">
 			<div class="headerInBox">
 				<div class="title"> Introduction to mech engi  </div>
+				<div class="updatedDate">03 April</div>
 			</div>
 			<div class="imgWrap">
 				<div class="img_description">

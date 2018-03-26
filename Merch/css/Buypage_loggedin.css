@@ -30,6 +30,8 @@ body{
 	top:0;
 	width: 100%;
 	z-index: 1;
+	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.14);
 }
 
 
@@ -146,8 +148,7 @@ body{
 
 .filterAndShoppingCart{
 	background: white;
-	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	border-top: 1px solid #f2f2f2;
 }
 
 .cartDiv{
@@ -268,13 +269,25 @@ body{
 
 .headerInBox{
 	height: 50px;
+
 }
 
-.title{
+.headerInBox .title{
 	color: rgba(0,0,0,0.87);
-	font-size: 16px;
+	font-size: 17px;
 	font-weight: bold;
 	margin-bottom: 10px;
+	width: 80%;
+	float: left;
+	text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.headerInBox .updatedDate{
+
+	float: right;
+	color: #aaa;
 }
 
 .imgWrap{
@@ -298,8 +311,6 @@ body{
 	-webkit-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
 }
-
-
 
 .img_description .description{
 	margin-bottom: 150px;
