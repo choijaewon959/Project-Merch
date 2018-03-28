@@ -5,7 +5,7 @@
 }
 
 body{
-	background: 	white;
+	background: #fff;
 }
 
 .Logo{
@@ -20,14 +20,13 @@ body{
 
 #merchText a{
 	text-decoration: none;
-	color: white;
+	color: #a27cef;
 	font-family: 'Fredoka One', cursive;
 }
 
 .tm-nav{
 	margin-top: 5px;
 	float: right;
-	background: #a27cef;
 	margin-right: 7px;
 }
 
@@ -37,7 +36,7 @@ body{
 
 .tm-nav ul li a{
 	padding: 10px 20px;
-	color: white;
+	color:#c4c4c4;
 	line-height: 50px;
 	font-size: 20px;
 	text-decoration: none;
@@ -52,13 +51,13 @@ body{
 .tm-nav ul li button{
 	padding-left: 10px;
 	padding-right: 10px;
-	background: #a27cef;
 	border:none;
 	outline:none;
-	color: white;
+	color:#c4c4c4;
 	line-height: 40px;
 	font-size: 20px;
 	text-decoration: none;
+	background: white;
 }
 
 .tm-nav ul li button:hover{
@@ -69,7 +68,13 @@ body{
 }
 
 .searchHeader{
-	background: #a27cef;
+	position: fixed;
+	top:0;
+	width: 100%;
+	z-index: 1;
+	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.14);
+	background: #fff;
 }
 
 .searchHeader:after{
@@ -81,6 +86,7 @@ body{
 
 .searchBar{
 	width: 50%;
+
 }
 
 .searchBar input[type="text"]{
@@ -93,8 +99,9 @@ body{
 	height: 40px;
 	text-decoration: none;
 	outline: none;
-	border-style: none;
-	background-color: white;
+	border: none;
+	border-left: none;
+	background-color: #fff;
 	font-size: 18px;
 	vertical-align: middle;
 	border-top-right-radius: 7px;
@@ -106,6 +113,7 @@ body{
 
 .searchBar input[type="text"]:focus{
 	width: 55%;
+
 }
 
 .searchBar input[type="text"]::placeholder{
@@ -119,9 +127,11 @@ body{
 	border-top-left-radius: 7px;
 	border-bottom-left-radius: 7px;
 	background: url(/Merch/img/magnifier.png) no-repeat scroll center;
-  background-color:  white;
-	border-style: none;
+  background-color:  #fff;
+	border:none;
+	border-right: 1px solid #d6d6d6;
   float: left;
+	cursor: pointer;
 }
 
 #requestModal{
@@ -159,6 +169,7 @@ body{
 
 .input-container{
 	margin: 0 auto;
+	margin-top: 70px;
 	padding: 20px;
 	width: 65%;
 }
@@ -173,8 +184,9 @@ body{
 		background: white;
 		width: 30%;
 		height: 700px;
-		border: 1px solid #e6e4e4;
 		border-radius: 7px;
+		-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+		box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
 }
 
 #tips-panel #titleForTips{
@@ -395,22 +407,29 @@ body{
 	margin-bottom: 20px;
 	margin-top: 20px;
 	padding: 5px;
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	outline:none;
+	border:none;
 }
+
 
 .description #textareaTextBox:focus{
 	resize: none;
 	height: 300px;
 	width: 95%;
 	font-size:20px;
+	border: 1px solid  #e6e4e4;
 	border-radius: 7px;
-	outline:none;
-	border:none;
-	border: 1px solid #a27cef;
-	box-shadow: 5px 5px #a27cef;
 	margin-bottom: 20px;
 	margin-top: 20px;
 	padding: 5px;
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	outline:none;
+	border:none;
 }
+
 
 .price{
 	padding-top: 20px;
@@ -436,6 +455,10 @@ body{
 	margin-top: 20px;
 	border-radius: 7px;
 	padding:5px;
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	outline:none;
+	border: none;
 }
 
 .price #priceTextBox:focus{
@@ -444,12 +467,15 @@ body{
 	font-size:100%;
 	outline:none;
 	border: none;
-	border: 1px solid #a27cef;
-	box-shadow: 5px 5px #a27cef;
+	border: 1px solid  #e6e4e4;
 	margin-bottom: 20px;
 	margin-top: 20px;
 	border-radius: 7px;
 	padding:5px;
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	outline:none;
+	border: none;
 }
 
 .quality{
@@ -472,8 +498,6 @@ body{
 	margin-top: 20px;
 }
 
-
-
 .hashtag{
 	margin-bottom: 20px;
 	margin-top: 20px;
@@ -495,6 +519,10 @@ body{
 	margin-bottom: 20px;
 	margin-top: 20px;
 	padding: 5px;
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	outline:none;
+	border: none;
 }
 
 .hashtag #hashtagTextArea:focus{
@@ -503,12 +531,12 @@ body{
 	width: 95%;
 	font-size:20px;
 	border: 1px solid  #e6e4e4;
-	outline:none;
-	border: none;
-	border: 1px solid #a27cef;
-	box-shadow: 5px 5px #a27cef;
 	border-radius: 7px;
 	margin-bottom: 20px;
 	margin-top: 20px;
 	padding: 5px;
+	-webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
+	outline:none;
+	border: none;
 }

@@ -11,7 +11,7 @@ $(function() {
     var $sidebar   = $("#tips-panel"),
         $window    = $(window),
         offset     = $sidebar.offset(),
-        topPadding = 20;
+        topPadding = 90;
 
     $window.scroll(function() {
         if ($window.scrollTop() > offset.top) {

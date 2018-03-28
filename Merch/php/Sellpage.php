@@ -293,7 +293,7 @@
 										<option value = 3 selected > Appliance  </option>
 										<option value = 4 selected > Etc  </option>
 							</select>
-			</div>
+				</div>
 
 				<div class="photo">
 					<label id="photoLabel">Photo</label></br>
@@ -347,7 +347,7 @@
 	</div><!--upload panel-->
 
 
-	</div><!-- input container -->
+</div><!-- input container -->
 
 <!--_Book, Appliance, Clothe button pop-up__________________________________________________________________________________
 <?php
