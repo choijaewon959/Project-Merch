@@ -10,8 +10,7 @@ CREATE TABLE `users` (
   `phone_num` varchar(15) NOT NULL,
   `joindate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
    PRIMARY KEY(`user_id`)
-) ENGINE=MariaDB DEFAULT CHARSET=latin1;
-
+)ENGINE=MariaDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `mycart`(
   `cart_id`int(11) NOT NULL AUTO_INCREMENT,
@@ -24,7 +23,6 @@ CREATE TABLE `sell_product`
 (
   `product_id` int(11) NOT NULL AUTO_INCREMENT ,
   `seller_id` int(11) NOT NULL ,
-  `title` varchar(20) NOT NULL,
   `quality` int(11) NOT NULL,
   `category` varchar(11) NOT NULL,
   `price` int(11) NOT NULL,
@@ -33,6 +31,27 @@ CREATE TABLE `sell_product`
   PRIMARY KEY(`product_id`),
   FOREIGN KEY(`seller_id`) references users(`user_id`)
 );
+CREATE TABLE `hashtag`
+(
+  `hashtag_id` int(11) NOT NULL AUTO_INCREMENT,
+  `hashtag` varchar(50) NOT NULL,
+  `product_id` int(11) NOT null,
+  `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY(`hashtag_id`),
+  FOREIGN KEY (`product_id`) references sell_product(product_id)
+);
+
+CREATE TABLE `request`
+(
+  `request_id` int(10) NOT NULL AUTO_INCREMENT,
+  `request_user_id` int(10) NOT NULL,
+  `request_price` int(10) NOT NULL,
+  `request_category` varchar(10) NOT NULL,
+  `request_description` varchar(20) NOT NULL,
+  PRIMARY KEY(`request_id`),
+  FOREIGN KEY(`request_user_id`) references users(user_id)
+);
+
 CREATE TABLE `book`
 (
   `book_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -44,7 +63,6 @@ CREATE TABLE `book`
 
   PRIMARY KEY(`book_id`),
   FOREIGN KEY (`product_id`) references sell_product(product_id)
-
 );
 CREATE TABLE `clothe`
 (
@@ -65,13 +83,5 @@ CREATE TABLE `appliance`
   `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
   PRIMARY KEY(`appliance_id`),
-  FOREIGN KEY (`product_id`) references sell_product(product_id)
-);
-CREATE TABLE `hashtag`
-(
-  `hashtag_id` int(11) NOT NULL AUTO_INCREMENT,
-  `hashtag` varchar(50) NOT NULL,
-  `product_id` int(11) NOT null,
-  PRIMARY KEY(`hashtag_id`),
   FOREIGN KEY (`product_id`) references sell_product(product_id)
 );

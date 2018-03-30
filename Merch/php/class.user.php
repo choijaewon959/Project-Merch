@@ -119,6 +119,22 @@ class USER
 		$_SESSION['product_id'] = (string)$userRow[sizeof($userRow)-1]['product_id'];
 		return $stmt;
 	}
+	public function addRequest()
+	{
+		$r_category = "";
+		$stmt = $this->conn->prepare("INSERT into request(user_id,category,price,description)
+																	VALUES(:user_id,:category,:price,:description)");
+		if($_SESSION['product_category'] == 1){$r_category = "book";}
+		else if($_SESSION['product_category'] == 2){$r_category = "clothe";}
+		else if($_SESSION['product_category'] == 3){$r_category = "appliance";}
+		else if($_SESSION['product_category'] == 4){$r_category = "etc";}
+		$stmt->bindparam(":user_id",$_SESSION['user_session']);
+		$stmt->bindparam(":category",$p_category);
+		$stmt->bindparam(":description",$_SESSION['product_description']);
+		$stmt->bindparam(":price",$_SESSION['product_price']);
+		$stmt->execute();
+		return $stmt; 
+	}
 	public function addAppliance()
 	{
 		$stmt = $this->conn->prepare("INSERT into appliance(brand,product_id)

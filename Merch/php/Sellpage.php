@@ -104,7 +104,7 @@
 */
 //Below is file i/o________________________________________________________________________________
 	$_SESSION['uploaded'] = 0;
-	if(isset($_POST["image_submit"])) {
+	if(isset($_POST["product_file[]"])) {
 		for($a = 0; $a < sizeof($_FILES["product_image"]["name"]); $a ++)
 		{
 			if($_FILES["product_image"]["error"][$a] == 0)
@@ -289,9 +289,9 @@
 						<select id="categorySelectBar" name="product_category">
 
 										<option value = 1 selected >   </option>
-										<option value = 2 selected > Clothe  </option>
-										<option value = 3 selected > Appliance  </option>
-										<option value = 4 selected > Etc  </option>
+										<option value = 2  > Clothe  </option>
+										<option value = 3  > Appliance  </option>
+										<option value = 4  > Etc  </option>
 							</select>
 				</div>
 
@@ -339,6 +339,8 @@
 			</div>
 
 				<input class="button" type="submit" name= "btn_clear"  value="Clear Detail" action ="sellpage.php" >
+				<br> 
+				<input class="button" type="submit" name= "btn_product_submit"  value="Add Product" action ="sellpage.php" >
 
 			</br>
 		</form>
