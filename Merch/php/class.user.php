@@ -44,7 +44,27 @@ class USER
 		}
 	}
 
-
+	public function checkEmail($umail)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT user_id, user_name, email, user_pass FROM users WHERE email=:umail ");
+			$stmt->execute(array(':umail'=>$umail));
+			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+			if($stmt->rowcount() ==1)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
 	public function doLogin($uname,$umail,$upass)
 	{
 		try
@@ -133,7 +153,7 @@ class USER
 		$stmt->bindparam(":description",$_SESSION['product_description']);
 		$stmt->bindparam(":price",$_SESSION['product_price']);
 		$stmt->execute();
-		return $stmt; 
+		return $stmt;
 	}
 	public function addAppliance()
 	{

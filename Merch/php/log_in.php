@@ -40,7 +40,7 @@
 	    <div class="boxbody">
 					<div class="Logo">
 						<div id="merchText">
-							<a href="">Merch</a>
+							<a href="Buypage_needlog.php">Merch</a>
 						</div>
 					</div>
 						<div class="facebookDiv">
@@ -76,7 +76,7 @@
 						</div>
 
 						<div class="forgotPW">
-							<a href="forgotpassword.php">Forgot password?</a>
+							<a href="findpass.php">Forgot password?</a>
 						</div>
 
 	      </div><!--boxbody-->
