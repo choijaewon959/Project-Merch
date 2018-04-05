@@ -7,6 +7,7 @@ function closeNav() {
     document.getElementById("requested").style.width = "0%";
 }
 
+
 $(function() {
     var $sidebar   = $("#tips-panel"),
         $window    = $(window),

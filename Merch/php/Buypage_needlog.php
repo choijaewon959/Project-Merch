@@ -57,6 +57,7 @@
 				</div><!--cartDiv-->
 			</div>
 		</div><!--stickedToTop-->
+		
 		<div class="filterDiv">
 			<ul>
 				<li>
