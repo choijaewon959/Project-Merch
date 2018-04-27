@@ -1,0 +1,25 @@
+To Do List
+
+Sellpage.php
+  - Image preview / upload
+  -
+Buypage
+  - Image preview
+  - Drag and Drop
+  -
+Findpass
+  - Find Password (i.e. Send password Change URL)
+
+Log_in
+  - Login with Facebook account
+
+Mycart
+  - Display my product
+  - Display my temporary wishlist
+  - 
+
+My page
+  - change password
+  - view my product / change picture or description
+  - view my request / change request
+  - change personal detail
