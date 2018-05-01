@@ -298,14 +298,15 @@
 				<div class="photo">
 					<label id="photoLabel">Photo</label></br>
 					<p id="recommend">Recommended - photograph always gives a much better response<p></br>
-
-					<label for="product_image" class="custom-file-upload">
-						Add a photo
-					</label>
-					<form id="photoUploadPanel" action="sellpage.php" method="post" enctype="multipart/form-data">
-						<input type="file" name="product_image[]" id="product_image" multiple= "multiple">
-						<!--<input type="submit" value="Upload" name="image_submit">-->
+<!--Image IO / Preview ____________________________________________________________________________ -->
+					<form id="photoUploadPanel" action="sellpage.php" onclick=$(function) method="post" enctype="multipart/form-data">
+							<label for="product_image" class="custom-file-upload">
+								Add a photo
+							</label>
+							<input type="file" multiple id="gallery-photo-add">
+							<div class="gallery"></div>
 					</form>
+<!-- ____________________________________________________________________________ -->
 					<p id="addupto">You can add up to 3 images</p>
 				</div>
 
@@ -339,7 +340,7 @@
 			</div>
 
 				<input class="button" type="submit" name= "btn_clear"  value="Clear Detail" action ="sellpage.php" >
-				<br> 
+				<br>
 				<input class="button" type="submit" name= "btn_product_submit"  value="Add Product" action ="sellpage.php" >
 
 			</br>

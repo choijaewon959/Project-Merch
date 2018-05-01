@@ -47,14 +47,7 @@
 						</div>
 					</div>
 		        <form  method="post" action="findpass.php">
-		              <?php
-		      			if(isset($display))
-		      			{
-		      				      ?>
-		                         <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $display; ?>
-		                      <?php
-		      			}
-		      		    ?>
+
 		            <div class="ID">
 									<label id="usernameLabel">
 											Email
@@ -72,6 +65,14 @@
 						<div class="signin">
 							<a href="log_in.php">Log in</a>
 						</div>
+						<?php
+					if(isset($display))
+					{
+									?>
+											 <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $display; ?>
+										<?php
+					}
+						?>
 
 	      </div><!--boxbody-->
 	    </div><!--box-->
