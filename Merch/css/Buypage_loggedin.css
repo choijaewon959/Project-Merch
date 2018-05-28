@@ -240,6 +240,7 @@ body{
     width: 40%;
 		height: 400px;
 		-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
+		transition: bottom ease-out .5s;
 		box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
 		padding : 30px 20px 30px 20px;
 }
@@ -275,6 +276,16 @@ body{
 
 #requestContentDiv #textareaTextBox::placeholder{
   color: #c4c4c4;
+}
+
+#requestContentDiv #priceTextBox{
+	width: 20%;
+	height: 30px;
+	outline:none;
+	resize: none;
+	margin-top:10px;
+	font-size: 20px;
+	padding: 15px;
 }
 
 .main{
@@ -373,10 +384,11 @@ body{
 }
 
 #price{
-	color:  #ed3b3b;
+	color:  #f50057;
 	margin-top:7px;
 	margin-right: 7px;
 	font-size: 17px;
+	font-weight:
 	float: right;
 
 }
