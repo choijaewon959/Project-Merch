@@ -42,7 +42,7 @@
 	<script type="text/javascript" src="../js/Buypage_loggedin.js"></script>
 </head>
 
-<body >
+<body>
 	<div id="stickedToTop">
 		<div class="searchHeader">
 			<div class="Logo">
@@ -95,6 +95,7 @@
 	<div id="requestModal">
 		<div id="requestContentDiv">
 			<form action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
+					<button id= "closeBtn" type="button"></button>
 					<div class = "category">
 						<select id="categorySelectBar" name="product_category">
 										<option value = 1 selected >  </option>
@@ -110,8 +111,7 @@
 						<input id="priceTextBox" type="text" class="form-control" name="request_price" placeholder="price(HKD)" value =<?php if(isset($_SESSION['request_price'])){print_r($_SESSION['request_price']);} ?>>
 				</div>
 				<br>
-				<input class="button" type="submit" name= "btn_request_submit"  value="Add Request" action ="Buypage_loggedin.php" >
-				<button id= "closeBtn" type="button" onclick="document.getElementById('requestModal').style.display='none'">Close</button>
+				<input id="requestSubmit" class="button" type="submit" name= "btn_request_submit"  value="Add Request" action ="Buypage_loggedin.php" >
 			</form>
 		</div>
 	</div><!--requestModal-->

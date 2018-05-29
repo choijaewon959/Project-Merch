@@ -26,6 +26,8 @@ body{
 }
 
 #stickedToTop{
+	background: #fff;
+	height: 0px;
 	position: fixed;
 	top:0;
 	width: 100%;
@@ -107,7 +109,7 @@ body{
   padding-top:3px;
 	padding-bottom: 2px;
 	vertical-align: middle;
-	width:20%;
+	width:55%;
 	height: 40px;
 	text-decoration: none;
 	outline: none;
@@ -123,10 +125,6 @@ body{
   float: left;
 }
 
-.searchBar input[type="text"]:focus{
-	width: 55%;
-
-}
 
 .searchBar input[type="text"]::placeholder{
   color: #c4c4c4;
@@ -155,7 +153,6 @@ body{
 	background-color: white;
 	font-size: 20px;
 	padding: 20px;
-	height: 90px;
 	align-content: center;
 	text-align: center;
 	vertical-align: middle;
@@ -197,6 +194,7 @@ body{
 	list-style-type: none;
 	font-size: 20px;
 	cursor: pointer;
+
 }
 
 .filterDiv ul li:hover {
@@ -238,21 +236,26 @@ body{
 		border-radius: 7px;
     margin: 0px auto;
     width: 40%;
-		height: 400px;
+		height: 0px;
 		-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
-		transition: bottom ease-out .5s;
 		box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
-		padding : 30px 20px 30px 20px;
+		padding : 10px 20px 10px 20px;
 }
 
 #closeBtn{
 	float: right;
-	background: #fff;
-	border : none;
+	width: 30px;
+	height: 30px;
+	background: url('../img/cancel.png') no-repeat center;
+	border: 1px solid;
+	border-color: #fff;
+	border-radius: 50%;
 	outline: none;
 	cursor: pointer;
 	font-size: 20px;
+	margin-bottom: 10px;
 }
+
 
 #categorySelectBar{
 	width: 100%;
@@ -271,7 +274,6 @@ body{
 	resize: none;
 	margin-top:10px;
 	font-size: 20px;
-
 }
 
 #requestContentDiv #textareaTextBox::placeholder{
@@ -279,13 +281,35 @@ body{
 }
 
 #requestContentDiv #priceTextBox{
-	width: 20%;
+	width: 150px;
 	height: 30px;
 	outline:none;
 	resize: none;
 	margin-top:10px;
 	font-size: 20px;
-	padding: 15px;
+	padding-bottom: 5px;
+	float: left;
+	border:none;
+	border-bottom: solid 1px #c4c4c4;
+}
+
+#requestContentDiv #requestSubmit{
+	float: right;
+	padding: 10px;
+	font-size: 20px;
+	background: white;
+	outline: none;
+	border-radius: 5px;
+	border: white;
+	cursor: pointer;
+	color:#c4c4c4;
+	transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+#requestContentDiv #requestSubmit:hover{
+	background-color: #ff9500;
+	color: #fff;
+
 }
 
 .main{
@@ -294,7 +318,6 @@ body{
 	height: 100%;
 	margin-top:210px;
 	padding-left: 200px;
-
 }
 
 .main:after{
@@ -388,9 +411,8 @@ body{
 	margin-top:7px;
 	margin-right: 7px;
 	font-size: 17px;
-	font-weight:
+	font-weight;
 	float: right;
-
 }
 
 #numOfView{

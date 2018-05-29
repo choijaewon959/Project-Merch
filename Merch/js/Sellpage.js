@@ -7,6 +7,29 @@ function closeNav() {
     document.getElementById("requested").style.width = "0%";
 }
 
+
+//Request modal
+
+function requestDivfunction(){
+  var modalcontent = document.getElementById('requestContentDiv');
+  var modal = document.getElementById('requestModal');
+
+  modal.style.display = "block";
+  $(modalcontent).animate({height:'400px'});
+}
+
+window.onclick = function(event) {
+    var modalcontent = document.getElementById('requestContentDiv');
+    var modal = document.getElementById('requestModal');
+    var closebtn = document.getElementById('closeBtn');
+
+    if (event.target == modal || event.target == closebtn) {
+        $(modalcontent).animate({height:'0px'});
+        modal.style.display = "none";
+    }
+}
+
+
 $(function() {
     var $sidebar   = $("#tips-panel"),
         $window    = $(window),

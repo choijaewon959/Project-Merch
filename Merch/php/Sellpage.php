@@ -216,8 +216,25 @@
 
 	<div id="requestModal">
 		<div id="requestContentDiv">
-			request
-			<button type="button" onclick="document.getElementById('requestModal').style.display='none'">Close</button>
+			<form action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
+					<button id= "closeBtn" type="button"></button>
+					<div class = "category">
+						<select id="categorySelectBar" name="product_category">
+										<option value = 1 selected >  </option>
+										<option value = 2  > Clothe  </option>
+										<option value = 3  > Appliance  </option>
+										<option value = 4  > Etc  </option>
+							</select>
+					</div>
+					<div class = "description">
+						<textarea id="textareaTextBox" name="request_description" placeholder="Add Description to your product! "><?php if(isset($_SESSION['request_description'])){echo $_SESSION['request_description'];} ?></textarea>
+					</div>
+				<div class = "price">
+						<input id="priceTextBox" type="text" class="form-control" name="request_price" placeholder="price(HKD)" value =<?php if(isset($_SESSION['request_price'])){print_r($_SESSION['request_price']);} ?>>
+				</div>
+				<br>
+				<input id="requestSubmit" class="button" type="submit" name= "btn_request_submit"  value="Add Request" action ="Buypage_loggedin.php" >
+			</form>
 		</div>
 	</div><!--requestModal-->
 
