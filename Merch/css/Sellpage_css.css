@@ -440,12 +440,13 @@ body{
 		font-weight: bold;
 		color: #a27cef;
     cursor: pointer;
+		transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 .custom-file-upload:hover{
 	border: 1px solid  white;
 	border-radius: 7px;
-	background: #a27cef;
+	background-color: #a27cef;
 	display: inline-block;
 	padding: 15px 15px;
 	font-weight: bold;

@@ -65,7 +65,7 @@
 
 			<nav class="tm-nav">
 					<ul>
-						<li><button id="modalButton" onclick="requestDivfunction();">Request</button></li>
+						<li><button id="modalButton" onclick="requestModalfunction();">Request</button></li>
 						<li><a href="Sellpage.php">Sell</a></li>
 						<li><a href="">My Shopping Bag</a></li>
 						<li><a href="log_out.php?logout=true">Log out</a><li>

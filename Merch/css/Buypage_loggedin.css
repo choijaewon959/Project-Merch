@@ -27,7 +27,7 @@ body{
 
 #stickedToTop{
 	background: #fff;
-	height: 0px;
+	height: 200px;
 	position: fixed;
 	top:0;
 	width: 100%;
@@ -227,7 +227,7 @@ body{
     height: 100%;
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.12); /* Black w/ opacity */
-    padding-top: 60px;
+		padding-top: 70px;
 }
 
 
@@ -235,8 +235,8 @@ body{
     background-color: #fefefe;
 		border-radius: 7px;
     margin: 0px auto;
-    width: 40%;
 		height: 0px;
+    width: 40%;
 		-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
 		box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
 		padding : 10px 20px 10px 20px;
