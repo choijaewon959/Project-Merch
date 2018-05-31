@@ -6,10 +6,14 @@
 	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
 	$active_detail = $stmt->fetch(PDO::FETCH_ASSOC);
-	//print_r($_SESSION);
 	if(!isset($_SESSION['request_category']))
 	{
-		$_SESSION['request_category'] = $_SESSION['request_description'] = $_SESSION['request_price']=  "";
+		$_SESSION['request_category'] = "";
+		$_SESSION['request_price']=  "";
+		$_SESSION['request_quality'] = "";
+		$_SESSION['filter_category'] = "";
+		$_SESSION['filter_price']=  "0";
+		$_SESSION['filter_quality'] = "";
 		unset($_SESSION['product_id']);
 	}
 	$_SESSION['request_error'] = NULL;
@@ -19,7 +23,7 @@
 		{
 			$_SESSION['request_category'] = strip_tags($_POST['request_category']);
 			$_SESSION['request_price'] = strip_tags($_POST['request_price']);
-			$_SESSION['request_description'] = strip_tags($_REQUEST['request_description']);
+			$_SESSION['request_quality'] = strip_tags($_POST['request_quality']);
 			$auth_user->addRequest();
 		}
 		catch(PDOException $e)
@@ -27,6 +31,7 @@
 			$_SESSION['request_error'] = $e;
 		}
 	}
+
 
 ?>
 
@@ -38,8 +43,26 @@
 	<meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/Buypage_loggedin.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script>
+			$(document).ready(function() {
+					alert("wtf");
+					var priceOut = $("#priceOutput");
+					$('#priceSlider').slider({
+							range: true;
+							min : 10;
+							max : 40 ,
+							values: [20,30],
+							slide: function(event, ui){
+									priceOut.html(ui.values[0] + '-' + ui.values[1] +" HKD");
+							}
+					});
+		});
+
+		</script>
 </head>
 
 <body>
@@ -122,6 +145,10 @@
 				<div class="btn">
 					<img src="../img/barcode.png" alt="barcode">
 					<div id="priceSort">price</div>
+					<form id= "filter_price" runat = "server">
+							<span id="priceOutput"></span>
+							<div id="priceSlider"></div>
+					</form>
 				</div>
 				<div class="sortDropDown">
 				</div>
@@ -130,16 +157,23 @@
 				<div class="btn">
 					<img src="../img/medal.png" alt="medal">
 					<div id="qualitySort">quality</div>
+					<br>
+					<form>
+
+					</form>
 				</div>
+
 				<div class="sortDropDown">
 				</div>
 			</li>
 			<li>
 				<div class="btn">
-					<img src="../img/box.png" alt="blocks">
+				<img src="../img/box.png" alt="blocks">
 					<div id="categorySort">category</div>
-				</div>
+					<form>
 
+					</form>
+				</div>
 			</li>
 
 			<div class="line">
@@ -148,7 +182,13 @@
 			<li>
 				<div class="btn">
 						<img id="undoIcon" src="../img/undo.png" alt="undo">
-						<div id="undo">undo</div>
+						<p id="undo">undo</p>
+					<script>
+					document.getElementById("undo").addEventListener("click", undo);
+					function undo() {
+							"<?php 		$_SESSION['filter_category'] = $_SESSION['filter_quality'] = $_SESSION['filter_price']=  ""; ?>"
+					}
+					</script>
 				</div>
 			</li>
 		</ul>
@@ -435,9 +475,9 @@
 		</div>
 
 	</div>
-
-
-
+<?php 	print_r($_SESSION);
+				print_r($_COOKIE);
+?>
 
 
 </body>
