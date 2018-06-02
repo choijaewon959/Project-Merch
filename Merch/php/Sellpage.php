@@ -6,21 +6,17 @@
 	$user_id = $_SESSION['user_session'];
 	$stmt->execute(array(":user_id"=>$user_id));
 	$active_detail=$stmt->fetch(PDO::FETCH_ASSOC);
-
 	$quality  = array("new","used","old");
 	$category = array(" ","Book","clothe","appliance","etc");
 	$size_char_array = array("XS","S","M","L","XL","XXL");
 	//print_r($_SESSION);
 	$hash_arr = array();
-
 	if(!isset($_SESSION['product_category']))
 	{
 		$_SESSION['product_category']  = $_SESSION['product_price'] = $_SESSION['product_quality'] = $_SESSION['product_description'] = $_SESSION['product_hashtag'] = "";
 		unset($_SESSION['product_id']);
 	}
 	$_SESSION['sellpage_error'] =NULL;
-
-
 //______________________________________________________________________________________
 $_SESSION['uploaded'] = 0 ;
 $counter = 0 ;
@@ -34,7 +30,6 @@ $error_displayed = false;
 			$_SESSION['product_quality'] = strip_tags($_POST['product_quality']);
 			$_SESSION['product_description'] = strip_tags($_REQUEST['product_description']);
 			$_SESSION['product_hashtag'] = strip_tags($_REQUEST['product_hashtag']);
-
 			$_SESSION['uploaded'] = 0;
 			$len = sizeof($_FILES["files"]["name"]);
 		  for($a = 0; $a < $len; $a ++)
@@ -45,15 +40,13 @@ $error_displayed = false;
 		        $image_file = $file_dir . basename($_FILES["files"]["name"][$a]);
 		        $imageFileType = strtolower(pathinfo($image_file,PATHINFO_EXTENSION));
 		        $allowed = array("image/jpg" => "jpg", "image/jpeg" => "jpeg", "image/gif" => "gif", "image/png" => "png");
-		        $product__id = $_SESSION['product_id'];
-		        $product__id = $product__id +1;
+		        $product_id = $_SESSION['product_id'];
 		        $image_type = $_FILES["files"]["type"][$a];
 		        // image name is set as seller_id + category + product id + photo sequence number
-		        $image_name = (string)$_SESSION['user_session']."_".(string)$_SESSION["product_category"]."_".(string)$product__id."_".(string)$a.'.'.$allowed[$image_type];
-		        $name_tmp = (string)$_SESSION['user_session']."_".(string)$product__id."_".(string)$a;
+		        $image_name = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string).$_SESSION["product_category"]."_".(string)$a.'.'.$allowed[$image_type];
+		        $name_tmp = (string)$_SESSION['user_session']."_".(string)$product_id."_".$_SESSION["product_category"]."_".(string)$a;
 		        $image_size = $_FILES["files"]["size"][$a];
 		        $check = getimagesize($_FILES["files"]["tmp_name"][$a]);
-
 		    if ($image_size > 500000) {
 						echo "<script type='text/javascript'>alert('Sorry, your file is too large. Please provide an image lower than 5MB');</script>";
 		        unset($_SESSION['uploaded']);
@@ -78,9 +71,6 @@ $error_displayed = false;
 		        if (move_uploaded_file($_FILES["files"]["tmp_name"][$a], "C:\\xampp\\htdocs\\Merch\\Database\\image\\".$image_name))
 		        {
 							$counter = $counter +1 ;
-							$auth_user->addProduct();
-							$hash_arr = $auth_user->convert_hashtag();
-							$auth_user->addHashtag($hash_arr);
 		        }
 		        else {
 								echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
@@ -92,6 +82,9 @@ $error_displayed = false;
 			if($counter == $len){
 				echo "<script type='text/javascript'>alert('Product Succesfully Uploaded');</script>";
 				$counter = 0 ;
+				$auth_user->addProduct();
+				$hash_arr = $auth_user->convert_hashtag();
+				$auth_user->addHashtag($hash_arr);
 			}
 			else if($error_displayed != true){
 				echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";

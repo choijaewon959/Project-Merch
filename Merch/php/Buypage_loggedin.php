@@ -34,6 +34,7 @@
 	}
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -49,26 +50,6 @@
 	<script type="text/javascript" src="../js/Buypage_loggedin.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
-/*
-$(document).ready(function() {
-    var priceOut = $("#priceOutput");
-    $('#priceSlider').slider({
-        range: true,
-        min : 0,
-        max : 100 ,
-        values: [0,100],
-        slide: function(event, ui){
-            priceOut.html(ui.values[0] + '-' + ui.values[1] +" HKD");
-        }
-    });
-		document.getElementById("undo").addEventListener("click", undo);
-		function undo() {
-				var trigger = true;
-				document.cookie = "trigger=true";
-			 "<?php if($_COOKIE['trigger']){ ?>"
-			"<?php $_SESSION['filter_price_max'] = $_SESSION['filter_price_min'] = $_SESSION['filter_quality'] = $_SESSION['filter_category'] = "";}?>"
-		}
-}); */
 	$(document).ready(function(){
 		var target = document.getElementById("main");
 		var xhr = new XMLHttpRequest();
@@ -224,7 +205,6 @@ $(document).ready(function() {
 				</div>
 			</li>
 		</ul>
-
 	</div><!--fileterDiv-->
 
 
@@ -507,9 +487,7 @@ $(document).ready(function() {
 		</div>
 
 	</div>
-<?php 	print_r($_SESSION);
-				print_r($_COOKIE);
-?>
+
 
 
 </body>
