@@ -11,9 +11,10 @@
 		$_SESSION['request_category'] = "";
 		$_SESSION['request_price']=  "";
 		$_SESSION['request_quality'] = "";
-		$_SESSION['filter_category'] = "";
-		$_SESSION['filter_price']=  "0";
-		$_SESSION['filter_quality'] = "";
+		$_SESSION['filter_category'] = "1";
+		$_SESSION['filter_price_min']=  "0";
+		$_SESSION['filter_price_max']=  "100";
+		$_SESSION['filter_quality'] = "2";
 		unset($_SESSION['product_id']);
 	}
 	$_SESSION['request_error'] = NULL;
@@ -47,22 +48,53 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/Buypage_loggedin.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script>
-			$(document).ready(function() {
-					alert("wtf");
-					var priceOut = $("#priceOutput");
-					$('#priceSlider').slider({
-							range: true;
-							min : 10;
-							max : 40 ,
-							values: [20,30],
-							slide: function(event, ui){
-									priceOut.html(ui.values[0] + '-' + ui.values[1] +" HKD");
-							}
-					});
-		});
+<script>
+/*
+$(document).ready(function() {
+    var priceOut = $("#priceOutput");
+    $('#priceSlider').slider({
+        range: true,
+        min : 0,
+        max : 100 ,
+        values: [0,100],
+        slide: function(event, ui){
+            priceOut.html(ui.values[0] + '-' + ui.values[1] +" HKD");
+        }
+    });
+		document.getElementById("undo").addEventListener("click", undo);
+		function undo() {
+				var trigger = true;
+				document.cookie = "trigger=true";
+			 "<?php if($_COOKIE['trigger']){ ?>"
+			"<?php $_SESSION['filter_price_max'] = $_SESSION['filter_price_min'] = $_SESSION['filter_quality'] = $_SESSION['filter_category'] = "";}?>"
+		}
+}); */
+	$(document).ready(function(){
+		var target = document.getElementById("main");
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET','display_product.php',true);
+		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		if(xhr.readyState == 4 && xhr.status == 200){
+				var result = xhr.responseText ;
+				console.log(result);
+				var json = JSON.parse(xhr.responseText);
+				append_product(target,result);
+			}
+		}
+	});
+	function append_product(div,product_html){
+		var temp = document.createElement('div');
+		temp.innerHTML = product_html ;
+		var class_name = temp.firstElementChild.className ;
+		var items = temp.getElementByClassName(class_name);
 
-		</script>
+		var len = items.length ;
+		for(i = 0 ; i <len ; i ++){
+			div.appendChild(items[0]);
+		}
+	}
+
+</script>
 </head>
 
 <body>
@@ -158,8 +190,10 @@
 					<img src="../img/medal.png" alt="medal">
 					<div id="qualitySort">quality</div>
 					<br>
-					<form>
-
+					<form action="Buypage_loggedin.php">
+					  <input type="radio" name="quality" value="New"> New<br>
+					  <input type="radio" name="quality" value="Used"> Used<br>
+					  <input type="radio" name="quality" value="Old"> Old
 					</form>
 				</div>
 
@@ -170,8 +204,12 @@
 				<div class="btn">
 				<img src="../img/box.png" alt="blocks">
 					<div id="categorySort">category</div>
-					<form>
-
+					<br>
+					<form action="Buypage_loggedin.php">
+					  <input type="radio" name="category" value="Book"> Book<br>
+					  <input type="radio" name="category" value="Clothe"> Clothe<br>
+					  <input type="radio" name="category" value="Appliance"> Appliance <br>
+						<input type="radio" name="category" value="Etc"> Etc <br>
 					</form>
 				</div>
 			</li>
@@ -183,12 +221,6 @@
 				<div class="btn">
 						<img id="undoIcon" src="../img/undo.png" alt="undo">
 						<p id="undo">undo</p>
-					<script>
-					document.getElementById("undo").addEventListener("click", undo);
-					function undo() {
-							"<?php 		$_SESSION['filter_category'] = $_SESSION['filter_quality'] = $_SESSION['filter_price']=  ""; ?>"
-					}
-					</script>
 				</div>
 			</li>
 		</ul>
