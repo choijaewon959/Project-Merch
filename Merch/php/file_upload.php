@@ -31,12 +31,11 @@
  ?>
 
 <?php
-$output = '';
 $_SESSION['uploaded'] = 0;
 if(isset($_POST["files[]"])) {
-  for($a = 0; $a < sizeof($_FILES["files"]["name"]); $a ++)
+  for($a = 0; $a < sizeof($_FILES["product_image"]["name"]); $a ++)
   {
-    if($_FILES["files"]["error"][$a] == 0)
+    if($_FILES["product_image"]["error"][$a] == 0)
     {
         $file_dir = "uploads/";
         $image_file = $file_dir . basename($_FILES["product_image"]["name"][$a]);
@@ -87,15 +86,16 @@ if(isset($_POST["files[]"])) {
     if ($_SESSION['uploaded'] == 0) {
         echo "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["product_image"]["tmp_name"][$a], "C:\\xampp\\htdocs\\Merch\\Database\\image\\".$image_name)) {
-          $output .= '<img src ='.$targetPath.'"width = 150 px height = 150p>"';
-        } else {
+    }
+    else {
+        if (move_uploaded_file($_FILES["product_image"]["tmp_name"][$a], "C:\\xampp\\htdocs\\Merch\\Database\\image\\".$image_name))
+        {
+        }
+        else {
             echo "Sorry, there was an error uploading your file.";
         }
       }
+    }
   }
-}
-echo $output ;
 }
 ?>

@@ -114,15 +114,14 @@ class USER
 	public function addProduct()
 	{
 		$p_category = "";
-		$stmt = $this->conn->prepare("INSERT into sell_product(seller_id,title,quality,category,price,description)
-																	VALUES(:seller_id,:title,:quality,:category,:price,:description)");
+		$stmt = $this->conn->prepare("INSERT into sell_product(seller_id,quality,category,price,description)
+																	VALUES(:seller_id,:quality,:category,:price,:description)");
 		if($_SESSION['product_category'] == 1){$p_category = "book";}
 		else if($_SESSION['product_category'] == 2){$p_category = "clothe";}
 		else if($_SESSION['product_category'] == 3){$p_category = "appliance";}
 		else if($_SESSION['product_category'] == 4){$p_category = "etc";}
 
 		$stmt->bindparam(":seller_id",$_SESSION['user_session']);
-		$stmt->bindparam(":title",$_SESSION['product_title']);
 		$stmt->bindparam(":quality",$_SESSION['product_quality']);
 		$stmt->bindparam(":category",$p_category);
 		$stmt->bindparam(":description",$_SESSION['product_description']);
