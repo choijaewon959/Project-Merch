@@ -52,9 +52,9 @@
 					alert("wtf");
 					var priceOut = $("#priceOutput");
 					$('#priceSlider').slider({
-							range: true;
-							min : 10;
-							max : 40 ,
+							range: true,
+							min : 10,
+							max : 40,
 							values: [20,30],
 							slide: function(event, ui){
 									priceOut.html(ui.values[0] + '-' + ui.values[1] +" HKD");
@@ -62,7 +62,7 @@
 					});
 		});
 
-		</script>
+ 	</script>
 </head>
 
 <body>
