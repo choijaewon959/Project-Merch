@@ -6,179 +6,115 @@
 	$user_id = $_SESSION['user_session'];
 	$stmt->execute(array(":user_id"=>$user_id));
 	$active_detail=$stmt->fetch(PDO::FETCH_ASSOC);
-
 	$quality  = array("new","used","old");
 	$category = array(" ","Book","clothe","appliance","etc");
 	$size_char_array = array("XS","S","M","L","XL","XXL");
 	//print_r($_SESSION);
 	$hash_arr = array();
-
 	if(!isset($_SESSION['product_category']))
 	{
-		$_SESSION['product_category'] = $_SESSION['product_title'] = $_SESSION['product_price'] = $_SESSION['product_quality'] = $_SESSION['product_description'] = $_SESSION['product_hashtag'] = "";
+		$_SESSION['product_category']  = $_SESSION['product_price'] = $_SESSION['product_quality'] = $_SESSION['product_description'] = $_SESSION['product_hashtag'] = "";
 		unset($_SESSION['product_id']);
 	}
 	$_SESSION['sellpage_error'] =NULL;
 //______________________________________________________________________________________
-
+$_SESSION['uploaded'] = 0 ;
+$counter = 0 ;
+$error_displayed = false;
 	if(isset($_POST['btn_product_submit']))
 	{
 		try
 		{
 			$_SESSION['product_category'] = strip_tags($_POST['product_category']);
-			$_SESSION['product_title'] = strip_tags($_POST['product_title']);
 			$_SESSION['product_price'] = strip_tags($_POST['product_price']);
 			$_SESSION['product_quality'] = strip_tags($_POST['product_quality']);
 			$_SESSION['product_description'] = strip_tags($_REQUEST['product_description']);
 			$_SESSION['product_hashtag'] = strip_tags($_REQUEST['product_hashtag']);
-
-/*
-	Declare Session Variables
-			$_SESSION['book_edition'] = $_SESSION['book_author'] =$_SESSION['book_subject'] = NULL;
-			$_SESSION['clothe_brand'] =  $_SESSION['clothe_size_num'] = $_SESSION['clothe_size_char'] = NULL;
-			$_SESSION['appliance_brand'] =NULL;
-*/
-		$auth_user->addProduct();
-		$hash_arr = $auth_user->convert_hashtag();
-		$auth_user->addHashtag($hash_arr);
-
+			$_SESSION['uploaded'] = 0;
+			$len = sizeof($_FILES["files"]["name"]);
+		  for($a = 0; $a < $len; $a ++)
+		  {
+		    if($_FILES["files"]["error"][$a] == 0)
+		    {
+		        $file_dir = "uploads/";
+		        $image_file = $file_dir . basename($_FILES["files"]["name"][$a]);
+		        $imageFileType = strtolower(pathinfo($image_file,PATHINFO_EXTENSION));
+		        $allowed = array("image/jpg" => "jpg", "image/jpeg" => "jpeg", "image/gif" => "gif", "image/png" => "png");
+		        $product_id = $_SESSION['product_id'];
+		        $image_type = $_FILES["files"]["type"][$a];
+		        // image name is set as seller_id + category + product id + photo sequence number
+		        $image_name = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string).$_SESSION["product_category"]."_".(string)$a.'.'.$allowed[$image_type];
+		        $name_tmp = (string)$_SESSION['user_session']."_".(string)$product_id."_".$_SESSION["product_category"]."_".(string)$a;
+		        $image_size = $_FILES["files"]["size"][$a];
+		        $check = getimagesize($_FILES["files"]["tmp_name"][$a]);
+		    if ($image_size > 500000) {
+						echo "<script type='text/javascript'>alert('Sorry, your file is too large. Please provide an image lower than 5MB');</script>";
+		        unset($_SESSION['uploaded']);
+		        $_SESSION['uploaded'] = 0;
+						$error_displayed = true;
+		    }
+				else if(!array_key_exists($image_type, $allowed))
+		    {
+						echo "<script type='text/javascript'>alert('Error: Please select a valid file format.');</script>";
+						$error_displayed = true;
+		    }
+				else{
+					$_SESSION['uploaded'] = 1;
+				}
+		    // Check if $_SESSION['uploaded'] is set to 0 by an error
+		    if ($_SESSION['uploaded'] == 0) {
+					echo "<script type='text/javascript'>alert('Sorry, your file was not uploaded.');</script>";
+					$error_displayed = true;
+		    // if everything is ok, try to upload file
+		    }
+		    else {
+		        if (move_uploaded_file($_FILES["files"]["tmp_name"][$a], "C:\\xampp\\htdocs\\Merch\\Database\\image\\".$image_name))
+		        {
+							$counter = $counter +1 ;
+		        }
+		        else {
+								echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
+								$error_displayed = true;
+		        }
+		      }
+		    }
+		  }
+			if($counter == $len){
+				echo "<script type='text/javascript'>alert('Product Succesfully Uploaded');</script>";
+				$counter = 0 ;
+				$auth_user->addProduct();
+				$hash_arr = $auth_user->convert_hashtag();
+				$auth_user->addHashtag($hash_arr);
+			}
+			else if($error_displayed != true){
+				echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
+			}
 		}
 		catch (PDOException $e)
 		{
 			$_SESSION['sellpage_error'] = $e;
 		}
 	}
-// clear button
 	if(isset($_POST['btn_clear']))
 	{
-		$_SESSION['product_title']= $_SESSION['product_category'] = $_SESSION['product_price'] =  $_SESSION['product_quality'] = $_SESSION['product_description'] = "";
-	}
-/*
-	Submit button for book, clothe appliance
-	if(isset($_POST['btn_book_submit']))
-	{
-		try{
-			$_SESSION['book_edition'] = strip_tags($_POST['book_edition']);
-			$_SESSION['book_author'] = strip_tags($_POST['book_author']);
-			$_SESSION['book_subject'] = strip_tags($_POST['book_subject']);
-			$auth_user->addBook();
-
-		}
-		catch(PDOException $e){
-				$_SESSION['sellpage_error'] = $e;
-				//print_r($e);
-		}
-	}
-
-	else if(isset($_POST['btn_clothe_submit']))
-	{
-		try{
-
-				$_SESSION['clothe_size_num'] = strip_tags($_POST['clothe_size_num']);
-				$_SESSION['clothe_size_char'] = strip_tags($_POST['clothe_size_char']);
-
-				$auth_user->addProduct();
-				$auth_user->addClothe();
-
-				}
-		catch(PDOException $e	){
-			$_SESSION['sellpage_error'] = $e;
-			//print_r($e);
-		}
-	}
-
-	else if(isset($_POST['btn_appliance_submit']))
-	{
-		try{
-				$_SESSION['appliance_brand'] = strip_tags($_POST['appliance_brand']);
-
-				$auth_user->addProduct();
-				$auth_user->addAppliance();
-
-				}
-		catch(PDOException $e	){
-			$_SESSION['sellpage_error'] = $e;
-			//print_r($e);
-		}
-	}
-*/
-//Below is file i/o________________________________________________________________________________
-	$_SESSION['uploaded'] = 0;
-	if(isset($_POST["product_file[]"])) {
-		for($a = 0; $a < sizeof($_FILES["product_image"]["name"]); $a ++)
-		{
-			if($_FILES["product_image"]["error"][$a] == 0)
-			{
-					$file_dir = "uploads/";
-					$image_file = $file_dir . basename($_FILES["product_image"]["name"][$a]);
-					$imageFileType = strtolower(pathinfo($image_file,PATHINFO_EXTENSION));
-					$allowed = array("image/jpg" => "jpg", "image/jpeg" => "jpeg", "image/gif" => "gif", "image/png" => "png");
-					$product__id = $_SESSION['product_id'];
-					$product__id = $product__id +1;
-					$image_type = $_FILES["product_image"]["type"][$a];
-					// image name is set as seller_id + product id + photo sequence number
-					$image_name = (string)$_SESSION['user_session']."_".(string)$product__id."_".(string)$a.'.'.$allowed[$image_type];
-					$name_tmp = (string)$_SESSION['user_session']."_".(string)$product__id."_".(string)$a;
-					$image_size = $_FILES["product_image"]["size"][$a];
-				  $check = getimagesize($_FILES["product_image"]["tmp_name"][$a]);
-
-			    if($check !== false) {
-			        echo "File is an image - " . $check["mime"] . ".";
-							unset($_SESSION['uploaded']);
-			        $_SESSION['uploaded'] = 1;
-			    } else {
-			        echo "File is not an image.";
-							unset($_SESSION['uploaded']);
-			        $_SESSION['uploaded'] = 0;
-			    }
-
-			if (file_exists($image_file)) {
-			    echo "Sorry, file already exists.";
-					unset($_SESSION['uploaded']);
-					$_SESSION['uploaded'] = 0;
-			}
-			if ($image_size > 500000) {
-			    echo "Sorry, your file is too large.";
-					unset($_SESSION['uploaded']);
-					$_SESSION['uploaded'] = 0;
-			}
-		  if(!array_key_exists($image_type, $allowed))
-			{
-					echo "Error: Please select a valid file format.";
-			}
-			foreach($allowed as $b => $c)
-			{
-				$dir = "..\\Database\\image\\".$name_tmp.'.'.$c;
-				echo $dir;
-				if(file_exists($dir))
-				{
-					unlink($dir);
-				}
-			}
-			// Check if $_SESSION['uploaded'] is set to 0 by an error
-			if ($_SESSION['uploaded'] == 0) {
-			    echo "Sorry, your file was not uploaded.";
-			// if everything is ok, try to upload file
-			} else {
-			    if (move_uploaded_file($_FILES["product_image"]["tmp_name"][$a], "C:\\xampp\\htdocs\\Merch\\Database\\image\\".$image_name)) {
-			        echo "The file ". basename( $_FILES["product_image"]["name"][$a]). " has been uploaded.";
-			    } else {
-			        echo "Sorry, there was an error uploading your file.";
-			    }
-				}
-		}
-	}
+		$_SESSION['product_category'] = $_SESSION['product_price'] =  $_SESSION['product_quality'] = $_SESSION['product_description'] = $_SESSION["product_hashtag"]= "";
+		$max_no_img = sizeof($_FILES['files']['name']);
+		for($i=1; $i <= $max_no_img; $i++) {
+    	if(empty($_FILES['images']['name'][$i])) {
+        continue;
+    }
 }
+	}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Sell_main</title>
-	<link rel="stylesheet" type="text/css" href="../css/Sellpage_css.css">
+	<link rel="stylesheet" type="text/css" href="../css/Sellpage.css">
 	<meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">	</script>
 	<script type="text/javascript" src="../js/Sellpage.js"></script>
 
 </head>
@@ -220,7 +156,8 @@
 					<button id= "closeBtn" type="button"></button>
 					<div class = "category">
 						<select id="categorySelectBar" name="product_category">
-										<option value = 1 selected >  </option>
+										<option value = 0 selected >  </option>
+										<option value = 1  > Book </option>
 										<option value = 2  > Clothe  </option>
 										<option value = 3  > Appliance  </option>
 										<option value = 4  > Etc  </option>
@@ -304,31 +241,30 @@
 				<div class = "category">
 						<label id="categoryLabel">Category</label></br>
 						<select id="categorySelectBar" name="product_category">
-
-										<option value = 1 selected >   </option>
+										<option value = 0  selected>   </option>
+										<option value = 1  > Book </option>
 										<option value = 2  > Clothe  </option>
 										<option value = 3  > Appliance  </option>
 										<option value = 4  > Etc  </option>
 							</select>
 				</div>
-
 				<div class="photo">
 					<label id="photoLabel">Photo</label></br>
 					<p id="recommend">Recommended - photograph always gives a much better response<p></br>
+
 <!--Image IO / Preview ____________________________________________________________________________ -->
-					<form id="photoUploadPanel" action="sellpage.php" onclick=$(function) method="post" enctype="multipart/form-data">
+		<form id="photoUploadPanel" action="sellpage.php" method="post" enctype="multipart/form-data">
 							<label for="product_image" class="custom-file-upload">
 								Add a photo
 							</label>
-							<input type="file" multiple id="gallery-photo-add">
-							<div class="gallery"></div>
-					</form>
-<!-- ____________________________________________________________________________ -->
+							<br>
+							<div id="preview">
+							</div>
 					<p id="addupto">You can add up to 3 images</p>
+<!-- ____________________________________________________________________________ -->
 				</div>
-
-
 				<div class="description">
+					<input type = "file" multiple name=files[] id = "files" >
 					<label id="descriptionLabel">Description</label></br>
 					<textarea id="textareaTextBox" name="product_description" placeholder="Add Description to your product! "><?php if(isset($_SESSION['product_description'])){echo $_SESSION['product_description'];} ?></textarea>
 				</div>
@@ -356,7 +292,7 @@
 				<textarea id="hashtagTextArea" name="product_hashtag" placeholder="Add Hashtags to your product!"><?php if(isset($_SESSION['product_hashtag'])){echo $_SESSION['product_hashtag'];} ?></textarea>
 			</div>
 
-				<input class="button" type="submit" name= "btn_clear"  value="Clear Detail" action ="sellpage.php" >
+				<input class="button" type="submit" name= "btn_clear" id ="clear"  value="Clear Detail" action ="sellpage.php" >
 				<br>
 				<input class="button" type="submit" name= "btn_product_submit"  value="Add Product" action ="sellpage.php" >
 
@@ -368,58 +304,6 @@
 
 
 </div><!-- input container -->
-
-<!--_Book, Appliance, Clothe button pop-up__________________________________________________________________________________
-<?php
-		if($_SESSION['product_category'] == "1")
-		{
-			?>
-				 <form action="Sellpage.php" method="post" enctype="multipart/form-data">
-				 <div class="edition">
-				 	<input id="textareaTextBox" name="book_edition" placeholder="edition" value =<?php if(isset($_SESSION['book_edition'])){echo $_SESSION['book_edition'];} ?> ></input>
-				 </div>
-				 <div class="author">
-				<input id="textareaTextBox" name="book_author" placeholder="author" value =<?php if(isset($_SESSION['book_author'])){echo $_SESSION['book_author'];} ?> ></input>
-				 </div>
-				 <div class="subject">
-					<input id="textareaTextBox" name="book_subject" placeholder="subject" value =<?php if(isset($_SESSION['book_subject'])){echo $_SESSION['book_subject'];} ?> ></input>
-				 </div>
-				 <input class="button" type="submit" name= "btn_book_submit"  value="Book Submit" >
-				 </form>
-<?php	}
-		else if($_SESSION['product_category'] == "2")
-		{
-
-			?>
-			<form action="Sellpage.php" method="post" enctype="multipart/form-data">
-			 	<div class="size_char">
-				 	<label name=size_char> Size in Char </br> </label>
-	<?php 		for($z =0 ; $z<sizeof($size_char_array); $z ++)
-						{ 																																	?>
-								<label ="new"> <?php echo $size_char_array[$z] ;?> </label>
-								<input type="radio" name="clothe_size_char" value = <?php echo $z; ?> <?php if((int)$_SESSION['clothe_size_char'] == $z && isset($_SESSION['clothe_size_char'])){ echo 'checked';}?>>
-	<?php			}																																		?>
-			 </div>
-			 <div class="size_num">
-				 <input id="textareaTextBox" name="clothe_size_num" placeholder="clothe number size" value =<?php if(isset($_SESSION['clothe_size_num'])){echo $_SESSION['clothe_size_num'];} ?> ></input>
-			 </div>
-			 <input class="button" type="submit" name= "btn_clothe_submit"  value="Clothe Submit" >
-			 </form>
-<?php }
-		else if($_SESSION['product_category'] == "3")
-		{
-			?>
-			<form action="Sellpage.php" method="post" enctype="multipart/form-data">
-				<div class="appliace_brand">
-						<input id="textareaTextBox" name="appliance_brand" placeholder="appliance brand" value =<?php if(isset($_SESSION['appliance_brand'])){echo $_SESSION['appliance_brand'];} ?> ></input>
-				</div>
-				<input class="button" type="submit" name= "btn_appliance_submit"  value="appliance Submit" >
-			</form>
-<?php	}
-?>
-
-Pop-up comment end-->
-
-
 </body>
+
 </html>

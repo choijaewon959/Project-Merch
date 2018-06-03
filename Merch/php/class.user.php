@@ -2,40 +2,30 @@
 require_once('../Database/dbconfig.php');
 class USER
 {
-
 	private $conn;
-
 	public function __construct()
 	{
 		$database = new Database();
 		$db = $database->dbConnection();
 		$this->conn = $db;
     }
-
 	public function runQuery($sql)
 	{
 		$stmt = $this->conn->prepare($sql);
 		return $stmt;
 	}
-
-
 	public function register($uname,$umail,$upass,$phone_num)
-
 	{
 		try
 		{
 			$new_password = password_hash($upass, PASSWORD_DEFAULT);
 			$stmt = $this->conn->prepare("INSERT INTO users(user_name,email,user_pass,phone_num)
 		                                               VALUES(:uname, :umail, :upass, :phone_num)");
-
-
 			$stmt->bindparam(":uname", $uname);
 			$stmt->bindparam(":umail", $umail);
 			$stmt->bindparam(":upass", $new_password);
 			$stmt->bindparam(":phone_num",$phone_num);
-
 			$stmt->execute();
-
 			return $stmt;
 		}
 		catch(PDOException $e)
@@ -43,7 +33,6 @@ class USER
 			echo $e->getMessage();
 		}
 	}
-
 	public function checkEmail($umail)
 	{
 		try
@@ -90,7 +79,6 @@ class USER
 			echo $e->getMessage();
 		}
 	}
-
 	public function is_loggedin()
 	{
 		if(isset($_SESSION['user_session']))
@@ -98,13 +86,11 @@ class USER
 			return true;
 		}
 	}
-
 	public function redirect($url)
 	{
 		header("Location: $url");
 		exit();
 	}
-
 	public function doLogout()
 	{
 		session_destroy();
@@ -114,25 +100,21 @@ class USER
 	public function addProduct()
 	{
 		$p_category = "";
-		$stmt = $this->conn->prepare("INSERT into sell_product(seller_id,title,quality,category,price,description)
-																	VALUES(:seller_id,:title,:quality,:category,:price,:description)");
+		$stmt = $this->conn->prepare("INSERT into sell_product(seller_id,quality,category,price,description)
+																	VALUES(:seller_id,:quality,:category,:price,:description)");
 		if($_SESSION['product_category'] == 1){$p_category = "book";}
 		else if($_SESSION['product_category'] == 2){$p_category = "clothe";}
 		else if($_SESSION['product_category'] == 3){$p_category = "appliance";}
 		else if($_SESSION['product_category'] == 4){$p_category = "etc";}
-
 		$stmt->bindparam(":seller_id",$_SESSION['user_session']);
-		$stmt->bindparam(":title",$_SESSION['product_title']);
 		$stmt->bindparam(":quality",$_SESSION['product_quality']);
 		$stmt->bindparam(":category",$p_category);
 		$stmt->bindparam(":description",$_SESSION['product_description']);
 		$stmt->bindparam(":price",$_SESSION['product_price']);
 		$stmt->execute();
-
 		$stmt = $this->conn->prepare("SELECT product_id FROM sell_product WHERE seller_id =:seller_id");
 		$stmt->execute(array(':seller_id'=>$_SESSION['user_session']));
 		$userRow=$stmt->fetchAll(PDO::FETCH_ASSOC);
-
 		if(isset($_SESSION['product_id']))
 		{unset($_SESSION['product_id']);}
 		$_SESSION['product_id'] ="";
@@ -155,55 +137,7 @@ class USER
 		$stmt->execute();
 		return $stmt;
 	}
-	public function addAppliance()
-	{
-		$stmt = $this->conn->prepare("INSERT into appliance(brand,product_id)
-																	VALUES(:brand,:product_id)");
 
-		$stmt->bindparam(":product_id", $_SESSION['product_id']);
-		$stmt->bindparam(":brand", $_SESSION['appliance_brand']);
-		$stmt->execute();
-		return $stmt;
-
-	}
-	public function addBook()
-	{
-		try{
-			$stmt = $this->conn->prepare("INSERT into book(edition,subject,author,product_id)
-																		VALUES(:edition,:subject,:author,:product_id)");
-			$stmt->bindparam(":edition", $_SESSION['book_edition']);
-			$stmt->bindparam(":subject", $_SESSION['book_subject']);
-			$stmt->bindparam(":author", $_SESSION['book_author']);
-			$stmt->bindparam(":product_id", $_SESSION['product_id']);
-			$stmt->execute();
-			return $stmt;
-		}
-		catch(PDOException $e)
-		{
-			print_r($e);
-		}
-	}
-	public function addClothe()
-	{
-		$clothe_char ;
-		$stmt = $this->conn->prepare("INSERT into clothe(size_char,size_num,product_id)
-																	VALUES(:size_char,:size_num,:product_id)");
-		if($_SESSION['clothe_size_char'] == 0){$clothe_char = "XS";}
-		else if($_SESSION['clothe_size_char'] == 1){$clothe_char = "S";}
-		else if($_SESSION['clothe_size_char'] == 2){$clothe_char = "M";}
-		else if($_SESSION['clothe_size_char'] == 3){$clothe_char = "L";}
-		else if($_SESSION['clothe_size_char'] == 4){$clothe_char = "XL";}
-		else if($_SESSION['clothe_size_char'] == 5){$clothe_char = "XXL";}
-
-		$stmt->bindparam(":size_char", $clothe_char);
-		$stmt->bindparam(":size_num", $_SESSION['clothe_size_num']);
-		$stmt->bindparam(":product_id", $_SESSION['product_id']);
-
-		$stmt->execute();
-		return $stmt;
-
-
-	}
 	public function convert_hashtag()
 	{
 		$hash_arr = array();
@@ -225,8 +159,82 @@ class USER
 		}
 		return $stmt;
 	}
+	// returns array of filenames in db
+	public function dbList()
+	{
+		$imgspath = "C:\\xampp\\htdocs\\Merch\\Database\\image\\" ;
+		$files = scandir($imgspath);
+		$total = sizeof($files);
+		$images = array();
+		for($x = 0; $x < $total; $x++) {
+			if ($files[$x] != '.' && $files[$x] != '..') {
+				$str = $files[$x];
+				$pos = strpos($str, '.');
+				$str = substr($str,0, $pos);
+				$images[] = $str;
+			}
+		}
+		return $images ;
+	}
+	// returns the index of k th picture of nth product
+	public function nthproduct($k,$n)
+	{
+		$imgnames = $this->dbList();
+		$len = sizeof($imgnames);
+		$id = '';
+		$pid = '';
+		$data = array() ;
+		for($i =0 ; $i < $len ; $i ++){
+			$str = $imgnames[$i];
+			$pos = strpos($str,'_');
+			$poss = strpos($str,'_',$pos+1);
+			$id = (int)substr($str,0,$pos);
+			$pid = (int)substr($str,$pos+1,$poss-$pos-1);
+			$tmp = $id*1000 +$pid ;
+			$lenn = sizeof($data);
+			if($lenn==0){
+				$data[0]=array();
+				$data[0][0] = $tmp;
+				$data[0][1] = 1;
+				if($k ==1 && $n ==1){return 0 ;}
+			}
+			else{
+				for($p = 0 ; $p <$lenn ; $p ++)
+				{
+					if($data[$p][0] == $tmp)
+					{
+						$data[$p][1]= $data[$p][1]+1;
+						if($p+1 == $n && $data[$p][1]== $k)
+						{return $i;}
+						break;
+					}
+					else if($p+1 == $lenn-1)
+					{
+						$data[$lenn]= array();
+						$data[$lenn][0] = $tmp;
+						$data[$lenn][1] = 1 ;
+					}
+						if($p == $n && $data[$p][1]== $k)
+						{return $i;}
+					}
+				}
+			}
+			return null ;
+	}
+	// returns dir of kth image of nth product
+	public function image_dir($k ,$n)
+	{
+		$imgspath = "C:\\xampp\\htdocs\\Merch\\Database\\image\\" ;
+		$files = scandir($imgspath);
+		$index = $this->nthproduct($k,$n);
+		$dir = $files[$index+2];
+		$dir = $imgspath.'\\'.$dir;
+		return $dir ;
+	}
+
 
 }
+
 ?>
 
 	<!--	$stmt = $this->conn->prepare("INSERT INTO users(user_name,email,user_pass,phone_num)
