@@ -264,8 +264,8 @@
 			$hash_out = substr($hash_out,0,-1);
 		echo "<div class='contentBox'>";
 		echo	"<div class='headerInBox'>.
-				<div class='title'>".$i."</div>".
-				"<div class='updatedDate'>".$product_list[$i]['upload_date']."</div>".
+				<div class='title'>"."title ".$i."</div>".
+				"<div class='updatedDate'>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
 			"</div>".
 
 			"<div class='imgWrap'>".
@@ -284,7 +284,7 @@
 						"<img src='../img/view.png' alt='eye'>".
 					"</div>".
 					"<div id='price'>".
-						(string)$product_list[$i]['price'].
+						(string)$product_list[$i]['price']." HKD".
 					"</div>".
 				"</div>".
 			"</footer>".
