@@ -9,7 +9,6 @@
 	$quality  = array("new","used","old");
 	$category = array(" ","Book","clothe","appliance","etc");
 	$size_char_array = array("XS","S","M","L","XL","XXL");
-	//print_r($_SESSION);
 	$hash_arr = array();
 	if(!isset($_SESSION['product_category']))
 	{
@@ -43,8 +42,8 @@ $error_displayed = false;
 		        $product_id = $_SESSION['product_id'];
 		        $image_type = $_FILES["files"]["type"][$a];
 		        // image name is set as seller_id + category + product id + photo sequence number
-		        $image_name = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string).$_SESSION["product_category"]."_".(string)$a.'.'.$allowed[$image_type];
-		        $name_tmp = (string)$_SESSION['user_session']."_".(string)$product_id."_".$_SESSION["product_category"]."_".(string)$a;
+		        $image_name = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a.'.'.$allowed[$image_type];
+		        $name_tmp = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a;
 		        $image_size = $_FILES["files"]["size"][$a];
 		        $check = getimagesize($_FILES["files"]["tmp_name"][$a]);
 		    if ($image_size > 500000) {
@@ -68,7 +67,7 @@ $error_displayed = false;
 		    // if everything is ok, try to upload file
 		    }
 		    else {
-		        if (move_uploaded_file($_FILES["files"]["tmp_name"][$a], "C:\\xampp\\htdocs\\Merch\\Database\\image\\".$image_name))
+		        if (move_uploaded_file($_FILES["files"]["tmp_name"][$a], "C:/xampp/htdocs/Merch/Database/image/".$image_name))
 		        {
 							$counter = $counter +1 ;
 		        }

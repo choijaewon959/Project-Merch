@@ -100,13 +100,14 @@ class USER
 	public function addProduct()
 	{
 		$p_category = "";
-		$stmt = $this->conn->prepare("INSERT into sell_product(seller_id,quality,category,price,description)
-																	VALUES(:seller_id,:quality,:category,:price,:description)");
+		$stmt = $this->conn->prepare("INSERT into sell_product(seller_id,title,quality,category,price,description)
+																	VALUES(:seller_id,:title,:quality,:category,:price,:description)");
 		if($_SESSION['product_category'] == 1){$p_category = "book";}
 		else if($_SESSION['product_category'] == 2){$p_category = "clothe";}
 		else if($_SESSION['product_category'] == 3){$p_category = "appliance";}
 		else if($_SESSION['product_category'] == 4){$p_category = "etc";}
 		$stmt->bindparam(":seller_id",$_SESSION['user_session']);
+		$stmt->bindparam(":title",$_SESSION['product_title']);
 		$stmt->bindparam(":quality",$_SESSION['product_quality']);
 		$stmt->bindparam(":category",$p_category);
 		$stmt->bindparam(":description",$_SESSION['product_description']);
@@ -224,11 +225,11 @@ class USER
 	// returns dir of kth image of nth product
 	public function image_dir($k ,$n)
 	{
-		$imgspath = "C:\\xampp\\htdocs\\Merch\\Database\\image\\" ;
+		$imgspath = "../Database/image/" ;
 		$files = scandir($imgspath);
 		$index = $this->nthproduct($k,$n);
 		$dir = $files[$index+2];
-		$dir = $imgspath.'\\'.$dir;
+		$dir = $imgspath.$dir;
 		return $dir ;
 	}
 
