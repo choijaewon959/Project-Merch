@@ -101,6 +101,7 @@
 
 			<nav class="tm-nav">
 					<ul>
+						<li><button id="myInfoButton" onclick="myInfofunction();">My Info</button></li>
 						<li><button id="modalButton" onclick="requestModalfunction();">Request</button></li>
 						<li><a href="Sellpage.php">Sell</a></li>
 						<li><a href="">My Shopping Bag</a></li>
@@ -152,51 +153,77 @@
 		</div>
 	</div><!--requestModal-->
 
+	<div id="myInfoDiv">
+		<div id="myInfoContentDiv">
+			<button id= "accountDivCloseBtn" type="button"></button></br>
+
+			<div id="UsernameDiv">
+				<label>My Name</label>
+			</div><!--User name div-->
+
+			<div id="UserPhoneNumberDiv">
+				<label>Phone Number</label>
+			</div><!--User phone number div-->
+
+			<div id="UserPasswordDiv">
+				<label>My Password</label>
+			</div><!--User Password div-->
+
+		</div>
+	</div>
+
 	<div class="filterDiv" id="filterdiv">
 		<ul>
-			<li>
+
+			<li id="priceSortDiv" onclick="priceFilterDivShow()">
 				<div class="btn">
-					<img src="../img/barcode.png" alt="barcode">
+					<img id="barcodeIcon" src="../img/barcode.png" alt="barcode">
 					<div id="priceSort">price</div>
-					<form id= "filter_price" runat = "server">
-							<span id="priceOutput"></span>
-							<div id="priceSlider"></div>
-					</form>
-				</div>
-				<div class="sortDropDown">
-				</div>
-			</li>
-			<li>
-				<div class="btn">
-					<img src="../img/medal.png" alt="medal">
-					<div id="qualitySort">quality</div>
-					<br>
-					<form action="Buypage_loggedin.php">
-					  <input type="radio" name="quality" value="New"> New<br>
-					  <input type="radio" name="quality" value="Used"> Used<br>
-					  <input type="radio" name="quality" value="Old"> Old
-					</form>
+
+					<div id="priceFilterDiv">
+						<form id= "filter_price" runat = "server">
+								<input id="priceSlider" type="range" min="1" max="100" value="50" class="slider">
+						</form>
+					</div>
 				</div>
 
-				<div class="sortDropDown">
-				</div>
 			</li>
-			<li>
+
+			<li id="qualitySortDiv" onclick="qualityFilterDivShow()">
 				<div class="btn">
-				<img src="../img/box.png" alt="blocks">
-					<div id="categorySort">category</div>
-					<br>
-					<form action="Buypage_loggedin.php">
-					  <input type="radio" name="category" value="Book"> Book<br>
-					  <input type="radio" name="category" value="Clothe"> Clothe<br>
-					  <input type="radio" name="category" value="Appliance"> Appliance <br>
-						<input type="radio" name="category" value="Etc"> Etc <br>
-					</form>
+					<img id= "medalIcon" src="../img/medal.png" alt="medal">
+					<div id="qualitySort"> quality</div>
+					<div id= "qualityFilterDiv">
+						<form action="Buypage_loggedin.php">
+							<input type="radio" name="quality" value="defaut" checked> No preference</input><br>
+ 						  <input type="radio" name="quality" value="New"> New</input><br>
+						  <input type="radio" name="quality" value="Used"> Used</input><br>
+						  <input type="radio" name="quality" value="Old"> Old</input><br>
+						</form>
+					</div>
 				</div>
 			</li>
+
+			<li id="categorySortDiv" onclick="categoryFilterDivShow()">
+				<div class="btn">
+				<img id="boxIcon" src="../img/box.png" alt="blocks">
+					<div id="categorySort"> category</div>
+					<div id="categoryFilterDiv">
+						<form action="Buypage_loggedin.php">
+							<input type="radio" name="category" value="defaut" checked> No preference</input><br>
+						  <input type="radio" name="category" value="Book"> Book</input><br>
+						  <input type="radio" name="category" value="Clothe"> Clothe</input><br>
+						  <input type="radio" name="category" value="Appliance"> Appliance</input> <br>
+							<input type="radio" name="category" value="Etc"> Etc</input></br>
+						</form>
+					</div>
+				</div>
+			</li>
+
 
 			<div class="line">
 			</div>
+
 
 			<li>
 				<div class="btn">
@@ -204,7 +231,9 @@
 						<p id="undo">undo</p>
 				</div>
 			</li>
+
 		</ul>
+
 	</div><!--fileterDiv-->
 
 
