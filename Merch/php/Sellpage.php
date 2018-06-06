@@ -12,10 +12,12 @@
 	$hash_arr = array();
 	if(!isset($_SESSION['product_category']))
 	{
-		$_SESSION['product_category']  = $_SESSION['product_price'] = $_SESSION['product_quality'] = $_SESSION['product_description'] = $_SESSION['product_hashtag'] = "";
+		$_SESSION['product_title']= $_SESSION['product_category']  = $_SESSION['product_price'] = $_SESSION['product_quality'] = $_SESSION['product_description'] = $_SESSION['product_hashtag'] = "";
 		unset($_SESSION['product_id']);
 	}
+	$auth_user->productId();
 	$_SESSION['sellpage_error'] =NULL;
+
 //______________________________________________________________________________________
 $_SESSION['uploaded'] = 0 ;
 $counter = 0 ;
@@ -24,6 +26,7 @@ $error_displayed = false;
 	{
 		try
 		{
+			$_SESSION['product_title'] = strip_tags($_POST['product_title']);
 			$_SESSION['product_category'] = strip_tags($_POST['product_category']);
 			$_SESSION['product_price'] = strip_tags($_POST['product_price']);
 			$_SESSION['product_quality'] = strip_tags($_POST['product_quality']);
@@ -31,10 +34,12 @@ $error_displayed = false;
 			$_SESSION['product_hashtag'] = strip_tags($_REQUEST['product_hashtag']);
 			$_SESSION['uploaded'] = 0;
 			$len = sizeof($_FILES["files"]["name"]);
+			$names = array();
 		  for($a = 0; $a < $len; $a ++)
 		  {
 		    if($_FILES["files"]["error"][$a] == 0)
 		    {
+						$image_size = array();
 		        $file_dir = "uploads/";
 		        $image_file = $file_dir . basename($_FILES["files"]["name"][$a]);
 		        $imageFileType = strtolower(pathinfo($image_file,PATHINFO_EXTENSION));
@@ -43,10 +48,10 @@ $error_displayed = false;
 		        $image_type = $_FILES["files"]["type"][$a];
 		        // image name is set as seller_id + category + product id + photo sequence number
 		        $image_name = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a.'.'.$allowed[$image_type];
-		        $name_tmp = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a;
+						$name_tmp = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a;
 		        $image_size = $_FILES["files"]["size"][$a];
 		        $check = getimagesize($_FILES["files"]["tmp_name"][$a]);
-		    if ($image_size > 500000) {
+		    if ($image_size > 5000000) {
 						echo "<script type='text/javascript'>alert('Sorry, your file is too large. Please provide an image lower than 5MB');</script>";
 		        unset($_SESSION['uploaded']);
 		        $_SESSION['uploaded'] = 0;
@@ -67,8 +72,9 @@ $error_displayed = false;
 		    // if everything is ok, try to upload file
 		    }
 		    else {
-		        if (move_uploaded_file($_FILES["files"]["tmp_name"][$a], "C:/xampp/htdocs/Merch/Database/image/".$image_name))
+		        if (move_uploaded_file($_FILES["files"]["tmp_name"][$a], "C:/xampp/htdocs/Merch/Database/tmpimage/".$image_name))
 		        {
+							$names[$counter] = $image_name;
 							$counter = $counter +1 ;
 		        }
 		        else {
@@ -80,6 +86,14 @@ $error_displayed = false;
 		  }
 			if($counter == $len){
 				echo "<script type='text/javascript'>alert('Product Succesfully Uploaded');</script>";
+				$copy_dir = '';
+				$target_dir = '';
+				for($a = 0 ; $a <$counter; $a ++)
+				{
+					$copy_dir = "../Database/tmpimage/".$names[$a];
+					$target_dir ="../Database/image/".$names[$a];
+					rename($copy_dir,$target_dir);
+				}
 				$counter = 0 ;
 				$auth_user->addProduct();
 				$hash_arr = $auth_user->convert_hashtag();
@@ -237,6 +251,10 @@ $error_displayed = false;
 
 		<form action="Sellpage.php" method="post" enctype="multipart/form-data">
 			<div class="upload-Panel">
+				<div class = "title">
+					<label id="titleLabel">Title</label></br>
+					<input type ="text" name ="product_title">
+				</div>
 				<div class = "category">
 						<label id="categoryLabel">Category</label></br>
 						<select id="categorySelectBar" name="product_category">
@@ -247,31 +265,24 @@ $error_displayed = false;
 										<option value = 4  > Etc  </option>
 							</select>
 				</div>
-
 				<div class="photo">
 					<label id="photoLabel">Photo</label></br>
 					<p id="recommend">Recommended - photograph always gives a much better response<p></br>
 
 <!--Image IO / Preview ____________________________________________________________________________ -->
 		<form id="photoUploadPanel" action="sellpage.php" method="post" enctype="multipart/form-data">
-
-							<label for="files" class="custom-file-upload">
+							<label for="product_image" class="custom-file-upload">
 								Add a photo
 							</label>
-							<input type = "file" multiple name=files[] id="files">
 							<br>
 							<div id="preview">
 							</div>
 					<p id="addupto">You can add up to 3 images</p>
 <!-- ____________________________________________________________________________ -->
-</div><!-- photo div-->
-
+				</div>
 				<div class="description">
-
+					<input type = "file" multiple name=files[] id = "files" >
 					<label id="descriptionLabel">Description</label></br>
-
-
-					<input id="titleTextBox" type="text" placeholder="Add Title!">
 					<textarea id="textareaTextBox" name="product_description" placeholder="Add Description to your product! "><?php if(isset($_SESSION['product_description'])){echo $_SESSION['product_description'];} ?></textarea>
 				</div>
 
@@ -298,19 +309,13 @@ $error_displayed = false;
 				<textarea id="hashtagTextArea" name="product_hashtag" placeholder="Add Hashtags to your product!"><?php if(isset($_SESSION['product_hashtag'])){echo $_SESSION['product_hashtag'];} ?></textarea>
 			</div>
 
-			<div class ="clearAndSubmit">
+				<input class="button" type="submit" name= "btn_clear" id ="clear"  value="Clear Detail" action ="sellpage.php" >
+				<br>
+				<input class="button" type="submit" name= "btn_product_submit"  value="Add Product" action ="sellpage.php" >
 
-				<label for="submitBtn" id="submitBtnLabel">Upload</label>
-				<input id="submitBtn" class="button" type="submit" name= "btn_product_submit"  value="Add Product" action ="sellpage.php" >
-
-				<label for="clearBtn" id="clearBtnLabel">Clear Details</label>
-				<input id="clearBtn" class="button" type="submit" name= "btn_clear" id ="clear"  value="Clear Detail" action ="sellpage.php" >
-
-
-
-			<div>
-
+			</br>
 		</form>
+<!--Upload Image file -->
 
 	</div><!--upload panel-->
 

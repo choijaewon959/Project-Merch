@@ -63,6 +63,19 @@ function qualityFilterDivShow(){
     qualityDiv.style.display="block";
     $(outerDiv).animate({width:"300px"});
 
+    window.onclick = function(event){
+      if(event.target == outerDiv){
+        selecting = false;
+        outerDiv.style.height="0px";
+        outerDiv.style.background="#f5f5f5";
+        outerDiv.style.color="#555";
+
+        //change the color of the icon
+        $(medal).attr('src', "../img/medal.png");
+        qualityDiv.style.display="none";
+        $(outerDiv).animate({width:"0px"});
+      }
+    }
   }
 
 

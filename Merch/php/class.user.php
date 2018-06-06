@@ -189,6 +189,7 @@ class USER
 			$str = $imgnames[$i];
 			$pos = strpos($str,'_');
 			$poss = strpos($str,'_',$pos+1);
+
 			$id = (int)substr($str,0,$pos);
 			$pid = (int)substr($str,$pos+1,$poss-$pos-1);
 			$tmp = $id*1000 +$pid ;
@@ -209,13 +210,15 @@ class USER
 						{return $i;}
 						break;
 					}
-					else if($p+1 == $lenn-1)
+					else if($p == $lenn-1)
 					{
 						$data[$lenn]= array();
 						$data[$lenn][0] = $tmp;
 						$data[$lenn][1] = 1 ;
+						if($lenn+1 == $n && 1== $k)
+						{return $i;}
 					}
-						if($p == $n && $data[$p][1]== $k)
+						if($p+1 == $n && $data[$p][1]== $k)
 						{return $i;}
 					}
 				}
@@ -232,8 +235,34 @@ class USER
 		$dir = $imgspath.$dir;
 		return $dir ;
 	}
+	public function productId()
+	{
+		$stmt = $this->conn->prepare("SELECT product_id FROM sell_product WHERE seller_id =:seller_id");
+		$stmt->execute(array(':seller_id'=>$_SESSION['user_session']));
+		$userRow=$stmt->fetchAll(PDO::FETCH_ASSOC);
+		if(isset($_SESSION['product_id']))
+		{unset($_SESSION['product_id']);}
+		$_SESSION['product_id'] ="";
+		$_SESSION['product_id'] = (string)$userRow[sizeof($userRow)-1]['product_id']+1;
+	}
+	public function changeInfo()
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("UPDATE users SET user_name=:user_name, email=:user_email, phone_num=:phone_num WHERE user_id=:user_id");
+			$stmt->bindparam(":user_name", $_SESSION['my_userName']);
+			$stmt->bindparam(":user_email", $_SESSION['my_email']);
+			$stmt->bindparam(":phone_num", $_SESSION['my_phonenum']);
+			$stmt->execute(array(':user_id'=>$_SESSION['user_session']));
+			echo "<script type='text/javascript'>alert('done.');</script>";
 
+		}catch(PDOException $e)
+		{
+			echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
+			$_SESSION['request_error'] = $e;
+		}
 
+	}
 }
 
 ?>

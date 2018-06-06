@@ -144,16 +144,15 @@ body{
     height: 100%;
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.12); /* Black w/ opacity */
-		padding-top: 70px;
+    padding-top: 60px;
 }
-
 
 #requestContentDiv{
     background-color: #fefefe;
 		border-radius: 7px;
     margin: 0px auto;
-		height: 0px;
     width: 40%;
+		height: 0px;
 		-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
 		box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
 		padding : 10px 20px 10px 20px;
@@ -172,7 +171,6 @@ body{
 	font-size: 20px;
 	margin-bottom: 10px;
 }
-
 
 #categorySelectBar{
 	width: 100%;
@@ -198,16 +196,14 @@ body{
 }
 
 #requestContentDiv #priceTextBox{
-	width: 150px;
+	width: 20%;
 	height: 30px;
 	outline:none;
 	resize: none;
 	margin-top:10px;
 	font-size: 20px;
-	padding-bottom: 5px;
+	padding: 10px;
 	float: left;
-	border:none;
-	border-bottom: solid 1px #c4c4c4;
 }
 
 #requestContentDiv #requestSubmit{
@@ -226,7 +222,6 @@ body{
 #requestContentDiv #requestSubmit:hover{
 	background-color: #ff9500;
 	color: #fff;
-
 }
 
 #showRequested{
@@ -366,6 +361,47 @@ body{
   background-color: DodgerBlue;
 }
 
+.title{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #e6e4e4;
+}
+
+.title #titleLabel{
+	font-size: 30px;
+	font-weight: bold;
+	color:#403f3f;
+}
+
+.title #titleTextBox{
+	align-content: center;
+	height: 40px;
+	width: 70%;
+	padding: 5px;
+	font-size:20px;;
+	outline:none;
+	border:none;
+	border: 1px solid #e6e4e4;
+	border-radius: 7px;
+	margin-top: 20px;
+	margin-bottom:  20px;
+}
+
+.title #titleTextBox:focus{
+	align-content: center;
+	height: 40px;
+	width: 70%;
+	padding: 5px;
+	font-size:20px;;
+	outline:none;
+	border:none;
+	border: 1px solid #a27cef;
+	box-shadow: 5px 5px #a27cef;
+	border-radius: 7px;
+	margin-top: 20px;
+	margin-bottom:  20px;
+}
 
 .photo{
 	padding-top: 20px;
@@ -432,32 +468,6 @@ body{
 	color:#403f3f;
 }
 
-#titleTextBox{
-	align-content: center;
-	height: 40px;
-	width: 70%;
-	padding: 5px;
-	font-size:20px;;
-	outline:none;
-	border:none;
-	border: 1px solid #e6e4e4;
-	border-radius: 7px;
-	margin-top: 20px;
-	margin-bottom:  20px;
-	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-}
-
- #titleTextBox:focus{
-	 -webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
- 	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
-}
-
-#titleTextBox:hover{
-	-webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
- box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
-}
-
 .description #textareaTextBox{
 	resize: none;
 	height: 300px;
@@ -485,24 +495,8 @@ body{
 	margin-bottom: 20px;
 	margin-top: 20px;
 	padding: 5px;
-	-webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
-	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
-	outline:none;
-	border:none;
-}
-
-.description #textareaTextBox:hover{
-	resize: none;
-	height: 300px;
-	width: 95%;
-	font-size:20px;
-	border: 1px solid  #e6e4e4;
-	border-radius: 7px;
-	margin-bottom: 20px;
-	margin-top: 20px;
-	padding: 5px;
-	-webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
-	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
 	outline:none;
 	border:none;
 }
@@ -549,24 +543,8 @@ body{
 	margin-top: 20px;
 	border-radius: 7px;
 	padding:5px;
-	-webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
-	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
-	outline:none;
-	border: none;
-}
-.price #priceTextBox:hover{
-	height: 30px;
-	width: 40%;
-	font-size:100%;
-	outline:none;
-	border: none;
-	border: 1px solid  #e6e4e4;
-	margin-bottom: 20px;
-	margin-top: 20px;
-	border-radius: 7px;
-	padding:5px;
-	-webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
-	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
 	outline:none;
 	border: none;
 }
@@ -633,58 +611,9 @@ body{
 	outline:none;
 	border: none;
 }
-
-.hashtag #hashtagTextArea:hover{
-	resize: none;
-	height: 100px;
-	width: 95%;
-	font-size:20px;
-	border: 1px solid  #e6e4e4;
-	border-radius: 7px;
-	margin-bottom: 20px;
-	margin-top: 20px;
-	padding: 5px;
-	-webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
-	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.14);
-	outline:none;
-	border: none;
-}
-
 .previewimage
 {
 	height: 75px;
 	border: 1px solid #000;
 	margin: 10px 5px 0 0;
-}
-
-.clearAndSubmit{
-	height: 200px;
-	padding-top: 50px;
-}
-
-.clearAndSubmit input[type="submit"]{
-	display:none;
-}
-
-.clearAndSubmit #clearBtnLabel{
-	float: right;
-	padding: 20px 20px;
-	cursor: pointer;
-}
-
-.clearAndSubmit #submitBtnLabel{
-	float: right;
-	border-radius: 7px;
-	display: inline-block;
-	padding: 20px 20px;
-	background-color:#ff9500;
-	opacity: 1;
-	color: #fff;
-	font-size: 20px;
-	cursor: pointer;
-	transition: background-color 0.35s ease, color 0.35s ease;
-}
-
-.clearAndSubmit #submitBtnLabel:hover{
-	opacity: 0.75;
 }

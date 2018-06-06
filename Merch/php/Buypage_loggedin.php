@@ -44,7 +44,21 @@
 			$_SESSION['request_error'] = $e;
 		}
 	}
-
+	if(isset($_POST['myinfo_submit']))
+	{
+		echo "<script type='text/javascript'>alert('done.');</script>";
+		try
+		{
+			$_SESSION['my_userName'] = strip_tags($_POST['my_userName']);
+			$_SESSION['my_phonenum'] = strip_tags($_POST['my_phonenum']);
+			$_SESSION['my_email'] = strip_tags($_POST['my_email']);
+			$auth_user->changeInfo();
+		}
+		catch(PDOException $e)
+		{
+			$_SESSION['request_error'] = $e;
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -84,8 +98,10 @@
 			div.appendChild(items[0]);
 		}
 	}
-
 </script>
+<?php if(isset($_SESSION['request_error'])){
+	print_r($_SESSION['request_error']);
+}?>
 </head>
 
 <body>
@@ -162,25 +178,33 @@
 			</form>
 		</div>
 	</div><!--requestModal-->
-
+	<form action="Buypage_loggedin.php">
 	<div id="myInfoDiv">
 		<div id="myInfoContentDiv">
 			<button id= "accountDivCloseBtn" type="button"></button></br>
 
 			<div id="UsernameDiv">
-				<label>My Name</label>
+				<label>My username</label>
+				<input type ="text" name="my_userName" value=<?php echo $active_detail['user_name'] ?>>
 			</div><!--User name div-->
 
 			<div id="UserPhoneNumberDiv">
 				<label>Phone Number</label>
+				<input type="text" name="my_phonenum" value=<?php echo $active_detail['phone_num'] ?>>
 			</div><!--User phone number div-->
+
+			<div id="UserPhoneNumberDiv">
+				<label>Email</label>
+				<input type="text" name="my_email" value=<?php echo $active_detail['email'] ?>>
+			</div><!--User email div-->
 
 			<div id="UserPasswordDiv">
 				<label>My Password</label>
 			</div><!--User Password div-->
-
+			<input type="submit" name="myinfo_submit" value="change personal information" action ="Buypage_loggedin.php">
 		</div>
 	</div>
+</form>
 
 	<div class="filterDiv" id="filterdiv">
 		<ul>
@@ -264,7 +288,7 @@
 			$hash_out = substr($hash_out,0,-1);
 		echo "<div class='contentBox'>";
 		echo	"<div class='headerInBox'>.
-				<div class='title'>"."title ".$i."</div>".
+				<div class='title'>".$product_list[$i]['title']."</div>".
 				"<div class='updatedDate'>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
 			"</div>".
 
@@ -273,7 +297,7 @@
 					"<div class='description'>".$product_list[$i]['description'].'</div>'.
 					'<div class="hashtags">'.$hash_out."</div>".
 				'</div>'.
-				"<img class='image' src=".$auth_user->image_dir(1,$i+1)." alt='book' width='100%' height='450'>".
+				"<img class='image' src=".$auth_user->image_dir(1,$i+1)." alt='book' width=200px height=150px>".
 			"</div>".
 			"<footer>".
 				"<div class='pricePanel'>".
