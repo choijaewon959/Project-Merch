@@ -1,3 +1,7 @@
+<?php
+	require_once("class.user.php");
+	$auth_user = new USER();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +61,7 @@
 				</div><!--cartDiv-->
 			</div>
 		</div><!--stickedToTop-->
-		
+
 		<div class="filterDiv">
 			<ul>
 				<li>
@@ -98,259 +102,58 @@
 		</div><!--fileterDiv-->
 
 		<div class="main">
-			<div class="contentBox">
-				<div class="headerInBox">
-					<div class="title"> Pearson Edition Cognitive Psychology  </div>
-				</div>
+			<?php
+				$product_stmt = $auth_user->runQuery("SELECT * FROM sell_product");
+				$product_stmt->execute();
+				$counter = 0 ;
+				$product_list = array();
+				while($product_list[$counter] = $product_stmt->fetch(PDO::FETCH_ASSOC)){
+					$counter = $counter +1 ;
+				}
+				$product_num = sizeof($product_list)-1;
+				$product_list = array_slice($product_list,0,$product_num);
 
-				<div class="imgWrap">
-					<div class="img_description">
-						<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-						<div class="hashtags"> #COMP2123 #Kit #C++ #Linux #happy #dotdttttttttttt</div>
-					</div>
-					<img class="image" src="../img/book1.jpg" alt="book" width="100%" height="450">
-				</div>
-				<footer>
-					<div class="pricePanel">
-						<div id="numOfView">
-							15
-						</div>
-						<div id="eye">
-							<img src="../img/view.png" alt="eye">
-						</div>
+			  for($i = 0 ; $i < $product_num ; $i ++){
+					$id = $product_list[$i]['product_id'];
+					$hash_stmt = $auth_user->runQuery("SELECT * FROM hashtag WHERE product_id=:product_id");
+					$hash_stmt->execute(array(":product_id"=>$id));
+					$counter = 0;
+					$hash_list = array();
+					$hash_out = '#';
+					while($hash_list[$counter] = $hash_stmt->fetch(PDO::FETCH_ASSOC)){
+						$hash_out .=$hash_list[$counter]['hashtag']."#";
+						$counter = $counter +1 ;
+					}
+					$hash_out = substr($hash_out,0,-1);
+				echo "<div class='contentBox'>";
+				echo	"<div class='headerInBox'>.
+						<div class='title'>".$product_list[$i]['title']."</div>".
+						"<div class='updatedDate'>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
+					"</div>".
 
-						<div id="price">
-							HKD150
-						</div>
-						<div id="pricetagIcon">
-							<img src="../img/pricetag.png" alt="pricetag">
-						</div>
-
-					</div>
-				</footer>
-			</div>
-			<div class="contentBox">
-				<div class="headerInBox">
-					<div class="title"> Pearson Edition Cognitive Psychology  </div>
-				</div>
-
-				<div class="imgWrap">
-					<div class="img_description">
-
-						<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-						<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
-					</div>
-					<img class="image" src="../img/book1.jpg" alt="book" width="100%" height="450">
-				</div>
-				<footer>
-
-					<div id="numOfView">
-						15
-					</div>
-					<div id="eye">
-						<img src="../img/view.png" alt="eye">
-					</div>
-
-					<div id="price">
-						HKD150
-					</div>
-					<div id="pricetagIcon">
-						<img src="../img/pricetag.png" alt="pricetag">
-					</div>
-
-				</footer>
-			</div>
-			<div class="contentBox">
-				<div class="headerInBox">
-					<div class="title"> Science of deadlift  </div>
-				</div>
-
-				<div class="imgWrap">
-					<div class="img_description">
-
-						<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-						<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
-					</div>
-					<img class="image" src="../img/book3.jpg" alt="book" width="100%" height="450">
-				</div>
-				<footer>
-					<div class="pricePanel">
-						<div id="numOfView">
-							15
-						</div>
-						<div id="eye">
-							<img src="../img/view.png" alt="eye">
-						</div>
-
-						<div id="price">
-							HKD150
-						</div>
-						<div id="pricetagIcon">
-							<img src="../img/pricetag.png" alt="pricetag">
-						</div>
-
-					</div>
-				</footer>
-			</div>
-			<div class="contentBox">
-				<div class="headerInBox">
-					<div class="title"> Killing a mocking bird </div>
-				</div>
-
-				<div class="imgWrap">
-					<div class="img_description">
-
-						<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-						<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
-					</div>
-					<img class="image" src="../img/book2.jpg" alt="book" width="100%" height="450">
-				</div>
-				<footer>
-					<div class="pricePanel">
-						<div id="numOfView">
-							15
-						</div>
-						<div id="eye">
-							<img src="../img/view.png" alt="eye">
-						</div>
-
-						<div id="price">
-							HKD150
-						</div>
-						<div id="pricetagIcon">
-							<img src="../img/pricetag.png" alt="pricetag">
-						</div>
-
-					</div>
-				</footer>
-			</div>
-			<div class="contentBox">
-				<div class="headerInBox">
-					<div class="title"> Pearson Edition Cognitive Psychology  </div>
-				</div>
-				<div class="imgWrap">
-					<div class="img_description">
-
-						<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-						<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
-					</div>
-					<img class="image" src="../img/book2.jpg" alt="book" width="100%" height="450">
-				</div>
-				<footer>
-					<div class="pricePanel">
-						<div id="numOfView">
-							15
-						</div>
-						<div id="eye">
-							<img src="../img/view.png" alt="eye">
-						</div>
-
-						<div id="price">
-							HKD150
-						</div>
-						<div id="pricetagIcon">
-							<img src="../img/pricetag.png" alt="pricetag">
-						</div>
-
-					</div>
-				</footer>
-			</div>
-
-			<div class="contentBox">
-				<div class="headerInBox">
-					<div class="title"> Pearson Edition Cognitive Psychology  </div>
-				</div>
-				<div class="imgWrap">
-					<div class="img_description">
-
-						<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-						<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
-					</div>
-					<img class="image" src="../img/book1.jpg" alt="book" width="100%" height="450">
-				</div>
-					<footer>
-					<div class="pricePanel">
-						<div id="numOfView">
-							15
-						</div>
-						<div id="eye">
-							<img src="../img/view.png" alt="eye">
-						</div>
-
-						<div id="price">
-							HKD150
-						</div>
-						<div id="pricetagIcon">
-							<img src="../img/pricetag.png" alt="pricetag">
-						</div>
-
-					</div>
-				</footer>
-			</div>
-
-			<div class="contentBox">
-				<div class="headerInBox">
-					<div class="title"> Introduction to COMP2123   </div>
-				</div>
-				<div class="imgWrap">
-					<div class="img_description">
-
-						<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-						<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
-					</div>
-					<img class="image" src="../img/book2.jpg" alt="book" width="100%" height="450">
-				</div>
-				<footer>
-					<div class="pricePanel">
-						<div id="numOfView">
-							15
-						</div>
-						<div id="eye">
-							<img src="../img/view.png" alt="eye">
-						</div>
-
-						<div id="price">
-							HKD150
-						</div>
-						<div id="pricetagIcon">
-							<img src="../img/pricetag.png" alt="pricetag">
-						</div>
-
-					</div>
-				</footer>
-			</div>
-
-			<div class="contentBox">
-				<div class="headerInBox">
-					<div class="title"> Introduction to mech engi  </div>
-				</div>
-				<div class="imgWrap">
-					<div class="img_description">
-											<div class="description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-						<div class="hashtags"> #COMP2123 #Kit #C++ #Linux</div>
-					</div>
-					<img class="image" src="../img/book3.jpg" alt="book" width="100%" height="450">
-				</div>
-				<footer>
-					<div class="pricePanel">
-						<div id="numOfView">
-							15
-						</div>
-						<div id="eye">
-							<img src="../img/view.png" alt="eye">
-						</div>
-
-						<div id="price">
-							HKD150
-						</div>
-						<div id="pricetagIcon">
-							<img src="../img/pricetag.png" alt="pricetag">
-						</div>
-
-					</div>
-				</footer>
-			</div>
-
+					"<div class='imgWrap'>".
+						"<div class='img_description'>".
+							"<div class='description'>".$product_list[$i]['description'].'</div>'.
+							'<div class="hashtags">'.$hash_out."</div>".
+						'</div>'.
+						"<img class='image' src=".$auth_user->image_dir(1,$i+1)." alt='book' width=200px height=150px>".
+					"</div>".
+					"<footer>".
+						"<div class='pricePanel'>".
+							"<div id='numOfView'>".
+								"15".
+							"</div>".
+							"<div id='eye'>".
+								"<img src='../img/view.png' alt='eye'>".
+							"</div>".
+							"<div id='price'>".
+								(string)$product_list[$i]['price']." HKD".
+							"</div>".
+						"</div>".
+					"</footer>".
+				"</div>";
+			}
+			?>
 		</div>
 
 

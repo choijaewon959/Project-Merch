@@ -1,25 +1,33 @@
 To Do List
 
+
+		Buypage
+  
+- Drag and Drop
+  
+
+- view my request / change request
+ 
+- Design Myinfo
+- search 
+- filter
+
+		Mycart.php
+- Display my temporary wishlist
+
+  
+
+		
 Sellpage.php
-  - Image preview / upload
-  -
-Buypage
-  - Image preview
-  - Drag and Drop
-  -
-Findpass
-  - Find Password (i.e. Send password Change URL)
+- view my product / change picture or description
+  
 
-Log_in
-  - Login with Facebook account
+- Design of "see what's requested" 
+ 
 
-Mycart
-  - Display my product
-  - Display my temporary wishlist
-  - 
+		Login.php
+- Find Password (i.e. Send password Change URL)  --> findpass.php
+- Login with Facebook 
+==> These two should be done at the last stage where we have a domain
 
-My page
-  - change password
-  - view my product / change picture or description
-  - view my request / change request
-  - change personal detail
+   
