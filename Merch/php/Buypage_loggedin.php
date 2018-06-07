@@ -205,41 +205,77 @@
 			</form>
 		</div>
 	</div><!--requestModal-->
+
 	<div id="myInfoDiv">
-		<form id="myInfoPanel" action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
 		<div id="myInfoContentDiv">
 			<button id= "accountDivCloseBtn" type="button"></button></br>
 
-			<div id="UsernameDiv">
-				<label>My username</label>
-				<input type ="text" name="my_userName" value=<?php if(!isset($_SESSION['my_userName'])){echo $active_detail['user_name'];}else{echo $_SESSION['my_userName'];} ?>>
-			</div><!--User name div-->
-
-			<div id="UserPhoneNumberDiv">
-				<label>Phone Number</label>
-				<input type="text" name="my_phonenum" value=<?php if(!isset($_SESSION['my_phonenum'])){echo $active_detail['phone_num'];}else{echo $_SESSION['my_phonenum'];} ?>>
-			</div><!--User phone number div-->
-
-			<div id="UserPhoneNumberDiv">
-				<label>Email</label>
-				<input type="text" name="my_email" value= <?php if(!isset($_SESSION['my_email'])){echo $active_detail['email'];}else{echo $_SESSION['my_email'];}  ?>>
-			</div><!--User email div-->
-			<input type="submit" name="btn_myinfo" value="change personal information" action ="Buypage_loggedin.php">
-		</form>
-		</br>
-		</br>
+			<div class="informationDiv">
 			<form id="myInfoPanel" action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
-			Change Password
-			</br>
-			<div id="UserPasswordDiv">
-				<label>Current Passowrd</label>
-				<input id="password" type="password"  name="current_password" placeholder="Your Password" /></br>
-					New Passowrd<input id="password" type="password"  name="new_password" placeholder="New Password" /></br>
-					Confirm Passowrd<input id="password" type="password"  name="confirm_password" placeholder="Confirm new Password" /></br>
-				<input name="btn_changepwd" value="Change password" type="submit" class="button">
-			</div><!--User Password div-->
+				<label id="myInfoTitle">My Info</label>
+
+				<div class="UsernameDiv">
+					<label >My Username</label></br>
+					<input class="userNameInput" type ="text" name="my_userName" autocomplete="off" value=<?php if(!isset($_SESSION['my_userName'])){echo $active_detail['user_name'];}else{echo $_SESSION['my_userName'];} ?>>
+
+				</div><!--User name div-->
+
+				<div class="UserPhoneNumberDiv">
+					<label>Phone Number</label></br>
+					<input class="phoneNumberInput" type="text" name="my_phonenum" autocomplete="off" value=<?php if(!isset($_SESSION['my_phonenum'])){echo $active_detail['phone_num'];}else{echo $_SESSION['my_phonenum'];} ?>>
+				</div><!--User phone number div-->
+
+				<div class="UserEmailDiv">
+					<label>Email</label></br>
+					<input class="emailInput" type="text" name="my_email" autocomplete="off" value= <?php if(!isset($_SESSION['my_email'])){echo $active_detail['email'];}else{echo $_SESSION['my_email'];}  ?>>
+				</div><!--User email div-->
+
 			</form>
-			</div>
+
+				<form id="myInfoPanel" action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
+
+				<div id="UserPasswordDiv">
+					<div class="pwLabelDiv">
+						<label id="PWLABEL">Password</label>
+					</div>
+
+
+					<div class="currnetPWDiv">
+						<input class="passwordInput" type="password"  name="current_password" autocomplete="off" />
+						<span class="floatLabel">Current Password</span>
+					</div><!--current pw div-->
+
+					<div class="newPWDiv">
+						<input class="newPasswordInput" type="password"  name="new_password" autocomplete="off" />
+						<span class="floatLabel">New Password</span>
+					</div><!--new password div-->
+
+					<div class="confirmPWDiv">
+						<input class="confirmPasswordInput" type="password"  name="confirm_password" autocomplete="off" />
+						<span class="floatLabel">Confirm Password</span>
+					</div><!--confirm new password div-->
+
+					<div>
+						<input class="myInfoSubmitBtn" name="btn_changepwd" value="save" type="submit" >
+					</div>
+
+
+				</div><!--user Password div-->
+
+				</form>
+			</div><!-- left most div, my information div-->
+
+			<div class="myRequestAndSellDiv">
+					<label>My Request</label>
+
+					<div id="requestedContent">
+						<div id="">
+						</div>
+					</div>
+			</div><!-- right div, show what I requested-->
+
+
+		</div>
 
 	</div>
 

@@ -1,4 +1,6 @@
 //My info modal
+
+var myInfoShowing = false;
 function myInfofunction(){
   var modalcontent = document.getElementById('myInfoContentDiv');
   var modal = document.getElementById('myInfoDiv');
@@ -24,15 +26,17 @@ window.onclick = function(event) {
     var myInfoDiv = document.getElementById('myInfoDiv');
     var myInfoCloseBtn = document.getElementById('accountDivCloseBtn');
 
+    if (event.target == myInfoDiv || event.target == myInfoCloseBtn) {
+        myInfoContent.style.height = "0px";
+        myInfoDiv.style.display = "none";
+    }
+
     if (event.target == modal || event.target == closebtn) {
         modalcontent.style.height = "0px";
         modal.style.display = "none";
     }
 
-    if (event.target == myInfoDiv || event.target == myInfoCloseBtn) {
-        myInfoContent.style.height = "0px";
-        myInfoDiv.style.display = "none";
-    }
+
 }
 
 
@@ -77,8 +81,6 @@ function qualityFilterDivShow(){
       }
     }
   }
-
-
 
 }
 
