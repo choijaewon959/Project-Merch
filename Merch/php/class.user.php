@@ -122,21 +122,25 @@ class USER
 		$_SESSION['product_id'] = (string)$userRow[sizeof($userRow)-1]['product_id'];
 		return $stmt;
 	}
-	public function addRequest()
+	public function addRequest($user_id)
 	{
-		$r_category = "";
-		$stmt = $this->conn->prepare("INSERT into request(user_id,category,price,description)
-																	VALUES(:user_id,:category,:price,:description)");
-		if($_SESSION['product_category'] == 1){$r_category = "book";}
-		else if($_SESSION['product_category'] == 2){$r_category = "clothe";}
-		else if($_SESSION['product_category'] == 3){$r_category = "appliance";}
-		else if($_SESSION['product_category'] == 4){$r_category = "etc";}
-		$stmt->bindparam(":user_id",$_SESSION['user_session']);
-		$stmt->bindparam(":category",$p_category);
-		$stmt->bindparam(":description",$_SESSION['product_description']);
-		$stmt->bindparam(":price",$_SESSION['product_price']);
-		$stmt->execute();
-		return $stmt;
+		try{
+			$r_category = "";
+			$stmt = $this->conn->prepare("INSERT into request(user_id,category,price,description)
+																		VALUES(:user_id,:category,:price,:description)");
+			if($_SESSION['request_category'] == 1){$r_category = "book";}
+			else if($_SESSION['request_category'] == 2){$r_category = "clothe";}
+			else if($_SESSION['request_category'] == 3){$r_category = "appliance";}
+			else if($_SESSION['request_category'] == 4){$r_category = "etc";}
+			$stmt->bindparam(":user_id",$user_id);
+			$stmt->bindparam(":category",$r_category);
+			$stmt->bindparam(":description",$_SESSION['request_description']);
+			$stmt->bindparam(":price",$_SESSION['request_price']);
+			$stmt->execute();
+			return $stmt;
+		}catch(PDOException $e){
+			$_SESSION['request_error'] = $e;
+		}
 	}
 
 	public function convert_hashtag()
@@ -245,7 +249,7 @@ class USER
 		$_SESSION['product_id'] ="";
 		$_SESSION['product_id'] = (string)$userRow[sizeof($userRow)-1]['product_id']+1;
 	}
-	public function changeInfo()
+	public function changeInfo($user_id)
 	{
 		try
 		{
@@ -253,15 +257,44 @@ class USER
 			$stmt->bindparam(":user_name", $_SESSION['my_userName']);
 			$stmt->bindparam(":user_email", $_SESSION['my_email']);
 			$stmt->bindparam(":phone_num", $_SESSION['my_phonenum']);
-			$stmt->execute(array(':user_id'=>$_SESSION['user_session']));
-			echo "<script type='text/javascript'>alert('done.');</script>";
+			$stmt->bindparam(":user_id", $user_id);
+			$stmt->execute();
 
 		}catch(PDOException $e)
 		{
-			echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
 			$_SESSION['request_error'] = $e;
 		}
 
+	}
+	public function changepwd($currentpass,$confirmpass,$user_id)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT user_id, user_name, email, user_pass FROM users WHERE user_id=:uid");
+			$stmt->bindparam(":uid", $user_id);
+			$stmt->execute();
+			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+			if($stmt->rowCount() == 1)
+			{
+				if(password_verify($currentpass, $userRow['user_pass']))
+				{
+					$new_password = password_hash($confirmpass, PASSWORD_DEFAULT);
+					$stmt = $this->conn->prepare("UPDATE users SET user_pass=:newpass WHERE user_id=:uid");
+					$stmt->bindparam(":newpass", $new_password);
+					$stmt->bindparam(":uid", $user_id);
+					$stmt->execute();
+					echo "<script type='text/javascript'>alert('Password successfully changed.');</script>";
+				}
+				else
+				{
+					echo "<script type='text/javascript'>alert('Current password invalid.');</script>";
+				}
+			}
+
+		}catch(PDOException $e)
+		{
+			$_SESSION['request_error'] = $e;
+		}
 	}
 }
 

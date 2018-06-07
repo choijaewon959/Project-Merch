@@ -11,7 +11,6 @@
 	if(isset($_POST['submit_email']))
 	{
 		$umail = strip_tags($_POST['txt_uname_email']);
-
 		if($login->checkEmail($umail))
 		{
       $salt = "128f12f9294@$1224vnd";

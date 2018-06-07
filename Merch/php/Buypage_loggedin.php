@@ -36,26 +36,54 @@
 		{
 			$_SESSION['request_category'] = strip_tags($_POST['request_category']);
 			$_SESSION['request_price'] = strip_tags($_POST['request_price']);
-			$_SESSION['request_quality'] = strip_tags($_POST['request_quality']);
-			$auth_user->addRequest();
+			$_SESSION['request_description'] = strip_tags($_REQUEST['request_description']);
+			$auth_user->addRequest($user_id);
 		}
 		catch(PDOException $e)
 		{
 			$_SESSION['request_error'] = $e;
 		}
 	}
-	if(isset($_POST['myinfo_submit']))
+	if(isset($_POST['btn_myinfo']))
 	{
-		echo "<script type='text/javascript'>alert('done.');</script>";
 		try
 		{
 			$_SESSION['my_userName'] = strip_tags($_POST['my_userName']);
 			$_SESSION['my_phonenum'] = strip_tags($_POST['my_phonenum']);
 			$_SESSION['my_email'] = strip_tags($_POST['my_email']);
-			$auth_user->changeInfo();
+			$auth_user->changeInfo($user_id);
 		}
 		catch(PDOException $e)
 		{
+			print_r($_SESSION['request_error']);
+			$_SESSION['request_error'] = $e;
+		}
+	}
+	if(isset($_POST['btn_changepwd']))
+	{
+		try
+		{
+			$currentpass = strip_tags($_POST['current_password']);
+			$newpass = strip_tags($_POST['new_password']);
+			$confirmpass = strip_tags($_POST['confirm_password']);
+			if(strlen($newpass) >5){
+				if($newpass == $confirmpass)
+				{
+					$auth_user->changePwd($currentpass,$newpass,$user_id);
+				}
+				else
+				{
+					echo "<script type='text/javascript'>alert('Confirm password does not match.');</script>";
+				}
+			}
+			else
+			{
+				echo "<script type='text/javascript'>alert('Password must be at least 6 charaters');</script>";
+			}
+		}
+		catch(PDOException $e)
+		{
+			print_r($_SESSION['request_error']);
 			$_SESSION['request_error'] = $e;
 		}
 	}
@@ -99,9 +127,7 @@
 		}
 	}
 </script>
-<?php if(isset($_SESSION['request_error'])){
-	print_r($_SESSION['request_error']);
-}?>
+
 </head>
 
 <body>
@@ -160,8 +186,9 @@
 			<form action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
 					<button id= "closeBtn" type="button"></button>
 					<div class = "category">
-						<select id="categorySelectBar" name="product_category">
-										<option value = 1 selected >  </option>
+						<select id="categorySelectBar" name="request_category">
+										<option value = 0 selected >  </option>
+										<option value = 1  > Book  </option>
 										<option value = 2  > Clothe  </option>
 										<option value = 3  > Appliance  </option>
 										<option value = 4  > Etc  </option>
@@ -178,39 +205,49 @@
 			</form>
 		</div>
 	</div><!--requestModal-->
-	<form action="Buypage_loggedin.php">
 	<div id="myInfoDiv">
+		<form id="myInfoPanel" action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
 		<div id="myInfoContentDiv">
 			<button id= "accountDivCloseBtn" type="button"></button></br>
 
 			<div id="UsernameDiv">
 				<label>My username</label>
-				<input type ="text" name="my_userName" value=<?php echo $active_detail['user_name'] ?>>
+				<input type ="text" name="my_userName" value=<?php if(!isset($_SESSION['my_userName'])){echo $active_detail['user_name'];}else{echo $_SESSION['my_userName'];} ?>>
 			</div><!--User name div-->
 
 			<div id="UserPhoneNumberDiv">
 				<label>Phone Number</label>
-				<input type="text" name="my_phonenum" value=<?php echo $active_detail['phone_num'] ?>>
+				<input type="text" name="my_phonenum" value=<?php if(!isset($_SESSION['my_phonenum'])){echo $active_detail['phone_num'];}else{echo $_SESSION['my_phonenum'];} ?>>
 			</div><!--User phone number div-->
 
 			<div id="UserPhoneNumberDiv">
 				<label>Email</label>
-				<input type="text" name="my_email" value=<?php echo $active_detail['email'] ?>>
+				<input type="text" name="my_email" value= <?php if(!isset($_SESSION['my_email'])){echo $active_detail['email'];}else{echo $_SESSION['my_email'];}  ?>>
 			</div><!--User email div-->
-
+			<input type="submit" name="btn_myinfo" value="change personal information" action ="Buypage_loggedin.php">
+		</form>
+		</br>
+		</br>
+			<form id="myInfoPanel" action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
+			Change Password
+			</br>
 			<div id="UserPasswordDiv">
-				<label>My Password</label>
+				<label>Current Passowrd</label>
+				<input id="password" type="password"  name="current_password" placeholder="Your Password" /></br>
+					New Passowrd<input id="password" type="password"  name="new_password" placeholder="New Password" /></br>
+					Confirm Passowrd<input id="password" type="password"  name="confirm_password" placeholder="Confirm new Password" /></br>
+				<input name="btn_changepwd" value="Change password" type="submit" class="button">
 			</div><!--User Password div-->
-			<input type="submit" name="myinfo_submit" value="change personal information" action ="Buypage_loggedin.php">
-		</div>
+			</form>
+			</div>
+
 	</div>
-</form>
 
 	<div class="filterDiv" id="filterdiv">
 		<ul>
-
 			<li id="priceSortDiv" onclick="priceFilterDivShow()">
 				<div class="btn">
+					<?php print_r($_SESSION['request_error']); ?>
 					<img id="barcodeIcon" src="../img/barcode.png" alt="barcode">
 					<div id="priceSort">price</div>
 

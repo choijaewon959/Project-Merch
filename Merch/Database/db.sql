@@ -24,7 +24,7 @@ CREATE TABLE `sell_product`
   `product_id` int(11) NOT NULL AUTO_INCREMENT ,
   `seller_id` int(11) NOT NULL ,
   `quality` int(11) NOT NULL,
-  `title` varchar(15) NOT NULL, 
+  `title` varchar(15) NOT NULL,
   `category` varchar(11) NOT NULL,
   `price` int(11) NOT NULL,
   `description` varchar(50) NOT NULL,
@@ -45,12 +45,12 @@ CREATE TABLE `hashtag`
 CREATE TABLE `request`
 (
   `request_id` int(10) NOT NULL AUTO_INCREMENT,
-  `request_user_id` int(10) NOT NULL,
-  `request_price` int(10) NOT NULL,
-  `request_category` varchar(10) NOT NULL,
-  `request_description` varchar(20) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `price` int(10) NOT NULL,
+  `category` varchar(10) NOT NULL,
+  `description` varchar(20) NOT NULL,
   PRIMARY KEY(`request_id`),
-  FOREIGN KEY(`request_user_id`) references users(user_id)
+  FOREIGN KEY(`user_id`) references users(user_id)
 );
 
 CREATE TABLE `book`
