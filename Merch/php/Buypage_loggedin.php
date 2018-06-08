@@ -269,9 +269,130 @@
 					<label>My Request</label>
 
 					<div id="requestedContent">
-						<div id="">
+						<div id="requestedItems">
+
+							<div id="categoryOfRequestedDiv">
+
+								<div id="iconContainer-book">
+
+								</div><!--circle div that contains icon-->
+
+							</div>
+
+							<div id="requestedPriceAndDesciption">
+								<div id="requestedDescription">
+									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</div>
+
+								<div id="requestedPrice">
+									1010HKD
+								</div>
+							</div><!--div containing price and description-->
+
+						</div><!--each div containing all the info of requested item-->
+
+						<div id="requestedItems">
+							<div id="categoryOfRequestedDiv">
+
+								<div id="iconContainer-etc">
+									etc
+								</div><!--circle div that contains icon-->
+
+							</div><!--div containing icon img div-->
+
+							<div id="requestedPriceAndDesciption">
+								<div id="requestedDescription">
+									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</div>
+
+								<div id="requestedPrice">
+									1010HKD
+								</div>
+							</div><!--div containing price and description-->
 						</div>
-					</div>
+
+						<div id="requestedItems">
+							<div id="categoryOfRequestedDiv">
+
+								<div id="iconContainer-clothe">
+
+								</div><!--circle div that contains icon-->
+
+							</div>
+
+							<div id="requestedPriceAndDesciption">
+								<div id="requestedDescription">
+									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</div>
+
+								<div id="requestedPrice">
+									1010HKD
+								</div>
+							</div><!--div containing price and description-->
+						</div>
+
+						<div id="requestedItems">
+							<div id="categoryOfRequestedDiv">
+
+								<div id="iconContainer-appliance">
+
+								</div><!--circle div that contains icon-->
+
+							</div>
+
+							<div id="requestedPriceAndDesciption">
+								<div id="requestedDescription">
+									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</div>
+
+								<div id="requestedPrice">
+									1010HKD
+								</div>
+							</div><!--div containing price and description-->
+						</div>
+
+						<div id="requestedItems">
+							<div id="categoryOfRequestedDiv">
+
+								<div id="iconContainer-book">
+
+								</div><!--circle div that contains icon-->
+
+							</div>
+
+							<div id="requestedPriceAndDesciption">
+								<div id="requestedDescription">
+									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</div>
+
+								<div id="requestedPrice">
+									1010HKD
+								</div>
+							</div><!--div containing price and description-->
+						</div>
+
+						<div id="requestedItems">
+							<div id="categoryOfRequestedDiv">
+
+								<div id="iconContainer-appliance">
+
+								</div><!--circle div that contains icon-->
+
+							</div>
+
+							<div id="requestedPriceAndDesciption">
+								<div id="requestedDescription">
+									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</div>
+
+								<div id="requestedPrice">
+									1010HKD
+								</div>
+							</div><!--div containing price and description-->
+						</div>
+
+
+					</div><!--requested Content div-->
 			</div><!-- right div, show what I requested-->
 
 
