@@ -712,7 +712,7 @@ body{
 	padding-bottom:5px;
   overflow: hidden;
 	word-wrap: break-word;
-	white-space: normal;
+	white-space: nowrap;
 	color:#757575;
 }
 
