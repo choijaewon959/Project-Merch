@@ -422,7 +422,7 @@ body{
 
 .informationDiv #myInfoTitle{
 	color: #a27cef;
-	font-size: 30px;
+	font-size: 25px;
 
 }
 
@@ -643,6 +643,7 @@ body{
 	color: #a27cef;
 	font-size: 25px;
 	margin-bottom: 20px;
+
 }
 
 .myRequestAndSellDiv #requestedContent{
