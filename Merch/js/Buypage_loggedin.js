@@ -26,11 +26,10 @@ window.onclick = function(event) {
     var myInfoDiv = document.getElementById('myInfoDiv');
     var myInfoCloseBtn = document.getElementById('accountDivCloseBtn');
 
-    if (event.target == myInfoDiv || event.target == myInfoCloseBtn) {
+    if (event.target == myInfoDiv || event.target == accountDivCloseBtn) {
         myInfoContent.style.height = "0px";
         myInfoDiv.style.display = "none";
     }
-
     if (event.target == modal || event.target == closebtn) {
         modalcontent.style.height = "0px";
         modal.style.display = "none";
@@ -40,7 +39,7 @@ window.onclick = function(event) {
 }
 
 
-//fileterDiv
+
 var slider = document.getElementById("priceSlider");
 var output = document.getElementById("demo");
 output.innerHTML = slider.value;
@@ -105,7 +104,6 @@ function categoryFilterDivShow(){
   $(outerDiv).animate({width:"300px"});
 
 }
-
 function priceFilterDivShow(){
   var outerDiv = document.getElementById('priceSortDiv');
   var priceDiv = document.getElementById('priceFilterDiv');

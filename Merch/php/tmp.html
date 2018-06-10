@@ -1,12 +1,43 @@
 <?php
-$search_stmt = $auth_user->runQuery("SELECT * FROM hashTag");
-$search_stmt->execute();
-$search_list = array();
-$counter = 0 ;
-while($search_list[$counter] = $search_stmt->fetch(PDO::FETCH_ASSOC)){
-  $counter = $counter +1 ;
+
+  for($i = 0 ; $i < $product_num ; $i ++){
+    $id = $product_list[$i]['product_id'];
+    $hash_stmt = $auth_user->runQuery("SELECT * FROM hashtag WHERE product_id=:product_id");
+    $hash_stmt->execute(array(":product_id"=>$id));
+    $counter = 0;
+    $hash_list = array();
+    $hash_out = '#';
+    while($hash_list[$counter] = $hash_stmt->fetch(PDO::FETCH_ASSOC)){
+      $hash_out .=$hash_list[$counter]['hashtag']."#";
+      $counter = $counter +1 ;
+    }
+    $hash_out = substr($hash_out,0,-1);
+  echo "<div class='contentBox'>";
+  echo	"<div class='headerInBox'>.
+      <div class='title'>".$product_list[$i]['title']."</div>".
+      "<div class='updatedDate'>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
+    "</div>".
+
+    "<div class='imgWrap'>".
+      "<div class='img_description'>".
+        "<div class='description'>".$product_list[$i]['description'].'</div>'.
+        '<div class="hashtags">'.$hash_out."</div>".
+      '</div>'.
+      "<img class='image' src=".$auth_user->image_dir(1,$i+1)." alt='book' width=200px height=150px>".
+    "</div>".
+    "<footer>".
+      "<div class='pricePanel'>".
+        "<div id='numOfView'>".
+          "15".
+        "</div>".
+        "<div id='eye'>".
+          "<img src='../img/view.png' alt='eye'>".
+        "</div>".
+        "<div id='price'>".
+          (string)$product_list[$i]['price']." HKD".
+        "</div>".
+      "</div>".
+    "</footer>".
+  "</div>";
 }
-$search_num = sizeof($search_list)-1;
-$search_list = array_slice($search_list,0,$search_num);
-  print_r($search_list);
 ?>
