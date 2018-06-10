@@ -17,6 +17,17 @@
 	$product_num = sizeof($product_list)-1;
 	$product_list = array_slice($product_list,0,$product_num);
 //________
+	$request_stmt = $auth_user->runQuery("SELECT * FROM request WHERE user_id=:user_id");
+	$request_stmt->execute(array(":user_id"=>$user_id));
+	$counter = 0 ;
+	$request_list = array();
+	while($request_list[$counter] = $request_stmt->fetch(PDO::FETCH_ASSOC)){
+		$counter = $counter +1 ;
+	}
+	$request_num = sizeof($request_list)-1;
+	$request_list = array_slice($request_list,0,$request_num);
+
+//___________
 	if(!isset($_SESSION['request_category']))
 	{
 		$_SESSION['request_category'] = "";
@@ -58,14 +69,10 @@
 			print_r($_SESSION['request_error']);
 			$_SESSION['request_error'] = $e;
 		}
-	}
-	if(isset($_POST['btn_changepwd']))
-	{
-		try
-		{
-			$currentpass = strip_tags($_POST['current_password']);
-			$newpass = strip_tags($_POST['new_password']);
-			$confirmpass = strip_tags($_POST['confirm_password']);
+		$currentpass = strip_tags($_POST['current_password']);
+		$newpass = strip_tags($_POST['new_password']);
+		$confirmpass = strip_tags($_POST['confirm_password']);
+		if(strlen($currentpass)!=0 && strlen($newpass)!=0){
 			if(strlen($newpass) >5){
 				if($newpass == $confirmpass)
 				{
@@ -81,12 +88,8 @@
 				echo "<script type='text/javascript'>alert('Password must be at least 6 charaters');</script>";
 			}
 		}
-		catch(PDOException $e)
-		{
-			print_r($_SESSION['request_error']);
-			$_SESSION['request_error'] = $e;
-		}
 	}
+
 ?>
 
 <!DOCTYPE html>
@@ -103,31 +106,16 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
 	$(document).ready(function(){
-		var target = document.getElementById("main");
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET','display_product.php',true);
-		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-		if(xhr.readyState == 4 && xhr.status == 200){
-				var result = xhr.responseText ;
-				console.log(result);
-				var json = JSON.parse(xhr.responseText);
-				append_product(target,result);
-			}
-		}
+			$("input").keyup(function(){
+					var search_word = $("input").val();
+					$.post("search.php",{
+							search_word: search_word
+					}, function(data, status){
+							$("#suggestion").html(data);
+					});
+			});
 	});
-	function append_product(div,product_html){
-		var temp = document.createElement('div');
-		temp.innerHTML = product_html ;
-		var class_name = temp.firstElementChild.className ;
-		var items = temp.getElementByClassName(class_name);
-
-		var len = items.length ;
-		for(i = 0 ; i <len ; i ++){
-			div.appendChild(items[0]);
-		}
-	}
 </script>
-
 </head>
 
 <body>
@@ -140,14 +128,13 @@
 			</div>
 
 			<div class="tm-container">
-				<form action="search.php" method="post">
 	        <span>
 						<button class="searchButton"></button>
 					</span>
 					<span class="searchBar">
-						<input id="searchbar" type="text" name="hashTag" placeholder="#COMP2123 #ComputerScience #Kit #..">
+						<input id="searchbar" type="text" name="searchbar" placeholder="#COMP2123 #ComputerScience #Kit #..">
 					</span>
-				</form>
+					<p id="suggestion"></p>
 			</div>
 
 
@@ -230,10 +217,6 @@
 					<input class="emailInput" type="text" name="my_email" autocomplete="off" value= <?php if(!isset($_SESSION['my_email'])){echo $active_detail['email'];}else{echo $_SESSION['my_email'];}  ?>>
 				</div><!--User email div-->
 
-			</form>
-
-				<form id="myInfoPanel" action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
-
 				<div id="UserPasswordDiv">
 					<div class="pwLabelDiv">
 						<label id="PWLABEL">Password</label>
@@ -256,7 +239,7 @@
 					</div><!--confirm new password div-->
 
 					<div>
-						<input class="myInfoSubmitBtn" name="btn_changepwd" value="save" type="submit" >
+						<input class="myInfoSubmitBtn" name="btn_myinfo" value="save" type="submit" >
 					</div>
 
 
@@ -269,142 +252,63 @@
 					<label>My Request</label>
 
 					<div id="requestedContent">
-						<div id="requestedItems">
 
-							<div id="categoryOfRequestedDiv">
+						<?php
+						      for($i = 0 ; $i < $request_num ; $i ++)
+						      {
+						        echo "<div id='requestedItems'>";
+						        if($request_list[$i]['category'] == 'book')
+						        {
+						          echo "<div id='categoryOfRequestedDiv'>".
+						            "<div id='iconContainer-book'>".
+						          "</div>".
+						        "</div>";
+						        }
+						        else if($request_list[$i]['category'] == "etc")
+						        {
+						          echo "<div id='categoryOfRequestedDiv'>".
+						            "<div id='iconContainer-etc'>".
+						              "etc".
+						          "</div>".
+						        "</div>";
+						        }
+						        else if($request_list[$i]['category'] == "appliance")
+						        {
+						          echo "<div id='categoryOfRequestedDiv'>".
+						            "<div id='iconContainer-appliance'>".
+						          "</div>".
+						        "</div>";
+						        }
+						        else if($request_list[$i]['category'] == "clothe")
+						        {
+						          echo "<div id='categoryOfRequestedDiv'>".
+						            "<div id='iconContainer-clothe'>".
+						          "</div>".
+						        "</div>";
+						        }
 
-								<div id="iconContainer-book">
-
-								</div><!--circle div that contains icon-->
-
-							</div>
-
-							<div id="requestedPriceAndDesciption">
-								<div id="requestedDescription">
-									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-								</div>
-
-								<div id="requestedPrice">
-									1010HKD
-								</div>
-							</div><!--div containing price and description-->
-
-						</div><!--each div containing all the info of requested item-->
-
-						<div id="requestedItems">
-							<div id="categoryOfRequestedDiv">
-
-								<div id="iconContainer-etc">
-									etc
-								</div><!--circle div that contains icon-->
-
-							</div><!--div containing icon img div-->
-
-							<div id="requestedPriceAndDesciption">
-								<div id="requestedDescription">
-									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-								</div>
-
-								<div id="requestedPrice">
-									1010HKD
-								</div>
-							</div><!--div containing price and description-->
-						</div>
-
-						<div id="requestedItems">
-							<div id="categoryOfRequestedDiv">
-
-								<div id="iconContainer-clothe">
-
-								</div><!--circle div that contains icon-->
-
-							</div>
-
-							<div id="requestedPriceAndDesciption">
-								<div id="requestedDescription">
-									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-								</div>
-
-								<div id="requestedPrice">
-									1010HKD
-								</div>
-							</div><!--div containing price and description-->
-						</div>
-
-						<div id="requestedItems">
-							<div id="categoryOfRequestedDiv">
-
-								<div id="iconContainer-appliance">
-
-								</div><!--circle div that contains icon-->
-
-							</div>
-
-							<div id="requestedPriceAndDesciption">
-								<div id="requestedDescription">
-									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-								</div>
-
-								<div id="requestedPrice">
-									1010HKD
-								</div>
-							</div><!--div containing price and description-->
-						</div>
-
-						<div id="requestedItems">
-							<div id="categoryOfRequestedDiv">
-
-								<div id="iconContainer-book">
-
-								</div><!--circle div that contains icon-->
-
-							</div>
-
-							<div id="requestedPriceAndDesciption">
-								<div id="requestedDescription">
-									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-								</div>
-
-								<div id="requestedPrice">
-									1010HKD
-								</div>
-							</div><!--div containing price and description-->
-						</div>
-
-						<div id="requestedItems">
-							<div id="categoryOfRequestedDiv">
-
-								<div id="iconContainer-appliance">
-
-								</div><!--circle div that contains icon-->
-
-							</div>
-
-							<div id="requestedPriceAndDesciption">
-								<div id="requestedDescription">
-									@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-								</div>
-
-								<div id="requestedPrice">
-									1010HKD
-								</div>
-							</div><!--div containing price and description-->
-						</div>
-
+						        echo "<div id='requestedPriceAndDesciption'>".
+						            "<div id='requestedDescription'>".
+						              $request_list[$i]['description'].
+						            "</div>".
+						            "<div id='requestedPrice'>".
+						              $request_list[$i]['price']." HKD".
+						            "</div>".
+						          "</div>".
+									"</div>";
+						      }
+						  ?>
 
 					</div><!--requested Content div-->
 			</div><!-- right div, show what I requested-->
-
-
 		</div>
-
 	</div>
 
 	<div class="filterDiv" id="filterdiv">
 		<ul>
 			<li id="priceSortDiv" onclick="priceFilterDivShow()">
 				<div class="btn">
-					<?php print_r($_SESSION['request_error']); ?>
+
 					<img id="barcodeIcon" src="../img/barcode.png" alt="barcode">
 					<div id="priceSort">price</div>
 

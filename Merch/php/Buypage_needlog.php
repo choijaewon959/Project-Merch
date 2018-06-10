@@ -23,14 +23,13 @@
 
 
 				<div class="tm-container">
-					<form action="search.php" method="post">
 		        <span>
 							<button class="searchButton"></button>
 						</span>
 						<span class="searchBar">
 							<input id="searchbar" type="text" name="hashTag" placeholder="#COMP2123 #ComputerScience #Kit #..">
 						</span>
-					</form>
+						<p id="suggestion"></p>
 				</div>
 
 
