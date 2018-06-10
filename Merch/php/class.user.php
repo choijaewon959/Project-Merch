@@ -100,15 +100,19 @@ class USER
 	public function addProduct()
 	{
 		$p_category = "";
+		$p_quality ="";
 		$stmt = $this->conn->prepare("INSERT into sell_product(seller_id,title,quality,category,price,description)
 																	VALUES(:seller_id,:title,:quality,:category,:price,:description)");
 		if($_SESSION['product_category'] == 1){$p_category = "book";}
 		else if($_SESSION['product_category'] == 2){$p_category = "clothe";}
 		else if($_SESSION['product_category'] == 3){$p_category = "appliance";}
 		else if($_SESSION['product_category'] == 4){$p_category = "etc";}
+		if($_SESSION['product_quality'] == 1){$p_quality = "new";}
+		else if($_SESSION['product_quality'] == 2){$p_quality = "used";}
+		else if($_SESSION['product_quality'] == 3){$p_quality = "old";}
 		$stmt->bindparam(":seller_id",$_SESSION['user_session']);
 		$stmt->bindparam(":title",$_SESSION['product_title']);
-		$stmt->bindparam(":quality",$_SESSION['product_quality']);
+		$stmt->bindparam(":quality",$p_quality);
 		$stmt->bindparam(":category",$p_category);
 		$stmt->bindparam(":description",$_SESSION['product_description']);
 		$stmt->bindparam(":price",$_SESSION['product_price']);

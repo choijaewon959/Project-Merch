@@ -319,7 +319,7 @@ $error_displayed = false;
 						<div id="radios">
 <?php					for ($x = 0; $x < sizeof($quality); $x++) {										?>
 								<label ="new"> <?php echo $quality[$x] ;?> </label>
-								<input type="radio" name="product_quality" value = <?php echo $x; ?> <?php if((int)$_SESSION['product_quality'] == $x){ echo 'checked';}?>>
+								<input type="radio" name="product_quality" value = <?php echo $x+1; ?> <?php if((int)$_SESSION['product_quality'] == $x){ echo 'checked';}?>>
   						  <span class="checkmark"></span>
 <?php 					}
 																												 	?>

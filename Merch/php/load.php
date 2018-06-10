@@ -1,15 +1,57 @@
 <?php
   require_once("class.user.php");
   $auth_user = new USER();
-  $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY price ASC");
-  $product_stmt->execute();
   $counter = 0 ;
   $product_list = array();
-  while($product_list[$counter] = $product_stmt->fetch(PDO::FETCH_ASSOC)){
-    $counter = $counter +1 ;
+  $quality = $_POST['q_value'];
+  $category = $_POST['c_value'];
+  if($quality=="default" && $category=="default")
+  {
+    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY price ASC");
+    $product_stmt->execute();
+    while($product_list[$counter] = $product_stmt->fetch(PDO::FETCH_ASSOC)){
+      $counter = $counter +1 ;
+    }
+    $product_num = sizeof($product_list)-1;
+    $product_list = array_slice($product_list,0,$product_num);
   }
-  $product_num = sizeof($product_list)-1;
-  $product_list = array_slice($product_list,0,$product_num);
+  else if($quality!=="default" && $category!=="default")
+  {
+    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE quality=:quality AND category=:category AND price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY price ASC");
+    $product_stmt->bindparam(":quality", $quality);
+    $product_stmt->bindparam(":category", $category);
+    $product_stmt->execute();
+    while($product_list[$counter] = $product_stmt->fetch(PDO::FETCH_ASSOC)){
+      $counter = $counter +1 ;
+    }
+    $product_num = sizeof($product_list)-1;
+    $product_list = array_slice($product_list,0,$product_num);
+
+  }
+  else if($quality!=="default")
+  {
+    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE quality=:quality AND price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY price ASC");
+    $product_stmt->bindparam(":quality", $quality);
+    $product_stmt->execute();
+    while($product_list[$counter] = $product_stmt->fetch(PDO::FETCH_ASSOC)){
+      $counter = $counter +1 ;
+    }
+    $product_num = sizeof($product_list)-1;
+    $product_list = array_slice($product_list,0,$product_num);
+
+  }
+  else if($category!=="default")
+  {
+    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE category=:category AND price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY price ASC");
+    $product_stmt->bindparam(":category", $category);
+    $product_stmt->execute();
+    while($product_list[$counter] = $product_stmt->fetch(PDO::FETCH_ASSOC)){
+      $counter = $counter +1 ;
+    }
+    $product_num = sizeof($product_list)-1;
+    $product_list = array_slice($product_list,0,$product_num);
+
+  }
   if($product_num !==0)
   {
     for($i = 0 ; $i < $product_num ; $i ++){

@@ -23,11 +23,11 @@ CREATE TABLE `sell_product`
 (
   `product_id` int(11) NOT NULL AUTO_INCREMENT ,
   `seller_id` int(11) NOT NULL ,
-  `quality` int(11) NOT NULL,
+  `quality` varchar(5) NOT NULL,
   `title` varchar(15) NOT NULL,
-  `category` varchar(11) NOT NULL,
+  `category` varchar(9) NOT NULL,
   `price` int(11) NOT NULL,
-  `description` varchar(50) NOT NULL,
+  `description` varchar(70) NOT NULL,
   `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(`product_id`),
   FOREIGN KEY(`seller_id`) references users(`user_id`)

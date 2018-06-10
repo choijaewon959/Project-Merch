@@ -89,7 +89,8 @@ $max_range = 2000;
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
 	$(document).ready(function(){
-
+			var q_value = "default";
+			var c_value = "default";
 			$("#priceSlider").slider({
 					range: true,
 					min:0,
@@ -98,18 +99,41 @@ $max_range = 2000;
 					slide: function(event,ui){
 						$("#min_range").val(ui.values[0]);
 						$("#max_range").val(ui.values[1]);
-						load_product(ui.values[0],ui.values[1]);
+						load_product(ui.values[0],ui.values[1],q_value,c_value);
 					}
 			});
-			load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>);
+			load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
 
-			function load_product(min_range,max_range)
+		var $quality_radios = $('input[name=quality]').change(function ()
+		{
+    	var q_value = $quality_radios.filter(':checked').val();
+			load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
+		});
+		var $category_radios = $('input[name=category]').change(function ()
+		{
+			var c_value = $category_radios.filter(':checked').val();
+			load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
+		});
+/*
+		function undo(){
+			<?php
+			//	$min_range = 0 ;
+			//	$max_range = 2000;
+			?>
+			var q_value = "default";
+			var c_value = "default";
+			load_product(<?php// echo $min_range; ?>, <?php// echo $max_range; ?>,q_value,c_value);
+		});
+*/
+		function load_product(min_range,max_range,q_value,c_value)
 			{
 				$.ajax({
 						url:"load.php",
 						method:"POST",
 						data:{min_range:min_range,
-								max_range:max_range},
+								max_range:max_range,
+								q_value:q_value,
+								c_value:c_value},
 						success:function(data)
 						{
 							$('#load_product').html(data);
@@ -126,6 +150,7 @@ $max_range = 2000;
 					});
 			});
 	});
+
 </script>
 </head>
 
@@ -371,7 +396,7 @@ $max_range = 2000;
 
 
 			<li>
-				<div class="btn">
+				<div class="btn" onclick=undo()>
 						<img id="undoIcon" src="../img/undo.png" alt="undo">
 						<p id="undo">undo</p>
 				</div>

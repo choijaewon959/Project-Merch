@@ -1,43 +1,49 @@
-<?php
+<div class="filterDiv" id="filterdiv">
+  <ul>
+    <li id="priceSortDiv" onclick="priceFilterDivShow()">
+      <div class="btn">
+        <img id="barcodeIcon" src="../img/barcode.png" alt="barcode">
+      </div>
+        <div id="priceSort">price</div>
+        <div class="col-md-2">
+            <input type='text' name="min_range" id="min_range" class="form-control" value=<?php echo $min_range; ?>>
+        </div>
+        <div id="priceFilterDiv">
+              <div id="priceSlider"></div>
+        </div>
+        <div class="col-md-2">
+            <input type='text' name="max_range" id="max_range"  class="form-control" value=<?php echo $max_range; ?>>
+        </div>
 
-  for($i = 0 ; $i < $product_num ; $i ++){
-    $id = $product_list[$i]['product_id'];
-    $hash_stmt = $auth_user->runQuery("SELECT * FROM hashtag WHERE product_id=:product_id");
-    $hash_stmt->execute(array(":product_id"=>$id));
-    $counter = 0;
-    $hash_list = array();
-    $hash_out = '#';
-    while($hash_list[$counter] = $hash_stmt->fetch(PDO::FETCH_ASSOC)){
-      $hash_out .=$hash_list[$counter]['hashtag']."#";
-      $counter = $counter +1 ;
-    }
-    $hash_out = substr($hash_out,0,-1);
-  echo "<div class='contentBox'>";
-  echo	"<div class='headerInBox'>.
-      <div class='title'>".$product_list[$i]['title']."</div>".
-      "<div class='updatedDate'>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
-    "</div>".
+    </li>
 
-    "<div class='imgWrap'>".
-      "<div class='img_description'>".
-        "<div class='description'>".$product_list[$i]['description'].'</div>'.
-        '<div class="hashtags">'.$hash_out."</div>".
-      '</div>'.
-      "<img class='image' src=".$auth_user->image_dir(1,$i+1)." alt='book' width=200px height=150px>".
-    "</div>".
-    "<footer>".
-      "<div class='pricePanel'>".
-        "<div id='numOfView'>".
-          "15".
-        "</div>".
-        "<div id='eye'>".
-          "<img src='../img/view.png' alt='eye'>".
-        "</div>".
-        "<div id='price'>".
-          (string)$product_list[$i]['price']." HKD".
-        "</div>".
-      "</div>".
-    "</footer>".
-  "</div>";
-}
-?>
+    <li id="qualitySortDiv" onclick="qualityFilterDivShow()">
+      <div class="btn">
+        <img id= "medalIcon" src="../img/medal.png" alt="medal">
+        <div id="qualitySort"> quality</div>
+        <div id= "qualityFilterDiv">
+          <form action="Buypage_loggedin.php">
+            <input type="radio" name="quality" value="default" checked> No preference</input><br>
+            <input type="radio" name="quality" value="New"> New</input><br>
+            <input type="radio" name="quality" value="Used"> Used</input><br>
+            <input type="radio" name="quality" value="Old"> Old</input><br>
+          </form>
+        </div>
+      </div>
+    </li>
+
+    <li id="categorySortDiv" onclick="categoryFilterDivShow()">
+      <div class="btn">
+      <img id="boxIcon" src="../img/box.png" alt="blocks">
+        <div id="categorySort"> category</div>
+        <div id="categoryFilterDiv">
+          <form action="Buypage_loggedin.php">
+            <input type="radio" name="category" value="default" checked> No preference</input><br>
+            <input type="radio" name="category" value="Book"> Book</input><br>
+            <input type="radio" name="category" value="Clothe"> Clothe</input><br>
+            <input type="radio" name="category" value="Appliance"> Appliance</input> <br>
+            <input type="radio" name="category" value="Etc"> Etc</input></br>
+          </form>
+        </div>
+      </div>
+    </li>
