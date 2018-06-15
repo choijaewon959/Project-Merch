@@ -274,10 +274,6 @@ $error_displayed = false;
 
 		<form action="Sellpage.php" method="post" enctype="multipart/form-data">
 			<div class="upload-Panel">
-				<div class = "title">
-					<label id="titleLabel">Title</label></br>
-					<input type ="text" name ="product_title" value=<?php if(isset($_SESSION['product_title'])){echo $_SESSION['product_title'];}?>>
-				</div>
 				<div class = "category">
 						<label id="categoryLabel">Category</label></br>
 						<select id="categorySelectBar" name="product_category">
@@ -294,18 +290,20 @@ $error_displayed = false;
 
 <!--Image IO / Preview ____________________________________________________________________________ -->
 		<form id="photoUploadPanel" action="sellpage.php" method="post" enctype="multipart/form-data">
-							<label for="product_image" class="custom-file-upload">
-								Add a photo
+							<label for="files" class="custom-file-upload">
+									Add a photo
 							</label>
+							<input type = "file" multiple name=files[] id="files">
 							<br>
 							<div id="preview">
 							</div>
 					<p id="addupto">You can add up to 3 images</p>
 <!-- ____________________________________________________________________________ -->
-				</div>
+</div><!--photodiv-->
 				<div class="description">
-					<input type = "file" multiple name=files[] id = "files" >
+
 					<label id="descriptionLabel">Description</label></br>
+					<input id="titleTextBox" type="text" placeholder="Add Title!">
 					<textarea id="textareaTextBox" name="product_description" placeholder="Add Description to your product! "><?php if(isset($_SESSION['product_description'])){echo $_SESSION['product_description'];} ?></textarea>
 				</div>
 
@@ -332,13 +330,20 @@ $error_displayed = false;
 				<textarea id="hashtagTextArea" name="product_hashtag" placeholder="Add Hashtags to your product!"><?php if(isset($_SESSION['product_hashtag'])){echo $_SESSION['product_hashtag'];} ?></textarea>
 			</div>
 
-				<input class="button" type="submit" name= "btn_clear" id ="clear"  value="Clear Detail" action ="sellpage.php" >
-				<br>
-				<input class="button" type="submit" name= "btn_product_submit"  value="Add Product" action ="sellpage.php" >
+			<div class ="clearAndSubmit">
 
-			</br>
+				<label for="submitBtn" id="submitBtnLabel">Upload</label>
+				<input id="submitBtn" class="button" type="submit" name= "btn_product_submit"  value="Add Product" action ="sellpage.php" >
+
+				<label for="clearBtn" id="clearBtnLabel">Clear Details</label>
+				<input id="clearBtn" class="button" type="submit" name= "btn_clear" id ="clear"  value="Clear Detail" action ="sellpage.php" >
+
+
+
+			<div>
+
 		</form>
-<!--Upload Image file -->
+
 
 	</div><!--upload panel-->
 

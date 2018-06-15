@@ -91,7 +91,7 @@ $("document").ready(function(){
     document.getElementById('files').onchange = function(e) {
         readFile(e.srcElement.files[0]);
     };
-});
+});*/
 
 $(function() {
     var $sidebar   = $("#tips-panel"),
@@ -112,7 +112,7 @@ $(function() {
 
 });//function
 
-
+/*
 $(function() {
     // Multiple images preview in browser
     var imagesPreview = function(input, placeToInsertImagePreview) {
