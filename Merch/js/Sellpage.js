@@ -1,15 +1,21 @@
 function openNav() {
-    document.getElementById("requested").style.width = "100%";
-}
+
+    let requestedContent = document.getElementById("requestedDiv");
+    
+    $(requestedContent).animate({height:'600px'});
+    document.getElementById("requested").style.display="block";
+  }
 
 /* Close when someone clicks on the "x" symbol inside the overlay */
 function closeNav() {
-    document.getElementById("requested").style.width = "0%";
+    document.getElementById("requested").style.display= "none";
 }
 
 
-//Request modal
 
+
+//Request modal
+/*
 function requestDivfunction(){
   var modalcontent = document.getElementById('requestContentDiv');
   var modal = document.getElementById('requestModal');
@@ -17,7 +23,7 @@ function requestDivfunction(){
   $(modalcontent).animate({height:'400px'});
   modal.style.display = "block";
 
-}
+}*/
 
 window.onclick = function(event) {
     var modalcontent = document.getElementById('requestContentDiv');

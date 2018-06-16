@@ -206,7 +206,40 @@ $error_displayed = false;
 
 	  <!-- Overlay content -->
 	  <div class="overlay-content">
-	    fuckyou
+	    <div id="requestedDiv">
+				<div id="requested-Book">
+					<header id="requested-Book-logo">
+						<div id='iconContainer-book'>
+
+						</div>
+					</header>
+				</div><!--requested div for book-->
+
+				<div id="requested-Appliance">
+					<header id="requested-Appliance-logo">
+						<div id='iconContainer-appliance'>
+
+						</div>
+					</header>
+				</div><!--requested div for appliance-->
+
+				<div id="requested-Clothe">
+					<header id="requested-Clothe-logo">
+						<div id='iconContainer-clothe'>
+
+						</div>
+					</header>
+				</div><!--requested div for clothe-->
+
+				<div id="requested-Etc">
+					<header id="requested-Etc-logo">
+						<div id='iconContainer-etc'>
+							etc
+						</div>
+					</header>
+				</div><!--requested div for etc-->
+
+			</div><!--requested div content-->
 	  </div>
 	</div>
 
@@ -215,7 +248,7 @@ $error_displayed = false;
 		<div class="detailPanel">
 			<h1 id="detailLabel">Details<h1></br>
 			<p id="contentForDetail">@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<button id="showRequested" onclick="openNav()">See what's requested</button>
+			<button id="showRequested" onclick="openNav();">See what's requested</button>
 
 		</div>
 		<?php
