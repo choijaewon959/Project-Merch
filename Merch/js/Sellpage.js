@@ -2,7 +2,7 @@ function openNav() {
 
     let requestedContent = document.getElementById("requestedDiv");
     
-    $(requestedContent).animate({height:'600px'});
+    $(requestedContent).animate({height:'800px'});
     document.getElementById("requested").style.display="block";
   }
 
