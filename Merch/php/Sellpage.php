@@ -213,7 +213,7 @@ $error_displayed = false;
 
 						</div>
 					</header>
-
+				<div id="contents">
 					<div id="requested-contents">
 						<div id="conts">
 							<div id="usertitle">
@@ -288,7 +288,7 @@ $error_displayed = false;
 							</div>
 						</div>
 					</div>
-
+				</div>
 					
 				</div><!--requested div for book-->
 
@@ -298,7 +298,7 @@ $error_displayed = false;
 
 						</div>
 					</header>
-
+				<div id="contents">
 					<div id="requested-contents">
 						<div id="conts">
 							<div id="usertitle">
@@ -399,6 +399,7 @@ $error_displayed = false;
 						</div>
 					</div>
 				</div><!--requested div for appliance-->
+			</div>
 
 				<div id="requested-Clothe">
 					<header id="requested-Clothe-logo">
@@ -406,7 +407,7 @@ $error_displayed = false;
 
 						</div>
 					</header>
-
+				<div id="contents">
 					<div id="requested-contents">
 						<div id="conts">
 							<div id="usertitle">
@@ -481,6 +482,7 @@ $error_displayed = false;
 							</div>
 						</div>
 					</div>
+				</div>
 				</div><!--requested div for clothe-->
 
 				<div id="requested-Etc">
@@ -490,7 +492,8 @@ $error_displayed = false;
 						</div>
 					</header>
 
-				<div id="requested-contents">
+				<div id="contents">
+					<div id="requested-contents">
 						<div id="conts">
 							<div id="usertitle">
 								<label>Title: </label>
@@ -565,6 +568,7 @@ $error_displayed = false;
 							</div>
 						</div>
 					</div>
+				</div>
 				</div><!--requested div for etc-->
 
 			</div><!--requested div content-->
