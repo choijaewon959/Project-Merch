@@ -18,13 +18,51 @@ function requestModalfunction(){
   $(modalcontent).animate({height:"400px"});
 }
 
+//popup div for main contents
+let sliderIndex = 1;
+
+function popUpProduct(){
+  //alert('test');
+  var popUpPanel = document.getElementById('onClickPopUp');
+  var popUpConent = document.getElementById('popUpContent');
+
+  popUpPanel.style.display = "block";
+  $(popUpConent).animate({height: "700px"});
+  changeSlider(sliderIndex);
+}
+
+//popup slider control
+
+function incrementSliderIndex(n){
+  changeSlider(sliderIndex+=n);
+}
+
+function currentSlider(n){
+  changeSlider(sliderIndex=n);
+}
+
+function changeSlider(n){
+  let slidePhoto = document.getElementsByClassName("slidePhoto");
+  if (n > slidePhoto.length) {sliderIndex = 1} ;
+  if (n < 1) {sliderIndex = slidePhoto.length} ;
+  for (let i = 0; i < slidePhoto.length; i++) {
+      slidePhoto[i].style.display = "none"; 
+  }
+  slidePhoto[sliderIndex-1].style.display = "block"; 
+}
+
 window.onclick = function(event) {
     var modalcontent = document.getElementById('requestContentDiv');
     var modal = document.getElementById('requestModal');
     var closebtn = document.getElementById('closeBtn');
+
     var myInfoContent = document.getElementById('myInfoContentDiv');
     var myInfoDiv = document.getElementById('myInfoDiv');
     var myInfoCloseBtn = document.getElementById('accountDivCloseBtn');
+
+    var popUpPanel = document.getElementById('onClickPopUp');
+    var popUpConent = document.getElementById('popUpContent');
+    var popupClose = document.getElementById('popupClose');
 
     if (event.target == myInfoDiv || event.target == accountDivCloseBtn) {
         myInfoContent.style.height = "0px";
@@ -35,11 +73,18 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 
+    if(event.target == popUpPanel || event.target == popupClose){
+        popUpConent.style.height = "0px";
+        popUpPanel.style.display= "none";
+    }
+
 
 }
 
 
 
+
+//filters
 var slider = document.getElementById("priceSlider");
 var output = document.getElementById("demo");
 output.innerHTML = slider.value;

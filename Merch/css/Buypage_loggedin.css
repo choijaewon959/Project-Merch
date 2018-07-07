@@ -838,3 +838,96 @@ body{
 	margin:5px;
 	float: right;
 }
+
+#onClickPopUp{
+	display: none; /* Hidden by default */
+	position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.12); /* Black w/ opacity */
+	padding-top: 70px;
+}
+
+#onClickPopUp #popUpContent{
+	background-color: #fefefe;
+	border-radius: 7px;
+    margin: 0px auto;
+	height: 0px;
+    width: 1000px;
+	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
+	padding : 20px 20px 10px 0px;
+}
+
+#popupClose{
+	float: right;
+	width: 30px;
+	height: 30px;
+	background: url('../img/cancel.png') no-repeat center;
+	border: 1px solid;
+	border-color: #fff;
+	border-radius: 50%;
+	outline: none;
+	cursor: pointer;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+#popUpPhoto{
+	float: left;
+	width: 50%;
+	height: 100%;
+	border-right: solid 1px #c4c4c4;
+}
+
+.slidePanel{
+	position: relative;
+}
+
+#popUpPhoto .slidePhoto{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dot-container{
+	z-index: 4;
+	position: absolute;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+
+.photoFlex{
+	padding-left: 20px;
+}
+
+.photoFlex .opac-Photo{
+	cursor: pointer;
+	opacity: 0.5;
+	display: inline-block;
+	margin-left: auto;
+    margin-right: auto;
+    margin:10px;
+
+}
+
+.photoFlex .opac-Photo:hover{
+	opacity: 1;
+	-webkit-transition: opacity 0.18s ease-in-out;
+  transition: opacity 0.18s ease-in-out;
+}
+
+#popUpDes{
+	float: left;
+	width: 45%;
+	height: 100%; 
+	margin-top: 30px;
+	padding-left: 10px;
+}
