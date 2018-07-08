@@ -1,5 +1,5 @@
 //My info modal
-
+/*
 var myInfoShowing = false;
 function myInfofunction(){
   var modalcontent = document.getElementById('myInfoContentDiv');
@@ -7,7 +7,7 @@ function myInfofunction(){
 
   modal.style.display = "block";
   $(modalcontent).animate({height:"600px"});
-}
+}*/
 
 //Request modal
 function requestModalfunction(){
@@ -30,6 +30,8 @@ function popUpProduct(){
   $(popUpConent).animate({height: "700px"});
   changeSlider(sliderIndex);
 }
+
+
 
 //popup slider control
 
@@ -56,18 +58,10 @@ window.onclick = function(event) {
     var modal = document.getElementById('requestModal');
     var closebtn = document.getElementById('closeBtn');
 
-    var myInfoContent = document.getElementById('myInfoContentDiv');
-    var myInfoDiv = document.getElementById('myInfoDiv');
-    var myInfoCloseBtn = document.getElementById('accountDivCloseBtn');
-
     var popUpPanel = document.getElementById('onClickPopUp');
     var popUpConent = document.getElementById('popUpContent');
     var popupClose = document.getElementById('popupClose');
 
-    if (event.target == myInfoDiv || event.target == accountDivCloseBtn) {
-        myInfoContent.style.height = "0px";
-        myInfoDiv.style.display = "none";
-    }
     if (event.target == modal || event.target == closebtn) {
         modalcontent.style.height = "0px";
         modal.style.display = "none";
