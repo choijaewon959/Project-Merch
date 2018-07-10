@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Acceleration Example</title>
+
+    <script type="text/javascript" charset="utf-8">
+
+      function handleMotionEvent(event) {
+        //prints out the acceleration (with/without gravity of the device)
+        let x = Math.round(event.acceleration.x);
+        let y = Math.round(event.acceleration.y);
+        let z = Math.round(event.acceleration.z);
+
+        let xg= Math.round(event.accelerationIncludingGravity.x);
+        let yg= Math.round(event.accelerationIncludingGravity.y);
+        let zg= Math.round(event.accelerationIncludingGravity.z);
+
+        document.getElementById('output-x').innerHTML = x;
+        document.getElementById('output-y').innerHTML = y;
+        document.getElementById('output-z').innerHtml = z;
+
+        document.getElementById('g-output-x').innerHTML = xg;
+        document.getElementById('g-output-y').innerHTML = yg;
+        document.getElementById('g-output-z').innerHTML = zg;
+
+        //moves the ball according to the acceleration of the device
+        let ball = document.querySelector('.ball');
+        let playground = document.querySelector('.playground');
+
+        let xCoordinate = event.acceleration.x;  
+        let yCoordinate = event.acceleration.y;
+        let maxX = playground.clientWidth - ball.clientWidth;
+        let maxY = playground.clientHeight - ball.clientHeight;
+
+        // 10 is half the size of the ball
+        // It center the positioning point to the center of the ball
+        ball.style.top  = (maxX*x - 10) + "px";
+        ball.style.left = (maxY*y - 10) + "px";
+      }
+
+      window.addEventListener("devicemotion", handleMotionEvent, true);
+    </script>
+
+    <style type="text/css">
+      #acceleration{
+        font-size: 30px;
+      }
+
+      #acceleration-with-g{
+        font-size: 30px;
+      }
+
+      #simulation{
+        margin:20px;
+      }
+
+      .playgroud {
+          position: relative;
+          width : 900px;
+          height: 900px;
+          border: 5px solid #CCC;
+          border-radius: 10px;
+      }
+
+      .ball {
+        position: absolute;
+        top   : 90px;
+        left  : 90px;
+        width : 50px;
+        height: 50px;
+        background: #f45642;
+        border-radius: 100%;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="acceleration">
+      <label>acceleration</label>
+      acceleration-x:
+      <span id="output-x"></span>
+      acceleration-y:
+      <span id="output-y"></span>
+      acceleration-z:
+      <span id="output-z"></span>
+    </div>
+    
+
+    <div id="acceleration-with-g">
+      <label>acceleration with gravity</label>
+      G-accerelation-x:
+      <span id="g-output-x"></span>
+      G-accerelation-y:
+      <span id="g-output-y"></span>
+      G-acceleration-z:
+      <span id="g-output-z"></span>
+
+    </div>
+    
+    <div id="simulation">
+
+      <div class="playground">
+        <div class="ball"></div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

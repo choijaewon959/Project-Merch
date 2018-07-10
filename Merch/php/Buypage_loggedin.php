@@ -83,6 +83,7 @@ $max_range = 2000;
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -219,19 +220,8 @@ $max_range = 2000;
 					<img class="slidePhoto" src ="../img/book1.jpg" width="450" height="500">
 					<img class="slidePhoto" src ="../img/book2.jpg" width="450" height="500">
 					<img class="slidePhoto" src ="../img/book3.jpg" width="450" height="500">
-					<div class="dot-container">
-						<span class="sliderDots" onclick="currentSlider(1)">
-							d
-						</span>
-
-						<span class="sliderDots" onclick="currentSlider(2)">
-							d
-						</span>
-
-						<span class="sliderDots" onclick="currentSlider(3)">
-							d
-						</span>
-					</div>
+					<button class="sliderDots w3-display-left w3-button" onclick="incrementSliderIndex(-1);">&#10094;</button>
+					<button class="sliderDots w3-display-right w3-button" onclick="incrementSliderIndex(1);">&#10095;</button>
 				</div>
 				
 				

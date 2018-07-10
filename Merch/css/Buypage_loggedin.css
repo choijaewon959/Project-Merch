@@ -408,7 +408,7 @@ body{
 }
 
 .informationDiv #myInfoTitle{
-	color: #a27cef;
+	color: #337ab7;
 	font-size: 25px;
 	font-weight: normal;
 }
@@ -629,6 +629,14 @@ body{
 	margin-bottom: 20px;
 	font-weight: normal;
 }
+
+
+.tab-title{
+	font-size: 18px;
+
+}
+
+
 
 .myRequestAndSellDiv #requestedContent{
 	height: 95%;
@@ -882,15 +890,10 @@ body{
 	display: block;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
 }
 
-.dot-container{
-	z-index: 4;
-	position: absolute;
-	margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
+
 
 
 

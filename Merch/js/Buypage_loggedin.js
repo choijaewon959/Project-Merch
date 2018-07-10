@@ -27,7 +27,7 @@ function popUpProduct(){
   var popUpConent = document.getElementById('popUpContent');
 
   popUpPanel.style.display = "block";
-  $(popUpConent).animate({height: "700px"});
+  $(popUpConent).animate({height: "730px"});
   changeSlider(sliderIndex);
 }
 
