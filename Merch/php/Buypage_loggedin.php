@@ -183,7 +183,7 @@ $max_range = 2000;
 						<li><button id="myInfoButton" data-toggle="modal" data-target="#myInfoDiv">My Info</button></li>
 						<li><button id="modalButton" onclick="requestModalfunction();">Request</button></li>
 						<li><a href="Sellpage.php">Sell</a></li>
-						<li><a href="">My Shopping Bag</a></li>
+						<li><button id="shoppingBagBTN" data-toggle="modal" data-target="#myShoppingBag">My Shopping Bag</button></li>
 						<li><a href="log_out.php?logout=true">Log out</a><li>
 						<li><button id="tmp" onclick="popUpProduct();">tmpBTN</button></li>
 					</ul>
@@ -292,7 +292,6 @@ $max_range = 2000;
 					<div class="UsernameDiv">
 						<label >My Username</label></br>
 						<input class="userNameInput" type ="text" name="my_userName" autocomplete="off" value=<?php if(!isset($_SESSION['my_userName'])){echo $active_detail['user_name'];}else{echo $_SESSION['my_userName'];} ?>>
-
 					</div><!--User name div-->
 
 					<div class="UserPhoneNumberDiv">
@@ -466,6 +465,65 @@ $max_range = 2000;
 			</div>
 		</div>
 	</div><!--my info div-->
+
+	<div id="myShoppingBag" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div id="myShoppingBagContentDiv">
+
+				<label id="myShoppingBagTitle">Shopping Bag</label>
+				<div id="MSBcontents">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a data-toggle="tab" href="#clotheInBag">
+								clothe
+							</a>
+						</li>
+
+						<li>
+							<a data-toggle="tab" href="#applianceInBag">
+								appliance
+							</a>
+						</li>
+
+						<li>
+							<a data-toggle="tab" href="#bookInBag">
+								book
+							</a>
+						</li>
+
+						<li>
+							<a data-toggle="tab" href="#etcInBag">
+								etc
+							</a>
+						</li>
+					</ul>
+
+					<div class="tab-content" id="tabCategories">
+						<div id="clotheInBag" class="tab-pane fade in active">
+							dd
+						</div>
+
+						<div id="applianceInBag" class="tab-pane fade">
+							dd
+						</div>
+
+						<div id="bookInBag" class="tab-pane fade">
+							aa
+						</div>
+
+						<div id="etcInBag" class="tab-pane fade">
+								a
+						</div>
+
+					</div><!--tab categories-->
+				</div>
+				
+			</div>
+			
+		</div><!--modal dialog-->
+	</div>
 
 
 	<div class="filterDiv" id="filterdiv">

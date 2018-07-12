@@ -722,6 +722,38 @@ body{
 
 }
 
+#myShoppingBag{
+	padding: 0;
+    font-family: 'helvetica';
+}
+
+#myShoppingBag #myShoppingBagTitle{
+	float: left;
+	width: 200px;
+	font-size: 25px;
+	margin-top:5px;
+	color: #337ab7;
+	font-weight: normal;
+}
+
+#myShoppingBag #MSGcontents{
+	float: right;
+}
+
+#myShoppingBagContentDiv{
+    background-color:#fff;
+	border-radius: 7px;
+	height: 710px;
+    width: 1000px;
+	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
+	padding : 10px 10px 10px 20px;
+}
+
+.nav a{
+	font-size:18px;
+}
+
 .main{
 	float: right;
 	width:83%;
@@ -892,9 +924,6 @@ body{
     margin-right: auto;
     position: relative;
 }
-
-
-
 
 
 .photoFlex{
