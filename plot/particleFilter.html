@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>particle Filter Demo</title>
+	
+	<style type="text/css">
+    	#panel {
+    		border: 1px solid #4283f4;
+    		width: 100%;
+    		height: 100%;
+    	}
+
+    	.beacons{
+    		border-radius: 50%;
+    		background-color: #4283f4;
+    		width: 30px;
+    		height: 30px;
+    	}
+
+    	#beacon1{
+    		position: absolute;
+    		left: 30px;
+    		bottom:400px;
+    	}
+
+    	#beacon2{
+    		position: absolute;
+    		left: 280px;
+    		bottom:  200px;
+    	}
+
+    	#beacon3{
+    		position: absolute;
+    		left: 200px;
+    		bottom: 100px;
+    	}
+
+    	#beacon4{
+    		position: absolute;
+    		left: 200px;
+    		bottom:  300px;
+    	}
+
+    	#person{
+    		background-color: #e242f4;
+    		position: absolute;
+    		left: 250px;
+    		bottom: 400px;
+    		width: 25px;
+    		height: 25px;
+    	}
+
+    	#person-prev{
+    		background-color: #e242f4;
+    		position: absolute;
+    		left: 100px;
+    		bottom:  200px;
+    		width: 15px;
+    		height: 15px;
+    	}
+
+    	.plots{
+    		background-color: #dbd9d9;
+    		position: absolute;
+
+    		width: 13px;
+    		height: 13px;
+    		border-radius: 50%;
+    	}
+
+    </style>
+</head>
+<body>
+	<div id="panel">
+		<!--beacons-->
+		<div class="beacons" id="beacon1"></div>
+		<div class="beacons" id="beacon2"></div>
+		<div class="beacons" id="beacon3"></div>
+		<div class="beacons" id="beacon4"></div>
+
+		<!--person-->
+		<div id="person"></div>
+		<div id="person-prev"></div>
+
+		<!--plots-->
+		<div class="plots" id="plot1"></div>
+		<div class="plots" id="plot2"></div>
+		<div class="plots" id="plot3"></div>
+		<div class="plots" id="plot4"></div>
+		<div class="plots" id="plot5"></div>
+		<div class="plots" id="plot6"></div>
+		<div class="plots" id="plot7"></div>
+		<div class="plots" id="plot8"></div>
+		<div class="plots" id="plot9"></div>
+		<div class="plots" id="plot10"></div>
+
+
+	</div>
+
+
+
+	<script type="text/javascript" charset="utf-8">
+
+		//tools
+		function pdfn(x, mean, sd) {
+			return (1 / (sd * Math.sqrt(2 * Math.PI))) * Math.exp(-(Math.pow(x - mean, 2)) / (2 * sd * sd));
+		}
+
+		function randn(mean, sd) {
+
+			//Retrieved from jStat
+			let u;
+			let v;
+			let x;
+			let y;
+			let q;
+
+			do {
+				u = Math.random();
+				v = 1.7156 * (Math.random() - 0.5);
+				x = u - 0.449871;
+				y = Math.abs(v) + 0.386595;
+				q = x * x + y * (0.19600 * y - 0.25472 * x);
+			} while (q > 0.27597 && (q > 0.27846 || v * v > -4 * Math.log(u) * u * u));
+
+			return (v / u) * sd + mean;
+		}
+
+		function limitTheta(theta) {
+
+			if (theta > Math.PI) {
+				return theta - (Math.PI * 2);
+			}
+			else if (theta < -Math.PI) {
+				return theta + (Math.PI * 2);
+			}
+
+			return theta;
+		}
+
+		function polarToCartesian(r, theta) {
+			const dx = r * Math.cos(theta);
+			const dy = r * Math.sin(theta);
+
+			return {dx, dy};
+		}
+
+		//sampling
+		function samplePose({r, theta}) {
+
+			const sdHeading = 0.1;
+
+			const sampledHeading = limitTheta(randn(theta, sdHeading));
+
+			//Comput the deviation of the noise of the step size
+			//@todo Base the deviation of the steps on the pedometer
+			const sdStep = 0.15;
+
+			const sampledR = randn(r, sdStep);
+
+			//Use odometry to find a new position
+			const {dx, dy} = polarToCartesian(sampledR, sampledHeading);
+
+			let x=0;
+			let y=0;
+			x += dx;
+			y += dy;
+			let newtheta = sampledHeading;
+
+			return {x:x, y:y, theta:newtheta};
+		}
+
+
+		//real person
+		//initial position of person : (100,100) left, top, r:0, theta:0
+		//current position of person : (200,150) r: distance value retrieved from odometer, theta: retrieve from randn(just assume 0.5 here)
+		let currentX=100;
+		let currentY=200;
+
+		
+
+		for (let i=1; i<=10; i++){
+			let id = "plot"+i;
+			let estimatedChanges = samplePose({r: 2.7, theta:0.8});
+
+			let newXinPix = currentX+100*estimatedChanges.x+"";
+			let newYinPix = currentY+100*estimatedChanges.y+"";
+
+			console.log(id);
+			console.log("X:",newXinPix);
+			console.log("Y:",newYinPix);
+
+			document.getElementById(id).style.left = newXinPix+"px";
+			document.getElementById(id).style.bottom= newYinPix+"px";
+
+			let test= document.getElementById(id);
+		}
+
+	</script>
+</body>
+</html>

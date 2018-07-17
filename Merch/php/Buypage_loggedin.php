@@ -214,7 +214,7 @@ $max_range = 2000;
 		<div id="popUpContent">
 
 			<button id= "popupClose"></button>
-
+			
 			<div id="popUpPhoto">
 				<div id="slidePanel">
 					<img class="slidePhoto" src ="../img/book1.jpg" width="450" height="500">
@@ -236,20 +236,42 @@ $max_range = 2000;
 			</div><!--popUpPhoto-->
 
 			<div id="popUpDes">
-				<div id="popUpTitle">
+				<header id="popupHeader">
+					<div class="clearfix">
+						<div id="popUpTitle">
+							<label id="titleLabel">Psychology Book and something </label>
+							<div id="uploadedTime">
+								23:08 17/07/2018
+							</div>
 
-				</div>
+							<div id="popUpQuality">
+								old
+							</div>
 
-				<div id="popUpPrice">
+							<div id="popUpPrice">
+								80HKD
+							</div>
+						</div>
 
-				</div>
+						<div id="categoryIcon">
 
-				<div id="popUpQuality">
-
-				</div>
+						</div>
+					</div>
+					
+				</header>
+				
 
 				<div id="popUpDescription">
+					@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</div>
 
+				<div id="popUpHashTags">
+					#books #psychology #singapore #tuesday #food #code
 				</div>
 
 			</div><!--pop up description-->

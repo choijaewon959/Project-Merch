@@ -62,6 +62,7 @@ body{
 }
 
 .tm-nav ul li a:hover{
+
 	background: white;
 	border-radius: 3px;
 	color: #a27cef;
@@ -907,11 +908,12 @@ body{
 	margin-bottom: 10px;
 }
 
+
 #popUpPhoto{
 	float: left;
 	width: 50%;
 	height: 100%;
-	border-right: solid 1px #c4c4c4;
+	/*border-right: solid 1px #c4c4c4;*/
 }
 
 .slidePanel{
@@ -952,4 +954,64 @@ body{
 	height: 100%; 
 	margin-top: 30px;
 	padding-left: 10px;
+}
+
+#popupHeader{
+	clear: both;
+}
+
+#popUpTitle{
+	float: left;
+	font-size: 22px;
+	padding: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+  overflow: hidden;
+	width: 75%;
+}
+
+#categoryIcon{
+	border-radius: 50%;
+	width:100px;
+	height: 100px;
+	background: url(../img/book.png) no-repeat scroll center;
+	background-color: #ff80ab;
+	float: right;
+}
+
+#uploadedTime{
+	color: #c4c4c4;
+	font-size: 18px;
+}
+
+#popUpQuality{
+	font-size: 20px;
+}
+
+#popUpPrice{
+	padding-top: 20px;
+	color: #337ab7;
+	font-size: 18px;
+}
+
+.clearfix{
+	visibility: none;
+	content: " ";
+	clear: both;
+	display: block;
+}
+
+#popUpDescription{
+	padding: 10px;
+	font-size: 19px;
+	height: 400px;
+	width: 100%;
+	border-bottom: 1px solid #efefef;
+}
+
+#popUpHashTags{
+	padding: 10px;
+	font-size: 17px;
+	height: 100px;
+	color: #999;
 }
