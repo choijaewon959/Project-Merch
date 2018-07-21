@@ -678,7 +678,7 @@ body{
 	background: url(../img/shirt.png) no-repeat scroll center;
 	/*background-color: #DB4437;*/
 
-	background-color:#DB4437
+	background-color:#DB4437;
 }
 
 #categoryOfRequestedDiv #iconContainer-appliance{
@@ -724,6 +724,7 @@ body{
 }
 
 #myShoppingBag{
+	margin: auto 0;
 	padding: 0;
     font-family: 'helvetica';
 }
@@ -737,22 +738,176 @@ body{
 	font-weight: normal;
 }
 
-#myShoppingBag #MSGcontents{
-	float: right;
-}
-
 #myShoppingBagContentDiv{
     background-color:#fff;
 	border-radius: 7px;
 	height: 710px;
-    width: 1000px;
+    width: 1200px;
 	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
 	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
 	padding : 10px 10px 10px 20px;
+	overflow:hidden;
 }
+
+#MSBcontents{
+	height: 690px;
+	overflow-y: scroll;
+}
+
+#tabCategories{
+	height: 570px;
+	width: 100%;
+	padding: 20px;
+	display: inline-block;
+}
+
+#shoppingbag-clothePhoto:hover{
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+#shoppingbag-clotheTitle{
+	margin:5px;
+	font-size: 25px;
+	font-weight: bold;
+	width: 350px;
+}
+
+#shoppingbag-clothePrice{
+	color:  #f50057;
+	margin-top:7px;
+	margin-right: 7px;
+	font-size: 17px;
+	font-weight;
+}
+
+
+#tab-icons{
+	display: inline-block;
+	text-decoration: none;
+	list-style-type: none;
+	float: right;
+	width: 100%;
+	margin-left: 800px;
+}
+
+#tab-icons li{
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+}
+.flt-btn{
+
+	z-index: 9998;
+	position: absolute;
+}
+
+#shoppingbagClotheIcon{
+	position: relative;
+  	top: 50%;
+  	-webkit-transform: translateY(-50%);
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+	display: table;
+	margin: 40px auto;
+	z-index: 9998;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	cursor: pointer;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	background: url(../img/shirt-small.png) no-repeat scroll center;
+	background-color: #DB4437;
+	transition: width 0.28s ease, height 0.28s ease;
+}
+
+#shoppingbagClotheIcon:hover{
+	width: 70px;
+	height: 70px;
+}
+
+#shoppingbagTVIcon{
+	position: relative;
+  	top: 50%;
+  	-webkit-transform: translateY(-50%);
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+	display: table;
+	margin: 40px auto;
+	z-index: 9998;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	cursor: pointer;
+	border-radius: 50%;
+	width:50px;
+	height: 50px;
+	background: url(../img/television-small.png) no-repeat scroll center;
+	background-color: #4285F4;
+	transition: width 0.28s ease, height 0.28s ease;
+
+}
+#shoppingbagTVIcon:hover{
+	width: 70px;
+	height: 70px;
+}
+
+#shoppingbagBookIcon{
+	position: relative;
+  	top: 50%;
+  	-webkit-transform: translateY(-50%);
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+	display: table;
+	margin: 40px auto;
+	z-index: 9998;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	cursor: pointer;
+	border-radius: 50%;
+	width:50px;
+	height: 50px;
+	background: url(../img/book-small.png) no-repeat scroll center;
+	background-color: #ff80ab;
+	transition: width 0.28s ease, height 0.28s ease;
+
+}
+
+#shoppingbagBookIcon:hover{
+	width: 70px;
+	height: 70px;
+}
+
+#shoppingbagEtcIcon{
+	position: relative;
+  	top: 50%;
+  	-webkit-transform: translateY(-50%);
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+	display: table;
+	margin: 40px auto;
+	z-index: 9998;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	cursor: pointer;
+	border-radius: 50%;
+	width:50px;
+	height: 50px;
+	background: url(../img/more.png) no-repeat scroll center;
+	background-color:#F09300;
+	transition: width 0.28s ease, height 0.28s ease;
+
+}
+
+#shoppingbagEtcIcon:hover{
+	width: 70px;
+	height: 70px;
+}
+
 
 .nav a{
 	font-size:18px;
+	text-decoration: none !important;
+}
+
+.nav a:hover{
+	text-decoration: none !important;
 }
 
 .main{

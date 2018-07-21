@@ -491,41 +491,32 @@ $max_range = 2000;
 	<div id="myShoppingBag" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<div id="myShoppingBagContentDiv">
-
-				<label id="myShoppingBagTitle">Shopping Bag</label>
+				<label>Shopping bag</label>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<div id="MSBcontents">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-
-					<ul class="nav nav-tabs">
-						<li class="active">
-							<a data-toggle="tab" href="#clotheInBag">
-								clothe
-							</a>
-						</li>
-
-						<li>
-							<a data-toggle="tab" href="#applianceInBag">
-								appliance
-							</a>
-						</li>
-
-						<li>
-							<a data-toggle="tab" href="#bookInBag">
-								book
-							</a>
-						</li>
-
-						<li>
-							<a data-toggle="tab" href="#etcInBag">
-								etc
-							</a>
-						</li>
-					</ul>
 
 					<div class="tab-content" id="tabCategories">
 						<div id="clotheInBag" class="tab-pane fade in active">
-							dd
-						</div>
+							<div>
+								<header id="shoppingbag-headerIcon">
+								
+								</header>
+
+								<div id="shoppingbag-clotheContent">
+									<header id="shoppingbag-clothePhoto">
+										<img src="../img/book1.jpg" width="350" height="300">
+									</header>
+
+									<div id="shoppingbag-clotheTitle">
+										Physics and computer and whatever
+									</div>
+									<div id="shoppingbag-clothePrice">
+										18HKD
+									</div>
+								</div>
+							</div>
+							
+						</div><!--clothein bag-->
 
 						<div id="applianceInBag" class="tab-pane fade">
 							dd
@@ -540,6 +531,37 @@ $max_range = 2000;
 						</div>
 
 					</div><!--tab categories-->
+
+					<ul class="flt-btn" id="tab-icons">
+						<li class="active">
+							<a data-toggle="tab" href="#clotheInBag">
+								<div id="shoppingbagClotheIcon">
+								</div>
+							</a>
+						</li>
+
+						<li>
+							<a data-toggle="tab" href="#applianceInBag">
+								<div id="shoppingbagTVIcon">
+								</div>
+							</a>
+						</li>
+
+						<li>
+							<a data-toggle="tab" href="#bookInBag">
+								<div id="shoppingbagBookIcon">
+								</div>
+							</a>
+						</li>
+
+						<li>
+							<a data-toggle="tab" href="#etcInBag">
+								<div id="shoppingbagEtcIcon">
+									
+								</div>
+							</a>
+						</li>
+					</ul>
 				</div>
 				
 			</div>
