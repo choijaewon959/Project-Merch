@@ -741,12 +741,23 @@ body{
 #myShoppingBagContentDiv{
     background-color:#fff;
 	border-radius: 7px;
-	height: 710px;
-    width: 1200px;
+	height: 750px;
+    width: 1250px;
 	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
 	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
 	padding : 10px 10px 10px 20px;
 	overflow:hidden;
+}
+
+#myShoppingBagContentDiv label{
+	padding: 5px;
+	font-size: 23px;
+	color: #337ab7;
+	font-weight: normal;
+}
+
+#myShoppingBagContentDiv button{
+	float: right;
 }
 
 #MSBcontents{
@@ -757,28 +768,45 @@ body{
 #tabCategories{
 	height: 570px;
 	width: 100%;
-	padding: 20px;
 	display: inline-block;
 }
 
-#shoppingbag-clothePhoto:hover{
-	opacity: 0.8;
+.single-content{
+	display: inline-block;
+	margin: 5px 40px 10px 5px;
+
+}
+
+.shoppingbag-Photo{
+	opacity: 0.85;
+	transition: opacity 0.15s ease-in-out;
+
+}
+
+.shoppingbag-Photo:hover{
+	opacity: 1;
 	cursor: pointer;
 }
 
-#shoppingbag-clotheTitle{
-	margin:5px;
-	font-size: 25px;
-	font-weight: bold;
+.bag-des{
+	display: inline-block;
 	width: 350px;
+
 }
 
-#shoppingbag-clothePrice{
-	color:  #f50057;
+.shoppingbag-Title{
+	margin:5px;
+	font-size: 15px;
+	width: 250px;
+	float: left;
+}
+
+.shoppingbag-Price{
+	color:  #c1c1c1;
 	margin-top:7px;
-	margin-right: 7px;
-	font-size: 17px;
-	font-weight;
+	margin-left: 5px;
+	font-size: 14px;
+	float: right;
 }
 
 
@@ -788,6 +816,7 @@ body{
 	list-style-type: none;
 	float: right;
 	width: 100%;
+	margin-top: 550px;
 	margin-left: 800px;
 }
 
@@ -796,8 +825,8 @@ body{
 	width: 80px;
 	height: 80px;
 }
-.flt-btn{
 
+.flt-btn{
 	z-index: 9998;
 	position: absolute;
 }
@@ -814,16 +843,16 @@ body{
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	cursor: pointer;
 	border-radius: 50%;
-	width: 50px;
-	height: 50px;
+	width: 60px;
+	height: 60px;
 	background: url(../img/shirt-small.png) no-repeat scroll center;
 	background-color: #DB4437;
 	transition: width 0.28s ease, height 0.28s ease;
 }
 
 #shoppingbagClotheIcon:hover{
-	width: 70px;
-	height: 70px;
+	width: 75px;
+	height: 75px;
 }
 
 #shoppingbagTVIcon{
@@ -838,16 +867,16 @@ body{
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	cursor: pointer;
 	border-radius: 50%;
-	width:50px;
-	height: 50px;
+	width: 60px;
+	height: 60px;
 	background: url(../img/television-small.png) no-repeat scroll center;
 	background-color: #4285F4;
 	transition: width 0.28s ease, height 0.28s ease;
 
 }
 #shoppingbagTVIcon:hover{
-	width: 70px;
-	height: 70px;
+	width: 75px;
+	height: 75px;
 }
 
 #shoppingbagBookIcon{
@@ -862,8 +891,8 @@ body{
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	cursor: pointer;
 	border-radius: 50%;
-	width:50px;
-	height: 50px;
+	width: 60px;
+	height: 60px;
 	background: url(../img/book-small.png) no-repeat scroll center;
 	background-color: #ff80ab;
 	transition: width 0.28s ease, height 0.28s ease;
@@ -871,8 +900,8 @@ body{
 }
 
 #shoppingbagBookIcon:hover{
-	width: 70px;
-	height: 70px;
+	width: 75px;
+	height: 75px;
 }
 
 #shoppingbagEtcIcon{
@@ -887,8 +916,8 @@ body{
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	cursor: pointer;
 	border-radius: 50%;
-	width:50px;
-	height: 50px;
+	width: 60px;
+	height: 60px;
 	background: url(../img/more.png) no-repeat scroll center;
 	background-color:#F09300;
 	transition: width 0.28s ease, height 0.28s ease;
@@ -896,8 +925,8 @@ body{
 }
 
 #shoppingbagEtcIcon:hover{
-	width: 70px;
-	height: 70px;
+	width: 75px;
+	height: 75px;
 }
 
 

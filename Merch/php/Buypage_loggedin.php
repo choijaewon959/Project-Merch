@@ -494,44 +494,6 @@ $max_range = 2000;
 				<label>Shopping bag</label>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<div id="MSBcontents">
-
-					<div class="tab-content" id="tabCategories">
-						<div id="clotheInBag" class="tab-pane fade in active">
-							<div>
-								<header id="shoppingbag-headerIcon">
-								
-								</header>
-
-								<div id="shoppingbag-clotheContent">
-									<header id="shoppingbag-clothePhoto">
-										<img src="../img/book1.jpg" width="350" height="300">
-									</header>
-
-									<div id="shoppingbag-clotheTitle">
-										Physics and computer and whatever
-									</div>
-									<div id="shoppingbag-clothePrice">
-										18HKD
-									</div>
-								</div>
-							</div>
-							
-						</div><!--clothein bag-->
-
-						<div id="applianceInBag" class="tab-pane fade">
-							dd
-						</div>
-
-						<div id="bookInBag" class="tab-pane fade">
-							aa
-						</div>
-
-						<div id="etcInBag" class="tab-pane fade">
-								a
-						</div>
-
-					</div><!--tab categories-->
-
 					<ul class="flt-btn" id="tab-icons">
 						<li class="active">
 							<a data-toggle="tab" href="#clotheInBag">
@@ -562,6 +524,362 @@ $max_range = 2000;
 							</a>
 						</li>
 					</ul>
+
+					<div class="tab-content" id="tabCategories">
+						<div id="clotheInBag" class="tab-pane fade in active">
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothes.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothes.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothe2.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothes.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothes.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothe2.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book3.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book3.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+							
+						</div><!--clothein bag-->
+
+						<div id="applianceInBag" class="tab-pane fade">
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/appliance.jfif" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+											Microwave and others
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/appliance.jfif" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+											Microwave and others
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/appliance.jfif" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+											Microwave and others
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/appliance.jfif" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+											Microwave and others
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+						</div><!-- appliance in bag-->
+
+						<div id="bookInBag" class="tab-pane fade">
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book3.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book1.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book3.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book1.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book2.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+
+						<div id="etcInBag" class="tab-pane fade">
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/durian.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										durian
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/durian.jpg" width="350" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										durian
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+									
+								</div>
+							</div>
+						</div><!--etc in bag-->
+
+					</div><!--tab categories-->
+
+					
 				</div>
 				
 			</div>
