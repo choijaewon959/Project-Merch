@@ -506,9 +506,9 @@ body{
 	font-size: 15px;
 }
 
-.currnetPWDiv .passwordInput:focus{
+/*.currnetPWDiv .passwordInput:focus{
 	border-color: #a27cef;
-}
+}*/
 
 .currnetPWDiv .floatLabel {
 	position: absolute;
@@ -543,10 +543,10 @@ body{
 	font-size: 15px;
 }
 
-.newPWDiv .newPasswordInput:focus{
+/*.newPWDiv .newPasswordInput:focus{
 	border-color: #a27cef;
 }
-
+*/
 .newPWDiv .floatLabel {
 	position: absolute;
 	pointer-events: none;
@@ -581,9 +581,9 @@ body{
 	font-size: 15px;
 }
 
-.confirmPWDiv .confirmPasswordInput:focus{
+/*.confirmPWDiv .confirmPasswordInput:focus{
 	border-color: #a27cef;
-}
+}*/
 
 .confirmPWDiv .floatLabel {
 	position: absolute;
@@ -741,17 +741,18 @@ body{
 #myShoppingBagContentDiv{
     background-color:#fff;
 	border-radius: 7px;
-	height: 750px;
+	height: 850px;
     width: 1250px;
 	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
 	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
-	padding : 10px 10px 10px 20px;
+	padding : 10px 10px 10px 30px;
 	overflow:hidden;
 }
 
 #myShoppingBagContentDiv label{
-	padding: 5px;
-	font-size: 23px;
+	padding: 10px;
+	padding-left: 65px;
+	font-size: 25px;
 	color: #337ab7;
 	font-weight: normal;
 }
@@ -763,6 +764,7 @@ body{
 #MSBcontents{
 	height: 690px;
 	overflow-y: scroll;
+	padding-left: 60px;
 }
 
 #tabCategories{
@@ -773,14 +775,15 @@ body{
 
 .single-content{
 	display: inline-block;
-	margin: 5px 40px 10px 5px;
+	margin: 15px 60px 20px 5px;
 
 }
 
 .shoppingbag-Photo{
 	opacity: 0.85;
 	transition: opacity 0.15s ease-in-out;
-
+	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
+	box-shadow: 0 2px 6px 0px rgba(0,0,0,0.5);
 }
 
 .shoppingbag-Photo:hover{
@@ -790,8 +793,8 @@ body{
 
 .bag-des{
 	display: inline-block;
-	width: 350px;
-
+	width: 300px;
+	
 }
 
 .shoppingbag-Title{
@@ -799,13 +802,16 @@ body{
 	font-size: 15px;
 	width: 250px;
 	float: left;
+	text-overflow: ellipsis;
+  	white-space: nowrap;
+  	overflow: hidden;
+  	float: left;
 }
 
 .shoppingbag-Price{
 	color:  #c1c1c1;
 	margin-top:7px;
-	margin-left: 5px;
-	font-size: 14px;
+	font-size: 12px;
 	float: right;
 }
 
@@ -816,8 +822,8 @@ body{
 	list-style-type: none;
 	float: right;
 	width: 100%;
-	margin-top: 550px;
-	margin-left: 800px;
+	margin-top: 660px;
+	margin-left: 750px;
 }
 
 #tab-icons li{

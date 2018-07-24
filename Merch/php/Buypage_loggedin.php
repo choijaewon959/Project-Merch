@@ -530,7 +530,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/clothes.jpg" width="350" height="300">
+										<img src="../img/clothes.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -548,7 +548,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/clothes.jpg" width="350" height="300">
+										<img src="../img/clothes.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -566,7 +566,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/clothe2.jpg" width="350" height="300">
+										<img src="../img/clothes.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -584,7 +584,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/clothes.jpg" width="350" height="300">
+										<img src="../img/clothes.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -602,7 +602,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/clothes.jpg" width="350" height="300">
+										<img src="../img/clothes.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -620,7 +620,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/clothe2.jpg" width="350" height="300">
+										<img src="../img/clothes.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -638,12 +638,12 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/book3.jpg" width="350" height="300">
+										<img src="../img/clothes.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
 										<span class="shoppingbag-Title">
-										Physics and computer and whatever
+										Physics and computer and whatever cool kid
 										</span>
 										<span class="shoppingbag-Price">
 											18HKD
@@ -656,7 +656,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/book3.jpg" width="350" height="300">
+										<img src="../img/book3.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -677,7 +677,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/appliance.jfif" width="350" height="300">
+										<img src="../img/appliance.jfif" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -695,7 +695,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/appliance.jfif" width="350" height="300">
+										<img src="../img/appliance.jfif" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -713,7 +713,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/appliance.jfif" width="350" height="300">
+										<img src="../img/appliance.jfif" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -731,7 +731,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/appliance.jfif" width="350" height="300">
+										<img src="../img/appliance.jfif" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -751,7 +751,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/book3.jpg" width="350" height="300">
+										<img src="../img/book3.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -769,7 +769,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/book1.jpg" width="350" height="300">
+										<img src="../img/book1.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -787,7 +787,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/book3.jpg" width="350" height="300">
+										<img src="../img/book3.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -805,7 +805,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/book1.jpg" width="350" height="300">
+										<img src="../img/book1.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -823,7 +823,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/book2.jpg" width="350" height="300">
+										<img src="../img/book2.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -843,7 +843,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/durian.jpg" width="350" height="300">
+										<img src="../img/durian.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
@@ -861,7 +861,7 @@ $max_range = 2000;
 							<div class="single-content">
 								<div class="shoppingbag-Content">
 									<header class="shoppingbag-Photo">
-										<img src="../img/durian.jpg" width="350" height="300">
+										<img src="../img/durian.jpg" width="300" height="300">
 									</header>
 
 									<div class="bag-des">
