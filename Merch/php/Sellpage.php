@@ -206,7 +206,372 @@ $error_displayed = false;
 
 	  <!-- Overlay content -->
 	  <div class="overlay-content">
-	    fuckyou
+	    <div id="requestedDiv">
+				<div id="requested-Book">
+					<header id="requested-Book-logo">
+						<div id='iconContainer-book'>
+
+						</div>
+					</header>
+				<div id="contents">
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				</div><!--requested div for book-->
+
+				<div id="requested-Appliance">
+					<header id="requested-Appliance-logo">
+						<div id='iconContainer-appliance'>
+
+						</div>
+					</header>
+				<div id="contents">
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!--requested div for appliance-->
+			</div>
+
+				<div id="requested-Clothe">
+					<header id="requested-Clothe-logo">
+						<div id='iconContainer-clothe'>
+
+						</div>
+					</header>
+				<div id="contents">
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div><!--requested div for clothe-->
+
+				<div id="requested-Etc">
+					<header id="requested-Etc-logo">
+						<div id='iconContainer-etc'>
+							etc
+						</div>
+					</header>
+
+				<div id="contents">
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="requested-contents">
+						<div id="conts">
+							<div id="usertitle">
+								<label>Title: </label>
+								<span>Psychology</span></br>
+							</div>
+
+							<div id="updatedTime">
+								01/09/18 22:18
+							</div>
+
+							<div id="userPrice">
+								<label>Price: </label>
+								<span>400HKD</span>
+							</div>
+
+							<div id="userdescription">
+								<label>Description</label>
+								<div id="userDes">
+									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div><!--requested div for etc-->
+
+			</div><!--requested div content-->
 	  </div>
 	</div>
 
@@ -215,7 +580,7 @@ $error_displayed = false;
 		<div class="detailPanel">
 			<h1 id="detailLabel">Details<h1></br>
 			<p id="contentForDetail">@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<button id="showRequested" onclick="openNav()">See what's requested</button>
+			<button id="showRequested" onclick="openNav();">See what's requested</button>
 
 		</div>
 		<?php
@@ -303,7 +668,7 @@ $error_displayed = false;
 				<div class="description">
 
 					<label id="descriptionLabel">Description</label></br>
-					<input id="titleTextBox" type="text" placeholder="Add Title!">
+					<input id="titleTextBox" name="product_title" type="text" placeholder="Add Title!">
 					<textarea id="textareaTextBox" name="product_description" placeholder="Add Description to your product! "><?php if(isset($_SESSION['product_description'])){echo $_SESSION['product_description'];} ?></textarea>
 				</div>
 

@@ -12,11 +12,10 @@ body{
 .Logo{
 	width: 10%;
 	color: white;
-	font-size: 50px;
+	font-size: 45px;
 	float: left;
 	clear: both;
 	margin-left: 25px;
-  margin-top: 5px;
 }
 
 #merchText a{
@@ -63,6 +62,7 @@ body{
 }
 
 .tm-nav ul li a:hover{
+
 	background: white;
 	border-radius: 3px;
 	color: #a27cef;
@@ -373,44 +373,27 @@ body{
 
 }
 
+
 #myInfoDiv{
-    display: none; /* Hidden by default */
-		position: fixed;
-    z-index: 3;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.12); /* Black w/ opacity */
-		padding-top: 70px;
+    padding: 0;
+    font-family: 'helvetica';
+}
+
+.modal-dialog{
+	margin-left: 450px;
 }
 
 #myInfoContentDiv{
     background-color:#fff;
-		border-radius: 7px;
-    margin: 0px auto;
-		height: 0px;
+	border-radius: 7px;
+	height: 710px;
     width: 1000px;
-		-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
-		box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
-		padding : 10px 20px 40px 20px;
+	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
+	padding : 10px 10px 10px 20px;
 
 }
 
-#accountDivCloseBtn{
-	float: right;
-	width: 30px;
-	height: 30px;
-	background: url('../img/cancel.png') no-repeat center;
-	border: 1px solid;
-	border-color: #f5f5f5;
-	border-radius: 50%;
-	outline: none;
-	cursor: pointer;
-	font-size: 20px;
-	margin-bottom: 10px;
-}
 
 .informationDiv{
 	float: left;
@@ -418,12 +401,17 @@ body{
 	height: 100%;
 	border-right:  1px solid #d6d6d6;
 	margin-right: 30px;
+
+}
+
+.informationDiv label{
+		font-weight: normal;
 }
 
 .informationDiv #myInfoTitle{
-	color: #a27cef;
+	color: #337ab7;
 	font-size: 25px;
-
+	font-weight: normal;
 }
 
 .UsernameDiv{
@@ -518,9 +506,9 @@ body{
 	font-size: 15px;
 }
 
-.currnetPWDiv .passwordInput:focus{
+/*.currnetPWDiv .passwordInput:focus{
 	border-color: #a27cef;
-}
+}*/
 
 .currnetPWDiv .floatLabel {
 	position: absolute;
@@ -555,10 +543,10 @@ body{
 	font-size: 15px;
 }
 
-.newPWDiv .newPasswordInput:focus{
+/*.newPWDiv .newPasswordInput:focus{
 	border-color: #a27cef;
 }
-
+*/
 .newPWDiv .floatLabel {
 	position: absolute;
 	pointer-events: none;
@@ -593,9 +581,9 @@ body{
 	font-size: 15px;
 }
 
-.confirmPWDiv .confirmPasswordInput:focus{
+/*.confirmPWDiv .confirmPasswordInput:focus{
 	border-color: #a27cef;
-}
+}*/
 
 .confirmPWDiv .floatLabel {
 	position: absolute;
@@ -623,7 +611,6 @@ body{
 	font-size: 15px;
 	color: white;
 	opacity: 1;
-	align:center;
 }
 
 .myInfoSubmitBtn:hover{
@@ -633,18 +620,24 @@ body{
 
 .myRequestAndSellDiv{
 	float: left;
-	width: 510px;
+	width: 530px;
 	height: 100%;
-	margin-right: 20px;
-
 }
 
 .myRequestAndSellDiv label{
 	color: #a27cef;
 	font-size: 25px;
 	margin-bottom: 20px;
+	font-weight: normal;
+}
+
+
+.tab-title{
+	font-size: 18px;
 
 }
+
+
 
 .myRequestAndSellDiv #requestedContent{
 	height: 95%;
@@ -657,6 +650,12 @@ body{
 	border-bottom: 2px solid #d6d6d6;
 	height: 100px;
 	padding:10px 0px 10px 0px;
+}
+
+.carousel-inner .item img{
+	margin-left:  10px;
+	margin-top: 10px;
+	display: inline-block;
 }
 
 #categoryOfRequestedDiv{
@@ -679,7 +678,7 @@ body{
 	background: url(../img/shirt.png) no-repeat scroll center;
 	/*background-color: #DB4437;*/
 
-	background-color:#DB4437
+	background-color:#DB4437;
 }
 
 #categoryOfRequestedDiv #iconContainer-appliance{
@@ -722,6 +721,228 @@ body{
 	padding-left: 10px;
 	height: 10%;
 
+}
+
+#myShoppingBag{
+	margin: auto 0;
+	padding: 0;
+    font-family: 'helvetica';
+}
+
+#myShoppingBag #myShoppingBagTitle{
+	float: left;
+	width: 200px;
+	font-size: 25px;
+	margin-top:5px;
+	color: #337ab7;
+	font-weight: normal;
+}
+
+#myShoppingBagContentDiv{
+    background-color:#fff;
+	border-radius: 7px;
+	height: 850px;
+    width: 1250px;
+	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
+	padding : 10px 10px 10px 30px;
+	overflow:hidden;
+}
+
+#myShoppingBagContentDiv label{
+	padding: 10px;
+	padding-left: 65px;
+	font-size: 25px;
+	color: #337ab7;
+	font-weight: normal;
+}
+
+#myShoppingBagContentDiv button{
+	float: right;
+}
+
+#MSBcontents{
+	height: 690px;
+	overflow-y: scroll;
+	padding-left: 60px;
+}
+
+#tabCategories{
+	height: 570px;
+	width: 100%;
+	display: inline-block;
+}
+
+.single-content{
+	display: inline-block;
+	margin: 15px 60px 20px 5px;
+
+}
+
+.shoppingbag-Photo{
+	opacity: 0.85;
+	transition: opacity 0.15s ease-in-out;
+	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
+	box-shadow: 0 2px 6px 0px rgba(0,0,0,0.5);
+}
+
+.shoppingbag-Photo:hover{
+	opacity: 1;
+	cursor: pointer;
+}
+
+.bag-des{
+	display: inline-block;
+	width: 300px;
+	
+}
+
+.shoppingbag-Title{
+	margin:5px;
+	font-size: 15px;
+	width: 250px;
+	float: left;
+	text-overflow: ellipsis;
+  	white-space: nowrap;
+  	overflow: hidden;
+  	float: left;
+}
+
+.shoppingbag-Price{
+	color:  #c1c1c1;
+	margin-top:7px;
+	font-size: 12px;
+	float: right;
+}
+
+
+#tab-icons{
+	display: inline-block;
+	text-decoration: none;
+	list-style-type: none;
+	float: right;
+	width: 100%;
+	margin-top: 660px;
+	margin-left: 750px;
+}
+
+#tab-icons li{
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+}
+
+.flt-btn{
+	z-index: 9998;
+	position: absolute;
+}
+
+#shoppingbagClotheIcon{
+	position: relative;
+  	top: 50%;
+  	-webkit-transform: translateY(-50%);
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+	display: table;
+	margin: 40px auto;
+	z-index: 9998;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	cursor: pointer;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	background: url(../img/shirt-small.png) no-repeat scroll center;
+	background-color: #DB4437;
+	transition: width 0.28s ease, height 0.28s ease;
+}
+
+#shoppingbagClotheIcon:hover{
+	width: 75px;
+	height: 75px;
+}
+
+#shoppingbagTVIcon{
+	position: relative;
+  	top: 50%;
+  	-webkit-transform: translateY(-50%);
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+	display: table;
+	margin: 40px auto;
+	z-index: 9998;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	cursor: pointer;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	background: url(../img/television-small.png) no-repeat scroll center;
+	background-color: #4285F4;
+	transition: width 0.28s ease, height 0.28s ease;
+
+}
+#shoppingbagTVIcon:hover{
+	width: 75px;
+	height: 75px;
+}
+
+#shoppingbagBookIcon{
+	position: relative;
+  	top: 50%;
+  	-webkit-transform: translateY(-50%);
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+	display: table;
+	margin: 40px auto;
+	z-index: 9998;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	cursor: pointer;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	background: url(../img/book-small.png) no-repeat scroll center;
+	background-color: #ff80ab;
+	transition: width 0.28s ease, height 0.28s ease;
+
+}
+
+#shoppingbagBookIcon:hover{
+	width: 75px;
+	height: 75px;
+}
+
+#shoppingbagEtcIcon{
+	position: relative;
+  	top: 50%;
+  	-webkit-transform: translateY(-50%);
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+	display: table;
+	margin: 40px auto;
+	z-index: 9998;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	cursor: pointer;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	background: url(../img/more.png) no-repeat scroll center;
+	background-color:#F09300;
+	transition: width 0.28s ease, height 0.28s ease;
+
+}
+
+#shoppingbagEtcIcon:hover{
+	width: 75px;
+	height: 75px;
+}
+
+
+.nav a{
+	font-size:18px;
+	text-decoration: none !important;
+}
+
+.nav a:hover{
+	text-decoration: none !important;
 }
 
 .main{
@@ -837,4 +1058,150 @@ body{
 #eye{
 	margin:5px;
 	float: right;
+}
+
+#onClickPopUp{
+	display: none; /* Hidden by default */
+	position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.12); /* Black w/ opacity */
+	padding-top: 70px;
+}
+
+#onClickPopUp #popUpContent{
+	background-color: #fefefe;
+	border-radius: 7px;
+    margin: 0px auto;
+	height: 0px;
+    width: 1000px;
+	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
+	padding : 20px 20px 10px 0px;
+}
+
+#popupClose{
+	float: right;
+	width: 30px;
+	height: 30px;
+	background: url('../img/cancel.png') no-repeat center;
+	border: 1px solid;
+	border-color: #fff;
+	border-radius: 50%;
+	outline: none;
+	cursor: pointer;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+
+#popUpPhoto{
+	float: left;
+	width: 50%;
+	height: 100%;
+	/*border-right: solid 1px #c4c4c4;*/
+}
+
+.slidePanel{
+	position: relative;
+}
+
+#popUpPhoto .slidePhoto{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+
+.photoFlex{
+	padding-left: 20px;
+}
+
+.photoFlex .opac-Photo{
+	cursor: pointer;
+	opacity: 0.5;
+	display: inline-block;
+	margin-left: auto;
+    margin-right: auto;
+    margin:10px;
+
+}
+
+.photoFlex .opac-Photo:hover{
+	opacity: 1;
+	-webkit-transition: opacity 0.18s ease-in-out;
+  transition: opacity 0.18s ease-in-out;
+}
+
+#popUpDes{
+	float: left;
+	width: 45%;
+	height: 100%; 
+	margin-top: 30px;
+	padding-left: 10px;
+}
+
+#popupHeader{
+	clear: both;
+}
+
+#popUpTitle{
+	float: left;
+	font-size: 22px;
+	padding: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+  overflow: hidden;
+	width: 75%;
+}
+
+#categoryIcon{
+	border-radius: 50%;
+	width:100px;
+	height: 100px;
+	background: url(../img/book.png) no-repeat scroll center;
+	background-color: #ff80ab;
+	float: right;
+}
+
+#uploadedTime{
+	color: #c4c4c4;
+	font-size: 18px;
+}
+
+#popUpQuality{
+	font-size: 20px;
+}
+
+#popUpPrice{
+	padding-top: 20px;
+	color: #337ab7;
+	font-size: 18px;
+}
+
+.clearfix{
+	visibility: none;
+	content: " ";
+	clear: both;
+	display: block;
+}
+
+#popUpDescription{
+	padding: 10px;
+	font-size: 19px;
+	height: 400px;
+	width: 100%;
+	border-bottom: 1px solid #efefef;
+}
+
+#popUpHashTags{
+	padding: 10px;
+	font-size: 17px;
+	height: 100px;
+	color: #999;
 }

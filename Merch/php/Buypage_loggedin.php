@@ -79,41 +79,50 @@ $max_range = 2000;
 <html>
 <head>
 	<title>Buypage_loggedin</title>
-	<link rel="stylesheet" type="text/css" href="../css/Buypage_loggedin.css">
 	<meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/Buypage_loggedin.css">
+
 	<script type="text/javascript" src="../js/Buypage_loggedin.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
+	var q_value = "default";
+	var c_value = "default";
+	var search_list = [];
 	$(document).ready(function(){
-			var q_value = "default";
-			var c_value = "default";
-			$("#priceSlider").slider({
-					range: true,
-					min:0,
-					max: 1000,
-					values: [<?php echo $min_range; ?>, <?php echo $max_range; ?>],
-					slide: function(event,ui){
-						$("#min_range").val(ui.values[0]);
-						$("#max_range").val(ui.values[1]);
-						load_product(ui.values[0],ui.values[1],q_value,c_value);
-					}
-			});
-			load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
-
+		$("#priceSlider").slider({
+				range: true,
+				min:0,
+				max: 1000,
+				values: [<?php echo $min_range; ?>, <?php echo $max_range; ?>],
+				slide: function(event,ui){
+					$("#min_range").val(ui.values[0]);
+					$("#max_range").val(ui.values[1]);
+					load_product(ui.values[0],ui.values[1],q_value,c_value);
+				}
+		});
 		var $quality_radios = $('input[name=quality]').change(function ()
 		{
     	var q_value = $quality_radios.filter(':checked').val();
+			var c_value = $category_radios.filter(':checked').val();
+			var search_word = $("input").val();
 			load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
 		});
 		var $category_radios = $('input[name=category]').change(function ()
 		{
+			var q_value = $quality_radios.filter(':checked').val();
 			var c_value = $category_radios.filter(':checked').val();
+			var search_word = $("input").val();
 			load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
 		});
+		load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
+
 /*
 		function undo(){
 			<?php
@@ -126,31 +135,30 @@ $max_range = 2000;
 		});
 */
 		function load_product(min_range,max_range,q_value,c_value)
-			{
-				$.ajax({
-						url:"load.php",
-						method:"POST",
-						data:{min_range:min_range,
-								max_range:max_range,
-								q_value:q_value,
-								c_value:c_value},
-						success:function(data)
-						{
-							$('#load_product').html(data);
-						}
-				});
-			}
-
-			$("input").keyup(function(){
-					var search_word = $("input").val();
-					$.post("search.php",{
-							search_word: search_word
-					}, function(data, status){
-							$("#suggestion").html(data);
-					});
+		{
+			$.ajax({
+					url:"load.php",
+					method:"POST",
+					data:{min_range:min_range,
+							max_range:max_range,
+							q_value:q_value,
+							c_value:c_value},
+					success:function(data)
+					{
+						$('#load_product').html(data);
+					}
 			});
+		}
+		$("input").keyup(function(){
+				search_word = $("input").val();
+				$.post("search.php",{
+						search_word: search_word
+				}, function(data, status){
+						$("#suggestion").html(data);
+				});
+				load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
+		});
 	});
-
 </script>
 </head>
 
@@ -176,11 +184,12 @@ $max_range = 2000;
 
 			<nav class="tm-nav">
 					<ul>
-						<li><button id="myInfoButton" onclick="myInfofunction();">My Info</button></li>
+						<li><button id="myInfoButton" data-toggle="modal" data-target="#myInfoDiv">My Info</button></li>
 						<li><button id="modalButton" onclick="requestModalfunction();">Request</button></li>
 						<li><a href="Sellpage.php">Sell</a></li>
-						<li><a href="">My Shopping Bag</a></li>
+						<li><button id="shoppingBagBTN" data-toggle="modal" data-target="#myShoppingBag">My Shopping Bag</button></li>
 						<li><a href="log_out.php?logout=true">Log out</a><li>
+						<li><button id="tmp" onclick="popUpProduct();">tmpBTN</button></li>
 					</ul>
 			</nav>
 	  </div><!--searchHeader-->
@@ -203,6 +212,75 @@ $max_range = 2000;
 
 		</div><!--filter and Shopping Cart-->
 	</div><!--stickedToTop-->
+
+	<!--div pops up when conent div in main is clicked-->
+	<div id="onClickPopUp">
+		<div id="popUpContent">
+
+			<button id= "popupClose"></button>
+
+			<div id="popUpPhoto">
+				<div id="slidePanel">
+					<img class="slidePhoto" src ="../img/book1.jpg" width="450" height="500">
+					<img class="slidePhoto" src ="../img/book2.jpg" width="450" height="500">
+					<img class="slidePhoto" src ="../img/book3.jpg" width="450" height="500">
+					<button class="sliderDots w3-display-left w3-button" onclick="incrementSliderIndex(-1);">&#10094;</button>
+					<button class="sliderDots w3-display-right w3-button" onclick="incrementSliderIndex(1);">&#10095;</button>
+				</div>
+
+
+
+				<div class="photoFlex">
+					<img class="opac-Photo" src ="../img/book1.jpg" width="130" height="170" onclick="currentSlider(1)">
+
+					<img class="opac-Photo" src ="../img/book2.jpg" width="130" height="170" onclick="currentSlider(2)">
+
+					<img class="opac-Photo" src ="../img/book3.jpg" width="130" height="170" onclick="currentSlider(3)">
+				</div>
+			</div><!--popUpPhoto-->
+
+			<div id="popUpDes">
+				<header id="popupHeader">
+					<div class="clearfix">
+						<div id="popUpTitle">
+							<label id="titleLabel">Psychology Book and something </label>
+							<div id="uploadedTime">
+								23:08 17/07/2018
+							</div>
+
+							<div id="popUpQuality">
+								old
+							</div>
+
+							<div id="popUpPrice">
+								80HKD
+							</div>
+						</div>
+
+						<div id="categoryIcon">
+
+						</div>
+					</div>
+
+				</header>
+
+
+				<div id="popUpDescription">
+					@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</div>
+
+				<div id="popUpHashTags">
+					#books #psychology #singapore #tuesday #food #code
+				</div>
+
+			</div><!--pop up description-->
+		</div><!--popup content-->
+	</div><!--pop up panel-->
 
 	<div id="requestModal">
 		<div id="requestContentDiv">
@@ -229,116 +307,590 @@ $max_range = 2000;
 		</div>
 	</div><!--requestModal-->
 
-	<div id="myInfoDiv">
-		<div id="myInfoContentDiv">
-			<button id= "accountDivCloseBtn" type="button"></button></br>
+	<div id="myInfoDiv" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div id="myInfoContentDiv">
 
-			<div class="informationDiv">
-			<form id="myInfoPanel" action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
-				<label id="myInfoTitle">My Info</label>
+				<div class="informationDiv">
+				<form id="myInfoPanel" action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
+					<label id="myInfoTitle">My Info</label>
 
-				<div class="UsernameDiv">
-					<label >My Username</label></br>
-					<input class="userNameInput" type ="text" name="my_userName" autocomplete="off" value=<?php if(!isset($_SESSION['my_userName'])){echo $active_detail['user_name'];}else{echo $_SESSION['my_userName'];} ?>>
+					<div class="UsernameDiv">
+						<label >My Username</label></br>
+						<input class="userNameInput" type ="text" name="my_userName" autocomplete="off" value=<?php if(!isset($_SESSION['my_userName'])){echo $active_detail['user_name'];}else{echo $_SESSION['my_userName'];} ?>>
+					</div><!--User name div-->
 
-				</div><!--User name div-->
+					<div class="UserPhoneNumberDiv">
+						<label>Phone Number</label></br>
+						<input class="phoneNumberInput" type="text" name="my_phonenum" autocomplete="off" value=<?php if(!isset($_SESSION['my_phonenum'])){echo $active_detail['phone_num'];}else{echo $_SESSION['my_phonenum'];} ?>>
+					</div><!--User phone number div-->
 
-				<div class="UserPhoneNumberDiv">
-					<label>Phone Number</label></br>
-					<input class="phoneNumberInput" type="text" name="my_phonenum" autocomplete="off" value=<?php if(!isset($_SESSION['my_phonenum'])){echo $active_detail['phone_num'];}else{echo $_SESSION['my_phonenum'];} ?>>
-				</div><!--User phone number div-->
+					<div class="UserEmailDiv">
+						<label>Email</label></br>
+						<input class="emailInput" type="text" name="my_email" autocomplete="off" value= <?php if(!isset($_SESSION['my_email'])){echo $active_detail['email'];}else{echo $_SESSION['my_email'];}  ?>>
+					</div><!--User email div-->
 
-				<div class="UserEmailDiv">
-					<label>Email</label></br>
-					<input class="emailInput" type="text" name="my_email" autocomplete="off" value= <?php if(!isset($_SESSION['my_email'])){echo $active_detail['email'];}else{echo $_SESSION['my_email'];}  ?>>
-				</div><!--User email div-->
+					<div id="UserPasswordDiv">
+						<div class="pwLabelDiv">
+							<label id="PWLABEL">Password</label>
+						</div>
 
-				<div id="UserPasswordDiv">
-					<div class="pwLabelDiv">
-						<label id="PWLABEL">Password</label>
+
+						<div class="currnetPWDiv">
+							<input class="passwordInput" type="password"  name="current_password" autocomplete="off" />
+							<span class="floatLabel">Current Password</span>
+						</div><!--current pw div-->
+
+						<div class="newPWDiv">
+							<input class="newPasswordInput" type="password"  name="new_password" autocomplete="off" />
+							<span class="floatLabel">New Password</span>
+						</div><!--new password div-->
+
+						<div class="confirmPWDiv">
+							<input class="confirmPasswordInput" type="password"  name="confirm_password" autocomplete="off" />
+							<span class="floatLabel">Confirm Password</span>
+						</div><!--confirm new password div-->
+
+						<div>
+							<input class="myInfoSubmitBtn" name="btn_myinfo" value="save" type="submit" >
+						</div>
+
+
+					</div><!--user Password div-->
+
+					</form>
+				</div><!-- left most div, my information div-->
+
+				<div class="myRequestAndSellDiv">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#requestedContent">My Requests</a></li>
+						<li><a data-toggle="tab" href="#mySelling">My products on sale</a></li>
+					</ul>
+
+					<div class="tab-content">
+						<div id="requestedContent" class="tab-pane fade in active">
+							@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							<?php
+							      for($i = 0 ; $i < $request_num ; $i ++)
+							      {
+							        echo "<div id='requestedItems'>";
+							        if($request_list[$i]['category'] == 'book')
+							        {
+							          echo "<div id='categoryOfRequestedDiv'>".
+							            "<div id='iconContainer-book'>".
+							          "</div>".
+							        "</div>";
+							        }
+							        else if($request_list[$i]['category'] == "etc")
+							        {
+							          echo "<div id='categoryOfRequestedDiv'>".
+							            "<div id='iconContainer-etc'>".
+							              "etc".
+							          "</div>".
+							        "</div>";
+							        }
+							        else if($request_list[$i]['category'] == "appliance")
+							        {
+							          echo "<div id='categoryOfRequestedDiv'>".
+							            "<div id='iconContainer-appliance'>".
+							          "</div>".
+							        "</div>";
+							        }
+							        else if($request_list[$i]['category'] == "clothe")
+							        {
+							          echo "<div id='categoryOfRequestedDiv'>".
+							            "<div id='iconContainer-clothe'>".
+							          "</div>".
+							        "</div>";
+							        }
+
+							        echo "<div id='requestedPriceAndDesciption'>".
+							            "<div id='requestedDescription'>".
+							              $request_list[$i]['description'].
+							            "</div>".
+							            "<div id='requestedPrice'>".
+							              $request_list[$i]['price']." HKD".
+							            "</div>".
+							          "</div>".
+										"</div>";
+							      }
+							  ?>
+
+						</div><!--requested Content div-->
+
+
+						<div id="mySelling" class="tab-pane fade">
+							<div  id="sellingContent" class="carousel slide " data-ride="carousel" >
+
+								<!-- Indicators -->
+    							<ol class="carousel-indicators">
+      								<li data-target="#sellingContent" data-slide-to="0" class="active"></li>
+      								<li data-target="#sellingContent" data-slide-to="1"></li>
+      								<li data-target="#sellingContent" data-slide-to="2"></li>
+    							</ol>
+
+								<div class="carousel-inner">
+    								<div class="item active">
+      									<img class="d-block " src="../img/book1.jpg" width="160" height="500">
+      									<img class="d-block " src="../img/book1.jpg" width="160" height="500">
+      									<img class="d-block " src="../img/book1.jpg" width="160" height="500">
+      									<div id="selling-title">
+      										dddd
+										</div>
+
+										<div id="selling-quality">
+											dd
+										</div>
+
+										<div id="selling-price">
+
+										</div>
+
+										<div id="selling-des">
+										</div>
+
+										<div id="selling-hashtags">
+
+										</div>
+    								</div>
+
+    								<div class="item ">
+      									<img class="d-block " src="../img/book2.jpg" width="160" height="500">
+      									<img class="d-block " src="../img/book2.jpg" width="160" height="500">
+    								</div>
+
+    								<div class="item">
+      									<img class="d-block " src="../img/book3.jpg" width="160" height="500">
+    								</div>
+  								</div>
+
+  								<a class="carousel-control-prev" href="#sellingContent" role="button" data-slide="prev">
+    								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    								<span class="sr-only">Previous</span>
+  								</a>
+
+  								<a class="carousel-control-next" href="#sellingContent" role="button" data-slide="next">
+    								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+    								<span class="sr-only">Next</span>
+  								</a>
+							</div>
+
+						</div><!--my selling-->
+
+
 					</div>
 
-
-					<div class="currnetPWDiv">
-						<input class="passwordInput" type="password"  name="current_password" autocomplete="off" />
-						<span class="floatLabel">Current Password</span>
-					</div><!--current pw div-->
-
-					<div class="newPWDiv">
-						<input class="newPasswordInput" type="password"  name="new_password" autocomplete="off" />
-						<span class="floatLabel">New Password</span>
-					</div><!--new password div-->
-
-					<div class="confirmPWDiv">
-						<input class="confirmPasswordInput" type="password"  name="confirm_password" autocomplete="off" />
-						<span class="floatLabel">Confirm Password</span>
-					</div><!--confirm new password div-->
-
-					<div>
-						<input class="myInfoSubmitBtn" name="btn_myinfo" value="save" type="submit" >
-					</div>
-
-
-				</div><!--user Password div-->
-
-				</form>
-			</div><!-- left most div, my information div-->
-
-			<div class="myRequestAndSellDiv">
-					<label>My Request</label>
-
-					<div id="requestedContent">
-
-						<?php
-						      for($i = 0 ; $i < $request_num ; $i ++)
-						      {
-						        echo "<div id='requestedItems'>";
-						        if($request_list[$i]['category'] == 'book')
-						        {
-						          echo "<div id='categoryOfRequestedDiv'>".
-						            "<div id='iconContainer-book'>".
-						          "</div>".
-						        "</div>";
-						        }
-						        else if($request_list[$i]['category'] == "etc")
-						        {
-						          echo "<div id='categoryOfRequestedDiv'>".
-						            "<div id='iconContainer-etc'>".
-						              "etc".
-						          "</div>".
-						        "</div>";
-						        }
-						        else if($request_list[$i]['category'] == "appliance")
-						        {
-						          echo "<div id='categoryOfRequestedDiv'>".
-						            "<div id='iconContainer-appliance'>".
-						          "</div>".
-						        "</div>";
-						        }
-						        else if($request_list[$i]['category'] == "clothe")
-						        {
-						          echo "<div id='categoryOfRequestedDiv'>".
-						            "<div id='iconContainer-clothe'>".
-						          "</div>".
-						        "</div>";
-						        }
-
-						        echo "<div id='requestedPriceAndDesciption'>".
-						            "<div id='requestedDescription'>".
-						              $request_list[$i]['description'].
-						            "</div>".
-						            "<div id='requestedPrice'>".
-						              $request_list[$i]['price']." HKD".
-						            "</div>".
-						          "</div>".
-									"</div>";
-						      }
-						  ?>
-
-					</div><!--requested Content div-->
-			</div><!-- right div, show what I requested-->
+				</div><!-- right div, show what I requested-->
+			</div>
 		</div>
+	</div><!--my info div-->
+
+	<div id="myShoppingBag" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div id="myShoppingBagContentDiv">
+				<label>Shopping bag</label>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div id="MSBcontents">
+					<ul class="flt-btn" id="tab-icons">
+						<li class="active">
+							<a data-toggle="tab" href="#clotheInBag">
+								<div id="shoppingbagClotheIcon">
+								</div>
+							</a>
+						</li>
+
+						<li>
+							<a data-toggle="tab" href="#applianceInBag">
+								<div id="shoppingbagTVIcon">
+								</div>
+							</a>
+						</li>
+
+						<li>
+							<a data-toggle="tab" href="#bookInBag">
+								<div id="shoppingbagBookIcon">
+								</div>
+							</a>
+						</li>
+
+						<li>
+							<a data-toggle="tab" href="#etcInBag">
+								<div id="shoppingbagEtcIcon">
+
+								</div>
+							</a>
+						</li>
+					</ul>
+
+					<div class="tab-content" id="tabCategories">
+						<div id="clotheInBag" class="tab-pane fade in active">
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothes.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothes.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothes.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothes.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothes.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothes.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/clothes.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever cool kid
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book3.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+						</div><!--clothein bag-->
+
+						<div id="applianceInBag" class="tab-pane fade">
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/appliance.jfif" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+											Microwave and others
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/appliance.jfif" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+											Microwave and others
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/appliance.jfif" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+											Microwave and others
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/appliance.jfif" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+											Microwave and others
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+						</div><!-- appliance in bag-->
+
+						<div id="bookInBag" class="tab-pane fade">
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book3.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book1.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book3.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book1.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/book2.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										Physics and computer and whatever
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						<div id="etcInBag" class="tab-pane fade">
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/durian.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										durian
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="single-content">
+								<div class="shoppingbag-Content">
+									<header class="shoppingbag-Photo">
+										<img src="../img/durian.jpg" width="300" height="300">
+									</header>
+
+									<div class="bag-des">
+										<span class="shoppingbag-Title">
+										durian
+										</span>
+										<span class="shoppingbag-Price">
+											18HKD
+										</span>
+									</div>
+
+								</div>
+							</div>
+						</div><!--etc in bag-->
+
+					</div><!--tab categories-->
+
+
+				</div>
+
+			</div>
+
+		</div><!--modal dialog-->
 	</div>
+
 
 	<div class="filterDiv" id="filterdiv">
 		<ul>
@@ -365,7 +917,7 @@ $max_range = 2000;
 					<div id="qualitySort"> quality</div>
 					<div id= "qualityFilterDiv">
 						<form action="Buypage_loggedin.php">
-							<input type="radio" name="quality" value="defaut" checked> No preference</input><br>
+							<input type="radio" name="quality" value="default" checked> No preference</input><br>
  						  <input type="radio" name="quality" value="New"> New</input><br>
 						  <input type="radio" name="quality" value="Used"> Used</input><br>
 						  <input type="radio" name="quality" value="Old"> Old</input><br>
@@ -380,7 +932,7 @@ $max_range = 2000;
 					<div id="categorySort"> category</div>
 					<div id="categoryFilterDiv">
 						<form action="Buypage_loggedin.php">
-							<input type="radio" name="category" value="defaut" checked> No preference</input><br>
+							<input type="radio" name="category" value="default" checked> No preference</input><br>
 						  <input type="radio" name="category" value="Book"> Book</input><br>
 						  <input type="radio" name="category" value="Clothe"> Clothe</input><br>
 						  <input type="radio" name="category" value="Appliance"> Appliance</input> <br>
@@ -412,6 +964,8 @@ $max_range = 2000;
 
 
 	</div>
+
+
 
 
 
