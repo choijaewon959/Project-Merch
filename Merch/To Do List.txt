@@ -1,27 +1,17 @@
 To Do List
-
-
-		Buypage
+		Buypage.php
 
 - Drag and Drop
-
-
 - view my request / change request
-
 - Design Myinfo
 	- have to design save (submit) Button
 	- have no idea why confirm input does not change its color when focused
 	- must study for jquery or css to design the what I requested and what I am selling 
-- search
-- filter
 
 		Mycart.php
 - Display my temporary wishlist
 
-
-
-
-Sellpage.php
+		Sellpage.php
 - view my product / change picture or description
 
 

@@ -207,90 +207,6 @@ $error_displayed = false;
 	  <!-- Overlay content -->
 	  <div class="overlay-content">
 	    <div id="requestedDiv">
-				<div id="requested-Book">
-					<header id="requested-Book-logo">
-						<div id='iconContainer-book'>
-
-						</div>
-					</header>
-				<div id="contents">
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				</div><!--requested div for book-->
 
 				<div id="requested-Appliance">
 					<header id="requested-Appliance-logo">
@@ -586,12 +502,15 @@ $error_displayed = false;
 		<?php
 			$stmt = $auth_user->runQuery("SELECT * FROM request");
 			$request_list= array();
+			$c = 0;
 			$stmt->execute(array(":user_id"=>$user_id));
-			$request_list=$stmt->fetch(PDO::FETCH_ASSOC);
-			$l = $stmt->rowCount();
-			for($a = 0 ; $a < $l ; $a ++)
+			while($request_list[$c] = $stmt->fetch(PDO::FETCH_ASSOC)){
+				$c = $c + 1;
+			}
+			print_r($request_list);
+			for($a = 0 ; $a < $c ; $a ++)
 			{
-				echo "price:".$request_list['price']."</br>"."category".$request_list['category']."</br> Description:".$request_list['description'];
+				echo "price:".$request_list[$a]['price']."</br>"."category".$request_list[$a]['category']."</br> Description:".$request_list[$a]['description'];
 			}
 		?>
 		<div id="tips-panel">

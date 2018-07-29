@@ -46,9 +46,11 @@ CREATE TABLE `request`
 (
   `request_id` int(10) NOT NULL AUTO_INCREMENT,
   `user_id` int(10) NOT NULL,
-  `price` int(10) NOT NULL,
+  `price` int(5) NOT NULL,
+  `title` varchar (20) NOT NULL,
   `category` varchar(10) NOT NULL,
-  `description` varchar(20) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(`request_id`),
   FOREIGN KEY(`user_id`) references users(user_id)
 );
