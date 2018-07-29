@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Compass & Accelerometer</title>
+	<script type="text/javascript" charset="utf-8">
+
+			/**
+	 * Convert an angle in degrees to a radian angle and substract the base
+	 *
+	 * Base corresponds to theta=0. Degrees are converted from CW to CWW.
+	 *
+	 * @param  {Number} heading Angle in degrees
+	 * @param  {Number} base Base angle in degrees
+	 * @return {Number} between -pi and pi
+	 */
+	function degreeToNormalisedHeading(heading, base) {
+
+		let diff = heading - base;
+
+		if (diff < 0) {
+			diff += 360;
+		}
+		else if (diff > 360) {
+			diff -= 360;
+		}
+
+		return limitTheta(degreeToRadian(clockwiseToCounterClockwise(diff)));
+	}
+
+	/**
+	 * Add two radials, keeps the result within [-pi, pi]
+	 * @param {float} t1
+	 * @param {float} t2
+	 * @return {float} Sum of t1 and t2
+	 */
+	function addTheta(t1, t2) {
+		console.error('Function is deprecated, use limitTheta instead.');
+
+		let theta = t1 + t2;
+
+		if (theta > Math.PI) {
+			return Math.PI - theta;
+		}
+		else if (theta < -Math.PI) {
+			return -Math.PI - theta;
+		}
+
+		return theta;
+	}
+
+	/**
+	 * Make sure theta remains between [-pi, pi]
+	 * @param  {Number} theta
+	 * @return {Number}
+	 */
+	function limitTheta(theta) {
+
+		if (theta > Math.PI) {
+			return theta - (Math.PI * 2);
+		}
+		else if (theta < -Math.PI) {
+			return theta + (Math.PI * 2);
+		}
+
+		return theta;
+	}
+
+	/**
+	 * Compute the average heading between two angles
+	 * @param  {Number} theta1
+	 * @param  {Number} theta2
+	 * @return {Number}
+	 * @see https://en.wikipedia.org/wiki/Mean_of_circular_quantities
+	 */
+	function meanHeading(theta1, theta2) {
+
+		const oldTheta1 = theta1;
+		const oldTheta2 = theta2;
+
+		if (theta1 < 0) {
+			theta1 += 2 * Math.PI;
+		}
+		if (theta2 < 0) {
+			theta2 += 2 * Math.PI;
+		}
+
+		const {dx: x1, dy: y1} = polarToCartesian(1, theta1);
+		const {dx: x2, dy: y2} = polarToCartesian(1, theta2);
+
+		const avgX = (x1 + x2) / 2;
+		const avgY = (y1 + y2) / 2;
+
+		const {theta: heading} = cartesianToPolar(avgX, avgY);
+
+		console.log({oldTheta1, oldTheta2, theta1, theta2, heading});
+
+		return heading;
+	}
+
+	/**
+	 * Convert polar coordinates to cartesian coordinates
+	 * @param  {float} r
+	 * @param  {float} theta
+	 * @return {object}
+	 */
+	function polarToCartesian(r, theta) {
+		const dx = r * Math.cos(theta);
+		const dy = r * Math.sin(theta);
+
+		return {dx, dy};
+	}
+
+	/**
+	 * Convert cartesian coordiantes to polar coordinates
+	 * @param  {float} dx  x value from 0,0
+	 * @param  {float} dy  y value from 0,0
+	 * @return {object}
+	 */
+	function cartesianToPolar(dx, dy) {
+
+		const r = Math.sqrt((dx * dx) + (dy * dy));
+
+		const theta = Math.atan2(dy, dx);
+
+		return {r, theta};
+	}
+
+	/**
+	 * Convert a value in degrees to a radian value
+	 * @param  {Number} degrees
+	 * @return {Number}
+	 */
+	function degreeToRadian(degrees) {
+		return degrees * (Math.PI / 180);
+	}
+
+	/**
+	 * Convert a value in rad to a degree value
+	 * @param  {Number} rad
+	 * @return {Number}
+	 */
+	function radianToDegree(rad) {
+		return rad * (180 / Math.PI);
+	}
+
+	/**
+	 * Convert a clockwise degree to a counter clockwise degree
+	 * @param  {Number} degrees
+	 * @return {Number}
+	 */
+	function clockwiseToCounterClockwise(degrees) {
+		return 360 - degrees;
+	}
+
+	/**
+	 * Finds the smallest rotation to the local north
+	 * @param  {Number} rad
+	 * @return {Number}
+	 */
+	function rotationToLocalNorth(rad, previous) {
+
+		rad += 0.5 * Math.PI;
+
+		const left = rad - previous;
+		const right = (Math.PI * 2) - previous - rad;
+
+		if (left < right) {
+			return -1 * radianToDegree(left);
+		}
+
+		return radianToDegree(right);
+	}
+
+
+	/**
+	 * Accelerometer based pedometer
+	 *
+	 * Based on a FirefoxOS ES5 implementation.
+	 *
+	 * @see http://sebastien.menigot.free.fr/index.php?view=article&id=93
+	 * @see http://www.analog.com/library/analogdialogue/archives/44-06/pedometer.html
+	 */
+		class Pedometer {
+
+			constructor(updateRate) {
+
+				const windowSize = Math.round(2 / (updateRate / 1000));
+
+				this.accNorm = new Array(windowSize); // amplitude of the acceleration
+
+				this.varAcc   = 0.0; // variance of the acceleration on the window L
+				this.minAcc   = 1.0;  // minimum of the acceleration on the window L
+				this.maxAcc   = -Infinity; // maximum of the acceleration on the window L
+				this.threshold = -Infinity; // threshold to detect a step
+				this.sensitivity = 1.0 / 30.0;  // sensitivity to detect a step
+
+				this.stepCount = 0;           // number of steps
+				this.stepArr   = new Array(windowSize); // steps in 2 seconds
+
+				this.updateRate = updateRate; //Update rate in ms
+
+				this.filter = new KalmanFilter();
+
+				//Callback to run after a new step
+				this.callbackOnStep = undefined;
+			}
+
+			/**
+			 * Process a new accelerometer measurement
+			 * @param  {Number} x
+			 * @param  {Number} y
+			 * @param  {Number} z
+			 * @return {void}
+			 */
+			processMeasurement(x, y, z) {
+
+				const norm = this._computeNorm(x, y, z);
+
+				this.accNorm.push(norm);
+				this.accNorm.shift();
+
+				this._stepDetection();
+			}
+
+			/**
+			 * Register a callback function to run on a new step
+			 * @param  {Function} callback
+			 * @return {void}
+			 */
+			onStep(callback) {
+				this.callbackOnStep = callback;
+			}
+
+			/**
+			 * Detect whether the user has done a step
+			 * @return {void}
+			 */
+			_stepDetection() {
+
+				this._computeAccelerationVariance();
+				this.minAcc = Math.min.apply(null, this.accNorm);
+				this.maxAcc = Math.max.apply(null, this.accNorm);
+
+				this.threshold = (this.minAcc + this.maxAcc) / 2;
+
+				const diff = this.maxAcc - this.minAcc;
+
+				if (
+
+					//Sensiblity, the difference must increase the sensitivity
+					Math.abs(diff) >= this.sensitivity &&
+
+					//Acceleration must be above the threshold, and the previous one below (i.e. a new step)
+					(this.accNorm[this.accNorm.length - 1] >= this.threshold) &&
+					(this.accNorm[this.accNorm.length - 2] < this.threshold) &&
+
+					(this.stepArr[this.stepArr.length - 1] === 0)
+				) {
+					this.stepCount++;
+					this.stepArr.push(1);
+					this.stepArr.shift();
+
+					if (this.callbackOnStep !== undefined) {
+						this.callbackOnStep();
+					}
+				}
+				else {
+					this.stepArr.push(0);
+					this.stepArr.shift();
+				}
+			}
+
+			/**
+			 * Compute the norm of the acceleration vector
+			 * @param  {Number} x
+			 * @param  {Number} y
+			 * @param  {Number} z
+			 * @return {Number} norm of the vector
+			 */
+			_computeNorm(x, y, z) {
+				const norm = Math.sqrt((x * x) + (y * y) + (z * z));
+				const filteredNorm = this.filter.filter(norm);
+
+				return filteredNorm / 9.80665;
+			}
+
+			/**
+			 * Compute the variance of the acceleration norm vector
+			 * @return {void}
+			 */
+			_computeAccelerationVariance() {
+				let mean  = 0.0;
+				let mean2 = 0.0;
+
+				for (var k = 0; k < this.accNorm.length - 1; k++) {
+					mean += this.accNorm[k];
+					mean2 += this.accNorm[k] * this.accNorm[k];
+				}
+
+				this.varAcc = ((mean * mean) - mean2) / this.accNorm.length;
+
+				if ((this.varAcc - 0.5) > 0.0) {
+					this.varAcc -= 0.5;
+				}
+
+				if (!isNaN(this.varAcc)) {
+					this.filter.setMeasurementNoise(this.varAcc);
+					this.sensitivity = 2.0 * (Math.sqrt(this.varAcc) / (9.80665 * 9.80665));
+				}
+				else {
+					this.sensitivity = 1.0 / 30.0;
+				}
+			}
+		}
+	
+		class KalmanFilter {
+		/**
+		 * Create 1-dimensional kalman filter
+		 * @param  {Number} options.R Process noise
+		 * @param  {Number} options.Q Measurement noise
+		 * @param  {Number} options.A State vector
+		 * @param  {Number} options.B Control vector
+		 * @param  {Number} options.C Measurement vector
+		 * @return {KalmanFilter}
+		 */
+		constructor({R = 1, Q = 1, A = 1, B = 0, C = 1} = {}) {
+
+			this.R = R; // noise power desirable
+			this.Q = Q; // noise power estimated
+
+			this.A = A;
+			this.C = C;
+			this.B = B;
+			this.cov = NaN;
+			this.x = NaN; // estimated signal without noise
+		}
+
+		/**
+		 * Filter a new value
+		 * @param  {Number} z Measurement
+		 * @param  {Number} u Control
+		 * @return {Number}
+		 */
+		filter(z, u = 0) {
+
+			if (isNaN(this.x)) {
+				this.x = (1 / this.C) * z;
+				this.cov = (1 / this.C) * this.Q * (1 / this.C);
+			}
+			else {
+
+				//Compute prediction
+				const predX = (this.A * this.x) + (this.B * u);
+				const predCov = ((this.A * this.cov) * this.A) + this.R;
+
+				//Kalman gain
+				const K = predCov * this.C * (1 / ((this.C * predCov * this.C) + this.Q));
+
+				//Correction
+				this.x = predX + K * (z - (this.C * predX));
+				this.cov = predCov - (K * this.C * predCov);
+			}
+
+			return this.x;
+		}
+
+		/**
+		 * Return the last filtered measurement
+		 * @return {Number}
+		 */
+		lastMeasurement() {
+			return this.x;
+		}
+
+		/**
+		 * Set measurement noise Q
+		 * @param {Number} noise
+		 */
+		setMeasurementNoise(noise) {
+			this.Q = noise;
+		}
+
+		/**
+		 * Set the process noise R
+		 * @param {Number} noise
+		 */
+		setProcessNoise(noise) {
+			this.R = noise;
+		}
+	}
+
+	function handleMotionEvent(event){
+		//acceleration data
+		let x = event.acceleration.x;
+		let y = event.acceleration.y;
+		let z = event.acceleration.z;
+
+		//compass data
+		let deg = event.alpha;
+
+		//pedometer.processMeasurement(x,y,z);
+		heading = degreeToNormalisedHeading(deg, heading) + (0.5 * Math.PI);
+
+		let canvas = document.getElementById('panel');
+		let ctx = canvas.getContext("2d");
+		ctx.moveTo(currentX,currentY);
+		
+		currentX = currentX+x;
+		currentY = currentY+y;
+
+		ctx.lineTo(currentX,currentY);
+
+		ctx.stroke();
+	}
+
+	let pedometer = new Pedometer(100);
+	let heading=0;
+	//let stepSize =0.5;
+	
+	//initial position
+	let currentX=700;
+	let currentY=700;
+
+	function eventHandler(currentX, currentY){
+		window.addEventListener("devicemotion", handleMotionEvent, true);
+	}
+
+	eventHandler(currentX,currentY);
+
+   
+
+
+	</script>    
+    <style type="text/css">
+    	#panel {
+    		border: 1px solid #4283f4;
+    	}
+
+    </style>
+</head>
+<body>
+	<canvas id="panel" width="1500" height="1500">error calling canvas</canvas>
+</body>
+</html>

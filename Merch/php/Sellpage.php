@@ -35,91 +35,140 @@ $error_displayed = false;
 			$_SESSION['uploaded'] = 0;
 			$len = sizeof($_FILES["files"]["name"]);
 			$names = array();
-			if($len <4)
+			if (strlen($_SESSION['product_title']) > 20)
 			{
-				if(is_numeric($_SESSION['product_price'])){
-				  for($a = 0; $a < $len; $a ++)
-				  {
-				    if($_FILES["files"]["error"][$a] == 0)
-				    {
-								$image_size = array();
-				        $file_dir = "uploads/";
-				        $image_file = $file_dir . basename($_FILES["files"]["name"][$a]);
-				        $imageFileType = strtolower(pathinfo($image_file,PATHINFO_EXTENSION));
-				        $allowed = array("image/jpg" => "jpg", "image/jpeg" => "jpeg", "image/gif" => "gif", "image/png" => "png");
-				        $product_id = $_SESSION['product_id'];
-				        $image_type = $_FILES["files"]["type"][$a];
-				        // image name is set as seller_id + category + product id + photo sequence number
-				        $image_name = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a.'.'.$allowed[$image_type];
-								$name_tmp = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a;
-				        $image_size = $_FILES["files"]["size"][$a];
-				        $check = getimagesize($_FILES["files"]["tmp_name"][$a]);
-				    if ($image_size > 5000000) {
-								echo "<script type='text/javascript'>alert('Sorry, your file is too large. Please provide an image lower than 5MB');</script>";
-				        unset($_SESSION['uploaded']);
-				        $_SESSION['uploaded'] = 0;
-								$error_displayed = true;
-				    }
-						else if(!array_key_exists($image_type, $allowed))
-				    {
-								echo "<script type='text/javascript'>alert('Error: Please select a valid file format.');</script>";
-								$error_displayed = true;
-				    }
-						else{
-							$_SESSION['uploaded'] = 1;
-						}
-				    // Check if $_SESSION['uploaded'] is set to 0 by an error
-				    if ($_SESSION['uploaded'] == 0) {
-							echo "<script type='text/javascript'>alert('Sorry, your file was not uploaded.');</script>";
-							$error_displayed = true;
-				    // if everything is ok, try to upload file
-				    }
-				    else {
-				        if (move_uploaded_file($_FILES["files"]["tmp_name"][$a], "C:/xampp/htdocs/Merch/Database/tmpimage/".$image_name))
-				        {
-									$names[$counter] = $image_name;
-									$counter = $counter +1 ;
-				        }
-				        else {
-										echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
-										$error_displayed = true;
-				        }
-				      }
-				    }
-				  }
-					if($counter == $len){
-						echo "<script type='text/javascript'>alert('Product Succesfully Uploaded');</script>";
-						$copy_dir = '';
-						$target_dir = '';
-						for($a = 0 ; $a <$counter; $a ++)
-						{
-							$copy_dir = "../Database/tmpimage/".$names[$a];
-							$target_dir ="../Database/image/".$names[$a];
-							rename($copy_dir,$target_dir);
-						}
-						$counter = 0 ;
-						$auth_user->addProduct();
-						$hash_arr = $auth_user->convert_hashtag();
-						$auth_user->addHashtag($hash_arr);
-					}
-					else if($error_displayed != true){
-						echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
-					}
-				}
-				else {
-					echo "<script type='text/javascript'>alert('Please enter a number for price.');</script>";
-				}
+				echo "<script type='text/javascript'>alert('Maximum title length is 20 characters.');</script>";
+			}
+			else if($_SESSION['product_category'] == 0)
+			{
+				echo "<script type='text/javascript'>alert('Category must be chosen.');</script>";
+			}
+			else if(strlen($_SESSION['product_description']) > 100)
+			{
+				echo "<script type='text/javascript'>alert('Description must be less than 100 characters.');</script>";
 			}
 			else
 			{
-				echo "<script type='text/javascript'>alert('Maximum number of product photo is three.');</script>";
+				if($len <4)
+				{
+					if(is_numeric($_SESSION['product_price']))
+					{
+					  for($a = 0; $a < $len; $a ++)
+					  {
+					    if($_FILES["files"]["error"][$a] == 0)
+					    {
+									$image_size = array();
+					        $file_dir = "uploads/";
+					        $image_file = $file_dir . basename($_FILES["files"]["name"][$a]);
+					        $imageFileType = strtolower(pathinfo($image_file,PATHINFO_EXTENSION));
+					        $allowed = array("image/jpg" => "jpg", "image/jpeg" => "jpeg", "image/gif" => "gif", "image/png" => "png");
+					        $product_id = $_SESSION['product_id'];
+					        $image_type = $_FILES["files"]["type"][$a];
+					        // image name is set as seller_id + category + product id + photo sequence number
+					        $image_name = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a.'.'.$allowed[$image_type];
+									$name_tmp = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a;
+					        $image_size = $_FILES["files"]["size"][$a];
+					        $check = getimagesize($_FILES["files"]["tmp_name"][$a]);
+					    if ($image_size > 5000000)
+							{
+									echo "<script type='text/javascript'>alert('Sorry, your file is too large. Please provide an image lower than 5MB');</script>";
+					        unset($_SESSION['uploaded']);
+					        $_SESSION['uploaded'] = 0;
+									$error_displayed = true;
+					    }
+							else if(!array_key_exists($image_type, $allowed))
+					    {
+									echo "<script type='text/javascript'>alert('Error: Please select a valid file format.');</script>";
+									$error_displayed = true;
+					    }
+							else{
+								$_SESSION['uploaded'] = 1;
+							}
+					    // Check if $_SESSION['uploaded'] is set to 0 by an error
+					    if ($_SESSION['uploaded'] == 0) {
+								echo "<script type='text/javascript'>alert('Sorry, your file was not uploaded.');</script>";
+								$error_displayed = true;
+					    // if everything is ok, try to upload file
+					    }
+					    else {
+					        if (move_uploaded_file($_FILES["files"]["tmp_name"][$a], "C:/xampp/htdocs/Merch/Database/tmpimage/".$image_name))
+					        {
+										$names[$counter] = $image_name;
+										$counter = $counter +1 ;
+					        }
+					        else {
+											echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
+											$error_displayed = true;
+					        }
+					      }
+					    }
+					  }
+						if($counter == $len){
+							echo "<script type='text/javascript'>alert('Product Succesfully Uploaded');</script>";
+							$copy_dir = '';
+							$target_dir = '';
+							for($a = 0 ; $a <$counter; $a ++)
+							{
+								$copy_dir = "../Database/tmpimage/".$names[$a];
+								$target_dir ="../Database/image/".$names[$a];
+								rename($copy_dir,$target_dir);
+							}
+							$counter = 0 ;
+							$auth_user->addProduct();
+							$hash_arr = $auth_user->convert_hashtag();
+							$auth_user->addHashtag($hash_arr);
+						}
+						else if($error_displayed != true){
+							echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
+						}
+					}
+					else {
+						echo "<script type='text/javascript'>alert('Please enter a number for price.');</script>";
+					}
+				}
+				else
+				{
+					echo "<script type='text/javascript'>alert('Maximum number of product photo is three.');</script>";
+				}
 			}
 		}
-			catch (PDOException $e)
+		catch(PDOException $e)
+		{
+			$_SESSION['request_error'] = $e;
+		}
+	}
+// request submit ________________
+	if(isset($_POST['btn_request_submit']))
+	{
+		try
+		{
+			$_SESSION['request_title'] = strip_tags($_POST['request_title']);
+			$_SESSION['request_category'] = strip_tags($_POST['request_category']);
+			$_SESSION['request_price'] = strip_tags($_POST['request_price']);
+			$_SESSION['request_description'] = strip_tags($_REQUEST['request_description']);
+			if (strlen($_SESSION['request_title']) > 20)
 			{
-				$_SESSION['sellpage_error'] = $e;
+				echo "<script type='text/javascript'>alert('Maximum title length is 20 characters.');</script>";
+			}
+			else if($_SESSION['request_category'] == 0)
+			{
+				echo "<script type='text/javascript'>alert('Category must be chosen.');</script>";
+			}
+			else if($_SESSION['request_description'] > 50)
+			{
+				echo "<script type='text/javascript'>alert('Description must be less than 100 characters.');</script>";
+			}
+			else
+			{
+				$auth_user->addRequest($user_id);
 			}
 		}
+		catch(PDOException $e)
+		{
+			$_SESSION['request_error'] = $e;
+		}
+	}
+// _____
 		if(isset($_POST['btn_clear']))
 		{
 			$_SESSION['product_category'] = $_SESSION['product_price'] =  $_SESSION['product_quality'] = $_SESSION['product_description'] = $_SESSION["product_hashtag"]= "";
@@ -177,10 +226,13 @@ $error_displayed = false;
 
 	<div id="requestModal">
 		<div id="requestContentDiv">
-			<form action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
+			<form action="Sellpage.php" method="post" enctype="multipart/form-data">
 					<button id= "closeBtn" type="button"></button>
+					<div class = "title">
+							<input id="priceTextBox" type="text" class="form-control" name="request_title" placeholder="Title" value =<?php if(isset($_SESSION['request_title'])){print_r($_SESSION['request_title']);} ?>>
+					</div>
 					<div class = "category">
-						<select id="categorySelectBar" name="product_category">
+						<select id="categorySelectBar" name="request_category">
 										<option value = 0 selected >  </option>
 										<option value = 1  > Book </option>
 										<option value = 2  > Clothe  </option>
@@ -206,288 +258,158 @@ $error_displayed = false;
 
 	  <!-- Overlay content -->
 	  <div class="overlay-content">
-	    <div id="requestedDiv">
-
-				<div id="requested-Appliance">
-					<header id="requested-Appliance-logo">
-						<div id='iconContainer-appliance'>
-
-						</div>
-					</header>
-				<div id="contents">
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-				</div><!--requested div for appliance-->
-			</div>
-
-				<div id="requested-Clothe">
-					<header id="requested-Clothe-logo">
-						<div id='iconContainer-clothe'>
-
-						</div>
-					</header>
-				<div id="contents">
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</div><!--requested div for clothe-->
-
-				<div id="requested-Etc">
-					<header id="requested-Etc-logo">
-						<div id='iconContainer-etc'>
-							etc
-						</div>
-					</header>
-
-				<div id="contents">
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div id="requested-contents">
-						<div id="conts">
-							<div id="usertitle">
-								<label>Title: </label>
-								<span>Psychology</span></br>
-							</div>
-
-							<div id="updatedTime">
-								01/09/18 22:18
-							</div>
-
-							<div id="userPrice">
-								<label>Price: </label>
-								<span>400HKD</span>
-							</div>
-
-							<div id="userdescription">
-								<label>Description</label>
-								<div id="userDes">
-									Singapore Typescript Node js Reactjs ML 18RobinssonSingapore Typescript Node js Reactjs ML
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</div><!--requested div for etc-->
-
-			</div><!--requested div content-->
+		<?php
+		  $stmt = $auth_user->runQuery("SELECT * FROM request");
+		  $request_list= array();
+		  $c = 0;
+		  $stmt->execute(array(":user_id"=>$user_id));
+		  while($request_list[$c] = $stmt->fetch(PDO::FETCH_ASSOC)){
+		    $c = $c + 1;
+		  }
+      echo   '<div id="requestedDiv">
+          <div id="requested-Book">
+          <header id="requested-Book-logo">
+            <div id="iconContainer-book">
+            </div>
+          </header>';
+		 for($a = 0; $a < $c ; $a ++)
+	   {
+		    if($request_list[$a]['category'] == "book")
+		    {
+		      echo      "<div id='contents'>
+		              <div id='requested-contents'>
+		                <div id='conts'>
+		                  <div id='usertitle'>
+		                    <label>Title: </label>
+		                    <span>".$request_list[$a]['title']."</span></br>
+		                  </div>
+		                  <div id='updatedTime'>"
+		                    .$request_list[$a]['upload_date'].
+		                  "</div>
+		                  <div id='userPrice'>
+		                    <label>Price: </label>
+		                    <span>".$request_list[$a]['price']."</span>
+		                  </div></br>
+		                  <div id='userdescription'>
+		                    <label></br>Description</label>
+		                    <div id='userDes'>"
+		                      .$request_list[$a]['description'].
+		                    "</div>
+		                  </div>
+		                </div>
+		              </div>
+		            </div>";
+		    }
+			}
+      echo '</div>
+        <div id="requested-Appliance">
+        <header id="requested-Appliance-logo">
+          <div id="iconContainer-appliance">
+          </div>
+      </header>';
+			for($a = 0; $a < $c ; $a ++)
+			{
+		    if($request_list[$a]['category'] == "appliance")
+		    {
+		    echo      '<div id="contents">
+		            <div id="requested-contents">
+		              <div id="conts">
+		                <div id="usertitle">
+		                  <label>Title: </label>
+		                  <span>".$request_list[$a]["title"]."</span></br>
+		                </div>
+		                <div id="updatedTime">'
+		                  .$request_list[$a]["upload_date"].
+		                '</div>
+		                <div id="userPrice">
+		                  <label>Price: </label>
+		                  <span>'.$request_list[$a]["price"].'</span>
+		                </div>
+		                <div id="userdescription">
+		                  <label>Description</label>
+		                  <div id="userDes">'
+		                    .$request_list[$a]["description"].
+		                  '</div>
+		                </div>
+		              </div>
+		            </div>
+		          </div>';
+		    }
+			}
+      echo   '</div>
+      <div id="requested-Clothe">
+            <header id="requested-Clothe-logo">
+              <div id="iconContainer-clothe">
+                </div>
+              </header>';
+		 for($a = 0; $a < $c ; $a ++)
+ 	   {
+		    if ($request_list[$a]['category'] == "clothe")
+		    {
+		      echo        '<div id="contents">
+		              <div id="requested-contents">
+		                <div id="conts">
+		                  <div id="usertitle">
+		                    <label>Title: </label>
+		                    <span>'.$request_list[$a]['title']."</span></br>
+		                  </div>
+		                  <div id='updatedTime'>"
+		                    .$request_list[$a]['upload_date'].
+		                  '</div>
+		                  <div id="userPrice">
+		                    <label>Price: </label>
+		                    <span>'.$request_list[$a]["price"].'</span>
+		                  </div>
+		                  <div id="userdescription">
+		                    <label>Description</label>
+		                    <div id="userDes">'
+		                      .$request_list[$a]['description'].
+		                    "</div>
+		                  </div>
+		                </div>
+		              </div>
+		            </div>";
+		    }
+			}
+      echo     '</div>
+          <div id="requested-Etc">
+          <header id="requested-Etc-logo">
+            <div id="iconContainer-etc">
+						Etc
+            </div>
+          </header>';
+		 for($a = 0; $a < $c ; $a ++)
+ 	   {
+		    if ($request_list[$a]['category'] == "etc")
+		    {
+		      echo    '<div id="contents">
+		              <div id="requested-contents">
+		                <div id="conts">
+		                  <div id="usertitle">
+		                    <label>Title: </label>
+		                    <span>'.$request_list[$a]['title'].'</span></br>
+		                  </div>
+		                  <div id="updatedTime">'
+		                    .$request_list[$a]['upload_date'].
+		                  '</div>
+		                  <div id="userPrice">
+		                    <label>Price: </label>
+		                    <span>'.$request_list[$a]['price'].'</span>
+		                  </div>
+		                  <div id="userdescription">
+		                    <label>Description</label>
+		                    <div id="userDes">'
+		                      .$request_list[$a]['description'].
+		                    "</div>
+		                  </div>
+		                </div>
+		              </div>
+		            </div>";
+		    }
+			}
+      echo "</div>
+      </div>";
+		?>
 	  </div>
 	</div>
 
@@ -499,20 +421,6 @@ $error_displayed = false;
 			<button id="showRequested" onclick="openNav();">See what's requested</button>
 
 		</div>
-		<?php
-			$stmt = $auth_user->runQuery("SELECT * FROM request");
-			$request_list= array();
-			$c = 0;
-			$stmt->execute(array(":user_id"=>$user_id));
-			while($request_list[$c] = $stmt->fetch(PDO::FETCH_ASSOC)){
-				$c = $c + 1;
-			}
-			print_r($request_list);
-			for($a = 0 ; $a < $c ; $a ++)
-			{
-				echo "price:".$request_list[$a]['price']."</br>"."category".$request_list[$a]['category']."</br> Description:".$request_list[$a]['description'];
-			}
-		?>
 		<div id="tips-panel">
 			<header id="titleForTips">
 				Tips for selling your items

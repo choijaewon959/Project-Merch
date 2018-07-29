@@ -24,10 +24,10 @@ CREATE TABLE `sell_product`
   `product_id` int(11) NOT NULL AUTO_INCREMENT ,
   `seller_id` int(11) NOT NULL ,
   `quality` varchar(5) NOT NULL,
-  `title` varchar(15) NOT NULL,
+  `title` varchar(20) NOT NULL,
   `category` varchar(9) NOT NULL,
-  `price` int(11) NOT NULL,
-  `description` varchar(70) NOT NULL,
+  `price` int(6) NOT NULL,
+  `description` varchar(100) NOT NULL,
   `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(`product_id`),
   FOREIGN KEY(`seller_id`) references users(`user_id`)
@@ -49,7 +49,7 @@ CREATE TABLE `request`
   `price` int(5) NOT NULL,
   `title` varchar (20) NOT NULL,
   `category` varchar(10) NOT NULL,
-  `description` varchar(50) NOT NULL,
+  `description` varchar(100) NOT NULL,
   `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(`request_id`),
   FOREIGN KEY(`user_id`) references users(user_id)

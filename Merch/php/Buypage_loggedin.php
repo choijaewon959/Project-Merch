@@ -21,20 +21,36 @@
 //___________
 	$_SESSION['request_error'] = NULL;
 //________
-	if(isset($_POST['btn_request_submit']))
+if(isset($_POST['btn_request_submit']))
+{
+	try
 	{
-		try
+		$_SESSION['request_title'] = strip_tags($_POST['request_title']);
+		$_SESSION['request_category'] = strip_tags($_POST['request_category']);
+		$_SESSION['request_price'] = strip_tags($_POST['request_price']);
+		$_SESSION['request_description'] = strip_tags($_REQUEST['request_description']);
+		if (strlen($_SESSION['request_title']) > 20)
 		{
-			$_SESSION['request_category'] = strip_tags($_POST['request_category']);
-			$_SESSION['request_price'] = strip_tags($_POST['request_price']);
-			$_SESSION['request_description'] = strip_tags($_REQUEST['request_description']);
+			echo "<script type='text/javascript'>alert('Maximum title length is 20 characters.');</script>";
+		}
+		else if($_SESSION['request_category'] == 0)
+		{
+			echo "<script type='text/javascript'>alert('Category must be chosen.');</script>";
+		}
+		else if($_SESSION['request_description'] > 50)
+		{
+			echo "<script type='text/javascript'>alert('Description must be less than 100 characters.');</script>";
+		}
+		else
+		{
 			$auth_user->addRequest($user_id);
 		}
-		catch(PDOException $e)
-		{
-			$_SESSION['request_error'] = $e;
-		}
 	}
+	catch(PDOException $e)
+	{
+		$_SESSION['request_error'] = $e;
+	}
+}
 	if(isset($_POST['btn_myinfo']))
 	{
 		try
@@ -223,7 +239,6 @@ $max_range = 2000;
 		<div id="popUpContent">
 
 			<button id= "popupClose"></button>
-
 			<div id="popUpPhoto">
 				<div id="slidePanel">
 					<img class="slidePhoto" src ="../img/book1.jpg" width="450" height="500">
@@ -232,9 +247,6 @@ $max_range = 2000;
 					<button class="sliderDots w3-display-left w3-button" onclick="incrementSliderIndex(-1);">&#10094;</button>
 					<button class="sliderDots w3-display-right w3-button" onclick="incrementSliderIndex(1);">&#10095;</button>
 				</div>
-
-
-
 				<div class="photoFlex">
 					<img class="opac-Photo" src ="../img/book1.jpg" width="130" height="170" onclick="currentSlider(1)">
 
@@ -266,10 +278,7 @@ $max_range = 2000;
 
 						</div>
 					</div>
-
 				</header>
-
-
 				<div id="popUpDescription">
 					@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -291,6 +300,9 @@ $max_range = 2000;
 		<div id="requestContentDiv">
 			<form action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
 					<button id= "closeBtn" type="button"></button>
+					<div class = "title">
+							<input id="priceTextBox" type="text" class="form-control" name="request_title" placeholder="Title" value =<?php if(isset($_SESSION['request_title'])){print_r($_SESSION['request_title']);} ?>>
+					</div>
 					<div class = "category">
 						<select id="categorySelectBar" name="request_category">
 										<option value = 0 selected >  </option>
@@ -447,11 +459,9 @@ $max_range = 2000;
       									<img class="d-block " src="../img/book1.jpg" width="160" height="500">
       									<img class="d-block " src="../img/book1.jpg" width="160" height="500">
       									<div id="selling-title">
-      										dddd
 										</div>
 
 										<div id="selling-quality">
-											dd
 										</div>
 
 										<div id="selling-price">
@@ -528,7 +538,6 @@ $max_range = 2000;
 						<li>
 							<a data-toggle="tab" href="#etcInBag">
 								<div id="shoppingbagEtcIcon">
-
 								</div>
 							</a>
 						</li>
@@ -550,7 +559,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -568,7 +576,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -586,7 +593,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -604,7 +610,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -622,7 +627,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -640,7 +644,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -657,8 +660,7 @@ $max_range = 2000;
 										<span class="shoppingbag-Price">
 											18HKD
 										</span>
-									</div>
-
+	 							</div>
 								</div>
 							</div>
 
@@ -676,10 +678,8 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
-
 						</div><!--clothein bag-->
 
 						<div id="applianceInBag" class="tab-pane fade">
@@ -697,7 +697,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -715,7 +714,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -733,7 +731,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -751,7 +748,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 						</div><!-- appliance in bag-->
@@ -771,7 +767,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -789,7 +784,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -807,7 +801,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -825,7 +818,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -843,7 +835,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 						</div>
@@ -863,7 +854,6 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 
@@ -881,18 +871,13 @@ $max_range = 2000;
 											18HKD
 										</span>
 									</div>
-
 								</div>
 							</div>
 						</div><!--etc in bag-->
 
 					</div><!--tab categories-->
-
-
 				</div>
-
 			</div>
-
 		</div><!--modal dialog-->
 	</div>
 

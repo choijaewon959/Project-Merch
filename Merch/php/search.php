@@ -52,15 +52,15 @@
     }
   }
   $search_list = array();
-  $query = "SELECT title, product_id FROM sell_product ";
+  $query = "SELECT title, product_id FROM sell_product";
   if($_POST['c_value'] !== "default" || $_POST['q_value'] !== "default"){
-    $query .= "WHERE";
+    $query .= " WHERE";
   }
   if ($_POST['c_value'] !== "default"){
-    $query .=  "AND category =: c_value";
+    $query .=  " AND category =: c_value";
   }
   if ($_POST['q_value'] !== "default"){
-    $query .=  "AND quality =: q_value";
+    $query .=  " AND quality =: q_value";
   }
   if ($_POST['c_value'] !== "default"){
     $search_stmt->bindparam(":c_value",$_POST['c_value']);

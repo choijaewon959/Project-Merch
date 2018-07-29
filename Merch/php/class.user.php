@@ -130,13 +130,14 @@ class USER
 	{
 		try{
 			$r_category = "";
-			$stmt = $this->conn->prepare("INSERT into request(user_id,category,price,description)
-																		VALUES(:user_id,:category,:price,:description)");
+			$stmt = $this->conn->prepare("INSERT into request(user_id,title,category,price,description)
+																		VALUES(:user_id,:title,:category,:price,:description)");
 			if($_SESSION['request_category'] == 1){$r_category = "book";}
 			else if($_SESSION['request_category'] == 2){$r_category = "clothe";}
 			else if($_SESSION['request_category'] == 3){$r_category = "appliance";}
 			else if($_SESSION['request_category'] == 4){$r_category = "etc";}
 			$stmt->bindparam(":user_id",$user_id);
+			$stmt->bindparam(":title",$_SESSION['request_title']);
 			$stmt->bindparam(":category",$r_category);
 			$stmt->bindparam(":description",$_SESSION['request_description']);
 			$stmt->bindparam(":price",$_SESSION['request_price']);
