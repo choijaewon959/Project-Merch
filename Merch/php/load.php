@@ -1,11 +1,14 @@
 <?php
+  session_start();
   require_once("class.user.php");
   $auth_user = new USER();
   $counter = 0 ;
   $product_list = array();
   $quality = $_POST['q_value'];
   $category = $_POST['c_value'];
-  print_r($_POST);
+//  print_r($_POST);
+//  print_r("XXXX");
+//  print_r($_SESSION);
   if($quality=="default" && $category=="default")
   {
     $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY price ASC");
@@ -55,12 +58,12 @@
   if($product_num !==0)
   {
     $enter = 0;
-    if(isset($_POST['match_list']))
+    if(isset($_SESSION['match_list'][0]) || $_POST['search_word'] !== "")
     {
       for($i = 0 ; $i < $product_num ; $i ++)
       {
         $id = $product_list[$i]['product_id'];
-        if(strpos($_POST['match_list'],$id) == true)
+        if(in_array($id, $_SESSION['match_list']) == true)
         {
           $enter = 1;
           $hash_stmt = $auth_user->runQuery("SELECT * FROM hashtag WHERE product_id=:product_id");
@@ -147,9 +150,9 @@
       "</div>";
       }
     }
-    if($enter == 0 && isset($_POST['match_list']))
+    if($enter == 0 && $_POST['search_word'] !== "")
     {
-      echo "<h3 align 'center'>No product found2 </h3> ";
+      echo "<h3 align 'center'>No product found </h3> ";
     }
   }
   else{

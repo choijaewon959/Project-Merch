@@ -72,7 +72,6 @@
 // ___________
 $min_range = 0 ;
 $max_range = 2000;
-
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +93,7 @@ $max_range = 2000;
 <script>
 	var q_value = "default";
 	var c_value = "default";
-	var search_list = [];
+	var search_word = "";
 	$(document).ready(function(){
 		$("#priceSlider").slider({
 				range: true,
@@ -104,7 +103,7 @@ $max_range = 2000;
 				slide: function(event,ui){
 					$("#min_range").val(ui.values[0]);
 					$("#max_range").val(ui.values[1]);
-					load_product(ui.values[0],ui.values[1],q_value,c_value);
+					load_product(ui.values[0],ui.values[1],q_value,c_value, search_word);
 				}
 		});
 		var $quality_radios = $('input[name=quality]').change(function ()
@@ -112,16 +111,16 @@ $max_range = 2000;
     	var q_value = $quality_radios.filter(':checked').val();
 			var c_value = $category_radios.filter(':checked').val();
 			var search_word = $("input").val();
-			load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
+			load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value, search_word);
 		});
 		var $category_radios = $('input[name=category]').change(function ()
 		{
 			var q_value = $quality_radios.filter(':checked').val();
 			var c_value = $category_radios.filter(':checked').val();
 			var search_word = $("input").val();
-			load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
+			load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value, search_word);
 		});
-		load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
+		load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value, search_word);
 
 /*
 		function undo(){
@@ -134,7 +133,7 @@ $max_range = 2000;
 			load_product(<?php// echo $min_range; ?>, <?php// echo $max_range; ?>,q_value,c_value);
 		});
 */
-		function load_product(min_range,max_range,q_value,c_value)
+		function load_product(min_range,max_range,q_value,c_value, search_word)
 		{
 			$.ajax({
 					url:"load.php",
@@ -142,7 +141,9 @@ $max_range = 2000;
 					data:{min_range:min_range,
 							max_range:max_range,
 							q_value:q_value,
-							c_value:c_value},
+							c_value:c_value,
+							search_word: search_word
+						},
 					success:function(data)
 					{
 						$('#load_product').html(data);
@@ -150,13 +151,17 @@ $max_range = 2000;
 			});
 		}
 		$("input").keyup(function(){
+				var q_value = $quality_radios.filter(':checked').val();
+				var c_value = $category_radios.filter(':checked').val();
 				search_word = $("input").val();
 				$.post("search.php",{
-						search_word: search_word
+						search_word: search_word,
+						q_value: q_value,
+						c_value: c_value
 				}, function(data, status){
 						$("#suggestion").html(data);
 				});
-				load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value);
+				load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value, search_word);
 		});
 	});
 </script>
