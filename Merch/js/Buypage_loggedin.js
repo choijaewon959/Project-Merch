@@ -75,7 +75,20 @@ window.onclick = function(event) {
 
 }
 
-
+//drag content div
+$(function() 
+{
+  $( ".draggable" ).draggable({revert: "invalid"});
+  $( ".cartDiv").droppable(
+  {   
+    hoverClass: "drop-ui-hover",
+    accept: ".draggable",
+    drop: function(event, ui)
+    {
+      $(ui.draggable).remove();
+    }
+  });
+});
 
 
 //filters

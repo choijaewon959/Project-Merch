@@ -147,6 +147,7 @@ body{
 .filterAndShoppingCart{
 	background: white;
 	border-top: 1px solid #f2f2f2;
+
 }
 
 .cartDiv{
@@ -156,6 +157,7 @@ body{
 	align-content: center;
 	text-align: center;
 	vertical-align: middle;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16);
 }
 
 .cartDiv #dragAndDrop{
@@ -1205,3 +1207,24 @@ body{
 	height: 100px;
 	color: #999;
 }
+
+.draggable
+{
+	display: inline-block;
+	margin-top: 500px;
+	z-index: 9999;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid white;
+	width: 400px;
+	background-color: blue;
+	color: #fff;
+	font-size: 50px;
+	height: 200px;
+}
+
+.drop-ui-hover
+{
+	box-shadow: 6px 3px 6px 3px rgba(0,0,0,0.28);
+}
+

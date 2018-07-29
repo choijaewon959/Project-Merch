@@ -97,15 +97,14 @@ $max_range = 2000;
 	<meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/Buypage_loggedin.css">
 
 	<script type="text/javascript" src="../js/Buypage_loggedin.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
 	var q_value = "default";
 	var c_value = "default";
@@ -953,12 +952,29 @@ $max_range = 2000;
 
 	<div class="main" id="load_product">
 
-
+		
 
 	</div>
 
 
+	<div>
+		<div class="draggable">
+			python3
+		</div>
 
+		<div class="draggable">
+			Typescript
+		</div>
+
+		<div class="draggable">
+			Kotlin
+		</div>
+
+		<div class="draggable">
+			Java8
+		</div>
+		
+	</div>
 
 
 </body>
