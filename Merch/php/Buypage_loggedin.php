@@ -140,13 +140,15 @@ $max_range = 2000;
 
 /*
 		function undo(){
-			<?php
-			//	$min_range = 0 ;
-			//	$max_range = 2000;
-			?>
+			document.filter_quality.quality.value = "default";
+			document.filter_category.category.value = "default";
 			var q_value = "default";
 			var c_value = "default";
-			load_product(<?php// echo $min_range; ?>, <?php// echo $max_range; ?>,q_value,c_value);
+			<?php
+	//			$min_range = 0;
+		//		$max_range = 2000;
+			?>
+			load_product(<?php // echo $min_range; ?>, <?php // echo $max_range; ?>,q_value,c_value, search_word);
 		});
 */
 		function load_product(min_range,max_range,q_value,c_value, search_word)
@@ -905,8 +907,8 @@ $max_range = 2000;
 				<div class="btn">
 					<img id= "medalIcon" src="../img/medal.png" alt="medal">
 					<div id="qualitySort"> quality</div>
-					<div id= "qualityFilterDiv">
-						<form action="Buypage_loggedin.php">
+					<div id= "qualityFilterDiv" >
+						<form action="Buypage_loggedin.php" name = "filter_quality">
 							<input type="radio" name="quality" value="default" checked> No preference</input><br>
  						  <input type="radio" name="quality" value="New"> New</input><br>
 						  <input type="radio" name="quality" value="Used"> Used</input><br>
@@ -921,7 +923,7 @@ $max_range = 2000;
 				<img id="boxIcon" src="../img/box.png" alt="blocks">
 					<div id="categorySort"> category</div>
 					<div id="categoryFilterDiv">
-						<form action="Buypage_loggedin.php">
+						<form action="Buypage_loggedin.php" name = "filter_category">
 							<input type="radio" name="category" value="default" checked> No preference</input><br>
 						  <input type="radio" name="category" value="Book"> Book</input><br>
 						  <input type="radio" name="category" value="Clothe"> Clothe</input><br>
