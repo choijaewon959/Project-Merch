@@ -78,7 +78,7 @@ window.onclick = function(event) {
 //drag content div
 $(function() 
 {
-  $( ".draggable" ).draggable({revert: "invalid"});
+  $( ".contentBox" ).draggable({revert: "invalid"});
   $( ".cartDiv").droppable(
   {   
     hoverClass: "drop-ui-hover",

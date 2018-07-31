@@ -957,24 +957,6 @@ $max_range = 2000;
 	</div>
 
 
-	<div>
-		<div class="draggable">
-			python3
-		</div>
-
-		<div class="draggable">
-			Typescript
-		</div>
-
-		<div class="draggable">
-			Kotlin
-		</div>
-
-		<div class="draggable">
-			Java8
-		</div>
-		
-	</div>
 
 
 </body>
