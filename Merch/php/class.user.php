@@ -302,6 +302,18 @@ class USER
 			$_SESSION['request_error'] = $e;
 		}
 	}
+public function checksold()
+{
+	$_SESSION['user_pid'] = array();
+	$stmt = $this->conn->prepare("SELECT product_id FROM sell_product WHERE seller_id=:uid");
+	$stmt->bindparam(":uid", $_SESSION['user_session']);
+	$stmt->execute();
+	$c = 0;
+	while($_SESSION['user_pid'][$c] = $stmt->fetch(PDO::FETCH_ASSOC)){
+		$c = $c +1;
+	}
+}
+
 }
 
 ?>

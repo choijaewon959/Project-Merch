@@ -6,7 +6,13 @@
 	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 	$stmt->execute(array(":user_id"=>$user_id));
 	$active_detail = $stmt->fetch(PDO::FETCH_ASSOC);
-
+	if(isset($_SESSION['display']))
+	{
+		if ($_SESSION['display'] == 0)
+		{
+			$auth_user->checksold();
+		}
+	}
 //________
 	$request_stmt = $auth_user->runQuery("SELECT * FROM request WHERE user_id=:user_id");
 	$request_stmt->execute(array(":user_id"=>$user_id));
@@ -955,27 +961,6 @@ $max_range = 2000;
 
 
 	</div>
-
-
-	<div>
-		<div class='draggable'>
-			python3
-		</div>
-
-		<div class="draggable">
-			Typescript
-		</div>
-
-		<div class="draggable">
-			Kotlin
-		</div>
-
-		<div class="draggable">
-			Java8
-		</div>
-
-	</div>
-
 
 </body>
 </html>
