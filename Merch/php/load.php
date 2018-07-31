@@ -76,15 +76,15 @@
             $counter = $counter +1 ;
           }
           $hash_out = substr($hash_out,0,-1);
-        echo "<div class='contentBox'>";
-        echo	"<div class='headerInBox'>.
-            <div class='title'>".$product_list[$i]['title']."</div>".
-            "<div class='updatedDate'>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
+        echo "<div class='contentBox  '>";
+        echo	"<div class='headerInBox  '>.
+            <div class='title  '>".$product_list[$i]['title']."</div>".
+            "<div class='updatedDate  '>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
           "</div>".
 
           "<div class='imgWrap'>".
-            "<div class='img_description'>".
-              "<div class='description'>".$product_list[$i]['description'].'</div>'.
+            "<div class='img_description  '>".
+              "<div class='description  '>".$product_list[$i]['description'].'</div>'.
               '<div class="hashtags">'.$hash_out."</div>".
             '</div>'.
             "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=200px height=150px>".
@@ -121,16 +121,16 @@
           $counter = $counter +1 ;
         }
         $hash_out = substr($hash_out,0,-1);
-      echo "<div class='contentBox'>";
-      echo	"<div class='headerInBox'>.
-          <div class='title'>".$product_list[$i]['title']."</div>".
-          "<div class='updatedDate'>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
+      echo "<div class='contentBox  '>";
+      echo	"<div class='headerInBox  '>.
+          <div class='title  '>".$product_list[$i]['title']."</div>".
+          "<div class='updatedDate' class=' '>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
         "</div>".
 
-        "<div class='imgWrap'>".
-          "<div class='img_description'>".
-            "<div class='description'>".$product_list[$i]['description'].'</div>'.
-            '<div class="hashtags">'.$hash_out."</div>".
+        "<div class='imgWrap  '>".
+          "<div class='img_description  '>".
+            "<div class='description  '>".$product_list[$i]['description'].'</div>'.
+            '<div class="hashtags  ">'.$hash_out."</div>".
           '</div>'.
           "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=200px height=150px>".
         "</div>".

@@ -887,7 +887,7 @@ $max_range = 2000;
 		<ul>
 			<li id="priceSortDiv" onclick="priceFilterDivShow()">
 				<div class="btn">
-					<img id="barcodeIcon" src="../img/barcode.png" alt="barcode">
+					<img id="barcodeIcon" src="../img/barcode.png" alt="barco	de">
 				</div>
 					<div id="priceSort">price</div>
 					<div class="col-md-2">
@@ -952,13 +952,13 @@ $max_range = 2000;
 
 	<div class="main" id="load_product">
 
-		
+
 
 	</div>
 
 
 	<div>
-		<div class="draggable">
+		<div class='draggable'>
 			python3
 		</div>
 
@@ -973,7 +973,7 @@ $max_range = 2000;
 		<div class="draggable">
 			Java8
 		</div>
-		
+
 	</div>
 
 

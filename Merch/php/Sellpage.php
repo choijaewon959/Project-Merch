@@ -69,9 +69,9 @@ $error_displayed = false;
 									$name_tmp = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a;
 					        $image_size = $_FILES["files"]["size"][$a];
 					        $check = getimagesize($_FILES["files"]["tmp_name"][$a]);
-					    if ($image_size > 5000000)
+					    if ($image_size > 1048576 * 2)
 							{
-									echo "<script type='text/javascript'>alert('Sorry, your file is too large. Please provide an image lower than 5MB');</script>";
+									echo "<script type='text/javascript'>alert('Sorry, your file is too large. Please provide an image lower than 2MB');</script>";
 					        unset($_SESSION['uploaded']);
 					        $_SESSION['uploaded'] = 0;
 									$error_displayed = true;

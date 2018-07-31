@@ -48,9 +48,9 @@ function changeSlider(n){
   if (n > slidePhoto.length) {sliderIndex = 1} ;
   if (n < 1) {sliderIndex = slidePhoto.length} ;
   for (let i = 0; i < slidePhoto.length; i++) {
-      slidePhoto[i].style.display = "none"; 
+      slidePhoto[i].style.display = "none";
   }
-  slidePhoto[sliderIndex-1].style.display = "block"; 
+  slidePhoto[sliderIndex-1].style.display = "block";
 }
 
 window.onclick = function(event) {
@@ -76,11 +76,11 @@ window.onclick = function(event) {
 }
 
 //drag content div
-$(function() 
+$(function()
 {
   $( ".draggable" ).draggable({revert: "invalid"});
   $( ".cartDiv").droppable(
-  {   
+  {
     hoverClass: "drop-ui-hover",
     accept: ".draggable",
     drop: function(event, ui)
