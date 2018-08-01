@@ -296,13 +296,13 @@ body{
 
 #requestContentDiv{
     background-color: #fefefe;
-		border-radius: 7px;
+	border-radius: 7px;
     margin: 0px auto;
-		height: 0px;
+	height: 0px;
     width: 40%;
-		-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
-		box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
-		padding : 10px 20px 10px 20px;
+	-webkit-box-shadow: 0 1px 8px 0 rgba(0,0,0,0.5);
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
+	padding : 10px 20px 10px 20px;
 }
 
 #closeBtn{
@@ -319,24 +319,47 @@ body{
 	margin-bottom: 10px;
 }
 
+.requestTitle span
+{
+	float: left;
+	color: #aaaaaa;
+	font-size: 25px;
+	margin: 0px 15px 0px 5px;
+}
+
+#titleTextBox
+{
+	width: 80%;
+	height: 40px;
+	outline:none;
+	resize: none;
+	margin: 20px 0px 20px 15px;
+	font-size: 25px;
+	border:none;
+	padding: 10px;
+}
+
+
 
 #categorySelectBar{
-	width: 100%;
+	width: 15%;
 	height: 50px;
 	outline: none;
-	border: 1px solid #aaaaaa;
-	margin-top: 10px;
-
+	border:none;
+	font-size: 20px;
+	color: #aaaaaa;
+	margin-right: 15px;
 }
 
 #requestContentDiv #textareaTextBox{
 	width: 100%;
-	height: 200px;
+	height: 230px;
 	border:none;
 	outline:none;
 	resize: none;
 	margin-top:10px;
 	font-size: 20px;
+	padding: 10px;
 }
 
 #requestContentDiv #textareaTextBox::placeholder{
@@ -354,6 +377,7 @@ body{
 	float: left;
 	border:none;
 	border-bottom: solid 1px #c4c4c4;
+	padding: 10px;
 }
 
 #requestContentDiv #requestSubmit{
@@ -372,7 +396,6 @@ body{
 #requestContentDiv #requestSubmit:hover{
 	background-color: #ff9500;
 	color: #fff;
-
 }
 
 

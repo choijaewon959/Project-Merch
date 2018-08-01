@@ -307,26 +307,34 @@ $max_range = 2000;
 		<div id="requestContentDiv">
 			<form action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
 					<button id= "closeBtn" type="button"></button>
-					<div class = "title">
-							<input id="priceTextBox" type="text" class="form-control" name="request_title" placeholder="Title" value =<?php if(isset($_SESSION['request_title'])){print_r($_SESSION['request_title']);} ?>>
-					</div>
 					<div class = "category">
+			
 						<select id="categorySelectBar" name="request_category">
-										<option value = 0 selected >  </option>
+										<option value = 0 selected >Category </option>
 										<option value = 1  > Book  </option>
 										<option value = 2  > Clothe  </option>
 										<option value = 3  > Appliance  </option>
 										<option value = 4  > Etc  </option>
-							</select>
+						</select>
 					</div>
+
+					<div class = "requestTitle">
+							<span>Title:</span>
+							<input id="titleTextBox" type="text" class="form-control" name="request_title"  value =<?php if(isset($_SESSION['request_title'])){print_r($_SESSION['request_title']);} ?>>
+					</div>
+
+					
+					
+
 					<div class = "description">
 						<textarea id="textareaTextBox" name="request_description" placeholder="Add Description to your product! "><?php if(isset($_SESSION['request_description'])){echo $_SESSION['request_description'];} ?></textarea>
 					</div>
+					<input id="requestSubmit" class="button" type="submit" name= "btn_request_submit"  value="Add Request" action ="Buypage_loggedin.php" >
 				<div class = "price">
 						<input id="priceTextBox" type="text" class="form-control" name="request_price" placeholder="price(HKD)" value =<?php if(isset($_SESSION['request_price'])){print_r($_SESSION['request_price']);} ?>>
 				</div>
 				<br>
-				<input id="requestSubmit" class="button" type="submit" name= "btn_request_submit"  value="Add Request" action ="Buypage_loggedin.php" >
+				
 			</form>
 		</div>
 	</div><!--requestModal-->

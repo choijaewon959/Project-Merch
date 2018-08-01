@@ -15,7 +15,7 @@ function requestModalfunction(){
   var modal = document.getElementById('requestModal');
 
   modal.style.display = "block";
-  $(modalcontent).animate({height:"400px"});
+  $(modalcontent).animate({height:"450px"});
 }
 
 //popup div for main contents
