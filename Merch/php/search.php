@@ -2,12 +2,12 @@
   session_start();
   require_once("class.user.php");
   $auth_user = new USER();
+  $_SESSION['match_list']= array();
   $search_stmt = $auth_user->runQuery("SELECT * FROM hashTag");
   $search_stmt->execute();
   $search_list = array();
   $counter = 0 ;
   $cc = 0;
-  $_SESSION['match_list']= array();
   while($search_list[$counter] = $search_stmt->fetch(PDO::FETCH_ASSOC)){
     $counter = $counter +1 ;
   }

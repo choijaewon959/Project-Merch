@@ -1,6 +1,7 @@
 <?php
 	require_once("../etc/session.php");
 	require_once("class.user.php");
+	$_SESSION['match_list']= array();
 	$auth_user = new USER();
 	$user_id = $_SESSION['user_session'];
 	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
@@ -308,7 +309,7 @@ $max_range = 2000;
 			<form action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
 					<button id= "closeBtn" type="button"></button>
 					<div class = "category">
-			
+
 						<select id="categorySelectBar" name="request_category">
 										<option value = 0 selected >Category </option>
 										<option value = 1  > Book  </option>
@@ -323,8 +324,8 @@ $max_range = 2000;
 							<input id="titleTextBox" type="text" class="form-control" name="request_title"  value =<?php if(isset($_SESSION['request_title'])){print_r($_SESSION['request_title']);} ?>>
 					</div>
 
-					
-					
+
+
 
 					<div class = "description">
 						<textarea id="textareaTextBox" name="request_description" placeholder="Add Description to your product! "><?php if(isset($_SESSION['request_description'])){echo $_SESSION['request_description'];} ?></textarea>
@@ -334,7 +335,7 @@ $max_range = 2000;
 						<input id="priceTextBox" type="text" class="form-control" name="request_price" placeholder="price(HKD)" value =<?php if(isset($_SESSION['request_price'])){print_r($_SESSION['request_price']);} ?>>
 				</div>
 				<br>
-				
+
 			</form>
 		</div>
 	</div><!--requestModal-->

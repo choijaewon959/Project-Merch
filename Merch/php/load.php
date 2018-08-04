@@ -58,14 +58,61 @@
   if($product_num !==0)
   {
     $enter = 0;
-    if(isset($_SESSION['match_list'][0]) || $_POST['search_word'] !== "")
+    if(isset($_SESSION['match_list']))
     {
-      for($i = 0 ; $i < $product_num ; $i ++)
+      if(isset($_SESSION['match_list'][0]) || $_POST['search_word'] !== "")
       {
-        $id = $product_list[$i]['product_id'];
-        if(in_array($id, $_SESSION['match_list']) == true)
+        for($i = 0 ; $i < $product_num ; $i ++)
         {
-          $enter = 1;
+          $id = $product_list[$i]['product_id'];
+          if(in_array($id, $_SESSION['match_list']) == true)
+          {
+            $enter = 1;
+            $hash_stmt = $auth_user->runQuery("SELECT * FROM hashtag WHERE product_id=:product_id");
+            $hash_stmt->execute(array(":product_id"=>$id));
+            $counter = 0;
+            $hash_list = array();
+            $hash_out = '#';
+            while($hash_list[$counter] = $hash_stmt->fetch(PDO::FETCH_ASSOC)){
+              $hash_out .=$hash_list[$counter]['hashtag']."#";
+              $counter = $counter +1 ;
+            }
+            $hash_out = substr($hash_out,0,-1);
+          echo "<div class='contentBox  '>";
+          echo	"<div class='headerInBox  '>.
+              <div class='title  '>".$product_list[$i]['title']."</div>".
+              "<div class='updatedDate  '>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
+            "</div>".
+
+            "<div class='imgWrap'>".
+              "<div class='img_description  '>".
+                "<div class='description  '>".$product_list[$i]['description'].'</div>'.
+                '<div class="hashtags">'.$hash_out."</div>".
+              '</div>'.
+              "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=200px height=150px>".
+            "</div>".
+            "<footer>".
+              "<div class='pricePanel'>".
+                "<div id='numOfView'>".
+                  "15".
+                "</div>".
+                "<div id='eye'>".
+                  "<img src='../img/view.png' alt='eye'>".
+                "</div>".
+                "<div id='price'>".
+                  (string)$product_list[$i]['price']." HKD".
+                "</div>".
+              "</div>".
+            "</footer>".
+          "</div>";
+          }
+        }
+      }
+      else
+      {
+        for($i = 0 ; $i < $product_num ; $i ++)
+        {
+          $id = $product_list[$i]['product_id'];
           $hash_stmt = $auth_user->runQuery("SELECT * FROM hashtag WHERE product_id=:product_id");
           $hash_stmt->execute(array(":product_id"=>$id));
           $counter = 0;
@@ -79,13 +126,13 @@
         echo "<div class='contentBox  '>";
         echo	"<div class='headerInBox  '>.
             <div class='title  '>".$product_list[$i]['title']."</div>".
-            "<div class='updatedDate  '>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
+            "<div class='updatedDate' class=' '>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
           "</div>".
 
-          "<div class='imgWrap'>".
+          "<div class='imgWrap  '>".
             "<div class='img_description  '>".
               "<div class='description  '>".$product_list[$i]['description'].'</div>'.
-              '<div class="hashtags">'.$hash_out."</div>".
+              '<div class="hashtags  ">'.$hash_out."</div>".
             '</div>'.
             "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=200px height=150px>".
           "</div>".
@@ -105,54 +152,10 @@
         "</div>";
         }
       }
-    }
-    else
-    {
-      for($i = 0 ; $i < $product_num ; $i ++)
+      if($enter == 0 && $_POST['search_word'] !== "")
       {
-        $id = $product_list[$i]['product_id'];
-        $hash_stmt = $auth_user->runQuery("SELECT * FROM hashtag WHERE product_id=:product_id");
-        $hash_stmt->execute(array(":product_id"=>$id));
-        $counter = 0;
-        $hash_list = array();
-        $hash_out = '#';
-        while($hash_list[$counter] = $hash_stmt->fetch(PDO::FETCH_ASSOC)){
-          $hash_out .=$hash_list[$counter]['hashtag']."#";
-          $counter = $counter +1 ;
-        }
-        $hash_out = substr($hash_out,0,-1);
-      echo "<div class='contentBox  '>";
-      echo	"<div class='headerInBox  '>.
-          <div class='title  '>".$product_list[$i]['title']."</div>".
-          "<div class='updatedDate' class=' '>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
-        "</div>".
-
-        "<div class='imgWrap  '>".
-          "<div class='img_description  '>".
-            "<div class='description  '>".$product_list[$i]['description'].'</div>'.
-            '<div class="hashtags  ">'.$hash_out."</div>".
-          '</div>'.
-          "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=200px height=150px>".
-        "</div>".
-        "<footer>".
-          "<div class='pricePanel'>".
-            "<div id='numOfView'>".
-              "15".
-            "</div>".
-            "<div id='eye'>".
-              "<img src='../img/view.png' alt='eye'>".
-            "</div>".
-            "<div id='price'>".
-              (string)$product_list[$i]['price']." HKD".
-            "</div>".
-          "</div>".
-        "</footer>".
-      "</div>";
+        echo "<h3 align 'center'>No product found </h3> ";
       }
-    }
-    if($enter == 0 && $_POST['search_word'] !== "")
-    {
-      echo "<h3 align 'center'>No product found </h3> ";
     }
   }
   else{
