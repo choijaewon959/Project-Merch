@@ -211,6 +211,7 @@ body{
 
 .btn{
 	padding-bottom: 30px;
+	float: left;
 }
 
 .btn img{
@@ -221,15 +222,17 @@ body{
 /*price filter*/
 #priceSort{
 	float: left;
+		padding-bottom: 20px;
+
 }
 
 #priceSortDiv{
-		z-index:1 ;
+	z-index:1 ;
 }
 
 #priceSortDiv #priceFilterDiv{
 	float:right;
-		display:none;
+	display:none;
 }
 
 #priceSortDiv #filter_price{
@@ -240,10 +243,11 @@ body{
 #qualitySort{
 	float: left;
 	padding-bottom: 20px;
+	font-size: 50px;
 }
 
 #qualitySortDiv{
-		z-index:1 ;
+	z-index:1 ;
 }
 
 #qualitySortDiv #qualityFilterDiv{
@@ -258,8 +262,8 @@ body{
 }
 
 #categorySortDiv{
-		padding-bottom:  30px;
-		z-index:1 ;
+	padding-bottom:  30px;
+	z-index:1 ;
 }
 
 #categorySortDiv #categoryFilterDiv{
@@ -1249,4 +1253,5 @@ body{
 .drop-ui-hover
 {
 	box-shadow: 6px 3px 6px 3px rgba(0,0,0,0.28);
+	background: url(../img/shopping_bag_blue);
 }
