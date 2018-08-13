@@ -259,8 +259,8 @@ body{
 }
 
 #qualitySortDiv #qualityFilterDiv{
-		float: right;
-		display:none;
+	float: right;
+	display:none;
 }
 
 /*category filter*/
@@ -1005,13 +1005,14 @@ body{
 	width: 26%;
 	margin: 20px;
 	height: 550px;
-	z-index: 10000;
 }
 
 .contentBox:hover
 {
 	cursor: pointer;
+
 }
+
 
 .headerInBox{
 	height: 50px;
@@ -1266,4 +1267,10 @@ body{
 {
 	box-shadow: 6px 3px 6px 3px rgba(0,0,0,0.28);
   	background: url("../img/shopping_bag_blue.png") center no-repeat;
+}
+
+.tester{
+	margin-top: 800px;
+	width: 200px;
+	background-color: red;
 }

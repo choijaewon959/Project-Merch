@@ -170,7 +170,9 @@ $_SESSION['max_price'] = 2000;
 						},
 					success:function(data)
 					{
+
 						$('#load_product').html(data);
+						alert('test');
 						$(function()
 						{
 						  $(".contentBox").draggable({revert: "invalid"});
@@ -181,6 +183,12 @@ $_SESSION['max_price'] = 2000;
 						    drop: function(event, ui)
 						    {
 						      $(ui.draggable).remove();
+						      console.log($(ui.draggable));
+						      let keyContainer = $(ui.draggable).children(".headerInBox");
+						      let titleKey = $(keyContainer).children(".title").text();
+						      let dateKey = $(keyContainer).children(".updatedDate").text();
+
+						      //@TODO: use title key and date key to access the data in sql.
 						    }
 						  });
 						});
@@ -983,7 +991,7 @@ $_SESSION['max_price'] = 2000;
 
 	</div>
 
-	<!-- <div class="tester">
+<!-- 	<div class="tester">
 		Kotlin
 	</div> -->
 
