@@ -173,7 +173,7 @@ class USER
 	// returns array of filenames in db
 	public function dbList()
 	{
-		$imgspath = "C:\\xampp\\htdocs\\Merch\\Database\\image\\" ;
+		$imgspath = "../Database/image/" ;
 		$files = scandir($imgspath);
 		$total = sizeof($files);
 		$images = array();

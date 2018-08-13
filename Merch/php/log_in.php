@@ -40,7 +40,7 @@
 	    <div class="boxbody">
 					<div class="Logo">
 						<div id="merchText">
-							<a href="Buypage_needlog.php">Merch</a>
+							<a href="index.php">Merch</a>
 						</div>
 					</div>
 						<div class="facebookDiv">

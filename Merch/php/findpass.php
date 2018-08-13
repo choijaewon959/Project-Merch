@@ -5,20 +5,31 @@
 
 	if($login->is_loggedin()!="")
 	{
-		$login->redirect('Buypage_loggedin.php');
+		$login->redirect('merch.bitnamiapp.com/php/Buypage_loggedin.php');
 	}
-
 	if(isset($_POST['submit_email']))
 	{
 		$umail = strip_tags($_POST['txt_uname_email']);
-		if($login->checkEmail($umail))
+		if($login->checkEmail($_SESSION['send_email']))
 		{
-      $salt = "128f12f9294@$1224vnd";
-      $password = hash('sha512', $salt.$umail);
-      $pwurl = "www.merch.com/findpass.php?q=".$password;
-      $mailbody = "Dear user,\n\nredirect to the following url you will be able to change your password.";
-      mail($umail,"www.merch.com - Password Reset", $mailbody);
-			$display = "change url sent to the registered email";
+      $str = "1234567890!@#$%^&*";
+			$str = str_shuffle($str);
+			$str = substr($str, 0, 10);
+			$stmt = $login->runQuery("UPDATE users SET token=:token WHERE email=:email");
+			$stmt->bindparam(":token", $str);
+			$stmt->bindparam(":email", $umail);
+			$stmt->execute();
+			$url = "merch.bitnamiapp.com/php/resetpass.php?token=$str&email=$umail";
+			if(mail($umail, "Merch - Reset Password URL", $url, "From: myemail@merch.com\r\n"))
+			{
+					$display = "change url sent to the registered email";
+			}
+			else
+			{
+					$display = "nope";
+			}
+			echo "<script type='text/javascript'>alert('".$url."');</script>";
+
 		}
 		else
 		{
@@ -33,7 +44,7 @@
 	  <link rel="stylesheet" type="text/css" href="../css/log_in.css">
 		<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
-	<title>Change Password</title>
+	<title>Find Password</title>
 	</head>
 	<body>
 
@@ -42,7 +53,7 @@
 	    <div class="boxbody">
 					<div class="Logo">
 						<div id="merchText">
-							<a href="">Merch</a>
+							<a href="index.php">Merch</a>
 						</div>
 					</div>
 		        <form  method="post" action="findpass.php">

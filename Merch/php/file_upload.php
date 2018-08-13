@@ -88,7 +88,7 @@ if(isset($_POST["files[]"])) {
     // if everything is ok, try to upload file
     }
     else {
-        if (move_uploaded_file($_FILES["product_image"]["tmp_name"][$a], "C:\\xampp\\htdocs\\Merch\\Database\\image\\".$image_name))
+        if (move_uploaded_file($_FILES["product_image"]["tmp_name"][$a], "..\\Database\\image\\".$image_name))
         {
         }
         else {
