@@ -64,7 +64,7 @@ $error_displayed = false;
 					        $allowed = array("image/jpg" => "jpg", "image/jpeg" => "jpeg", "image/gif" => "gif", "image/png" => "png");
 					        $product_id = $_SESSION['product_id'];
 					        $image_type = $_FILES["files"]["type"][$a];
-					        // image name is set as seller_id + category + product id + photo sequence number
+					        // image name is set as seller_id +  product id + category  + photo sequence number
 					        $image_name = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a.'.'.$allowed[$image_type];
 									$name_tmp = (string)$_SESSION['user_session']."_".(string)$product_id."_".(string)$_SESSION["product_category"]."_".(string)$a;
 					        $image_size = $_FILES["files"]["size"][$a];
@@ -316,7 +316,7 @@ $error_displayed = false;
 		              <div id="conts">
 		                <div id="usertitle">
 		                  <label>Title: </label>
-		                  <span>".$request_list[$a]["title"]."</span></br>
+		                  <span>'.$request_list[$a]["title"].'</span></br>
 		                </div>
 		                <div id="updatedTime">'
 		                  .$request_list[$a]["upload_date"].

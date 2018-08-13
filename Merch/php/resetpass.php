@@ -9,7 +9,7 @@ if(isset($_GET['token']) && isset($_GET['email']))
   $stmt->bindparam(":token", $_GET['token']);
   $stmt->bindparam(":email", $_GET['email']);
   $stmt->execute();
-  $uid = $stmt->fetch(PDO::FETCH_ASSOC))
+  $uid = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 else
 {

@@ -20,6 +20,8 @@
     {
       for($i = 0 ; $i < $search_num; $i++)
       {
+        $search_list[$i]['hashtag'] = strtolower($search_list[$i]['hashtag']);
+        $search = strtolower($search);
         if(strpos($search_list[$i]['hashtag'],$search) !== false)
         {
           if(!in_array($search_list[$i]['product_id'],$_SESSION['match_list']))
@@ -82,7 +84,8 @@
     {
       for($i = 0 ; $i < $search_num; $i++)
       {
-        if(strpos($search_list[$i]['title'],$_POST['search_word'])!== false)
+        $search_list[$i]['title'] = strtolower($search_list[$i]['title']);
+        if(strpos($search_list[$i]['title'],$search)!== false)
         {
           if(in_array($search_list[$i]['product_id'],$_SESSION['match_list']) == false)
           {

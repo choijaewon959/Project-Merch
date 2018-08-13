@@ -95,7 +95,7 @@ if(isset($_POST['btn_request_submit']))
 // ___________
 $min_range = 0 ;
 $max_range = 2000;
-$_SESSION['max_price'] = 2000; 
+$_SESSION['max_price'] = 2000;
 ?>
 
 <!DOCTYPE html>
@@ -185,8 +185,8 @@ $_SESSION['max_price'] = 2000;
 						c_value: c_value
 				}, function(data, status){
 						$("#suggestion").html(data);
+						load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value, search_word);
 				});
-				load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value, search_word);
 		});
 	});
 </script>
