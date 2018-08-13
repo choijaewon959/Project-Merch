@@ -228,7 +228,7 @@ $_SESSION['max_price'] = 2000;
 		<div class="filterAndShoppingCart">
 			<div class="cartDiv">
 
-				<img id="shopping_bag" src="../img/shopping-bag.png" alt="shopping bag">
+				<img id="shopping_bag" src="../img/shopping_bag_gray.png" alt="shopping bag">
 				<div>
 					<span id="dragAndDrop">Drag & Drop</span>
 					 <span id="textForCart1">the items in the shopping bag</span>
@@ -902,18 +902,18 @@ $_SESSION['max_price'] = 2000;
 	<div class="filterDiv" id="filterdiv">
 		<ul>
 			<li id="priceSortDiv" onclick="priceFilterDivShow()">
-				<div class="btn">
-					<img id="barcodeIcon" src="../img/barcode.png" alt="barco	de">
-				</div>
+					<div class="btn">
+						<img id="barcodeIcon" src="../img/barcode.png" alt="barcode">
+					</div>
 					<div id="priceSort">price</div>
 					<div class="col-md-2">
-							<input type='text' name="min_range" id="min_range" class="form-control" value=<?php echo $min_range; ?>>
+						<input type='text' name="min_range" id="min_range" class="form-control" value=<?php echo $min_range; ?>>
 					</div>
 					<div id="priceFilterDiv">
-								<div id="priceSlider"></div>
+						<div id="priceSlider"></div>
 					</div>
 					<div class="col-md-2">
-							<input type='text' name="max_range" id="max_range"  class="form-control" value=<?php echo $max_range; ?>>
+						<input type='text' name="max_range" id="max_range"  class="form-control" value=<?php echo $max_range; ?>>
 					</div>
 
 			</li>
