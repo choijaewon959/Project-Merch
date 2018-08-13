@@ -95,6 +95,7 @@ if(isset($_POST['btn_request_submit']))
 // ___________
 $min_range = 0 ;
 $max_range = 2000;
+$_SESSION['max_price'] = 2000; 
 ?>
 
 <!DOCTYPE html>
@@ -120,7 +121,7 @@ $max_range = 2000;
 		$("#priceSlider").slider({
 				range: true,
 				min:0,
-				max: 1000,
+				max: <?php echo $_SESSION['max_price']; ?>,
 				values: [<?php echo $min_range; ?>, <?php echo $max_range; ?>],
 				slide: function(event,ui){
 					$("#min_range").val(ui.values[0]);

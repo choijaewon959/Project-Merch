@@ -91,13 +91,13 @@ $error_displayed = false;
 					    // if everything is ok, try to upload file
 					    }
 					    else {
-					        if (move_uploaded_file($_FILES["files"]["tmp_name"][$a], "C:/xampp/htdocs/Merch/Database/tmpimage/".$image_name))
+					        if (move_uploaded_file($_FILES["files"]["tmp_name"][$a], "../Database/tmpimage/".$image_name))
 					        {
 										$names[$counter] = $image_name;
 										$counter = $counter +1 ;
 					        }
 					        else {
-											echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
+											echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file1.');</script>";
 											$error_displayed = true;
 					        }
 					      }
@@ -119,7 +119,7 @@ $error_displayed = false;
 							$auth_user->addHashtag($hash_arr);
 						}
 						else if($error_displayed != true){
-							echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
+							echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file2.');</script>";
 						}
 					}
 					else {

@@ -6,5 +6,5 @@
 	if(isset($_GET['logout']) && $_GET['logout']=="true")
 	{
 		$user_logout->doLogout();
-		$user_logout->redirect('Buypage_needlog.php');
+		$user_logout->redirect('index.php');
 	}

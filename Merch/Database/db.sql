@@ -8,6 +8,7 @@ CREATE TABLE `users` (
   `user_pass` varchar(255) NOT NULL,
   `email` varchar(30) NOT NULL,
   `phone_num` varchar(15) NOT NULL,
+  `token` varchar(10) NOT NULL,
   `joindate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
    PRIMARY KEY(`user_id`)
 )ENGINE=MariaDB DEFAULT CHARSET=latin1;

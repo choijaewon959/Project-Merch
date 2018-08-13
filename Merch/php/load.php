@@ -6,9 +6,11 @@
   $product_list = array();
   $quality = $_POST['q_value'];
   $category = $_POST['c_value'];
+  $_SESSION['max_price'] = 0;
 //  print_r($_POST);
 //  print_r("XXXX");
 //  print_r($_SESSION);
+
   if($quality=="default" && $category=="default")
   {
     $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY price ASC");
@@ -67,6 +69,7 @@
           $id = $product_list[$i]['product_id'];
           if(in_array($id, $_SESSION['match_list']) == true)
           {
+
             $enter = 1;
             $hash_stmt = $auth_user->runQuery("SELECT * FROM hashtag WHERE product_id=:product_id");
             $hash_stmt->execute(array(":product_id"=>$id));
@@ -78,6 +81,10 @@
               $counter = $counter +1 ;
             }
             $hash_out = substr($hash_out,0,-1);
+            if($product_list[$i]['price'] > $_SESSION['max_price'])
+            {
+              $_SESSION['max_price'] = $product_list[$i]['price'];
+            }
           echo "<div class='contentBox  '>";
           echo	"<div class='headerInBox  '>.
               <div class='title  '>".$product_list[$i]['title']."</div>".
@@ -123,6 +130,10 @@
             $counter = $counter +1 ;
           }
           $hash_out = substr($hash_out,0,-1);
+          if($product_list[$i]['price'] > $_SESSION['max_price'])
+          {
+            $_SESSION['max_price'] = $product_list[$i]['price'];
+          }
         echo "<div class='contentBox  '>";
         echo	"<div class='headerInBox  '>.
             <div class='title  '>".$product_list[$i]['title']."</div>".
