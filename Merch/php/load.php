@@ -82,14 +82,23 @@
             }
             $hash_out = substr($hash_out,0,-1);
 
-          echo "<div class='contentBox'>".
-        	   "<div class='headerInBox'>
-              <div id='bookIconInBox'></div>
-              <div class='title'>".$product_list[$i]['title']."</div>".
+            echo "<div class='contentBox'>
+               <div class='headerInBox'>";
+            if ($product_list[$i]['category'] == "book"){
+              echo "<div id='bookIconInBox'></div>";
+            }
+            else if($product_list[$i]['category'] == "appliance"){
+              echo "<div id='applianceIconInBox'></div>";
+            }
+            else if($product_list[$i]['category'] == "clothe"){
+                echo "<div id='clotheIconInBox'></div>";
+            }
+            else if($product_list[$i]['category'] == "etc"){
+                echo "<div id='etcIconInBox'>Etc</div>";
+            }
+            echo  "<div class='title'>".$product_list[$i]['title']."</div>".
               "<div class='updatedDate'>".$product_list[$i]['upload_date']."</div>".
-
             "</div>".
-
             "<div class='imgWrap'>".
               "<div class='img_description'>".
                 "<div class='description'>".$product_list[$i]['description'].'</div>'.
@@ -99,7 +108,6 @@
             "</div>".
             "<footer>".
               "<div class='pricePanel'>".
-
                 "<div id='price'>".
                   (string)$product_list[$i]['price']." HKD".
                 "</div>".
@@ -140,16 +148,23 @@
           {
             $_SESSION['max_price'] = $product_list[$i]['price'];
           }
-        echo "<div class='contentBox  '>";
-        echo	"<div class='headerInBox  '>.
-            <div id='bookIconInBox'></div>
-            <div id='applianceIconInBox'></div>
-            <div id='clotheIconInBox'></div>
-            <div id='etcIconInBox'>Etc</div>
-            <div class='title  '>".$product_list[$i]['title']."</div>".
+          echo "<div class='contentBox'>
+	           <div class='headerInBox'>";
+          if ($product_list[$i]['category'] == "book"){
+            echo "<div id='bookIconInBox'></div>";
+          }
+          else if($product_list[$i]['category'] == "appliance"){
+            echo "<div id='applianceIconInBox'></div>";
+          }
+          else if($product_list[$i]['category'] == "clothe"){
+              echo "<div id='clotheIconInBox'></div>";
+          }
+          else if($product_list[$i]['category'] == "etc"){
+              echo "<div id='etcIconInBox'>Etc</div>";
+          }
+          echo   "<div class='title  '>".$product_list[$i]['title']."</div>".
             "<div class='updatedDate' class=' '>".$product_list[$i]['upload_date']."</div>".
           "</div>".
-
           "<div class='imgWrap  '>".
             "<div class='img_description'>".
               "<div class='description'>".$product_list[$i]['description'].'</div>'.
@@ -159,7 +174,6 @@
           "</div>".
           "<footer>".
             "<div class='pricePanel'>".
-
               "<div id='price'>".
                 (string)$product_list[$i]['price']." HKD".
               "</div>".
