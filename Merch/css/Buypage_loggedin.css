@@ -136,7 +136,7 @@ body{
 	height: 45px;
 	border-top-left-radius: 7px;
 	border-bottom-left-radius: 7px;
-	background: url(/Merch/img/magnifier.png) no-repeat scroll center;
+	background: url("../img/magnifier.png") no-repeat scroll center;
   background-color:  #fff;
 	border:none;
 	border-right: 1px solid #d6d6d6;
@@ -151,9 +151,10 @@ body{
 }
 
 .cartDiv{
+	background: url("../img/shopping_bag_gray.png") center no-repeat;
 	background-color: white;
 	font-size: 20px;
-	padding: 20px;
+	padding: 10px;
 	align-content: center;
 	text-align: center;
 	vertical-align: middle;
@@ -162,7 +163,11 @@ body{
 
 .cartDiv #dragAndDrop{
 	font-weight: bold;
+}
 
+.cartDiv #cartDivMsg
+{
+	margin-top: 80px;
 }
 
 .cartDiv #click{
@@ -219,11 +224,15 @@ body{
 	margin-right: 10px;
 }
 
+.filterDiv
+{
+	width: 300px;
+}
+
 /*price filter*/
 #priceSort{
 	float: left;
-		padding-bottom: 20px;
-
+	padding-bottom: 20px;
 }
 
 #priceSortDiv{
@@ -243,7 +252,6 @@ body{
 #qualitySort{
 	float: left;
 	padding-bottom: 20px;
-	font-size: 50px;
 }
 
 #qualitySortDiv{
@@ -282,7 +290,6 @@ body{
 		margin-bottom: 5px;
 		width: 300px;
 }
-
 
 #requestModal{
     display: none; /* Hidden by default */
@@ -979,7 +986,6 @@ body{
 	width:83%;
 	height: 100%;
 	margin-top:210px;
-	padding-left: 200px;
 }
 
 .main::after{
@@ -999,6 +1005,12 @@ body{
 	width: 26%;
 	margin: 20px;
 	height: 550px;
+	z-index: 10000;
+}
+
+.contentBox:hover
+{
+	cursor: pointer;
 }
 
 .headerInBox{
@@ -1253,5 +1265,5 @@ body{
 .drop-ui-hover
 {
 	box-shadow: 6px 3px 6px 3px rgba(0,0,0,0.28);
-	background: url(../img/shopping_bag_blue);
+  	background: url("../img/shopping_bag_blue.png") center no-repeat;
 }

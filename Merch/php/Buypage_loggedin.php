@@ -112,7 +112,6 @@ $_SESSION['max_price'] = 2000;
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/Buypage_loggedin.css">
 
-	<script type="text/javascript" src="../js/Buypage_loggedin.js"></script>
 <script>
 	var q_value = "default";
 	var c_value = "default";
@@ -172,6 +171,20 @@ $_SESSION['max_price'] = 2000;
 					success:function(data)
 					{
 						$('#load_product').html(data);
+						$(function()
+						{
+						  $(".contentBox").draggable({revert: "invalid"});
+						  $(".cartDiv").droppable(
+						  {
+						    hoverClass: "drop-ui-hover",
+						    accept: ".contentBox",
+						    drop: function(event, ui)
+						    {
+						      $(ui.draggable).remove();
+						    }
+						  });
+						});
+
 					}
 			});
 		}
@@ -185,11 +198,12 @@ $_SESSION['max_price'] = 2000;
 						c_value: c_value
 				}, function(data, status){
 						$("#suggestion").html(data);
-						load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value, search_word);
 				});
+				load_product(<?php echo $min_range; ?>, <?php echo $max_range; ?>,q_value,c_value, search_word);
 		});
 	});
 </script>
+<script type="text/javascript" src="../js/Buypage_loggedin.js"></script>
 </head>
 
 <body>
@@ -228,8 +242,7 @@ $_SESSION['max_price'] = 2000;
 		<div class="filterAndShoppingCart">
 			<div class="cartDiv">
 
-				<img id="shopping_bag" src="../img/shopping_bag_gray.png" alt="shopping bag">
-				<div>
+				<div id="cartDivMsg">
 					<span id="dragAndDrop">Drag & Drop</span>
 					 <span id="textForCart1">the items in the shopping bag</span>
 					 <!--
@@ -968,9 +981,11 @@ $_SESSION['max_price'] = 2000;
 
 	<div class="main" id="load_product">
 
-
-
 	</div>
+
+	<!-- <div class="tester">
+		Kotlin
+	</div> -->
 
 </body>
 </html>

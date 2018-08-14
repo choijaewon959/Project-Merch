@@ -71,24 +71,9 @@ window.onclick = function(event) {
         popUpConent.style.height = "0px";
         popUpPanel.style.display= "none";
     }
-
-
 }
 
 //drag content div
-$(function()
-{
-  $( ".contentBox" ).draggable({revert: "invalid"});
-  $( ".cartDiv").droppable(
-  {
-    hoverClass: "drop-ui-hover",
-    accept: ".draggable",
-    drop: function(event, ui)
-    {
-      $(ui.draggable).remove();
-    }
-  });
-});
 
 
 //filters

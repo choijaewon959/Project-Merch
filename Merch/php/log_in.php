@@ -44,7 +44,7 @@
 						</div>
 					</div>
 						<div class="facebookDiv">
-							 <button id="facebookButton">Login with Facebook</button>
+							 <a href="login.php"><button id="facebookButton">Login with Facebook</button></a>
 						</div>
 		        <form  method="post" action="log_in.php">
 		              <?php

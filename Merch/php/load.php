@@ -81,22 +81,32 @@
               $counter = $counter +1 ;
             }
             $hash_out = substr($hash_out,0,-1);
-            if($product_list[$i]['price'] > $_SESSION['max_price'])
-            {
-              $_SESSION['max_price'] = $product_list[$i]['price'];
-            }
-            echo "<div class='contentBox  '>";
-            echo	"<div class='headerInBox  '>.
-                <div class='title  '>".$product_list[$i]['title']."</div>".
-                "<div class='updatedDate  '>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
-              "</div>".
 
-              "<div class='imgWrap'>".
-                "<div class='img_description  '>".
-                  "<div class='description  '>".$product_list[$i]['description'].'</div>'.
-                  '<div class="hashtags">'.$hash_out."</div>".
-                '</div>'.
-                "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=200px height=150px>".
+          echo "<div class='contentBox'>".
+        	   "<div class='headerInBox'>
+              <div class='title'>".$product_list[$i]['title']."</div>".
+              "<div class='updatedDate'>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
+
+            "</div>".
+
+            "<div class='imgWrap'>".
+              "<div class='img_description'>".
+                "<div class='description'>".$product_list[$i]['description'].'</div>'.
+                '<div class="hashtags">'.$hash_out."</div>".
+              '</div>'.
+              "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=200px height=150px>".
+            "</div>".
+            "<footer>".
+              "<div class='pricePanel'>".
+                "<div id='numOfView'>".
+                  "15".
+                "</div>".
+                "<div id='eye'>".
+                  "<img src='../img/view.png' alt='eye'>".
+                "</div>".
+                "<div id='price'>".
+                  (string)$product_list[$i]['price']." HKD".
+                "</div>".
               "</div>".
               "<footer>".
                 "<div class='pricePanel'>".
