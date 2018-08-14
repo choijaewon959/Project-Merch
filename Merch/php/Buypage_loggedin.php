@@ -181,9 +181,9 @@ $_SESSION['max_price'] = 2000;
 						    drop: function(event, ui)
 						    {
 						      $(ui.draggable).remove();
-						      console.log($(ui.draggable));
 						      let keyContainer = $(ui.draggable).children(".headerInBox");
 						      let titleKey = $(keyContainer).children(".title").text();
+						      console.log(titleKey);
 						      let dateKey = $(keyContainer).children(".updatedDate").text();
 								//	mycart(titleKey, dateKey);
 								$.post("mycart.php",{

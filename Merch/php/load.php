@@ -84,6 +84,7 @@
 
           echo "<div class='contentBox'>".
         	   "<div class='headerInBox'>
+              <div id='bookIconInBox'></div>
               <div class='title'>".$product_list[$i]['title']."</div>".
               "<div class='updatedDate'>".$product_list[$i]['upload_date']."</div>".
 
@@ -94,16 +95,11 @@
                 "<div class='description'>".$product_list[$i]['description'].'</div>'.
                 '<div class="hashtags">'.$hash_out."</div>".
               '</div>'.
-              "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=200px height=150px>".
+              "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=400px height=420px>".
             "</div>".
             "<footer>".
               "<div class='pricePanel'>".
-                "<div id='numOfView'>".
-                  "15".
-                "</div>".
-                "<div id='eye'>".
-                  "<img src='../img/view.png' alt='eye'>".
-                "</div>".
+
                 "<div id='price'>".
                   (string)$product_list[$i]['price']." HKD".
                 "</div>".
@@ -144,9 +140,13 @@
           {
             $_SESSION['max_price'] = $product_list[$i]['price'];
           }
-        echo "<div class='contentBox'>";
-        echo	"<div class='headerInBox'>.
-            <div class='title'>".$product_list[$i]['title']."</div>".
+        echo "<div class='contentBox  '>";
+        echo	"<div class='headerInBox  '>.
+            <div id='bookIconInBox'></div>
+            <div id='applianceIconInBox'></div>
+            <div id='clotheIconInBox'></div>
+            <div id='etcIconInBox'>Etc</div>
+            <div class='title  '>".$product_list[$i]['title']."</div>".
             "<div class='updatedDate' class=' '>".$product_list[$i]['upload_date']."</div>".
           "</div>".
 
@@ -155,16 +155,11 @@
               "<div class='description'>".$product_list[$i]['description'].'</div>'.
               '<div class="hashtags">'.$hash_out."</div>".
             '</div>'.
-            "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=200px height=150px>".
+            "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=400px height=420px>".
           "</div>".
           "<footer>".
             "<div class='pricePanel'>".
-              "<div id='numOfView'>".
-                "15".
-              "</div>".
-              "<div id='eye'>".
-                "<img src='../img/view.png' alt='eye'>".
-              "</div>".
+
               "<div id='price'>".
                 (string)$product_list[$i]['price']." HKD".
               "</div>".

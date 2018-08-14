@@ -983,7 +983,7 @@ body{
 
 .main{
 	float: right;
-	width:83%;
+	width:82%;
 	height: 100%;
 	margin-top:210px;
 }
@@ -997,12 +997,12 @@ body{
 
 .contentBox{
 	display: inline-block;
-	padding: 20px;
+	padding: 10px 20px 20px 20px;
 	background: 	#ffffff;
 	-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
 	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
 	border-radius: 4px;
-	width: 26%;
+	width: 28%;
 	margin: 20px;
 	height: 550px;
 }
@@ -1019,26 +1019,72 @@ body{
 
 }
 
+.headerInBox #bookIconInBox
+{
+	float: left;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	background: url(../img/book-small.png) no-repeat scroll center;
+	background-color: #ff80ab;
+	margin: 0px 10px 10px 0px;
+}
+
+.headerInBox #applianceIconInBox
+{
+	border-radius: 50%;
+	width:40px;
+	height: 40px;
+	background: url(../img/appliance-small.png) no-repeat scroll center;
+	background-color: #4285F4;
+	margin: 0px 10px 10px 0px;
+}
+
+.headerInBox #clotheIconInBox
+{
+	border-radius: 50%;
+	width:40px;
+	height: 40px;
+	background: url(../img/shirt-small.png) no-repeat scroll center;
+	background-color:#DB4437;
+	margin: 0px 10px 10px 0px;
+}
+
+.headerInBox #etcIconInBox
+{
+	color: white;
+	font-size: 15px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 40px;
+	border-radius: 50%;
+	width:40px;
+	height: 40px;
+	background-color: #F09300;
+	margin: 0px 10px 10px 0px;
+}
+
 .headerInBox .title{
 	color: rgba(0,0,0,0.87);
 	font-size: 17px;
 	font-weight: bold;
+	margin-top: 10px;
 	margin-bottom: 10px;
-	width: 80%;
+	width: 50%;
 	float: left;
 	text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  	white-space: nowrap;
+  	overflow: hidden;
 }
 
 .headerInBox .updatedDate{
-
+	margin-top: 10px;
 	float: right;
 	color: #aaa;
 }
 
 .imgWrap{
-	height: 450px;
+	height: 430px;
 	cursor: pointer;
 }
 
@@ -1046,7 +1092,7 @@ body{
 	padding: 10px;
 	position: absolute;
 	visibility: hidden;
-	width: 17%;
+	width: 100%;
 }
 
 .imgWrap:hover .img_description{
@@ -1062,18 +1108,21 @@ body{
 .img_description .description{
 	margin-bottom: 150px;
 	color: #aaaaaa;
+	height: 150px;
+	font-size: 25px;
 }
 
 .img_description .hashtags{
+	padding: 10px;
 	color: #aaaaaa;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+	font-size:20px;
 }
 
 .contentBox footer{
-	height: 10%;
-	padding-top: 20px;
+	height: 20%;
 }
 
 #pricetagIcon{
