@@ -34,7 +34,6 @@ function popUpProduct(){
 
 
 //popup slider control
-
 function incrementSliderIndex(n){
   changeSlider(sliderIndex+=n);
 }
@@ -72,9 +71,6 @@ window.onclick = function(event) {
         popUpPanel.style.display= "none";
     }
 }
-
-//drag content div
-
 
 //filters
 var slider = document.getElementById("priceSlider");
