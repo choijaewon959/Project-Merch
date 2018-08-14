@@ -104,8 +104,20 @@
                   (string)$product_list[$i]['price']." HKD".
                 "</div>".
               "</div>".
-            "</footer>".
-          "</div>";
+              "<footer>".
+                "<div class='pricePanel'>".
+                  "<div id='numOfView'>".
+                    "15".
+                  "</div>".
+                  "<div id='eye'>".
+                    "<img src='../img/view.png' alt='eye'>".
+                  "</div>".
+                  "<div id='price'>".
+                    (string)$product_list[$i]['price']." HKD".
+                  "</div>".
+                "</div>".
+              "</footer>".
+            "</div>";
           }
         }
       }
