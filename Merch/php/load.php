@@ -13,7 +13,7 @@
 
   if($quality=="default" && $category=="default")
   {
-    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY price ASC");
+    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY upload_date DESC");
     $product_stmt->execute();
     while($product_list[$counter] = $product_stmt->fetch(PDO::FETCH_ASSOC)){
       $counter = $counter +1 ;
@@ -23,7 +23,7 @@
   }
   else if($quality!=="default" && $category!=="default")
   {
-    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE quality=:quality AND category=:category AND price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY price ASC");
+    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE quality=:quality AND category=:category AND price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY upload_date DESC");
     $product_stmt->bindparam(":quality", $quality);
     $product_stmt->bindparam(":category", $category);
     $product_stmt->execute();
@@ -36,7 +36,7 @@
   }
   else if($quality!=="default")
   {
-    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE quality=:quality AND price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY price ASC");
+    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE quality=:quality AND price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY upload_date DESC");
     $product_stmt->bindparam(":quality", $quality);
     $product_stmt->execute();
     while($product_list[$counter] = $product_stmt->fetch(PDO::FETCH_ASSOC)){
@@ -47,7 +47,7 @@
   }
   else if($category!=="default")
   {
-    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE category=:category AND price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY price ASC");
+    $product_stmt = $auth_user->runQuery("SELECT * FROM sell_product WHERE category=:category AND price BETWEEN '".$_POST['min_range']."' AND '".$_POST['max_range']."' ORDER BY upload_date DESC");
     $product_stmt->bindparam(":category", $category);
     $product_stmt->execute();
     while($product_list[$counter] = $product_stmt->fetch(PDO::FETCH_ASSOC)){
@@ -85,7 +85,7 @@
           echo "<div class='contentBox'>".
         	   "<div class='headerInBox'>
               <div class='title'>".$product_list[$i]['title']."</div>".
-              "<div class='updatedDate'>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
+              "<div class='updatedDate'>".$product_list[$i]['upload_date']."</div>".
 
             "</div>".
 
@@ -144,16 +144,16 @@
           {
             $_SESSION['max_price'] = $product_list[$i]['price'];
           }
-        echo "<div class='contentBox  '>";
-        echo	"<div class='headerInBox  '>.
-            <div class='title  '>".$product_list[$i]['title']."</div>".
-            "<div class='updatedDate' class=' '>"."Upload Date ".$product_list[$i]['upload_date']."</div>".
+        echo "<div class='contentBox'>";
+        echo	"<div class='headerInBox'>.
+            <div class='title'>".$product_list[$i]['title']."</div>".
+            "<div class='updatedDate' class=' '>".$product_list[$i]['upload_date']."</div>".
           "</div>".
 
           "<div class='imgWrap  '>".
-            "<div class='img_description  '>".
-              "<div class='description  '>".$product_list[$i]['description'].'</div>'.
-              '<div class="hashtags  ">'.$hash_out."</div>".
+            "<div class='img_description'>".
+              "<div class='description'>".$product_list[$i]['description'].'</div>'.
+              '<div class="hashtags">'.$hash_out."</div>".
             '</div>'.
             "<img class='image' src=".$auth_user->image_dir(1, $product_list[$i]['product_id'])." alt='book' width=200px height=150px>".
           "</div>".

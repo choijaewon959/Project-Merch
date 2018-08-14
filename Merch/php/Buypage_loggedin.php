@@ -170,9 +170,7 @@ $_SESSION['max_price'] = 2000;
 						},
 					success:function(data)
 					{
-
 						$('#load_product').html(data);
-						alert('test');
 						$(function()
 						{
 						  $(".contentBox").draggable({revert: "invalid"});
@@ -187,8 +185,14 @@ $_SESSION['max_price'] = 2000;
 						      let keyContainer = $(ui.draggable).children(".headerInBox");
 						      let titleKey = $(keyContainer).children(".title").text();
 						      let dateKey = $(keyContainer).children(".updatedDate").text();
-
-						      //@TODO: use title key and date key to access the data in sql.
+								//	mycart(titleKey, dateKey);
+								$.post("mycart.php",{
+												titleKey: titleKey,
+												dateKey: dateKey
+											},
+											function(data, status){
+												alert("zzz");
+										});
 						    }
 						  });
 						});
@@ -196,6 +200,10 @@ $_SESSION['max_price'] = 2000;
 					}
 			});
 		}
+		// function mycart(titleKey, dateKey)
+		// {
+		//
+		// }
 		$("input").keyup(function(){
 				var q_value = $quality_radios.filter(':checked').val();
 				var c_value = $category_radios.filter(':checked').val();
