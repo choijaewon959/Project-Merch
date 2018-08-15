@@ -111,7 +111,12 @@ $_SESSION['max_price'] = 2000;
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/Buypage_loggedin.css">
-	<!-- Bootstrap Dropdown Hover CSS -->
+
+	<!--customized bootstrap library by other ppl-->
+	<link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap-dropdownhover.min.js"></script>
 
 <script>
 	var q_value = "default";
@@ -936,14 +941,16 @@ $_SESSION['max_price'] = 2000;
 					<img id="barcodeIcon" src="../img/barcode.png" alt="barcode">
 					<div id="priceSort">price</div>
 				</button>
-					<!-- <div class="col-md-2">
+				<ul class="dropdown-menu">
+					<div class="col-md-2">
 						<input type='text' name="min_range" id="min_range" class="form-control" value=<?php echo $min_range; ?>>
 					</div>
 
 					<div class="col-md-2">
 						<input type='text' name="max_range" id="max_range"  class="form-control" value=<?php echo $max_range; ?>>
-					</div> -->
-
+					</div>
+				</ul>
+					
 			</li>
 
 			<li class="dropdown" id="qualitySortDiv">
@@ -953,10 +960,10 @@ $_SESSION['max_price'] = 2000;
 				</button>
 				<ul class="dropdown-menu">
 					<form action="Buypage_loggedin.php" name = "filter_quality">
-						<input type="radio" name="quality" value="default" checked> No preference</input><br>
-	 					<input type="radio" name="quality" value="New"> New</input><br>
-						<input type="radio" name="quality" value="Used"> Used</input><br>
-						<input type="radio" name="quality" value="Old"> Old</input><br>
+						<li><input type="radio" name="quality" value="default" checked> No preference</input></li>
+	 					<li><input type="radio" name="quality" value="New"> New</input></li>
+						<li><input type="radio" name="quality" value="Used"> Used</input></li>
+						<li><input type="radio" name="quality" value="Old"> Old</input></li>
 					</form>
 				</ul>
 
@@ -970,11 +977,11 @@ $_SESSION['max_price'] = 2000;
 
 				<ul class="dropdown-menu">
 					<form action="Buypage_loggedin.php" name = "filter_category">
-						<input type="radio" name="category" value="default" checked> No preference</input><br>
-						<input type="radio" name="category" value="Book"> Book</input><br>
-						<input type="radio" name="category" value="Clothe"> Clothe</input><br>
-						<input type="radio" name="category" value="Appliance"> Appliance</input> <br>
-						<input type="radio" name="category" value="Etc"> Etc</input></br>
+						<li><input type="radio" name="category" value="default" checked> No preference</input></li>
+						<li><input type="radio" name="category" value="Book"> Book</input></li>
+						<li><input type="radio" name="category" value="Clothe"> Clothe</input></li>
+						<li><input type="radio" name="category" value="Appliance"> Appliance</input></li>
+						<li><input type="radio" name="category" value="Etc"> Etc</input></li>
 					</form>
 				</ul>
 						
@@ -983,8 +990,8 @@ $_SESSION['max_price'] = 2000;
 			</li>
 
 
-			<div class="line">
-			</div>
+			<li class="line">
+			</li>
 
 			<li>
 				<div class="btn" onclick=undo()>
