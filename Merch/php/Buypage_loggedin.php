@@ -111,6 +111,7 @@ $_SESSION['max_price'] = 2000;
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/Buypage_loggedin.css">
+	<!-- Bootstrap Dropdown Hover CSS -->
 
 <script>
 	var q_value = "default";
@@ -930,58 +931,60 @@ $_SESSION['max_price'] = 2000;
 
 	<div class="filterDiv" id="filterdiv">
 		<ul>
-			<li id="priceSortDiv" onclick="priceFilterDivShow()">
-					<div class="btn">
-						<img id="barcodeIcon" src="../img/barcode.png" alt="barcode">
-					</div>
+			<li class="dropdown" id="priceSortDiv">
+				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-animations="fadeInDown fadeInRight fadeInUp fadeInLeft">
+					<img id="barcodeIcon" src="../img/barcode.png" alt="barcode">
 					<div id="priceSort">price</div>
-					<div class="col-md-2">
+				</button>
+					<!-- <div class="col-md-2">
 						<input type='text' name="min_range" id="min_range" class="form-control" value=<?php echo $min_range; ?>>
 					</div>
-					<div id="priceFilterDiv">
-						<div id="priceSlider"></div>
-					</div>
+
 					<div class="col-md-2">
 						<input type='text' name="max_range" id="max_range"  class="form-control" value=<?php echo $max_range; ?>>
-					</div>
+					</div> -->
 
 			</li>
 
-			<li id="qualitySortDiv" onclick="qualityFilterDivShow()">
-				<div class="btn">
+			<li class="dropdown" id="qualitySortDiv">
+				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-animations="fadeInDown fadeInRight fadeInUp fadeInLeft">
 					<img id= "medalIcon" src="../img/medal.png" alt="medal">
 					<div id="qualitySort"> quality</div>
-					<div id= "qualityFilterDiv" >
-						<form action="Buypage_loggedin.php" name = "filter_quality">
-							<input type="radio" name="quality" value="default" checked> No preference</input><br>
- 						  <input type="radio" name="quality" value="New"> New</input><br>
-						  <input type="radio" name="quality" value="Used"> Used</input><br>
-						  <input type="radio" name="quality" value="Old"> Old</input><br>
-						</form>
-					</div>
-				</div>
+				</button>
+				<ul class="dropdown-menu">
+					<form action="Buypage_loggedin.php" name = "filter_quality">
+						<input type="radio" name="quality" value="default" checked> No preference</input><br>
+	 					<input type="radio" name="quality" value="New"> New</input><br>
+						<input type="radio" name="quality" value="Used"> Used</input><br>
+						<input type="radio" name="quality" value="Old"> Old</input><br>
+					</form>
+				</ul>
+
 			</li>
 
-			<li id="categorySortDiv" onclick="categoryFilterDivShow()">
-				<div class="btn">
-				<img id="boxIcon" src="../img/box.png" alt="blocks">
+			<li class="dropdown" id="categorySortDiv">
+				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-animations="fadeInDown fadeInRight fadeInUp fadeInLeft">
+					<img id="boxIcon" src="../img/box.png" alt="blocks">
 					<div id="categorySort"> category</div>
-					<div id="categoryFilterDiv">
-						<form action="Buypage_loggedin.php" name = "filter_category">
-							<input type="radio" name="category" value="default" checked> No preference</input><br>
-						  <input type="radio" name="category" value="Book"> Book</input><br>
-						  <input type="radio" name="category" value="Clothe"> Clothe</input><br>
-						  <input type="radio" name="category" value="Appliance"> Appliance</input> <br>
-							<input type="radio" name="category" value="Etc"> Etc</input></br>
-						</form>
+				</button>
+
+				<ul class="dropdown-menu">
+					<form action="Buypage_loggedin.php" name = "filter_category">
+						<input type="radio" name="category" value="default" checked> No preference</input><br>
+						<input type="radio" name="category" value="Book"> Book</input><br>
+						<input type="radio" name="category" value="Clothe"> Clothe</input><br>
+						<input type="radio" name="category" value="Appliance"> Appliance</input> <br>
+						<input type="radio" name="category" value="Etc"> Etc</input></br>
+					</form>
+				</ul>
+						
 					</div>
-				</div>
+
 			</li>
 
 
 			<div class="line">
 			</div>
-
 
 			<li>
 				<div class="btn" onclick=undo()>
@@ -991,7 +994,6 @@ $_SESSION['max_price'] = 2000;
 			</li>
 
 		</ul>
-
 	</div><!--fileterDiv-->
 
 

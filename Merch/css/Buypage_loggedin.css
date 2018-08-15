@@ -187,7 +187,6 @@ body{
 
 .filterDiv{
 	width: 300px;
-	float: left;
 	padding-left: 15px;
 	color: #555;
 	margin-top:230px;
@@ -205,80 +204,17 @@ body{
 	cursor: pointer;
 }
 
-.filterDiv ul li:hover {
-
-	background:#e8e8e8;
-}
-
 .filterDiv input[type="radio"]{
 	background: #fff;
 }
 
-.btn{
-	padding-bottom: 30px;
-	float: left;
-}
 
 .btn img{
 	float: left;
 	margin-right: 10px;
 }
 
-.filterDiv
-{
-	width: 300px;
-}
 
-/*price filter*/
-#priceSort{
-	float: left;
-	padding-bottom: 20px;
-}
-
-#priceSortDiv{
-	z-index:1 ;
-}
-
-#priceSortDiv #priceFilterDiv{
-	float:right;
-	display:none;
-}
-
-#priceSortDiv #filter_price{
-	width: 100%;
-}
-
-/*quality filter*/
-#qualitySort{
-	float: left;
-	padding-bottom: 20px;
-}
-
-#qualitySortDiv{
-	z-index:1 ;
-}
-
-#qualitySortDiv #qualityFilterDiv{
-	float: right;
-	display:none;
-}
-
-/*category filter*/
-#categorySort{
-	float: left;
-	padding-bottom: 20px;
-}
-
-#categorySortDiv{
-	padding-bottom:  30px;
-	z-index:1 ;
-}
-
-#categorySortDiv #categoryFilterDiv{
-
-		float: right;
-		display:none;
-}
 
 #undoIcon{
 	padding-bottom: 10px;
@@ -1004,13 +940,14 @@ body{
 	border-radius: 4px;
 	width: 28%;
 	margin: 20px;
-	height: 550px;
+	height: 580px;
 }
 
 .contentBox:hover
 {
 	cursor: pointer;
-
+	-webkit-box-shadow: 0 3px 21px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 3px 21px 0 rgba(0,0,0,0.2);
 }
 
 
@@ -1021,7 +958,6 @@ body{
 
 .headerInBox #bookIconInBox
 {
-	float: left;
 	border-radius: 50%;
 	width: 40px;
 	height: 40px;
@@ -1092,7 +1028,8 @@ body{
 	padding: 10px;
 	position: absolute;
 	visibility: hidden;
-	width: 100%;
+	width: 90%;
+	margin: 40px 0px 0px 0px;
 }
 
 .imgWrap:hover .img_description{
@@ -1122,7 +1059,8 @@ body{
 }
 
 .contentBox footer{
-	height: 20%;
+	margin: 40px 0px 0px 0px;
+	height: 5%;
 }
 
 #pricetagIcon{
