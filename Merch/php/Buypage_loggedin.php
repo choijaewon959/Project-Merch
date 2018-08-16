@@ -179,7 +179,7 @@ $_SESSION['max_price'] = 2000;
 						$('#load_product').html(data);
 						$(function()
 						{
-						  $(".contentBox").draggable({revert: "invalid"});
+						  $(".contentBox").draggable({revert: "invalid", zIndex: 9999});
 						  $(".cartDiv").droppable(
 						  {
 						    hoverClass: "drop-ui-hover",
@@ -960,10 +960,14 @@ $_SESSION['max_price'] = 2000;
 				</button>
 				<ul class="dropdown-menu">
 					<form action="Buypage_loggedin.php" name = "filter_quality">
-						<li><input type="radio" name="quality" value="default" checked> No preference</input></li>
-	 					<li><input type="radio" name="quality" value="New"> New</input></li>
-						<li><input type="radio" name="quality" value="Used"> Used</input></li>
-						<li><input type="radio" name="quality" value="Old"> Old</input></li>
+						<li><input id="defaultQuality" type="radio" name="quality" value="default" checked></input>
+						<label for="defaultQuality">No preference</label></li>
+	 					<li><input id="newQuality" type="radio" name="quality" value="New"></input>
+	 					<label for="newQuality">New</label></li>
+						<li><input id="usedQuality" type="radio" name="quality" value="Used"></input>
+						<label for="usedQuality">Used</label></li>
+						<li><input id="oldQuality" type="radio" name="quality" value="Old"></input>
+						<label for="oldQuality">Old</label></li>
 					</form>
 				</ul>
 
@@ -977,15 +981,19 @@ $_SESSION['max_price'] = 2000;
 
 				<ul class="dropdown-menu">
 					<form action="Buypage_loggedin.php" name = "filter_category">
-						<li><input type="radio" name="category" value="default" checked> No preference</input></li>
-						<li><input type="radio" name="category" value="Book"> Book</input></li>
-						<li><input type="radio" name="category" value="Clothe"> Clothe</input></li>
-						<li><input type="radio" name="category" value="Appliance"> Appliance</input></li>
-						<li><input type="radio" name="category" value="Etc"> Etc</input></li>
+						<li><input id="defaultCategory" type="radio" name="category" value="default" checked></input>
+						<label for="defaultCategory">No preference</label></li>
+						<li><input id="bookCategory" type="radio" name="category" value="Book"></input>
+						<label for="bookCategory">Book</label></li>
+						<li><input id="clotheCategory" type="radio" name="category" value="Clothe"> </input>
+						<label for="clotheCategory">Clothe</label></li>
+						<li><input id="applianceCategory" type="radio" name="category" value="Appliance"></input>
+						<label for="applianceCategory">Appliance</label></li>
+						<li><input id="etcCategory" type="radio" name="category" value="Etc"></input>
+						<label for="etcCategory">Etc</label></li>
 					</form>
 				</ul>
 						
-					</div>
 
 			</li>
 
@@ -994,9 +1002,9 @@ $_SESSION['max_price'] = 2000;
 			</li>
 
 			<li>
-				<div class="btn" onclick=undo()>
+				<div class="undoBtn btn" onclick=undo()>
 						<img id="undoIcon" src="../img/undo.png" alt="undo">
-						<p id="undo">undo</p>
+						<div id="undo">undo</div>
 				</div>
 			</li>
 
