@@ -304,6 +304,10 @@ $_SESSION['max_price'] = 2000;
 				<header id="popupHeader">
 					<div class="clearfix">
 						<div id="popUpTitle">
+							<div id="popupContact">
+								<img src="../img/phone-call.png"/>
+								01053142067
+							</div>
 							<label id="titleLabel">Psychology Book and something </label>
 							<div id="uploadedTime">
 								23:08 17/07/2018

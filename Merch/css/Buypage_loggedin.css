@@ -1240,6 +1240,18 @@ body{
   transition: opacity 0.18s ease-in-out;
 }
 
+#popupContact
+{
+	color: #006df0;
+	border-bottom: 1px solid #d6d6d6;
+	padding: 10px 0px 10px 0px;
+}
+
+#popupContact img
+{
+	margin: 5px;
+}
+
 #popUpDes{
 	float: left;
 	width: 45%;
