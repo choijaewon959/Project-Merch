@@ -209,6 +209,10 @@ body{
 #defaultQuality, #newQuality, #usedQuality, #oldQuality, #defaultCategory,#bookCategory,#clotheCategory, #applianceCategory, #etcCategory
 {
 	visibility: hidden;
+	cursor: none;
+	width: 0;
+	height: 0;
+	font-color: #d6d6d6;
 }
 
 
@@ -226,22 +230,37 @@ body{
 .dropdown-menu
 {
 	width: 100%;
-	padding: 0px 0px 10px 10px;
 }
 
 .dropdown-menu:hover
 {
 	background:#fff;
+}
 
+.dropdown-menu li
+{
+	padding: 0;
 }
 
 .dropdown-menu label
 {
 	color: #aaaaaa;
 	font-weight: normal;
+	width: 100%;
+	padding: 0px 0px 0px 20px;
+	margin:0px;
+}
+
+.dropdown-menu label:hover
+{
+	color: #337ab7;
+	cursor: pointer;
 }
 
 
+.dropdown-menu input:checked + label {
+    color: #337ab7;
+}
 
 .dropdown #priceSort
 {
@@ -256,10 +275,6 @@ body{
 .dropdown #categorySort
 {
 	float: left;
-}
-
-.filterDiv input[type="radio"]{
-	background: #fff;
 }
 
 

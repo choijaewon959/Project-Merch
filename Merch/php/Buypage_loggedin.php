@@ -179,7 +179,15 @@ $_SESSION['max_price'] = 2000;
 						$('#load_product').html(data);
 						$(function()
 						{
-						  $(".contentBox").draggable({revert: "invalid", zIndex: 9999});
+						  $(".contentBox").draggable({
+						  	start: function(event, ui){
+						  		$(this).addClass('dragging');
+						  	},
+						  	stop: function(event, ui){
+						  		$(this).addClass('dragging');
+						  	},
+						  	revert: "invalid",
+						  	zIndex: 9999});
 						  $(".cartDiv").droppable(
 						  {
 						    hoverClass: "drop-ui-hover",
@@ -255,7 +263,6 @@ $_SESSION['max_price'] = 2000;
 						<li><a href="Sellpage.php">Sell</a></li>
 						<li><button id="shoppingBagBTN" data-toggle="modal" data-target="#myShoppingBag">My Shopping Bag</button></li>
 						<li><a href="log_out.php?logout=true">Log out</a><li>
-						<li><button id="tmp" onclick="popUpProduct();">tmpBTN</button></li>
 					</ul>
 			</nav>
 	  </div><!--searchHeader-->
@@ -964,14 +971,18 @@ $_SESSION['max_price'] = 2000;
 				</button>
 				<ul class="dropdown-menu">
 					<form action="Buypage_loggedin.php" name = "filter_quality">
-						<li><input id="defaultQuality" type="radio" name="quality" value="default" checked></input>
-						<label for="defaultQuality">No preference</label></li>
-	 					<li><input id="newQuality" type="radio" name="quality" value="New"></input>
-	 					<label for="newQuality">New</label></li>
-						<li><input id="usedQuality" type="radio" name="quality" value="Used"></input>
-						<label for="usedQuality">Used</label></li>
-						<li><input id="oldQuality" type="radio" name="quality" value="Old"></input>
-						<label for="oldQuality">Old</label></li>
+						<li><label for="defaultQuality">No preference</label>
+							<input id="defaultQuality" type="radio" name="quality" value="default" checked></input>
+						</li>
+	 					<li><label for="newQuality">New</label>
+	 						<input id="newQuality" type="radio" name="quality" value="New"></input>
+	 					</li>
+						<li><label for="usedQuality">Used</label>
+							<input id="usedQuality" type="radio" name="quality" value="Used"></input>
+						</li>
+						<li><label for="oldQuality">Old</label>
+							<input id="oldQuality" type="radio" name="quality" value="Old"></input>
+						</li>
 					</form>
 				</ul>
 
@@ -985,16 +996,21 @@ $_SESSION['max_price'] = 2000;
 
 				<ul class="dropdown-menu">
 					<form action="Buypage_loggedin.php" name = "filter_category">
-						<li><input id="defaultCategory" type="radio" name="category" value="default" checked></input>
-						<label for="defaultCategory">No preference</label></li>
-						<li><input id="bookCategory" type="radio" name="category" value="Book"></input>
-						<label for="bookCategory">Book</label></li>
-						<li><input id="clotheCategory" type="radio" name="category" value="Clothe"> </input>
-						<label for="clotheCategory">Clothe</label></li>
-						<li><input id="applianceCategory" type="radio" name="category" value="Appliance"></input>
-						<label for="applianceCategory">Appliance</label></li>
-						<li><input id="etcCategory" type="radio" name="category" value="Etc"></input>
-						<label for="etcCategory">Etc</label></li>
+						<li><label for="defaultCategory">No preference</label>
+							<input id="defaultCategory" type="radio" name="category" value="default" checked></input>
+						</li>
+						<li><label for="bookCategory">Book</label>
+							<input id="bookCategory" type="radio" name="category" value="Book"></input>
+						</li>
+						<li><label for="clotheCategory">Clothe</label>
+							<input id="clotheCategory" type="radio" name="category" value="Clothe"> </input>
+						</li>
+						<li><label for="applianceCategory">Appliance</label>
+							<input id="applianceCategory" type="radio" name="category" value="Appliance"></input>
+						</li>
+						<li><label for="etcCategory">Etc</label>
+							<input id="etcCategory" type="radio" name="category" value="Etc"></input>
+						</li>
 					</form>
 				</ul>
 						

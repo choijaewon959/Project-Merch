@@ -82,7 +82,7 @@
             }
             $hash_out = substr($hash_out,0,-1);
 
-            echo "<div class='contentBox'>
+            echo "<div class='contentBox' onclick='popUpProduct()'>
                <div class='headerInBox'>";
             if ($product_list[$i]['category'] == "book"){
               echo "<div id='bookIconInBox'></div>";
@@ -99,7 +99,7 @@
             echo  "<div class='title'>".$product_list[$i]['title']."</div>".
               "<div class='updatedDate'>".$product_list[$i]['upload_date']."</div>".
             "</div>".
-            "<div class='imgWrap'>".
+            "<div class='imgWrap' >".
               "<div class='img_description'>".
                 "<div class='description'>".$product_list[$i]['description'].'</div>'.
                 '<div class="hashtags">'.$hash_out."</div>".
@@ -136,7 +136,7 @@
           {
             $_SESSION['max_price'] = $product_list[$i]['price'];
           }
-          echo "<div class='contentBox'>
+          echo "<div class='contentBox' onclick='popUpProduct()'>
 	           <div class='headerInBox'>";
           if ($product_list[$i]['category'] == "book"){
             echo "<div id='bookIconInBox'></div>";
@@ -153,7 +153,7 @@
           echo   "<div class='title  '>".$product_list[$i]['title']."</div>".
             "<div class='updatedDate' class=' '>".$product_list[$i]['upload_date']."</div>".
           "</div>".
-          "<div class='imgWrap  '>".
+          "<div class='imgWrap' onclick='popUpProduct()'>".
             "<div class='img_description'>".
               "<div class='description'>".$product_list[$i]['description'].'</div>'.
               '<div class="hashtags">'.$hash_out."</div>".

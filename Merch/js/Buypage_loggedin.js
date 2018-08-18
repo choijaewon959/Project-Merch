@@ -22,13 +22,19 @@ function requestModalfunction(){
 let sliderIndex = 1;
 
 function popUpProduct(){
-  //alert('test');
-  var popUpPanel = document.getElementById('onClickPopUp');
-  var popUpConent = document.getElementById('popUpContent');
-
-  popUpPanel.style.display = "block";
-  $(popUpConent).animate({height: "730px"});
-  changeSlider(sliderIndex);
+  if ($(this).hasClass('ui-draggable-dragging')) {
+        alert("dd");
+        $(this).removeClass('dragging');
+  }
+  else{
+    var popUpPanel = document.getElementById('onClickPopUp');
+    var popUpConent = document.getElementById('popUpContent');
+  
+    popUpPanel.style.display = "block";
+    $(popUpConent).animate({height: "730px"});
+    changeSlider(sliderIndex);
+  }
+  
 }
 
 
