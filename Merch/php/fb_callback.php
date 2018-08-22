@@ -34,8 +34,18 @@
     }
     exit;
   }
+  try {
+    $response = $fb->get('/me?fields=email', $accessToken);
+  } catch(Facebook\Exceptions\FacebookResponseException $e) {
+    echo 'Graph returned an error: ' . $e->getMessage();
+    exit;
+  } catch(Facebook\Exceptions\FacebookSDKException $e) {
+    echo 'Facebook SDK returned an error: ' . $e->getMessage();
+    exit;
+  }
 
-  // Logged in
-  echo '<h3>Access Token</h3>';
-  var_dump($accessToken->getValue());
+  $fbuser = $response->getGraphUser();
+  $_SESSION['fb_email'] = $fbuser['email'];
+  $_SESSION['fb_id'] = $fbuser['id'];
+  header("Location: https://wemerch.hk/php/fb_user.php")
 ?>

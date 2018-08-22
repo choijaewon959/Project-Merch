@@ -110,7 +110,7 @@ $_SESSION['max_price'] = 2000;
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/Buypage_loggedin.css">
+	<link rel="stylesheet" type="text/css" href="../css/Buypage.css">
 
 	<!--customized bootstrap library by other ppl-->
 	<link href="../css/animate.min.css" rel="stylesheet">
@@ -122,6 +122,13 @@ $_SESSION['max_price'] = 2000;
 	var q_value = "default";
 	var c_value = "default";
 	var search_word = "";
+	$(window).on('load', function(e){
+	  if (window.location.hash == '#_=_') {
+	    window.location.hash = ''; // for older browsers, leaves a # behind
+	    history.pushState('', document.title, window.location.pathname); // nice and clean
+	    e.preventDefault(); // no page reload
+	  }
+	})
 	$(document).ready(function(){
 		$("#priceSlider").slider({
 				range: true,
@@ -233,7 +240,7 @@ $_SESSION['max_price'] = 2000;
 		});
 	});
 </script>
-<script type="text/javascript" src="../js/Buypage_loggedin.js"></script>
+<script type="text/javascript" src="../js/Buypage.js"></script>
 </head>
 
 <body>
@@ -353,7 +360,7 @@ $_SESSION['max_price'] = 2000;
 
 	<div id="requestModal">
 		<div id="requestContentDiv">
-			<form action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
+			<form action="Buypage.php" method="post" enctype="multipart/form-data">
 					<button id= "closeBtn" type="button"></button>
 					<div class = "category">
 
@@ -377,7 +384,7 @@ $_SESSION['max_price'] = 2000;
 					<div class = "description">
 						<textarea id="textareaTextBox" name="request_description" placeholder="Add Description to your product! "><?php if(isset($_SESSION['request_description'])){echo $_SESSION['request_description'];} ?></textarea>
 					</div>
-					<input id="requestSubmit" class="button" type="submit" name= "btn_request_submit"  value="Add Request" action ="Buypage_loggedin.php" >
+					<input id="requestSubmit" class="button" type="submit" name= "btn_request_submit"  value="Add Request" action ="Buypage.php" >
 				<div class = "price">
 						<input id="priceTextBox" type="text" class="form-control" name="request_price" placeholder="price(HKD)" value =<?php if(isset($_SESSION['request_price'])){print_r($_SESSION['request_price']);} ?>>
 				</div>
@@ -392,7 +399,7 @@ $_SESSION['max_price'] = 2000;
 			<div id="myInfoContentDiv">
 
 				<div class="informationDiv">
-				<form id="myInfoPanel" action="Buypage_loggedin.php" method="post" enctype="multipart/form-data">
+				<form id="myInfoPanel" action="Buypage.php" method="post" enctype="multipart/form-data">
 					<label id="myInfoTitle">My Info</label>
 
 					<div class="UsernameDiv">
@@ -961,7 +968,7 @@ $_SESSION['max_price'] = 2000;
 						<input type='text' name="max_range" id="max_range"  class="form-control" value=<?php echo $max_range; ?>>
 					</div>
 				</ul>
-					
+
 			</li>
 
 			<li class="dropdown" id="qualitySortDiv">
@@ -970,7 +977,7 @@ $_SESSION['max_price'] = 2000;
 					<div id="qualitySort"> quality</div>
 				</button>
 				<ul class="dropdown-menu">
-					<form action="Buypage_loggedin.php" name = "filter_quality">
+					<form action="Buypage.php" name = "filter_quality">
 						<li><label for="defaultQuality">No preference</label>
 							<input id="defaultQuality" type="radio" name="quality" value="default" checked></input>
 						</li>
@@ -995,7 +1002,7 @@ $_SESSION['max_price'] = 2000;
 				</button>
 
 				<ul class="dropdown-menu">
-					<form action="Buypage_loggedin.php" name = "filter_category">
+					<form action="Buypage.php" name = "filter_category">
 						<li><label for="defaultCategory">No preference</label>
 							<input id="defaultCategory" type="radio" name="category" value="default" checked></input>
 						</li>
@@ -1013,7 +1020,7 @@ $_SESSION['max_price'] = 2000;
 						</li>
 					</form>
 				</ul>
-						
+
 
 			</li>
 

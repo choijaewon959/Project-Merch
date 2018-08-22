@@ -5,7 +5,7 @@
 
 	if($login->is_loggedin()!="")
 	{
-		$login->redirect('merch.bitnamiapp.com/php/Buypage_loggedin.php');
+		$login->redirect('wemerch.hk/php/Buypage.php');
 	}
 	if(isset($_POST['submit_email']))
 	{
@@ -19,17 +19,15 @@
 			$stmt->bindparam(":token", $str);
 			$stmt->bindparam(":email", $umail);
 			$stmt->execute();
-			$url = "merch.bitnamiapp.com/php/resetpass.php?token=$str&email=$umail";
+			$url = "wemerch.hk/php/resetpass.php?token=$str&email=$umail";
 			if(mail($umail, "Merch - Reset Password URL", $url, "From: myemail@merch.com\r\n"))
 			{
-					$display = "change url sent to the registered email";
+					$display = "Change url sent to the registered email";
 			}
 			else
 			{
 					$display = "nope";
 			}
-			echo "<script type='text/javascript'>alert('".$url."');</script>";
-
 		}
 		else
 		{

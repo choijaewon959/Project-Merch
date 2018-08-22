@@ -29,12 +29,12 @@ function popUpProduct(){
   else{
     var popUpPanel = document.getElementById('onClickPopUp');
     var popUpConent = document.getElementById('popUpContent');
-  
+
     popUpPanel.style.display = "block";
     $(popUpConent).animate({height: "730px"});
     changeSlider(sliderIndex);
   }
-  
+
 }
 
 
@@ -87,4 +87,3 @@ output.innerHTML = slider.value;
 slider.oninput = function() {
     output.innerHTML = this.value;
 }
-
