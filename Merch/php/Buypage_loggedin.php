@@ -451,12 +451,7 @@ $_SESSION['max_price'] = 2000;
 
 					<div class="tab-content">
 						<div id="requestedContent" class="tab-pane fade in active">
-							@Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
 							<?php
 							      for($i = 0 ; $i < $request_num ; $i ++)
 							      {
@@ -507,58 +502,40 @@ $_SESSION['max_price'] = 2000;
 
 
 						<div id="mySelling" class="tab-pane fade">
-							<div  id="sellingContent" class="carousel slide " data-ride="carousel" >
 
-								<!-- Indicators -->
-    							<ol class="carousel-indicators">
-      								<li data-target="#sellingContent" data-slide-to="0" class="active"></li>
-      								<li data-target="#sellingContent" data-slide-to="1"></li>
-      								<li data-target="#sellingContent" data-slide-to="2"></li>
-    							</ol>
+				<!-- 			<div id="popUpPhoto">
+				<div id="slidePanel">
+					<img class="slidePhoto" src ="../img/book1.jpg" width="450" height="500">
+					<img class="slidePhoto" src ="../img/book2.jpg" width="450" height="500">
+					<img class="slidePhoto" src ="../img/book3.jpg" width="450" height="500">
+					<button class="sliderDots w3-display-left w3-button" onclick="incrementSliderIndex(-1);">&#10094;</button>
+					<button class="sliderDots w3-display-right w3-button" onclick="incrementSliderIndex(1);">&#10095;</button>
+				</div>
+				<div class="photoFlex">
+					<img class="opac-Photo" src ="../img/book1.jpg" width="130" height="170" onclick="currentSlider(1)">
 
-								<div class="carousel-inner">
-    								<div class="item active">
-      									<img class="d-block " src="../img/book1.jpg" width="160" height="500">
-      									<img class="d-block " src="../img/book1.jpg" width="160" height="500">
-      									<img class="d-block " src="../img/book1.jpg" width="160" height="500">
-      									<div id="selling-title">
-										</div>
+					<img class="opac-Photo" src ="../img/book2.jpg" width="130" height="170" onclick="currentSlider(2)">
 
-										<div id="selling-quality">
-										</div>
+					<img class="opac-Photo" src ="../img/book3.jpg" width="130" height="170" onclick="currentSlider(3)">
+				</div>
+			</div>popUpPhoto--> 
+							
+							<div id="mySellingPhotoDiv">
+								<div id="mySelling_photoFlex">
+									<img class="opac-Photo2" src ="../img/book1.jpg" width="120" height="140" onclick="currentSlider2(1)">
+									<img class="opac-Photo2" src ="../img/book2.jpg" width="120" height="140" onclick="currentSlider2(2)">
+									<img class="opac-Photo2" src ="../img/book3.jpg" width="120" height="140" onclick="currentSlider2(3)">
+								</div>
 
-										<div id="selling-price">
+								<div id="mySelling_mainPhoto">
+									<img class="mySellingPhoto" src ="../img/book1.jpg" width="360" height="440">
+									<img class="mySellingPhoto" src ="../img/book2.jpg" width="360" height="440">
+									<img class="mySellingPhoto" src ="../img/book3.jpg" width="360" height="440">
+								</div>
 
-										</div>
-
-										<div id="selling-des">
-										</div>
-
-										<div id="selling-hashtags">
-
-										</div>
-    								</div>
-
-    								<div class="item ">
-      									<img class="d-block " src="../img/book2.jpg" width="160" height="500">
-      									<img class="d-block " src="../img/book2.jpg" width="160" height="500">
-    								</div>
-
-    								<div class="item">
-      									<img class="d-block " src="../img/book3.jpg" width="160" height="500">
-    								</div>
-  								</div>
-
-  								<a class="carousel-control-prev" href="#sellingContent" role="button" data-slide="prev">
-    								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    								<span class="sr-only">Previous</span>
-  								</a>
-
-  								<a class="carousel-control-next" href="#sellingContent" role="button" data-slide="next">
-    								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-    								<span class="sr-only">Next</span>
-  								</a>
-							</div>
+								
+							</div><!--mySelling Photo-->
+							
 
 						</div><!--my selling-->
 
@@ -960,6 +937,7 @@ $_SESSION['max_price'] = 2000;
 					<div class="col-md-2">
 						<input type='text' name="max_range" id="max_range"  class="form-control" value=<?php echo $max_range; ?>>
 					</div>
+
 				</ul>
 					
 			</li>

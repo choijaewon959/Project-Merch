@@ -153,7 +153,7 @@
           echo   "<div class='title  '>".$product_list[$i]['title']."</div>".
             "<div class='updatedDate' class=' '>".$product_list[$i]['upload_date']."</div>".
           "</div>".
-          "<div class='imgWrap' onclick='popUpProduct()'>".
+          "<div class='imgWrap'>".
             "<div class='img_description'>".
               "<div class='description'>".$product_list[$i]['description'].'</div>'.
               '<div class="hashtags">'.$hash_out."</div>".

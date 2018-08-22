@@ -19,12 +19,11 @@ function requestModalfunction(){
 }
 
 //popup div for main contents
-let sliderIndex = 1;
+var sliderIndex = 1;
 
 function popUpProduct(){
-  if ($(this).hasClass('ui-draggable-dragging')) {
-        alert("dd");
-        $(this).removeClass('dragging');
+  if ($('.contentBox').hasClass('ui-draggable-dragging')) {
+        $('.contentBox').removeClass('dragging');
   }
   else{
     var popUpPanel = document.getElementById('onClickPopUp');
@@ -36,8 +35,6 @@ function popUpProduct(){
   }
   
 }
-
-
 
 //popup slider control
 function incrementSliderIndex(n){
@@ -88,3 +85,39 @@ slider.oninput = function() {
     output.innerHTML = this.value;
 }
 
+$("#slider").slider({
+    min: 0,
+    max: 100,
+    step: 1,
+    values: [10, 90],
+    slide: function(event, ui) {
+        for (var i = 0; i < ui.values.length; ++i) {
+            $("input.sliderValue[data-index=" + i + "]").val(ui.values[i]);
+        }
+    }
+});
+
+
+
+//my Selling what I am selling
+var sliderIndex2 = 1;
+
+function incrementSliderIndex2(n){
+  changeSlider2(sliderIndex2+=n);
+}
+
+function currentSlider2(n){
+  changeSlider2(sliderIndex2=n);
+}
+
+function changeSlider2(n){
+  var slidePhoto2 = document.getElementsByClassName("mySellingPhoto");
+  if (n > slidePhoto2.length) {sliderIndex2 = 1} ;
+  if (n < 1) {sliderIndex2 = slidePhoto2.length} ;
+  for (let i = 0; i < slidePhoto2.length; i++) {
+      slidePhoto2[i].style.display = "none";
+  }
+  slidePhoto2[sliderIndex2-1].style.display = "block";
+
+}
+changeSlider2(1);
