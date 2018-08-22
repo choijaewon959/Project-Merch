@@ -4,7 +4,7 @@
 	$login = new USER();
 	if($login->is_loggedin()!="")
 	{
-		$login->redirect('Buypage_loggedin.php');
+		$login->redirect('Buypage.php');
 	}
 
 	if(isset($_POST['btn-login']))
@@ -15,7 +15,7 @@
 
 		if($login->doLogin($uname,$umail,$upass))
 		{
-			$login->redirect('Buypage_loggedin.php');
+			$login->redirect('Buypage.php');
 		}
 		else
 		{

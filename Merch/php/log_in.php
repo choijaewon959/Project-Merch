@@ -5,7 +5,7 @@
 
 	if($login->is_loggedin()!="")
 	{
-		$login->redirect('Buypage_loggedin.php');
+		$login->redirect('Buypage.php');
 	}
 
 	if(isset($_POST['btn-login']))
@@ -16,7 +16,7 @@
 
 		if($login->doLogin($uname,$umail,$upass))
 		{
-			$login->redirect('Buypage_loggedin.php');
+			$login->redirect('Buypage.php');
 		}
 		else
 		{
@@ -44,7 +44,7 @@
 						</div>
 					</div>
 						<div class="facebookDiv">
-							 <a href="login.php"><button id="facebookButton">Login with Facebook</button></a>
+							 <a href="fb_login.php"><button id="facebookButton">Login with Facebook</button></a>
 						</div>
 		        <form  method="post" action="log_in.php">
 		              <?php

@@ -4,11 +4,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `users` (
   `user_id` int(5) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(11) NOT NULL,
-  `user_pass` varchar(255) NOT NULL,
+  `user_name` varchar(11),
+  `user_pass` varchar(255),
   `email` varchar(30) NOT NULL,
-  `phone_num` varchar(15) NOT NULL,
-  `token` varchar(10) NOT NULL,
+  `phone_num` varchar(15) ,
+  `token` varchar(10) ,
   `joindate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
    PRIMARY KEY(`user_id`)
 )ENGINE=MariaDB DEFAULT CHARSET=latin1;
@@ -89,3 +89,4 @@ CREATE TABLE `appliance`
   PRIMARY KEY(`appliance_id`),
   FOREIGN KEY (`product_id`) references sell_product(product_id)
 );
+ALTER TABLE `users` ADD `fb` int(1);

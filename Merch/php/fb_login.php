@@ -10,6 +10,6 @@
   $helper = $fb->getRedirectLoginHelper();
 
   $permissions = ['email']; // Optional permissions
-  $loginUrl = $helper->getLoginUrl('https://merch.bitnamiapp.com/php/callback.php', $permissions);
+  $loginUrl = $helper->getLoginUrl('https://wemerch.hk/php/fb_callback.php', $permissions);
   header("Location:".$loginUrl);
 ?>
