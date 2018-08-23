@@ -732,19 +732,16 @@ body{
 }
 
 
-
-
-
 .myRequestAndSellDiv #requestedContent{
-	height: 95%;
+	height: 620px;
 	margin-top:10px;
-	overflow: auto;
+	overflow-y: scroll;
 }
 
 .myRequestAndSellDiv #requestedContent #requestedItems{
 	width: 100%;
 	border-bottom: 2px solid #d6d6d6;
-	height: 100px;
+	height: 150px;
 	padding:10px 0px 10px 0px;
 }
 

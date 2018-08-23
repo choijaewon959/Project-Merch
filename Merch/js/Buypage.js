@@ -28,12 +28,12 @@ function popUpProduct(){
   else{
     var popUpPanel = document.getElementById('onClickPopUp');
     var popUpConent = document.getElementById('popUpContent');
-
+  
     popUpPanel.style.display = "block";
     $(popUpConent).animate({height: "730px"});
     changeSlider(sliderIndex);
   }
-
+  
 }
 
 //popup slider control
@@ -84,7 +84,6 @@ output.innerHTML = slider.value;
 slider.oninput = function() {
     output.innerHTML = this.value;
 }
-<<<<<<< HEAD:Merch/js/Buypage_loggedin.js
 
 $("#slider").slider({
     min: 0,
