@@ -521,16 +521,18 @@ $_SESSION['max_price'] = 2000;
 			</div>popUpPhoto--> 
 							
 							<div id="mySellingPhotoDiv">
-								<div id="mySelling_photoFlex">
-									<img class="opac-Photo2" src ="../img/book1.jpg" width="120" height="140" onclick="currentSlider2(1)">
-									<img class="opac-Photo2" src ="../img/book2.jpg" width="120" height="140" onclick="currentSlider2(2)">
-									<img class="opac-Photo2" src ="../img/book3.jpg" width="120" height="140" onclick="currentSlider2(3)">
-								</div>
-
 								<div id="mySelling_mainPhoto">
 									<img class="mySellingPhoto" src ="../img/book1.jpg" width="360" height="440">
 									<img class="mySellingPhoto" src ="../img/book2.jpg" width="360" height="440">
 									<img class="mySellingPhoto" src ="../img/book3.jpg" width="360" height="440">
+								</div>
+
+								<div id="mySelling_photoFlex">
+									<img class="opac-Photo2" src ="../img/book1.jpg" width="120" height="140" onclick="currentSlider2(1)">
+									<img class="opac-Photo2" src ="../img/book2.jpg" width="120" height="140" onclick="currentSlider2(2)">
+									<img class="opac-Photo2" src ="../img/book3.jpg" width="120" height="140" onclick="currentSlider2(3)">
+									<img class="opac-Photo2" src ="../img/book3.jpg" width="120" height="140" onclick="currentSlider2(4)">
+
 								</div>
 
 								
