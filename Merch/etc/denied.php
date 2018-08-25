@@ -29,6 +29,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Access Denied</title>
 <link rel="stylesheet" href="style.css" type="text/css"  />
+<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../css/Denied.css">
+
 </head>
 <body>
 
@@ -36,14 +40,32 @@
 
 	<div id="main">
 
-								<h1><font color='red'>Access Denied !</font></h1>
+				<div id="denyDiv">
+					<div class="box">
+						<div class="boxbody">
+							<div class="Logo">
+								<div id="merchText">
+									<a href="index.php">Merch</a>
+									<div id="errorTextDiv">Error</div>
+								</div><!--merchText-->
 
-               <p><b>Sorry! You need to log in.</b></p>
+								<div id="messageDiv">
+									<div id="message">
+										Oops! 
+										<a id="loginText" href="../php/log_in.php" >Login</a>
+										first
 
+									</div>
+									
+								</div>
 
-								<p><a href="../php/log_in.php" ><button class="button" >Login</button</a>
-</p>
-        </div>
+							</div><!--logo-->
+						</div><!--boxbody-->
+						
+					</div><!--box-->
+						
+				</div><!--denyDiv-->
+    </div><!--main-->
 
 
 
