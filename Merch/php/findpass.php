@@ -5,34 +5,12 @@
 
 	if($login->is_loggedin()!="")
 	{
-		$login->redirect('wemerch.hk/php/Buypage.php');
+		$login->redirect('wemerch.hk/php/Buypage_loggedin.php');
 	}
 	if(isset($_POST['submit_email']))
 	{
-		$umail = strip_tags($_POST['txt_uname_email']);
-		if($login->checkEmail($_SESSION['send_email']))
-		{
-      $str = "1234567890!@#$%^&*";
-			$str = str_shuffle($str);
-			$str = substr($str, 0, 10);
-			$stmt = $login->runQuery("UPDATE users SET token=:token WHERE email=:email");
-			$stmt->bindparam(":token", $str);
-			$stmt->bindparam(":email", $umail);
-			$stmt->execute();
-			$url = "wemerch.hk/php/resetpass.php?token=$str&email=$umail";
-			if(mail($umail, "Merch - Reset Password URL", $url, "From: myemail@merch.com\r\n"))
-			{
-					$display = "Change url sent to the registered email";
-			}
-			else
-			{
-					$display = "nope";
-			}
-		}
-		else
-		{
-			$display = "<b>User Email does not exist !</b>";
-		}
+		$_SESSION['umail'] = strip_tags($_POST['txt_uname_email']);
+		$login->redirect('send_mail.php');
 	}
 	?>
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

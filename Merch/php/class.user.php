@@ -40,7 +40,7 @@ class USER
 			$stmt = $this->conn->prepare("SELECT user_id, user_name, email, user_pass FROM users WHERE email=:umail ");
 			$stmt->execute(array(':umail'=>$umail));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-			if($stmt->rowcount() ==1)
+			if($stmt->rowCount() > 0)
 			{
 				return true;
 			}
