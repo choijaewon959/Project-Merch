@@ -196,7 +196,7 @@ $error_displayed = false;
 	<div class="searchHeader">
 		<div class="Logo">
 			<div id="merchText">
-				<a href="Buypage.php">Merch</a>
+				<a href="Buypage_loggedin.php">Merch</a>
 			</div>
 		</div>
 
@@ -215,9 +215,9 @@ $error_displayed = false;
 		<nav class="tm-nav">
 				<ul>
 					<li><button onclick="document.getElementById('requestModal').style.display='block'">Request</button></li>
-					<li><a href="Buypage.php">Buy</a></li>
-					<li><a href="mypage.php">My page</a></li>
-					<li><a href="log_in.php">My shopping bag</a></li>
+					<li><a href="Buypage_loggedin.php">Buy</a></li>
+					<li><button onclick>>My page</button></li>
+					<li><button onclick>My shopping bag</button></li>
 				</ul>
 			</nav>
 
@@ -247,7 +247,7 @@ $error_displayed = false;
 						<input id="priceTextBox" type="text" class="form-control" name="request_price" placeholder="price(HKD)" value =<?php if(isset($_SESSION['request_price'])){print_r($_SESSION['request_price']);} ?>>
 				</div>
 				<br>
-				<input id="requestSubmit" class="button" type="submit" name= "btn_request_submit"  value="Add Request" action ="Buypage.php" >
+				<input id="requestSubmit" class="button" type="submit" name= "btn_request_submit"  value="Add Request" action ="Buypage_loggedin.php" >
 			</form>
 		</div>
 	</div><!--requestModal-->

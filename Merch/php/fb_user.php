@@ -13,7 +13,7 @@
     if($userRow = $stmt->fetch(PDO::FETCH_ASSOC))
     {
         $_SESSION['user_session'] = $userRow['user_id'];
-        $merchuser->redirect("https://wemerch.hk/php/Buypage.php");
+        $merchuser->redirect("https://wemerch.hk/php/Buypage_loggedin.php");
     }
     else
     {
@@ -27,7 +27,7 @@
       $stmt->execute();
       $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
       $_SESSION['user_session'] = $userRow['user_id'];
-      $merchuser->redirect("https://wemerch.hk/php/Buypage.php");
+      $merchuser->redirect("https://wemerch.hk/php/Buypage_loggedin.php");
     }
   }
   catch(PDOException $e)

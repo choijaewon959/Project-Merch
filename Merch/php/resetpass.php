@@ -13,7 +13,7 @@ if(isset($_GET['token']) && isset($_GET['email']))
 }
 else
 {
-  header("Location: merch.bitnamiapp.com/php/index.php");
+  header("Location: https://wemerch.hk/php/");
 }
 if(isset($_POST["new_pass"]))
 {
