@@ -1,3 +1,5 @@
+Merch is mostly built with the Javascript and Jquery, which is old and fundamental in website development for a long time, so this sources are more suitable for beginners interested in building website for the first time.
+
 # Project-Merch
 * Merch is the second hand buy and sell website for University students in Hong Kong.
 * You can upload the products that you want to sell, or make a request for the products that you need.
@@ -12,3 +14,7 @@
 
 # Programming languages / Libraries used
 HTML5, CSS3, Javascript, PHP, Bootstrap, Jquery, AJAX, and some built in libraries from w3 school.
+
+# How to use
+![clicked](https://github.com/choijaewon959/Project-Merch/blob/master/Merch/screenshots/loggedin_clicked.PNG)
+When you click the items that you want, it will show the details of the product.
