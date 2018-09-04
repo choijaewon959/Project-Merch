@@ -16,5 +16,8 @@ Merch is mostly built with the Javascript and Jquery, which is old and fundament
 HTML5, CSS3, Javascript, PHP, Bootstrap, Jquery, AJAX, and some built in libraries from w3 school.
 
 # How to use
+![loggedin](https://github.com/choijaewon959/Project-Merch/blob/master/Merch/screenshots/loggedinpage.PNG)
+If you like the product, you can simply drag and drop the item panel to the shopping bag section of the page.
+
 ![clicked](https://github.com/choijaewon959/Project-Merch/blob/master/Merch/screenshots/loggedin_clicked.PNG)
 When you click the items that you want, it will show the details of the product.
