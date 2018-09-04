@@ -12,12 +12,15 @@ Merch is mostly built with the Javascript and Jquery, which is old and fundament
 * Make sure to get javascript run on your web browsers.
 * Make sure you are connected to the internet because most of the libraries and dependencies are from other online servers that are deployed on the other websites.
 
-# Programming languages / Libraries used
-HTML5, CSS3, Javascript, PHP, Bootstrap, Jquery, AJAX, and some built in libraries from w3 school.
-
 # How to use
 ![loggedin](https://github.com/choijaewon959/Project-Merch/blob/master/Merch/screenshots/loggedinpage.PNG)
 If you like the product, you can simply drag and drop the item panel to the shopping bag section of the page.
 
 ![clicked](https://github.com/choijaewon959/Project-Merch/blob/master/Merch/screenshots/loggedin_clicked.PNG)
 When you click the items that you want, it will show the details of the product.
+
+![sellpage](https://github.com/choijaewon959/Project-Merch/blob/master/Merch/screenshots/sellpage.PNG)
+Page that you can upload the products that you may want to sell.
+
+# Programming languages / Libraries used
+HTML5, CSS3, Javascript, PHP, Bootstrap, Jquery, AJAX, and some built in libraries from w3 school.
